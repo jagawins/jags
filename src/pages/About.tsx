@@ -1,15 +1,34 @@
 import Layout from "@/components/layout/Layout";
 import { ArrowUpRight } from "lucide-react";
+import jagHeadshot from "@/assets/jag-headshot.jpeg";
 
 const About = () => {
   return (
     <Layout>
       <section className="section-spacing">
         <div className="container-narrow">
-          <div className="max-w-3xl animate-fade-in">
-            <h1 className="heading-display text-foreground mb-8">About</h1>
+          <div className="animate-fade-in">
+            {/* Header with photo */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 mb-16">
+              <div className="md:col-span-4 lg:col-span-3">
+                <div className="w-48 md:w-full aspect-square">
+                  <img
+                    src={jagHeadshot}
+                    alt="Jag Mariappan"
+                    className="w-full h-full object-cover rounded-sm"
+                  />
+                </div>
+              </div>
+              <div className="md:col-span-8 lg:col-span-9">
+                <h1 className="heading-display text-foreground mb-6">About</h1>
+                <p className="body-large text-muted-foreground max-w-2xl">
+                  Executive operator building at the intersection of healthcare, AI, and governance.
+                </p>
+              </div>
+            </div>
             
-            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed mb-16">
+            {/* Bio content */}
+            <div className="max-w-3xl space-y-6 text-lg text-muted-foreground leading-relaxed mb-16">
               <p>
                 I'm an executive operator who builds and scales decision systems in healthcare and AI. My work sits at the intersection of technology, governance, and organizational design.
               </p>

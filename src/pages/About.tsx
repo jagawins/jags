@@ -43,7 +43,7 @@ const About = () => {
                   <ArrowUpRight className="w-4 h-4" />
                 </a>
                 <a
-                  href="https://jagawins.wordpress.com"
+                  href="https://myjmr.org"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium"

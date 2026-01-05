@@ -23,7 +23,7 @@ const Footer = () => {
                 LinkedIn
               </a>
               <a
-                href="https://jagawins.wordpress.com"
+                href="https://myjmr.org"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="link-executive"

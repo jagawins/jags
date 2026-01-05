@@ -3,29 +3,22 @@ import { ArrowUpRight } from "lucide-react";
 
 const posts = [
   {
-    title: "The Architecture of Exit: Building Companies Worth Acquiring",
-    url: "https://jagawins.wordpress.com",
-    date: "2024",
+    title: "The Chair Theory",
+    url: "https://myjmr.org/2025/12/27/the-chair-theory/",
+    date: "December 2025",
+    excerpt: "Everyone has a table in their life. Some tables pull a chair the moment you arrive. Others make you wait. Some never quite make room at all.",
   },
   {
-    title: "Decision Velocity in Healthcare AI: When Speed Meets Compliance",
-    url: "https://jagawins.wordpress.com",
-    date: "2024",
+    title: "Lucky Girl Syndrome",
+    url: "https://myjmr.org/2025/12/27/lucky-girl-syndrome/",
+    date: "December 2025",
+    excerpt: "What is Lucky Girl Syndrome really, and how should you think about it in a practical way? Mindset meets strategy.",
   },
   {
-    title: "Why Most Digital Transformations Fail (And How to Avoid It)",
-    url: "https://jagawins.wordpress.com",
-    date: "2023",
-  },
-  {
-    title: "Governance as Growth Engine: The Counterintuitive Path to Scale",
-    url: "https://jagawins.wordpress.com",
-    date: "2023",
-  },
-  {
-    title: "Building Systems That Outlast Their Builders",
-    url: "https://jagawins.wordpress.com",
-    date: "2022",
+    title: "Comfort Protects. Faith Carries. Purpose Decides.",
+    url: "https://myjmr.org/2025/12/25/comfort-protects-faith-carries-purpose-decides/",
+    date: "December 2025",
+    excerpt: "You were not built for a painless life. You were built for a purposeful one.",
   },
 ];
 
@@ -37,7 +30,7 @@ const Writing = () => {
           <div className="max-w-3xl mb-16 animate-fade-in">
             <h1 className="heading-display text-foreground mb-6">Writing</h1>
             <p className="body-large text-muted-foreground">
-              Thinking documented. Essays on operations, governance, and building systems that scale.
+              Thinking documented. Essays on purpose, focus, and building systems that scale.
             </p>
           </div>
 
@@ -48,15 +41,18 @@ const Writing = () => {
                 href={post.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block border-t border-border py-8 transition-colors hover:bg-muted/30 animate-fade-in"
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="group block border-t border-border py-10 transition-colors hover:bg-muted/30 animate-fade-in"
+                style={{ opacity: 0, animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
               >
-                <div className="flex items-start justify-between gap-4">
+                <div className="flex items-start justify-between gap-6">
                   <div className="flex-1">
-                    <h2 className="font-serif text-xl md:text-2xl font-medium text-foreground group-hover:text-primary transition-colors leading-tight">
+                    <h2 className="font-serif text-xl md:text-2xl font-medium text-foreground group-hover:text-primary transition-colors leading-tight mb-3">
                       {post.title}
                     </h2>
-                    <p className="text-sm text-muted-foreground mt-2">
+                    <p className="text-muted-foreground leading-relaxed mb-2 max-w-2xl">
+                      {post.excerpt}
+                    </p>
+                    <p className="text-sm text-muted-foreground/70">
                       {post.date}
                     </p>
                   </div>
@@ -73,12 +69,12 @@ const Writing = () => {
             <p className="text-muted-foreground">
               View more writing on{" "}
               <a
-                href="https://jagawins.wordpress.com"
+                href="https://myjmr.org"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="link-executive"
               >
-                WordPress
+                myjmr.org
               </a>
             </p>
           </div>

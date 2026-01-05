@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import jagHeadshot from "@/assets/jag-headshot.jpeg";
 
 const Hero = () => {
@@ -8,17 +9,42 @@ const Hero = () => {
           {/* Text content */}
           <div className="lg:col-span-8 order-2 lg:order-1">
             <h1 
-              className="heading-display text-foreground mb-8 animate-fade-in"
+              className="heading-display text-foreground mb-6 animate-fade-in"
               style={{ opacity: 0, animationFillMode: 'forwards' }}
             >
-              I design and scale decision systems in complex healthcare and AI environments.
+              Jag Mariappan: Executive operator focused on decision systems in healthcare and AI.
             </h1>
             <p 
-              className="body-large text-muted-foreground max-w-2xl animate-fade-in"
+              className="body-large text-muted-foreground max-w-2xl mb-10 animate-fade-in"
               style={{ opacity: 0, animationDelay: '150ms', animationFillMode: 'forwards' }}
             >
-              Executive operator with a record of building, governing, and exiting real systems.
+              I design, scale, and govern decision-critical systems across enterprise healthcare and AI platforms.
             </p>
+
+            {/* Navigation buttons */}
+            <div 
+              className="flex flex-wrap gap-3 animate-fade-in"
+              style={{ opacity: 0, animationDelay: '300ms', animationFillMode: 'forwards' }}
+            >
+              <Link
+                to="/work"
+                className="px-5 py-2.5 text-sm font-medium border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
+              >
+                Work Record
+              </Link>
+              <Link
+                to="/principles"
+                className="px-5 py-2.5 text-sm font-medium border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
+              >
+                Operating Judgment
+              </Link>
+              <Link
+                to="/writing"
+                className="px-5 py-2.5 text-sm font-medium border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
+              >
+                Selected Thinking
+              </Link>
+            </div>
           </div>
 
           {/* Headshot */}

@@ -18,9 +18,14 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link 
             to="/" 
-            className="font-serif text-lg md:text-xl font-medium text-foreground hover:text-primary transition-colors"
+            className="flex flex-col"
           >
-            Jag Mariappan
+            <span className="font-serif text-lg md:text-xl font-medium text-foreground hover:text-primary transition-colors">
+              Jag Mariappan
+            </span>
+            <span className="text-[10px] md:text-xs text-muted-foreground/70 tracking-wide">
+              Stanford Medicine • Harvard Business School
+            </span>
           </Link>
           
           <div className="hidden md:flex items-center gap-8">

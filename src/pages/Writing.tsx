@@ -22,6 +22,21 @@ const posts = [
   },
 ];
 
+const mediumPosts = [
+  {
+    title: "The Governance Gap in Enterprise AI",
+    excerpt: "Why most AI initiatives fail at the intersection of ambition and accountability.",
+  },
+  {
+    title: "Decision Systems at Scale",
+    excerpt: "Building operational frameworks that survive complexity and growth.",
+  },
+  {
+    title: "Healthcare's AI Inflection Point",
+    excerpt: "What healthcare operators must understand before the next wave arrives.",
+  },
+];
+
 const Writing = () => {
   return (
     <Layout>
@@ -65,6 +80,46 @@ const Writing = () => {
             ))}
           </div>
 
+          {/* Featured on Medium */}
+          <div className="border-t border-border pt-16 mt-8">
+            <div className="mb-8">
+              <h2 className="font-serif text-2xl md:text-3xl font-medium text-foreground mb-3">
+                Featured on Medium
+              </h2>
+              <p className="text-muted-foreground">
+                Synthesized insights on AI, Governance, and Operational Scale.
+              </p>
+            </div>
+
+            <div className="space-y-0">
+              {mediumPosts.map((post, index) => (
+                <a
+                  key={index}
+                  href="https://medium.com/@jagawins/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block border-t border-border py-8 transition-colors hover:bg-muted/30 animate-fade-in"
+                  style={{ opacity: 0, animationDelay: `${(posts.length + index) * 100}ms`, animationFillMode: 'forwards' }}
+                >
+                  <div className="flex items-start justify-between gap-6">
+                    <div className="flex-1">
+                      <h3 className="font-serif text-lg md:text-xl font-medium text-foreground group-hover:text-primary transition-colors leading-tight mb-2">
+                        {post.title}
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed max-w-2xl">
+                        {post.excerpt}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-2 text-primary shrink-0 mt-1">
+                      <span className="text-sm hidden sm:inline">Read on Medium</span>
+                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+
           <div className="border-t border-border pt-12 mt-0">
             <p className="text-muted-foreground">
               View more writing on{" "}
@@ -75,6 +130,15 @@ const Writing = () => {
                 className="link-executive"
               >
                 myjmr.org
+              </a>
+              {" "}or{" "}
+              <a
+                href="https://medium.com/@jagawins/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-executive"
+              >
+                Medium
               </a>
             </p>
           </div>

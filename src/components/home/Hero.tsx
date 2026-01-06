@@ -18,7 +18,7 @@ const Hero = () => {
               className="body-large text-muted-foreground max-w-2xl mb-10 animate-fade-in"
               style={{ opacity: 0, animationDelay: '150ms', animationFillMode: 'forwards' }}
             >
-              I design, scale, and govern decision-critical systems across enterprise healthcare and AI platforms.
+              Currently leading enterprise transformation at Stanford Medicine. Harvard Business School Alumnus with 25+ years of experience scaling $150M+ portfolios across Healthcare, AI, and Global Operations.
             </p>
 
             {/* Navigation buttons */}

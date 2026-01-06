@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { Linkedin } from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -22,22 +23,52 @@ const Navigation = () => {
             Jag Mariappan
           </Link>
           
-          <ul className="hidden md:flex items-center gap-8">
-            {navLinks.slice(1).map((link) => (
-              <li key={link.href}>
-                <Link
-                  to={link.href}
-                  className={`text-sm tracking-wide transition-colors ${
-                    location.pathname === link.href
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className="hidden md:flex items-center gap-8">
+            <ul className="flex items-center gap-8">
+              {navLinks.slice(1).map((link) => (
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
+                    className={`text-sm tracking-wide transition-colors ${
+                      location.pathname === link.href
+                        ? "text-foreground"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            
+            <div className="flex items-center gap-3 pl-4 border-l border-border/60">
+              <a
+                href="https://www.linkedin.com/in/jagawins/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a
+                href="https://myjmr.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Blog
+              </a>
+              <a
+                href="https://medium.com/@jagawins/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Insights
+              </a>
+            </div>
+          </div>
 
           {/* Mobile menu button */}
           <MobileNav />
@@ -46,7 +77,6 @@ const Navigation = () => {
     </header>
   );
 };
-
 const MobileNav = () => {
   const location = useLocation();
 

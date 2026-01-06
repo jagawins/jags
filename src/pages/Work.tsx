@@ -2,6 +2,20 @@ import Layout from "@/components/layout/Layout";
 
 const projects = [
   {
+    name: "Stanford Medicine",
+    outcome: "Current",
+    role: "Enterprise Transformation Lead",
+    bullets: [
+      "Leading enterprise-wide digital transformation initiatives across Stanford Health Care",
+      "Driving AI integration strategy for clinical operations and decision support",
+      "Architecting governance frameworks for emerging technology deployment",
+      "Managing cross-functional teams spanning clinical, technical, and administrative domains",
+    ],
+    relevance:
+      "Current leadership role at one of the world's premier academic medical centers, driving transformation at the intersection of healthcare delivery and AI innovation.",
+    featured: true,
+  },
+  {
     name: "Bairo Healthcare",
     outcome: "Sold",
     role: "Founder & CEO",
@@ -13,6 +27,7 @@ const projects = [
     ],
     relevance:
       "Documented ability to build, scale, and exit a healthcare technology company while navigating complex regulatory and clinical requirements.",
+    featured: false,
   },
   {
     name: "VerityAxis",
@@ -26,6 +41,7 @@ const projects = [
     ],
     relevance:
       "Demonstrated expertise in building trust infrastructure and managing complex stakeholder relationships through exit.",
+    featured: false,
   },
   {
     name: "PodoraHQ",
@@ -39,6 +55,7 @@ const projects = [
     ],
     relevance:
       "Current role demonstrating hands-on leadership of AI product development in regulated healthcare environment.",
+    featured: false,
   },
   {
     name: "PrismOS",
@@ -52,6 +69,7 @@ const projects = [
     ],
     relevance:
       "Proven ability to operationalize complex AI systems while maintaining strict compliance and reliability standards.",
+    featured: false,
   },
   {
     name: "AxiomAppeals",
@@ -65,9 +83,9 @@ const projects = [
     ],
     relevance:
       "Advisory engagement showcasing ability to guide early-stage healthcare technology companies through critical growth phases.",
+    featured: false,
   },
 ];
-
 const Work = () => {
   return (
     <Layout>
@@ -84,7 +102,9 @@ const Work = () => {
             {projects.map((project, index) => (
               <article
                 key={index}
-                className="border-t border-border py-12 md:py-16 animate-fade-in"
+                className={`border-t border-border py-12 md:py-16 animate-fade-in ${
+                  project.featured ? "bg-primary/5 -mx-4 px-4 md:-mx-8 md:px-8" : ""
+                }`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">

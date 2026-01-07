@@ -3,16 +3,18 @@ import Layout from "@/components/layout/Layout";
 const projects = [
   {
     name: "Stanford Medicine",
-    outcome: "Current",
-    role: "Enterprise Transformation Lead",
+    outcome: "Scaling Institutional AI & Digital Health",
+    role: "Executive Leader, Enterprise Transformation (VP-Equivalent)",
     bullets: [
-      "Leading enterprise-wide digital transformation initiatives across Stanford Health Care",
-      "Driving AI integration strategy for clinical operations and decision support",
-      "Architecting governance frameworks for emerging technology deployment",
-      "Managing cross-functional teams spanning clinical, technical, and administrative domains",
+      "Leading enterprise-scale portfolios spanning digital health, AI-enabled patient experience, and data/security governance within a premier academic health system",
+      "Aligning platform roadmaps and adoption across clinical, operational, and technology stakeholders under executive governance",
+      "Architecting governance frameworks for emerging technology deployment at institutional scale",
+      "Driving cross-functional alignment between clinical leadership, IT, and executive administration",
     ],
     relevance:
-      "Current leadership role at one of the world's premier academic medical centers, driving transformation at the intersection of healthcare delivery and AI innovation.",
+      "Leading enterprise-scale portfolios spanning digital health, AI-enabled patient experience, and data/security governance within a premier academic health system.",
+    keyAchievement:
+      "Aligning platform roadmaps and adoption across clinical, operational, and technology stakeholders under executive governance.",
     featured: true,
   },
   {
@@ -139,13 +141,25 @@ const Work = () => {
                       ))}
                     </ul>
 
-                    <div className="border-l-2 border-primary/20 pl-4">
-                      <p className="text-sm text-muted-foreground font-medium mb-1">
-                        Executive Relevance
-                      </p>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {project.relevance}
-                      </p>
+                    <div className="border-l-2 border-primary/20 pl-4 space-y-4">
+                      <div>
+                        <p className="text-sm text-muted-foreground font-medium mb-1">
+                          Executive Relevance
+                        </p>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {project.relevance}
+                        </p>
+                      </div>
+                      {project.keyAchievement && (
+                        <div>
+                          <p className="text-sm text-muted-foreground font-medium mb-1">
+                            Key Achievement
+                          </p>
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            {project.keyAchievement}
+                          </p>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

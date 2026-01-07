@@ -75,7 +75,7 @@ const About = () => {
             </div>
 
             {/* Contact Form Section */}
-            <div className="border-t border-border pt-12 mb-16">
+            <div id="contact" className="border-t border-border pt-12 mb-16 scroll-mt-24">
               <h2 className="font-serif text-2xl font-medium text-foreground mb-6">
                 Get in Touch
               </h2>

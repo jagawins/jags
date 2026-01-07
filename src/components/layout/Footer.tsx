@@ -71,7 +71,7 @@ const Footer = () => {
               Connect
             </p>
             <div className="flex flex-col gap-2">
-              <Link to="/about" className="text-sm link-executive">
+              <Link to="/about#contact" className="text-sm link-executive">
                 Get in Touch
               </Link>
             </div>

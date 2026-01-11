@@ -56,7 +56,7 @@ const Hero = () => {
               <img
                 src={jagHeadshot}
                 alt="Jag Mariappan - Executive Operator"
-                className="w-full h-full object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-500"
+                className="w-full h-full object-cover rounded-sm"
               />
             </div>
           </div>

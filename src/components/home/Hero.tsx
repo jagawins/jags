@@ -12,13 +12,13 @@ const Hero = () => {
               className="heading-display text-foreground mb-6 animate-fade-in"
               style={{ opacity: 0, animationFillMode: 'forwards' }}
             >
-              Jag Mariappan: Executive operator focused on decision systems in healthcare and AI.
+              Jag Mariappan: Driving Operating Leverage through Partner-Led Growth.
             </h1>
             <p 
               className="body-large text-muted-foreground max-w-2xl mb-10 animate-fade-in"
               style={{ opacity: 0, animationDelay: '150ms', animationFillMode: 'forwards' }}
             >
-              Currently leading enterprise transformation at Stanford Medicine. Harvard Business School Alumnus with 25+ years of experience scaling $150M+ portfolios across Healthcare, AI, and Global Operations.
+              Architecting scalable decision systems and deal governance for Healthcare and AI. Harvard Business School Alumnus delivering operating leverage via $150M+ portfolios in regulated markets.
             </p>
 
             {/* Navigation buttons */}

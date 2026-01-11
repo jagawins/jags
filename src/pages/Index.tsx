@@ -1,6 +1,7 @@
 import Layout from "@/components/layout/Layout";
 import Hero from "@/components/home/Hero";
 import ProofSnapshot from "@/components/home/ProofSnapshot";
+import PartnerOperations from "@/components/home/PartnerOperations";
 import RecentWork from "@/components/home/RecentWork";
 import Awards from "@/components/home/Awards";
 import SEO from "@/components/SEO";
@@ -11,6 +12,7 @@ const Index = () => {
       <SEO />
       <Hero />
       <ProofSnapshot />
+      <PartnerOperations />
       <Awards />
       <RecentWork />
     </Layout>

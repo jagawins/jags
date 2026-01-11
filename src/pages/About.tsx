@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import { ArrowUpRight, Mail, Phone } from "lucide-react";
 import jagHeadshot from "@/assets/jag-headshot.jpeg";
 import { useState } from "react";
@@ -36,6 +37,12 @@ const About = () => {
 
   return (
     <Layout>
+      <SEO 
+        title="About"
+        description="Executive operator building at the intersection of healthcare, AI, and governance. 15+ years founding companies, leading operations, and guiding organizations through complex transitions."
+        keywords="Jag Mariappan, About, Executive Operator, Healthcare AI, Stanford Medicine, Leadership, Biography"
+        url="https://jagmariappan.com/about"
+      />
       <section className="section-spacing">
         <div className="container-narrow">
           <div className="animate-fade-in">

@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout";
-
+import SEO from "@/components/SEO";
 const projects = [
   {
     name: "Stanford Medicine",
@@ -91,6 +91,12 @@ const projects = [
 const Work = () => {
   return (
     <Layout>
+      <SEO 
+        title="Work"
+        description="A record of building, governing, and exiting systems that create measurable value in healthcare and AI. Stanford Medicine, Bairo Healthcare, VerityAxis, and more."
+        keywords="Jag Mariappan, Work, Portfolio, Stanford Medicine, Healthcare Technology, AI, Enterprise Transformation, Exits"
+        url="https://jagmariappan.com/work"
+      />
       <section className="section-spacing">
         <div className="container-narrow">
           <div className="max-w-3xl mb-16 animate-fade-in">

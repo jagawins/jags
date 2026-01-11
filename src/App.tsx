@@ -9,6 +9,7 @@ import Work from "./pages/Work";
 import Principles from "./pages/Principles";
 import Writing from "./pages/Writing";
 import About from "./pages/About";
+import Install from "./pages/Install";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/principles" element={<Principles />} />
             <Route path="/writing" element={<Writing />} />
             <Route path="/about" element={<About />} />
+            <Route path="/install" element={<Install />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

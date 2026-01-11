@@ -1,6 +1,6 @@
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import { ArrowUpRight } from "lucide-react";
-
 const posts = [
   {
     title: "The Chair Theory",
@@ -40,6 +40,12 @@ const mediumPosts = [
 const Writing = () => {
   return (
     <Layout>
+      <SEO 
+        title="Writing"
+        description="Essays on purpose, focus, and building systems that scale. Thinking documented on healthcare, AI governance, and operational excellence."
+        keywords="Jag Mariappan, Writing, Essays, Healthcare AI, Governance, Leadership Insights, Medium, Blog"
+        url="https://jagmariappan.com/writing"
+      />
       <section className="section-spacing">
         <div className="container-narrow">
           <div className="max-w-3xl mb-16 animate-fade-in">

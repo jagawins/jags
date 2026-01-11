@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout";
-
+import SEO from "@/components/SEO";
 const principles = [
   {
     title: "Clarity precedes speed",
@@ -36,6 +36,12 @@ const principles = [
 const Principles = () => {
   return (
     <Layout>
+      <SEO 
+        title="Operating Principles"
+        description="The documented beliefs that govern how I build, lead, and make decisions. Clarity, systems thinking, and intentional execution."
+        keywords="Jag Mariappan, Principles, Leadership Philosophy, Decision Making, Systems Thinking, Executive Mindset"
+        url="https://jagmariappan.com/principles"
+      />
       <section className="section-spacing">
         <div className="container-narrow">
           <div className="max-w-3xl mb-16 animate-fade-in">

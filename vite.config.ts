@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => ({
     mode === "development" && componentTagger(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.ico", "apple-touch-icon.png", "og-image-new.png"],
+      includeAssets: ["favicon.png", "og-image-new.png"],
       manifest: {
         name: "Jag Mariappan - Driving Operating Leverage",
         short_name: "Jag Mariappan",
@@ -28,7 +28,7 @@ export default defineConfig(({ mode }) => ({
         start_url: "/",
         icons: [
           {
-            src: "/apple-touch-icon.png",
+            src: "/favicon.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "any maskable"

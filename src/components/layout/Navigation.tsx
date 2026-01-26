@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Linkedin } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -18,14 +19,21 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link 
             to="/" 
-            className="flex flex-col"
+            className="flex items-center gap-3"
           >
-            <span className="font-serif text-lg md:text-xl font-medium text-foreground hover:text-primary transition-colors">
-              Jag Mariappan
-            </span>
-            <span className="text-[10px] md:text-xs text-muted-foreground/70 tracking-wide">
-              Stanford Medicine • Harvard Business School
-            </span>
+            <img 
+              src={logo} 
+              alt="Jag Mariappan Logo" 
+              className="h-10 md:h-12 w-auto"
+            />
+            <div className="flex flex-col">
+              <span className="font-serif text-lg md:text-xl font-medium text-foreground hover:text-primary transition-colors">
+                Jag Mariappan
+              </span>
+              <span className="text-[10px] md:text-xs text-muted-foreground/70 tracking-wide">
+                Stanford Medicine • Harvard Business School
+              </span>
+            </div>
           </Link>
           
           <div className="hidden md:flex items-center gap-8">

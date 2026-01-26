@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Linkedin } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.svg";
 
 const navLinks = [
   { href: "/", label: "Home" },

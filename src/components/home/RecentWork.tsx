@@ -13,9 +13,14 @@ const featuredWork = [
     role: "Co-Founder",
   },
   {
-    name: "PrismOS",
+    name: "Axora",
     outcome: "Live",
-    role: "Chief Operating Officer",
+    role: "Founder",
+  },
+  {
+    name: "Medhara",
+    outcome: "Live",
+    role: "Founder",
   },
 ];
 

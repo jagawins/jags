@@ -5,7 +5,7 @@ const proofPoints = [
     description: "Healthcare ventures acquired by strategic buyers",
   },
   {
-    metric: "3",
+    metric: "5",
     label: "Live Platforms",
     description: "Production systems operating across regulated markets",
   },

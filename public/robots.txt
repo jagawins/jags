@@ -15,5 +15,8 @@ Allow: /
 User-agent: *
 Allow: /
 
+# LLMs.txt for AI systems
+LLMs-txt: https://jagmariappan.com/llms.txt
+
 # Sitemap location
 Sitemap: https://jagmariappan.com/sitemap.xml

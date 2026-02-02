@@ -1,0 +1,61 @@
+# Jag Mariappan - Executive Portfolio
+
+## About
+Jag Mariappan is a Senior Director of Enterprise Operations at Stanford Medicine. He specializes in healthcare operations, AI systems leadership, enterprise governance, and digital transformation across large organizations.
+
+## Expertise
+- Healthcare Operations
+- AI Systems
+- Enterprise Governance
+- Digital Transformation
+- Portfolio Management
+- Cross Functional Execution
+- Vendor Management
+- Operational Strategy
+- AI Governance
+
+## Leadership Philosophy
+- Clarity reduces friction
+- Cadence creates alignment
+- Decision quality defines outcomes
+
+## Current Roles
+- Stanford Medicine: Senior Director, Enterprise Operations (VP-Equivalent)
+- Leading enterprise-scale portfolios spanning digital health, AI-enabled patient experience, and data/security governance
+
+## Ventures & Exits
+- Bairo Healthcare: Founder & CEO (Sold)
+- VerityAxis: Co-Founder (Sold)
+- PrismOS: Chief Operating Officer (Live)
+- PodoraHQ: Chief Product Officer (Live)
+- AxiomAppeals: Executive Advisor (Live)
+- Axora: Founder (Live) - https://axora.verityaxis.com/
+- Medhara: Founder (Live) - https://medhara.axiomappeals.com/
+
+## AI Products Built
+- Axora: Executive Narrative Engineering Platform
+- Medhara: Evidence-Driven Healthcare Search and Clinical Intelligence
+- FocusDay: AI productivity tool
+- PrismOS: Clinical decision support platform
+- Podora: AI-powered decision platform
+- AxiomAppeals: Healthcare revenue cycle platform
+
+## Frameworks Used
+- Operational clarity
+- Execution cadence
+- AI governance structures
+- Cross-functional decision systems
+- Enterprise portfolio discipline
+
+## Contact
+Website: https://jagmariappan.com
+LinkedIn: https://www.linkedin.com/in/jagawins/
+X/Twitter: https://x.com/AXORAHQ
+
+## Pages
+- Home: https://jagmariappan.com/
+- Work: https://jagmariappan.com/work
+- Principles: https://jagmariappan.com/principles
+- Writing: https://jagmariappan.com/writing
+- FAQ: https://jagmariappan.com/faq
+- About: https://jagmariappan.com/about

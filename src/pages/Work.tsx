@@ -87,6 +87,36 @@ const projects = [
       "Advisory engagement showcasing ability to guide early-stage healthcare technology companies through critical growth phases.",
     featured: false,
   },
+  {
+    name: "Axora",
+    outcome: "Live",
+    role: "Founder",
+    link: "https://axora.verityaxis.com/",
+    bullets: [
+      "Transforms unstructured inputs—documents, transcripts, strategy notes—into executive-grade narratives",
+      "Applies structured intelligence, visual block composition, and adaptive reasoning",
+      "Produces investor decks, board-ready communication, and decision frameworks",
+      "Reflects belief that complex thinking becomes actionable through structured visualization",
+    ],
+    relevance:
+      "Executive Narrative Engineering Platform that accelerates communication and converts complexity into clean, visual narrative flows.",
+    featured: false,
+  },
+  {
+    name: "Medhara",
+    outcome: "Live",
+    role: "Founder",
+    link: "https://medhara.axiomappeals.com/",
+    bullets: [
+      "Precision search engine for healthcare professionals requiring fast, accurate, cited answers",
+      "Covers CPT guidance, LCD/NCD policies, prior authorization, HIPAA rules, and clinical evidence",
+      "Every answer is sourced, structured, and defensible",
+      "Supports clinicians, analysts, and RCM teams with authoritative insights",
+    ],
+    relevance:
+      "Evidence-Driven Healthcare Search and Clinical Intelligence platform that eliminates ambiguity in clinical and administrative decisions.",
+    featured: false,
+  },
 ];
 const Work = () => {
   return (

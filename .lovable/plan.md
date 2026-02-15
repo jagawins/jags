@@ -1,140 +1,157 @@
 
 
-# AI Capital & Institutional Scale -- Implementation Plan
+# Homepage Positioning Overhaul
 
 ## Overview
 
-Create a new doctrine section at `/ai-capital-scale` that positions Jag as the architect of AI capital allocation and institutional scale in regulated enterprises. This is a structured authority page, not a blog.
+Transform the homepage from a portfolio listing into a doctrine-anchored authority page. Every change reinforces the positioning: AI Capital, Governance Architecture, Institutional Adoption.
 
 ---
 
-## 1. File Operations -- PDFs
+## 1. Hero Rewrite
 
-Copy both uploaded PDFs to `public/docs/` so they can be linked and downloaded directly:
+**File: `src/components/home/Hero.tsx`**
 
-- `public/docs/How-I-Decide-Where-AI-Capital-Should-Actually-Go-in-Healthcare.pdf`
-- `public/docs/AI_Distribution_Governance.pdf`
+Replace all hero copy:
+
+- **Headline**: "Senior Director and Institutional Operator Architecting AI Capital, Governance, and Scale"
+- **Subheadline**: "Designing and deploying AI systems that survive regulatory scrutiny, align with capital discipline, and scale across complex healthcare enterprises."
+- **Supporting line**: "From funding decisions to governance architecture to real-world adoption -- I build AI that compounds inside regulated systems."
+- **Buttons** (relabeled):
+  - "Explore AI Capital & Scale" linking to `/ai-capital-scale`
+  - "View Experience" linking to `/work`
+- Remove the third "Selected Thinking" button
 
 ---
 
-## 2. Navigation Update
+## 2. New Value Snapshot Section
 
-**File: `src/components/layout/Navigation.tsx`**
+**File: `src/components/home/ValueSnapshot.tsx`** (new)
 
-Add "AI Capital & Scale" to the `navLinks` array, positioned between "Work" and "Principles":
+A compact 3-column row inserted immediately after the Hero, before the AI Search box. Each item is a short doctrine phrase:
+
+| Column | Title | Line |
+|--------|-------|------|
+| 1 | AI Capital Discipline | Realized value over projected promise. |
+| 2 | Governance as Architecture | Design before deployment. |
+| 3 | Institutional Adoption | Usage as the primary KPI. |
+
+Styled as a bordered section with `container-narrow`, matching the existing minimalist card pattern.
+
+---
+
+## 3. New Featured Frameworks Section
+
+**File: `src/components/home/FeaturedFrameworks.tsx`** (new)
+
+Placed after the Value Snapshot / AI Search box, before ProofSnapshot. Three linked cards that surface the flagship doctrine pages:
+
+- **Capital Allocation Model** -- links to `/ai-capital-scale#capital-allocation`
+- **Institutional Adoption Playbook** -- links to `/ai-capital-scale#adoption-playbook`
+- **AI Native Enterprise Essays** -- links to `/ai-capital-scale` (essays section)
+
+Each card has title, one-line description, and an arrow link. Uses existing border/hover patterns.
+
+---
+
+## 4. Rename "Selected Work" to "Practice Areas"
+
+**File: `src/components/home/RecentWork.tsx`**
+
+Replace the current role-based listing with domain-of-authority framing:
+
+- Section label changes from "Selected Work" to "Practice Areas"
+- Items become:
+  1. AI Capital Allocation & Modeling
+  2. Governance Architecture for Regulated Systems
+  3. Institutional AI Adoption & Distribution
+  4. Enterprise Operating Model Design
+  5. Founder-Operator Leadership in Tech & Healthcare
+- Each item links to `/work` with a brief outcome-oriented description instead of a role title
+- "View all work" link remains
+
+---
+
+## 5. New CTA Section Above Footer
+
+**File: `src/components/home/HomeCTA.tsx`** (new)
+
+A closing engagement block placed after Awards and before the footer:
+
+- **Text**: "I advise executives and institutions on AI capital allocation, governance design, and scaling strategies. If you are serious about durable AI adoption, let's talk."
+- **Three CTA buttons**: Speak | Advise | Collaborate -- all linking to `/about#contact`
+
+---
+
+## 6. Footer Brand Line Update
+
+**File: `src/components/layout/Footer.tsx`**
+
+Change the tagline from:
+> "Executive operator. Builder. Exit architect."
+
+To:
+> "AI Capital. Governance Architecture. Institutional Scale."
+
+Reinforces positioning in the persistent footer element.
+
+---
+
+## 7. Homepage SEO Update
+
+**File: `src/pages/Index.tsx`**
+
+Update the `SEO` component props:
+
+- **description**: "Jag Mariappan builds frameworks for AI capital allocation, governance architecture, and institutional adoption in regulated enterprises. Thought leadership and doctrine for executives and founders."
+- **keywords**: Add "AI Capital Allocation, Governance Architecture, Institutional Adoption, Regulated Healthcare"
+
+---
+
+## 8. Homepage Section Order
+
+**File: `src/pages/Index.tsx`**
+
+New component order:
 
 ```text
-Home | Work | AI Capital & Scale | Principles | Writing | About
-```
-
-Both desktop and mobile menus use the same array, so both update automatically.
-
----
-
-## 3. New Page: `/ai-capital-scale`
-
-**File: `src/pages/AICapitalScale.tsx`**
-
-A single-page component with four distinct sections, wrapped in the existing `Layout` component. No new dependencies required.
-
-### Section A -- Hero
-- Title: "AI Capital & Institutional Scale"
-- Subtitle: "How regulated enterprises fund, govern, and scale AI."
-- Supporting line about capital, governance, distribution
-- Two CTA buttons linking to anchor sections below: Capital Allocation Model and Institutional Adoption Playbook
-
-### Section B -- Capital Allocation Model
-- Header and subheader
-- Body copy on why AI is a capital allocation problem
-- **Equation block** with visually distinct styling: subtle background, larger serif/monospace typography for the formula `Realized NPV ~ NPV x Adoption x Time x (1 - Governance Drag)`
-- Three explanatory bullets
-- CTA button: "Read the Full Capital Allocation Framework" linking to the PDF in `/docs/`
-
-### Section C -- Institutional Adoption Playbook
-- Header and subheader
-- Opening paragraph with adoption statistics
-- **Key Signals row**: three stat cards showing `38% -> 66%`, `71%`, `3.2x ROI`
-- Five core principle bullets
-- CTA button: "Read the Institutional Playbook" linking to the PDF
-
-### Section D -- AI Native Enterprise Essays
-- Header, subheader, intro copy
-- Three essay cards in a grid layout:
-  1. "Why Most AI Investments Fail"
-  2. "Governance Drag as Strategic Constraint"
-  3. "Distribution Is the Proof of AI"
-- Each card: title, one-sentence thesis, "Read Essay" link (placeholder hrefs for now)
-
-### Section E -- Positioning Close
-- "Why This Matters" header
-- Two-paragraph closing statement
-- Bio line
-- CTA: "Invite Jag to Speak or Advise" linking to `/about#contact`
-
----
-
-## 4. Route Registration
-
-**File: `src/App.tsx`**
-
-Add route:
-```typescript
-import AICapitalScale from "./pages/AICapitalScale";
-// ...
-<Route path="/ai-capital-scale" element={<AICapitalScale />} />
+SEO
+Hero (rewritten)
+ValueSnapshot (new)
+AISearchBox (existing)
+FeaturedFrameworks (new)
+ProofSnapshot (existing)
+PartnerOperations (existing)
+Awards (existing)
+RecentWork (renamed to Practice Areas)
+HomeCTA (new)
 ```
 
 ---
 
-## 5. SEO
+## 9. Visual Flow Diagram
 
-The page component will use the existing `SEO` component with:
-- **Title**: "AI Capital Allocation & Institutional Scale in Healthcare"
-- **Description**: "Frameworks for funding, governing, and scaling AI in regulated healthcare enterprises."
-- **URL**: `https://jagmariappan.com/ai-capital-scale`
+Add a simple text-based flow line inside the Hero section, below the supporting line and above the buttons:
 
----
+```
+Capital -> Governance -> Adoption -> Scale
+```
 
-## 6. Sitemap Update
-
-**File: `public/sitemap.xml`**
-
-Add entry for `/ai-capital-scale` with priority `0.9`.
+Rendered as a styled inline element with arrow separators, using `text-muted-foreground` and small caps tracking. No SVG or images needed.
 
 ---
 
-## 7. Search Index Update
-
-**File: `src/lib/searchIndex.ts`**
-
-Add an entry for the new AI Capital & Scale page so the AI search feature can surface it.
-
----
-
-## Visual Design Notes
-
-All styling uses existing Tailwind utilities and CSS custom properties. No new dependencies.
-
-- **Equation block**: `bg-muted/50` background, `font-serif` at `text-2xl md:text-3xl`, padded container with border
-- **Stat cards**: Simple bordered cards with large numeric values using `font-serif text-3xl`
-- **Essay cards**: `border border-border` with hover state, arrow indicator
-- **Spacing**: `section-spacing` utility class between sections, `container-narrow` for max-width
-- **Colors**: Foreground, muted-foreground, and primary only -- consistent with existing palette
-- No gradients, no parallax, no stock imagery
-
----
-
-## Files Changed Summary
+## Files Summary
 
 | File | Action |
 |------|--------|
-| `public/docs/How-I-Decide-Where-AI-Capital-Should-Actually-Go-in-Healthcare.pdf` | Copy from upload |
-| `public/docs/AI_Distribution_Governance.pdf` | Copy from upload |
-| `src/pages/AICapitalScale.tsx` | Create (new page) |
-| `src/components/layout/Navigation.tsx` | Edit (add nav item) |
-| `src/App.tsx` | Edit (add route) |
-| `public/sitemap.xml` | Edit (add URL) |
-| `src/lib/searchIndex.ts` | Edit (add index entry) |
+| `src/components/home/Hero.tsx` | Edit -- new copy, buttons, flow diagram |
+| `src/components/home/ValueSnapshot.tsx` | Create -- 3-column doctrine row |
+| `src/components/home/FeaturedFrameworks.tsx` | Create -- 3 linked framework cards |
+| `src/components/home/RecentWork.tsx` | Edit -- rename to Practice Areas, domain framing |
+| `src/components/home/HomeCTA.tsx` | Create -- closing engagement CTA |
+| `src/components/layout/Footer.tsx` | Edit -- updated tagline |
+| `src/pages/Index.tsx` | Edit -- new section order, SEO props |
 
-No existing pages are refactored. No new dependencies.
+No new dependencies. All styling uses existing Tailwind utilities and design tokens.
 

@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="space-y-2">
             <p className="font-serif text-lg font-medium">Jag Mariappan</p>
             <p className="text-sm text-muted-foreground">
-              Executive operator. Builder. Exit architect.
+              AI Capital. Governance Architecture. Institutional Scale.
             </p>
           </div>
           

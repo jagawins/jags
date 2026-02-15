@@ -7,8 +7,8 @@ const AICapitalScale = () => {
   return (
     <Layout>
       <SEO
-        title="AI Capital Allocation & Institutional Scale in Healthcare"
-        description="Frameworks for funding, governing, and scaling AI in regulated healthcare enterprises."
+        title="AI Capital & Institutional Scale in Regulated Healthcare"
+        description="Frameworks and playbooks for funding, governing, and scaling AI in regulated systems. Capital allocation models. Governance architecture. Adoption mechanics."
         url="https://jagmariappan.com/ai-capital-scale"
       />
 
@@ -19,25 +19,28 @@ const AICapitalScale = () => {
             AI Capital & Institutional Scale
           </h1>
           <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl">
-            How regulated enterprises fund, govern, and scale AI.
+            A framework for funding, governing, and scaling AI inside regulated enterprises.
           </p>
-          <p className="mt-6 text-base text-muted-foreground max-w-2xl leading-relaxed">
-            Capital decides what gets funded. Governance decides what survives. Distribution decides what scales.
+          <p className="mt-6 text-base text-foreground max-w-2xl leading-relaxed font-medium">
+            Not pilots. Not proofs. Sustainable institutional adoption.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <a
               href="#capital-allocation"
               className="inline-flex items-center gap-2 px-6 py-3 border border-foreground text-foreground text-sm tracking-wide hover:bg-foreground hover:text-background transition-colors"
             >
-              Capital Allocation Model
+              Explore Capital Allocation Model
             </a>
             <a
               href="#adoption-playbook"
               className="inline-flex items-center gap-2 px-6 py-3 border border-border text-muted-foreground text-sm tracking-wide hover:border-foreground hover:text-foreground transition-colors"
             >
-              Institutional Adoption Playbook
+              Explore Adoption Playbook
             </a>
           </div>
+          <p className="mt-10 text-sm text-muted-foreground max-w-2xl leading-relaxed">
+            For executives funding AI initiatives. For operators scaling AI inside regulated systems. For founders building institutional adoption architecture.
+          </p>
         </div>
       </section>
 
@@ -48,19 +51,15 @@ const AICapitalScale = () => {
             Capital Allocation Model
           </h2>
           <p className="mt-3 text-base text-muted-foreground max-w-2xl">
-            A quantitative decision discipline for AI investments in regulated healthcare.
+            A disciplined decision framework for AI investments.
           </p>
 
           <div className="mt-12 space-y-6 max-w-2xl text-base text-muted-foreground leading-relaxed">
             <p>
-              Most organizations evaluate AI on technical promise.
-              Few evaluate it on realized economic impact.
+              Most AI initiatives fail not because algorithms are weak — but because value decay from governance friction and limited adoption is never priced into decisions.
             </p>
             <p>
-              AI investments fail not because models are weak, but because adoption friction, time to scale, and governance drag are never priced into the decision.
-            </p>
-            <p className="text-foreground">
-              I treat AI as a capital allocation problem, not a pilot program.
+              This model treats AI as a capital allocation problem. It adjusts expected value based on adoption likelihood and governance drag.
             </p>
           </div>
 
@@ -71,7 +70,11 @@ const AICapitalScale = () => {
             </p>
           </div>
 
-          <ul className="mt-12 space-y-4 max-w-2xl text-base text-muted-foreground leading-relaxed">
+          <p className="mt-10 text-base text-foreground max-w-2xl leading-relaxed font-medium">
+            The right investments maximize realized, not projected return.
+          </p>
+
+          <ul className="mt-10 space-y-4 max-w-2xl text-base text-muted-foreground leading-relaxed">
             <li className="pl-4 border-l-2 border-border">
               Expected value must be risk-adjusted for real-world adoption probability.
             </li>
@@ -104,16 +107,15 @@ const AICapitalScale = () => {
             Institutional Adoption Playbook
           </h2>
           <p className="mt-3 text-base text-muted-foreground max-w-2xl">
-            How AI actually compounds inside governance-heavy systems.
+            How AI actually scales once funded.
           </p>
 
           <div className="mt-12 space-y-6 max-w-2xl text-base text-muted-foreground leading-relaxed">
             <p>
-              AI does not scale because of algorithm quality.
-              It scales when governance, incentives, and distribution are designed intentionally.
+              AI scales only after it enters workflows, earns repeated usage, and clears governance friction.
             </p>
             <p>
-              Between 2023 and 2024, physician AI usage increased from 38 percent to 66 percent. Organizational adoption reached 71 percent. Those gains were not accidental. They followed a repeatable structure.
+              The playbook codifies the adoption patterns that separate pilots from durable institutional value.
             </p>
           </div>
 
@@ -134,16 +136,11 @@ const AICapitalScale = () => {
           </div>
 
           <ul className="mt-12 space-y-4 max-w-2xl text-base text-muted-foreground leading-relaxed">
-            <li className="pl-4 border-l-2 border-border">Start with burden reduction, not capability expansion.</li>
-            <li className="pl-4 border-l-2 border-border">Gate aggressively before deployment.</li>
-            <li className="pl-4 border-l-2 border-border">Align incentives explicitly.</li>
-            <li className="pl-4 border-l-2 border-border">Build peer network multipliers.</li>
-            <li className="pl-4 border-l-2 border-border">Measure usage obsessively.</li>
+            <li className="pl-4 border-l-2 border-border">Start with use cases that reduce burden.</li>
+            <li className="pl-4 border-l-2 border-border">Align incentives before tech.</li>
+            <li className="pl-4 border-l-2 border-border">Gate rigorously before scale.</li>
+            <li className="pl-4 border-l-2 border-border">Measure adoption as the key KPI.</li>
           </ul>
-
-          <p className="mt-8 text-base text-muted-foreground max-w-2xl leading-relaxed">
-            AI scaling follows a compounding curve once governance friction is solved.
-          </p>
 
           <div className="mt-12">
             <a
@@ -182,15 +179,15 @@ const AICapitalScale = () => {
           <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
-                title: "Why Most AI Investments Fail",
+                title: "Why Adoption Drives Real AI Value",
                 thesis: "A breakdown of adoption discounting and governance drag in enterprise AI funding decisions.",
               },
               {
-                title: "Governance Drag as Strategic Constraint",
+                title: "Governance as a Scalable Architecture",
                 thesis: "Why regulatory architecture is not a blocker but a structural variable to model explicitly.",
               },
               {
-                title: "Distribution Is the Proof of AI",
+                title: "Adoption is the True KPI of AI Scale",
                 thesis: "Usage metrics, time compression, and peer network multipliers as validation signals.",
               },
             ].map((essay) => (
@@ -211,7 +208,7 @@ const AICapitalScale = () => {
         </div>
       </section>
 
-      {/* Positioning Close */}
+      {/* Why This Matters */}
       <section className="py-20 md:py-28 border-t border-border">
         <div className="container-narrow max-w-2xl">
           <h2 className="font-serif text-3xl md:text-4xl font-medium text-foreground">
@@ -219,15 +216,12 @@ const AICapitalScale = () => {
           </h2>
           <div className="mt-8 space-y-6 text-base text-muted-foreground leading-relaxed">
             <p>
-              Most health systems are funding AI projects.
-              Very few are allocating AI capital.
-            </p>
-            <p>
-              Durable AI advantage emerges when capital discipline, governance architecture, and distribution mechanics align into a single operating system.
+              Most enterprises treat AI as a project.
+              Real institutional scale requires aligning capital, governance, and adoption.
             </p>
           </div>
           <p className="mt-10 text-sm text-muted-foreground leading-relaxed border-t border-border pt-8">
-            Jag Mariappan works at the intersection of AI capital allocation, governance design, and institutional scale in regulated healthcare systems.
+            Jag Mariappan builds frameworks and playbooks for AI capital allocation, governance architecture, and institutional adoption. If you want durable AI value — not pilots — this is where it starts.
           </p>
           <div className="mt-10">
             <Link

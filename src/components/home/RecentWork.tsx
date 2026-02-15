@@ -1,26 +1,26 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
-const featuredWork = [
+const practiceAreas = [
   {
-    name: "Bairo Healthcare",
-    outcome: "Sold",
-    role: "Founder & CEO",
+    name: "AI Capital Allocation & Modeling",
+    description: "Frameworks that price adoption risk and governance drag into investment decisions.",
   },
   {
-    name: "VerityAxis",
-    outcome: "Sold",
-    role: "Co-Founder",
+    name: "Governance Architecture for Regulated Systems",
+    description: "Scalable governance that enables deployment, not just compliance.",
   },
   {
-    name: "Axora",
-    outcome: "Live",
-    role: "Founder",
+    name: "Institutional AI Adoption & Distribution",
+    description: "Turning pilots into repeated, measurable institutional usage.",
   },
   {
-    name: "Medhara",
-    outcome: "Live",
-    role: "Founder",
+    name: "Enterprise Operating Model Design",
+    description: "Partner-led structures that compound operating leverage across portfolios.",
+  },
+  {
+    name: "Founder-Operator Leadership in Tech & Healthcare",
+    description: "Building, scaling, and exiting ventures at the intersection of AI and healthcare.",
   },
 ];
 
@@ -29,7 +29,7 @@ const RecentWork = () => {
     <section className="section-spacing border-t border-border">
       <div className="container-narrow">
         <div className="flex items-end justify-between mb-12">
-          <p className="tag-outcome">Selected Work</p>
+          <p className="tag-outcome">Practice Areas</p>
           <Link 
             to="/work" 
             className="flex items-center gap-2 text-sm link-executive"
@@ -40,7 +40,7 @@ const RecentWork = () => {
         </div>
         
         <div className="space-y-0">
-          {featuredWork.map((work, index) => (
+          {practiceAreas.map((area, index) => (
             <Link 
               key={index}
               to="/work"
@@ -49,15 +49,12 @@ const RecentWork = () => {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="font-serif text-xl md:text-2xl font-medium text-foreground group-hover:text-primary transition-colors">
-                    {work.name}
+                    {area.name}
                   </h3>
                   <p className="text-sm text-muted-foreground mt-1">
-                    {work.role}
+                    {area.description}
                   </p>
                 </div>
-                <span className="tag-outcome shrink-0 mt-1">
-                  {work.outcome}
-                </span>
               </div>
             </Link>
           ))}

@@ -5,6 +5,7 @@ import logo from "@/assets/logo.svg";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/work", label: "Work" },
+  { href: "/ai-capital-scale", label: "AI Capital & Scale" },
   { href: "/principles", label: "Principles" },
   { href: "/writing", label: "Writing" },
   { href: "/about", label: "About" },

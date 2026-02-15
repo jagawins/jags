@@ -50,6 +50,13 @@ export const searchIndex: SearchDocument[] = [
     keywords: ["medhara", "healthcare search", "cpt", "hipaa", "clinical", "medical", "compliance"],
   },
   {
+    id: "ai-capital-scale",
+    title: "AI Capital Allocation & Institutional Scale",
+    content: "Frameworks for funding, governing, and scaling AI in regulated healthcare enterprises. Capital Allocation Model with Realized NPV equation factoring adoption, time, and governance drag. Institutional Adoption Playbook showing physician AI usage growth from 38% to 66%, 71% organizational adoption, and 3.2x ROI. AI Native Enterprise essays on governance drag, distribution mechanics, and capital discipline.",
+    url: "https://jagmariappan.com/ai-capital-scale",
+    keywords: ["ai capital", "capital allocation", "governance drag", "institutional scale", "adoption", "npv", "healthcare ai", "distribution", "playbook"],
+  },
+  {
     id: "principles",
     title: "Operating Principles",
     content: "Leadership and operating principles: Clarity reduces friction. Cadence creates alignment. Decision quality defines outcomes. Operational clarity, execution cadence, AI governance structures, cross-functional decision systems, and enterprise portfolio discipline.",

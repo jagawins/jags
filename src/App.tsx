@@ -12,6 +12,7 @@ import About from "./pages/About";
 import Install from "./pages/Install";
 import FAQ from "./pages/FAQ";
 import AICapitalScale from "./pages/AICapitalScale";
+import MedtronicCaseStudy from "./pages/MedtronicCaseStudy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/work" element={<Work />} />
             <Route path="/ai-capital-scale" element={<AICapitalScale />} />
+            <Route path="/case-studies/medtronic-770-to-780" element={<MedtronicCaseStudy />} />
             <Route path="/principles" element={<Principles />} />
             <Route path="/writing" element={<Writing />} />
             <Route path="/about" element={<About />} />

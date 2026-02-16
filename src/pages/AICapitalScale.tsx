@@ -156,6 +156,61 @@ const AICapitalScale = () => {
         </div>
       </section>
 
+      {/* Case Studies */}
+      <section className="py-20 md:py-28 border-t border-border">
+        <div className="container-narrow">
+          <h2 className="font-serif text-3xl md:text-4xl font-medium text-foreground">
+            Case Studies
+          </h2>
+          <p className="mt-3 text-base text-muted-foreground max-w-2xl">
+            Institutional transformations where capital discipline, governance architecture, and distribution mechanics produced durable scale.
+          </p>
+
+          <div className="mt-12 border border-border rounded p-8 md:p-10 max-w-2xl">
+            <h3 className="font-serif text-xl md:text-2xl font-medium text-foreground">
+              Digitizing Diabetes: Medtronic 770G → 780G
+            </h3>
+            <p className="mt-2 text-base text-muted-foreground">
+              From device-centric replacement cycles to a software-defined connected ecosystem.
+            </p>
+
+            <ul className="mt-8 space-y-4 text-base text-muted-foreground leading-relaxed">
+              <li className="pl-4 border-l-2 border-border">
+                <span className="font-medium text-foreground">Capital:</span> Invested in infrastructure that enabled continuous software iteration (FOTA, cloud backbone, security operations)
+              </li>
+              <li className="pl-4 border-l-2 border-border">
+                <span className="font-medium text-foreground">Governance:</span> Regulatory-grade update controls and lifecycle monitoring enabling safe velocity across global markets
+              </li>
+              <li className="pl-4 border-l-2 border-border">
+                <span className="font-medium text-foreground">Distribution:</span> Reduced upgrade friction and increased caregiver trust through connected app ecosystem
+              </li>
+            </ul>
+
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Link
+                to="/case-studies/medtronic-770-to-780"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-foreground text-foreground text-sm tracking-wide hover:bg-foreground hover:text-background transition-colors"
+              >
+                Read Case Study
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <a
+                href="/docs/Medtronic_770G_to_780G_Case_Study.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-border text-muted-foreground text-sm tracking-wide hover:border-foreground hover:text-foreground transition-colors"
+              >
+                Download PDF
+              </a>
+            </div>
+
+            <p className="mt-8 text-sm text-muted-foreground leading-relaxed border-t border-border pt-6">
+              This case study demonstrates the same operating model described above: capital allocation upstream, governance embedded by design, adoption engineered through friction reduction.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* AI Native Enterprise Essays */}
       <section className="py-20 md:py-28 border-t border-border">
         <div className="container-narrow">

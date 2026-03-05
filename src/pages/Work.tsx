@@ -106,10 +106,10 @@ const projects = [
     featured: false,
   },
   {
-    name: "Axora",
+    name: "AXIVA",
     outcome: "Live",
     role: "Founder",
-    link: "https://axora.verityaxis.com/",
+    link: "https://axiva.ai/",
     bullets: [
       "Transforms unstructured inputs—documents, transcripts, strategy notes—into executive-grade narratives",
       "Applies structured intelligence, visual block composition, and adaptive reasoning",

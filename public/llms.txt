@@ -29,11 +29,11 @@ Jag Mariappan is a Senior Director of Enterprise Operations at Stanford Medicine
 - PrismOS: Chief Operating Officer (Live)
 - PodoraHQ: Chief Product Officer (Live)
 - AxiomAppeals: Executive Advisor (Live)
-- Axora: Founder (Live) - https://axora.verityaxis.com/
+- AXIVA: Founder (Live) - https://axiva.ai/
 - Medhara: Founder (Live) - https://medhara.axiomappeals.com/
 
 ## AI Products Built
-- Axora: Executive Narrative Engineering Platform
+- AXIVA: Executive Narrative Engineering Platform
 - Medhara: Evidence-Driven Healthcare Search and Clinical Intelligence
 - FocusDay: AI productivity tool
 - PrismOS: Clinical decision support platform

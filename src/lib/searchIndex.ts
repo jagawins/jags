@@ -17,9 +17,9 @@ export const searchIndex: SearchDocument[] = [
   {
     id: "work",
     title: "Work & Ventures",
-    content: "Portfolio of ventures and exits: Stanford Medicine (Senior Director), Bairo Healthcare (Founder & CEO, Sold), VerityAxis (Co-Founder, Sold), PrismOS (COO, Live), PodoraHQ (CPO, Live), AxiomAppeals (Executive Advisor, Live), Axora (Founder, Live), Medhara (Founder, Live). 2 ventures acquired, 5 live platforms, 15+ years operating.",
+    content: "Portfolio of ventures and exits: Stanford Medicine (Senior Director), Bairo Healthcare (Founder & CEO, Sold), VerityAxis (Co-Founder, Sold), PrismOS (COO, Live), PodoraHQ (CPO, Live), AxiomAppeals (Executive Advisor, Live), AXIVA (Founder, Live), Medhara (Founder, Live). 2 ventures acquired, 5 live platforms, 15+ years operating.",
     url: "https://jagmariappan.com/work",
-    keywords: ["ventures", "exits", "bairo", "verityaxis", "prismos", "podora", "axiomappeals", "axora", "medhara", "startups", "healthcare technology"],
+    keywords: ["ventures", "exits", "bairo", "verityaxis", "prismos", "podora", "axiomappeals", "axiva", "medhara", "startups", "healthcare technology"],
   },
   {
     id: "stanford",
@@ -31,16 +31,16 @@ export const searchIndex: SearchDocument[] = [
   {
     id: "ai-products",
     title: "AI Products Built",
-    content: "AI products built by Jag Mariappan: Axora (Executive Narrative Engineering Platform), Medhara (Evidence-Driven Healthcare Search), FocusDay (AI productivity), PrismOS (Clinical decision support), Podora (AI-powered decisions), AxiomAppeals (Healthcare revenue cycle).",
+    content: "AI products built by Jag Mariappan: AXIVA (Executive Narrative Engineering Platform), Medhara (Evidence-Driven Healthcare Search), FocusDay (AI productivity), PrismOS (Clinical decision support), Podora (AI-powered decisions), AxiomAppeals (Healthcare revenue cycle).",
     url: "https://jagmariappan.com/work",
-    keywords: ["ai products", "axora", "medhara", "focusday", "prismos", "podora", "axiomappeals", "artificial intelligence"],
+    keywords: ["ai products", "axiva", "medhara", "focusday", "prismos", "podora", "axiomappeals", "artificial intelligence"],
   },
   {
-    id: "axora",
-    title: "Axora - Executive Narrative Engineering",
-    content: "Axora transforms unstructured inputs—documents, transcripts, strategy notes—into executive-grade narratives, investor decks, and board-ready communication. Applies structured intelligence, visual block composition, and adaptive reasoning. Available at axora.verityaxis.com.",
-    url: "https://axora.verityaxis.com/",
-    keywords: ["axora", "narrative", "executive", "investor deck", "board", "communication", "ai"],
+    id: "axiva",
+    title: "AXIVA - Executive Narrative Engineering",
+    content: "AXIVA transforms unstructured inputs—documents, transcripts, strategy notes—into executive-grade narratives, investor decks, and board-ready communication. Applies structured intelligence, visual block composition, and adaptive reasoning. Available at AXIVA.ai.",
+    url: "https://axiva.ai/",
+    keywords: ["axiva", "narrative", "executive", "investor deck", "board", "communication", "ai"],
   },
   {
     id: "medhara",

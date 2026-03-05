@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     question: "Does he build AI products?",
-    answer: "Yes. Axora, FocusDay, PrismOS, Podora, and AxiomAppeals."
+    answer: "Yes. AXIVA, FocusDay, PrismOS, Podora, and AxiomAppeals."
   },
   {
     question: "How does he help organizations execute better?",

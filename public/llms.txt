@@ -64,10 +64,10 @@ X/Twitter: https://x.com/AXORAHQ
 - Case Study — Medtronic 770G to 780G: https://jagmariappan.com/case-studies/medtronic-770-to-780
 
 ## Speaking Topics
-- AI Capital Allocation in Regulated Enterprises
-- From Device to Platform: The Institutional Shift
-- Governance Architecture as Competitive Advantage
-- The Operator's Case for AI Doctrine
+- Why 70% of Healthcare AI Projects Fail — And What Stanford Medicine Does Differently
+- I Built 7 HealthTech Products and Sold the Company. Here's What Enterprise Leaders Get Wrong About Platform Transformation.
+- The Data Foundation for Healthcare AI: What We Built at Stanford (Databricks, Qualtrics, and the Governance Layer Nobody Talks About)
+- From Wipro to Stanford Medicine: The Unconventional Path to VP-Level Technology Leadership
 
 ## Speaking Formats
-Keynotes, Executive Roundtables, Board Offsites, Panel Moderation, Podcast Interviews, Private Advisory Sessions
+Conference Keynotes (30–60 min), Executive Roundtables & Fireside Chats (45–60 min), Board & Leadership Offsites (half-day workshops), Panel Moderation, Podcast & Media Interviews, Private Advisory Sessions & Office Hours

@@ -87,9 +87,9 @@ export const searchIndex: SearchDocument[] = [
   {
     id: "speaking",
     title: "Speaking & Engagements",
-    content: "Jag Mariappan is available for keynotes, executive roundtables, board offsites, panel moderation, podcast interviews, and private advisory sessions. Topics include AI capital allocation in regulated enterprises, governance architecture as competitive advantage, device-to-platform institutional shifts, and the operator's case for AI doctrine.",
+    content: "Jag Mariappan speaks on healthcare AI governance, platform transformation, and enterprise leadership. Topics: Why 70% of Healthcare AI Projects Fail, Platform Transformation lessons from founding Bairo Healthcare, Data Foundation for Healthcare AI at Stanford (Databricks, Qualtrics, RACER), and the unconventional path from Wipro to Stanford Medicine VP-level leadership. 2 ventures acquired, 8+ enterprise platforms at Stanford, $154M+ portfolio leadership.",
     url: "https://jagmariappan.com/speaking",
-    keywords: ["speaking", "keynote", "speaker", "engagements", "panels", "advisory", "conferences"],
+    keywords: ["speaking", "keynote", "speaker", "engagements", "panels", "advisory", "conferences", "ChatEHR", "FURM", "governance"],
   },
   {
     id: "medtronic-case-study",

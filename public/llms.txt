@@ -55,7 +55,19 @@ X/Twitter: https://x.com/AXORAHQ
 ## Pages
 - Home: https://jagmariappan.com/
 - Work: https://jagmariappan.com/work
+- AI Capital & Scale: https://jagmariappan.com/ai-capital-scale
+- Speaking: https://jagmariappan.com/speaking
 - Principles: https://jagmariappan.com/principles
 - Writing: https://jagmariappan.com/writing
 - FAQ: https://jagmariappan.com/faq
 - About: https://jagmariappan.com/about
+- Case Study — Medtronic 770G to 780G: https://jagmariappan.com/case-studies/medtronic-770-to-780
+
+## Speaking Topics
+- AI Capital Allocation in Regulated Enterprises
+- From Device to Platform: The Institutional Shift
+- Governance Architecture as Competitive Advantage
+- The Operator's Case for AI Doctrine
+
+## Speaking Formats
+Keynotes, Executive Roundtables, Board Offsites, Panel Moderation, Podcast Interviews, Private Advisory Sessions

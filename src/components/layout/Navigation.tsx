@@ -8,6 +8,7 @@ const navLinks = [
   { href: "/ai-capital-scale", label: "AI Capital & Scale" },
   { href: "/principles", label: "Principles" },
   { href: "/writing", label: "Writing" },
+  { href: "/speaking", label: "Speaking" },
   { href: "/about", label: "About" },
 ];
 

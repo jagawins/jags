@@ -84,4 +84,18 @@ export const searchIndex: SearchDocument[] = [
     url: "https://jagmariappan.com/faq",
     keywords: ["faq", "questions", "roles", "industries", "specialization"],
   },
+  {
+    id: "speaking",
+    title: "Speaking & Engagements",
+    content: "Jag Mariappan is available for keynotes, executive roundtables, board offsites, panel moderation, podcast interviews, and private advisory sessions. Topics include AI capital allocation in regulated enterprises, governance architecture as competitive advantage, device-to-platform institutional shifts, and the operator's case for AI doctrine.",
+    url: "https://jagmariappan.com/speaking",
+    keywords: ["speaking", "keynote", "speaker", "engagements", "panels", "advisory", "conferences"],
+  },
+  {
+    id: "medtronic-case-study",
+    title: "Medtronic 770G to 780G Case Study",
+    content: "An institutional case study on scaling a connected medical device platform through firmware-over-the-air (FOTA), governance architecture, cloud infrastructure, and adoption mechanics. Digitizing Diabetes: from device-centric replacement cycles to a software-defined connected ecosystem.",
+    url: "https://jagmariappan.com/case-studies/medtronic-770-to-780",
+    keywords: ["medtronic", "case study", "diabetes", "medical device", "FOTA", "770G", "780G", "platform"],
+  },
 ];

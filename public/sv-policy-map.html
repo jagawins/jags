@@ -3,7 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Silicon Valley Tech Ecosystem & Policy Map</title>
+<title>Silicon Valley Tech Ecosystem & Policy Map | Jag Mariappan</title>
+<meta name="description" content="Interactive map of Silicon Valley's tech ecosystem — market cap, ZIP codes, policy impact, and regulatory landscape. Built by Jag Mariappan, Stanford Medicine.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jagmariappan.com/sv-policy-map">
+<meta property="og:title" content="Silicon Valley Tech Ecosystem & Policy Map | Jag Mariappan">
+<meta property="og:description" content="Interactive map of Silicon Valley's tech ecosystem — market cap, ZIP codes, policy impact, and regulatory landscape for major tech companies.">
+<meta property="og:image" content="https://jagmariappan.com/og-image-new.png">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://jagmariappan.com/sv-policy-map">
+<meta property="twitter:title" content="Silicon Valley Tech Ecosystem & Policy Map | Jag Mariappan">
+<meta property="twitter:description" content="Interactive map of Silicon Valley's tech ecosystem — market cap, ZIP codes, policy impact, and regulatory landscape.">
+<meta property="twitter:image" content="https://jagmariappan.com/og-image-new.png">
+<link rel="canonical" href="https://jagmariappan.com/sv-policy-map">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
@@ -346,6 +358,11 @@
 </head>
 <body>
 
+<div style="padding:6px 24px; background:var(--panel); border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; font-size:11px; flex-shrink:0;">
+  <span style="color:var(--muted);">Built by <a href="https://jagmariappan.com" target="_blank" style="color:var(--accent); text-decoration:none; font-weight:600;">Jag Mariappan</a> — Enterprise AI &amp; Platform Transformation, Stanford Medicine</span>
+  <a href="https://jagmariappan.com" target="_blank" style="color:var(--muted); text-decoration:none; font-size:10px;">jagmariappan.com</a>
+</div>
+
 <header>
   <div class="header-left">
     <h1>⚡ Silicon Valley Tech Ecosystem</h1>
@@ -411,11 +428,14 @@
   </div>
 </div>
 
-<div class="bottom-bar">
+<div class="bottom-bar" style="flex-wrap:wrap;">
   <span class="bottom-stat">Total Shown: <strong id="companyCount">0</strong> companies</span>
   <span class="bottom-stat">Combined Market Cap: <strong id="totalCap">$0T</strong></span>
   <span class="bottom-stat">Total Employees: <strong id="totalEmp">0</strong></span>
-  <span class="bottom-stat" style="margin-left:auto; color: rgba(255,255,255,0.2)">Data approximate · 2024–25</span>
+  <span style="margin-left:auto; display:flex; align-items:center; gap:16px;">
+    <a href="https://jagmariappan.com/speaking" target="_blank" style="color:var(--accent); text-decoration:none; font-size:11px; font-weight:600;">Interested in how policy shapes enterprise technology strategy? Invite Jag to speak →</a>
+    <span class="bottom-stat" style="color: rgba(255,255,255,0.2)">Data approximate · 2024–25</span>
+  </span>
 </div>
 
 <script>

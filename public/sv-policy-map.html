@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silicon Valley Tech Ecosystem & Policy Map</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050C18;
+    --panel: #0A1628;
+    --border: #1a3050;
+    --accent: #00D4FF;
+    --accent2: #FF6B35;
+    --gold: #FFD700;
+    --text: #E8F4F8;
+    --muted: #6B8FA8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    padding: 12px 24px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    flex-shrink: 0;
+  }
+
+  .header-left h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+  }
+
+  .header-left p {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .legend {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .legend-dot {
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.3);
+    background: rgba(0,212,255,0.3);
+  }
+
+  .size-filter {
+    display: flex;
+    gap: 8px;
+  }
+
+  .filter-btn {
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-size: 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-btn.active, .filter-btn:hover {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+    font-weight: 700;
+  }
+
+  .main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  #map {
+    flex: 1;
+    z-index: 1;
+  }
+
+  .side-panel {
+    width: 340px;
+    background: var(--panel);
+    border-left: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .panel-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .panel-header .company-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+  }
+
+  .panel-header .company-meta {
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+  }
+
+  .meta-tag {
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .meta-zip { background: rgba(0,212,255,0.15); color: var(--accent); border: 1px solid rgba(0,212,255,0.3); }
+  .meta-sector { background: rgba(255,107,53,0.15); color: var(--accent2); border: 1px solid rgba(255,107,53,0.3); }
+  .meta-cap { background: rgba(255,215,0,0.15); color: var(--gold); border: 1px solid rgba(255,215,0,0.3); }
+
+  .panel-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 20px;
+  }
+
+  .panel-body::-webkit-scrollbar { width: 4px; }
+  .panel-body::-webkit-scrollbar-track { background: transparent; }
+  .panel-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .stat-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .stat-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-top: 3px;
+  }
+
+  .section-title {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 10px;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .policy-card {
+    background: rgba(0,212,255,0.04);
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+
+  .policy-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .policy-text {
+    font-size: 12px;
+    color: #8BA8BE;
+    line-height: 1.6;
+  }
+
+  .policy-impact {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  .impact-high { background: rgba(255,60,60,0.2); color: #FF6060; }
+  .impact-med { background: rgba(255,180,0,0.2); color: #FFB400; }
+  .impact-low { background: rgba(0,200,100,0.2); color: #00C864; }
+
+  .employees-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    margin-top: 6px;
+    overflow: hidden;
+  }
+
+  .employees-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--accent), #0066FF);
+  }
+
+  .placeholder {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    text-align: center;
+    gap: 10px;
+    padding: 40px 20px;
+  }
+
+  .placeholder .icon {
+    font-size: 48px;
+    opacity: 0.3;
+  }
+
+  .placeholder p {
+    font-size: 13px;
+    line-height: 1.6;
+    max-width: 200px;
+  }
+
+  /* Custom Leaflet styles */
+  .leaflet-container {
+    background: #060E1A !important;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .company-marker {
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .zip-label {
+    background: transparent !important;
+    border: none !important;
+    font-size: 9px;
+    color: rgba(0,212,255,0.5);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    pointer-events: none;
+  }
+
+  .tooltip-custom {
+    background: var(--panel) !important;
+    border: 1px solid var(--border) !important;
+    color: var(--text) !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-size: 12px !important;
+    padding: 6px 10px !important;
+    border-radius: 6px !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
+  }
+
+  .leaflet-tooltip-top:before {
+    border-top-color: var(--border) !important;
+  }
+
+  .pulse-ring {
+    border-radius: 50%;
+    animation: pulse 2s ease-out infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(2.5); opacity: 0; }
+  }
+
+  .bottom-bar {
+    padding: 8px 24px;
+    background: var(--panel);
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 20px;
+    font-size: 11px;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  .bottom-stat strong {
+    color: var(--accent);
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <h1>⚡ Silicon Valley Tech Ecosystem</h1>
+    <p>Market cap · ZIP codes · Policy impact · Click any company to explore</p>
+  </div>
+  <div class="legend">
+    <div class="size-filter">
+      <button class="filter-btn active" onclick="filterSize('all', this)">All</button>
+      <button class="filter-btn" onclick="filterSize('mega', this)">$1T+</button>
+      <button class="filter-btn" onclick="filterSize('large', this)">$100B+</button>
+      <button class="filter-btn" onclick="filterSize('mid', this)">$10B+</button>
+    </div>
+    <div class="legend-item"><div class="legend-dot" style="width:28px;height:28px;background:rgba(0,212,255,0.3)"></div> $1T+</div>
+    <div class="legend-item"><div class="legend-dot" style="width:20px;height:20px;background:rgba(0,212,255,0.25)"></div> $100B+</div>
+    <div class="legend-item"><div class="legend-dot" style="width:12px;height:12px;background:rgba(0,212,255,0.2)"></div> $10B+</div>
+  </div>
+</header>
+
+<div class="main-content">
+  <div id="map"></div>
+  <div class="side-panel" id="sidePanel">
+    <div class="placeholder" id="placeholder">
+      <div class="icon">🗺️</div>
+      <p>Click any company on the map to see ZIP code, market cap, employee data, and policy impact</p>
+    </div>
+    <div id="companyDetail" style="display:none; flex-direction:column; height:100%">
+      <div class="panel-header">
+        <div class="company-name" id="detailName"></div>
+        <div class="company-meta">
+          <span class="meta-tag meta-zip" id="detailZip"></span>
+          <span class="meta-tag meta-sector" id="detailSector"></span>
+          <span class="meta-tag meta-cap" id="detailCap"></span>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-label">Employees</div>
+            <div class="stat-value" id="detailEmp"></div>
+            <div class="employees-bar"><div class="employees-fill" id="empBar"></div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Founded</div>
+            <div class="stat-value" id="detailFounded"></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">City</div>
+            <div class="stat-value" id="detailCity" style="font-size:13px"></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Revenue (2024)</div>
+            <div class="stat-value" id="detailRevenue"></div>
+          </div>
+        </div>
+
+        <div class="section-title">Policy Landscape</div>
+        <div id="policyCards"></div>
+
+        <div class="section-title">Why It Matters</div>
+        <div id="whyMatters" style="font-size:12px; color:#8BA8BE; line-height:1.7; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:8px; padding:12px 14px;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-bar">
+  <span class="bottom-stat">Total Shown: <strong id="companyCount">0</strong> companies</span>
+  <span class="bottom-stat">Combined Market Cap: <strong id="totalCap">$0T</strong></span>
+  <span class="bottom-stat">Total Employees: <strong id="totalEmp">0</strong></span>
+  <span class="bottom-stat" style="margin-left:auto; color: rgba(255,255,255,0.2)">Data approximate · 2024–25</span>
+</div>
+
+<script>
+const companies = [
+  {
+    name: "Apple", lat: 37.3349, lng: -122.009, zip: "95014", city: "Cupertino",
+    sector: "Consumer Tech", cap: 3200, capTier: "mega", employees: 161000, founded: 1976,
+    revenue: "$391B", color: "#AAAAAA",
+    policies: [
+      { title: "App Store Antitrust (DMA/DOJ)", text: "EU Digital Markets Act forces Apple to allow third-party app stores. DOJ lawsuit targets App Store monopoly — could reshape $85B/yr services revenue.", impact: "high" },
+      { title: "CHIPS Act Beneficiary", text: "Apple suppliers like TSMC receive CHIPS Act subsidies for US fabs. Apple's domestic manufacturing push aligns with policy goals.", impact: "med" },
+      { title: "Data Privacy (CCPA/GDPR)", text: "Apple's privacy-first brand is reinforced by state and federal data regulations — a competitive moat disguised as compliance.", impact: "low" }
+    ],
+    why: "Apple's ZIP 95014 is the most valuable square mile in tech. Policy battles over App Store control could shift hundreds of billions in revenue and reshape the entire mobile economy."
+  },
+  {
+    name: "Google / Alphabet", lat: 37.4220, lng: -122.084, zip: "94043", city: "Mountain View",
+    sector: "Search / AI / Cloud", cap: 2100, capTier: "mega", employees: 181000, founded: 1998,
+    revenue: "$307B", color: "#4285F4",
+    policies: [
+      { title: "DOJ Antitrust Ruling (2024)", text: "Federal judge ruled Google illegally maintained search monopoly. Remedies could include forced divestiture of Chrome, Android licensing mandates, or default search changes.", impact: "high" },
+      { title: "AI Regulation (EU AI Act)", text: "Google's Gemini and Vertex AI are classified as General Purpose AI systems under EU AI Act — requiring transparency reports and systemic risk assessments.", impact: "high" },
+      { title: "Digital Advertising Rules", text: "Second DOJ case targets Google's $200B+ ad tech stack. Potential forced divestiture of ad exchange products.", impact: "high" }
+    ],
+    why: "No company faces more simultaneous policy threats. The DOJ search ruling alone could be the largest antitrust remedy since the AT&T breakup — touching every product Google makes."
+  },
+  {
+    name: "Meta", lat: 37.4841, lng: -122.148, zip: "94025", city: "Menlo Park",
+    sector: "Social Media / AI", cap: 1400, capTier: "mega", employees: 72000, founded: 2004,
+    revenue: "$134B", color: "#0866FF",
+    policies: [
+      { title: "Content Moderation (Section 230)", text: "Ongoing Congressional debate over Section 230 reform could make platforms liable for user content — fundamentally changing Facebook and Instagram's operating model.", impact: "high" },
+      { title: "Teen Safety Legislation", text: "Multiple states passing social media age verification laws. Kids Online Safety Act in Congress could require parental consent for minors and default safe settings.", impact: "high" },
+      { title: "Data Privacy (CPRA/Federal)", text: "Meta's ad targeting model is under sustained pressure from GDPR enforcement ($1.3B fine in 2023) and potential US federal privacy law.", impact: "med" }
+    ],
+    why: "Meta's entire business model — $134B in ad revenue — rests on data collection and content distribution policies that regulators worldwide are actively trying to change."
+  },
+  {
+    name: "NVIDIA", lat: 37.3688, lng: -121.9124, zip: "95051", city: "Santa Clara",
+    sector: "Semiconductors / AI", cap: 3000, capTier: "mega", employees: 32000, founded: 1993,
+    revenue: "$96B", color: "#76B900",
+    policies: [
+      { title: "AI Chip Export Controls", text: "BIS export restrictions prevent NVIDIA from selling H100/A100 chips to China without license. NVIDIA created A800/H800 workarounds; new rules close those gaps.", impact: "high" },
+      { title: "CHIPS Act Investment", text: "NVIDIA benefits indirectly via TSMC's Arizona fab receiving $6.6B CHIPS Act grant — reducing supply chain geopolitical risk for NVIDIA's production.", impact: "med" },
+      { title: "AI Governance Regulation", text: "As the picks-and-shovels of the AI revolution, NVIDIA's chips are subject to compute thresholds in proposed AI regulation frameworks — potential licensing requirements.", impact: "med" }
+    ],
+    why: "NVIDIA's $3T valuation is the most policy-sensitive in tech. A single export control update can wipe or add hundreds of billions — China represented ~25% of data center revenue before restrictions."
+  },
+  {
+    name: "Intel", lat: 37.3875, lng: -121.9631, zip: "95054", city: "Santa Clara",
+    sector: "Semiconductors", cap: 95, capTier: "mid", employees: 124800, founded: 1968,
+    revenue: "$54B", color: "#0071C5",
+    policies: [
+      { title: "CHIPS Act — Direct Recipient", text: "Intel received $8.5B in CHIPS Act grants + $11B in loans for Ohio and Arizona fab expansion — the largest single CHIPS Act award to date.", impact: "low" },
+      { title: "Export Controls (China)", text: "Intel's China business (27% of revenue) is impacted by restrictions on advanced chip exports, directly suppressing revenue growth.", impact: "high" },
+      { title: "National Security Manufacturing", text: "Intel's foundry ambitions are explicitly tied to US defense policy — producing chips for DoD classified programs under the RAMP-C initiative.", impact: "med" }
+    ],
+    why: "Intel is the most 'policy-made' company in Silicon Valley right now — its revival strategy is almost entirely funded and motivated by CHIPS Act policy. Without it, the Ohio and Arizona fabs likely don't happen."
+  },
+  {
+    name: "Cisco", lat: 37.4083, lng: -121.9623, zip: "95134", city: "San Jose",
+    sector: "Networking / Security", cap: 210, capTier: "large", employees: 85000, founded: 1984,
+    revenue: "$57B", color: "#1BA0D7",
+    policies: [
+      { title: "Cybersecurity Executive Order", text: "Biden's 2021 EO on cybersecurity mandated zero-trust architecture across federal agencies — a direct tailwind for Cisco's security portfolio and federal business.", impact: "low" },
+      { title: "Splunk Acquisition Scrutiny", text: "Cisco's $28B Splunk acquisition (2024) received heightened antitrust review — approved but signals tighter M&A environment for networking+security convergence.", impact: "med" },
+      { title: "FCC Network Equipment Rules", text: "FCC restrictions on Chinese network equipment (Huawei/ZTE) effectively remove Cisco's largest competitors from US government procurement.", impact: "low" }
+    ],
+    why: "Cisco is the quiet beneficiary of geopolitical tech policy — Chinese competitor bans, federal cybersecurity mandates, and zero-trust requirements all funnel spending toward Cisco's product lines."
+  },
+  {
+    name: "Adobe", lat: 37.3316, lng: -121.8930, zip: "95110", city: "San Jose",
+    sector: "Creative / AI Software", cap: 185, capTier: "large", employees: 30000, founded: 1982,
+    revenue: "$21B", color: "#FF0000",
+    policies: [
+      { title: "AI Content Authenticity", text: "Adobe leads the Content Authenticity Initiative — an industry framework for provenance labeling of AI-generated content. Positions Adobe ahead of mandatory disclosure regulation.", impact: "low" },
+      { title: "Figma Merger Blocked (EU/UK)", text: "Adobe's $20B Figma acquisition was abandoned after EU and UK regulators blocked it on competition grounds — a landmark creative software antitrust decision.", impact: "high" },
+      { title: "Copyright & AI Training", text: "Ongoing lawsuits over AI model training on copyrighted creative work directly affect Adobe Firefly's licensing model — Adobe's 'clean data' positioning is a policy-driven moat.", impact: "med" }
+    ],
+    why: "Adobe's Figma failure shows how EU antitrust policy can override US deal-making — a $20B strategic acquisition evaporated. Meanwhile, AI copyright law could define Adobe Firefly's defensibility."
+  },
+  {
+    name: "Visa", lat: 37.5577, lng: -122.2716, zip: "94404", city: "Foster City",
+    sector: "Payments / Fintech", cap: 560, capTier: "mega", employees: 31000, founded: 1958,
+    revenue: "$35B", color: "#1A1F71",
+    policies: [
+      { title: "Credit Card Competition Act", text: "Proposed legislation would require large banks to offer a second network on credit cards — directly targeting Visa's duopoly with Mastercard. Estimated $11B annual revenue impact.", impact: "high" },
+      { title: "DOJ Debit Network Antitrust", text: "DOJ sued Visa in 2024 for monopolizing debit card networks, citing 70% market share. Structural remedies could include network access mandates.", impact: "high" },
+      { title: "CFPB Overdraft & Fee Rules", text: "CFPB regulations on late fees and interchange rates ripple through the payment ecosystem, pressuring interchange revenue that underpins Visa's network economics.", impact: "med" }
+    ],
+    why: "Visa sits at the center of two simultaneous antitrust actions — debit AND credit. In fintech, policy is the product: the rules governing payment networks determine whether Visa's business model survives the decade."
+  },
+  {
+    name: "Oracle", lat: 37.5298, lng: -122.2657, zip: "94065", city: "Redwood City",
+    sector: "Enterprise Cloud / Database", cap: 380, capTier: "large", employees: 164000, founded: 1977,
+    revenue: "$56B", color: "#FF0000",
+    policies: [
+      { title: "Federal Cloud (FedRAMP)", text: "Oracle Cloud Infrastructure holds FedRAMP High authorization — qualifying it for sensitive government workloads. Oracle's $1.5B DoD contract win reflects policy-driven procurement.", impact: "low" },
+      { title: "Data Sovereignty (EU)", text: "EU data residency requirements for government cloud create regulatory mandate for Oracle's EU Sovereign Cloud offering — policy as product.", impact: "low" },
+      { title: "TikTok Data Divestiture", text: "Oracle was proposed as the US data trustee for TikTok's American user data — a direct result of CFIUS national security review process.", impact: "med" }
+    ],
+    why: "Oracle's government cloud business is essentially a policy product — it exists because regulatory requirements mandate where data must live. National security data sovereignty rules are Oracle's growth engine."
+  },
+  {
+    name: "Netflix", lat: 37.2625, lng: -121.9588, zip: "95032", city: "Los Gatos",
+    sector: "Streaming / Media", cap: 340, capTier: "large", employees: 14000, founded: 1997,
+    revenue: "$37B", color: "#E50914",
+    policies: [
+      { title: "Net Neutrality", text: "FCC's restoration of net neutrality rules (2024) prevents ISPs from throttling streaming services — directly protecting Netflix's delivery quality and preventing discriminatory pricing.", impact: "med" },
+      { title: "EU Content Quotas (AVMS)", text: "EU Audiovisual Media Services Directive requires Netflix to invest 20% of EU revenue in European content and maintain 30% European catalog — reshaping content spend.", impact: "med" },
+      { title: "Password Sharing Crackdown", text: "Netflix's subscriber growth strategy intersects with FTC 'dark patterns' enforcement focus — how sharing limits are communicated faces regulatory scrutiny.", impact: "low" }
+    ],
+    why: "Netflix proved streaming is an infrastructure question — net neutrality rules are as critical to Netflix as road policy is to trucking. The EU content quotas alone redirect hundreds of millions in annual spend."
+  },
+  {
+    name: "Tesla", lat: 37.3946, lng: -122.149, zip: "94304", city: "Palo Alto",
+    sector: "EV / Energy / AI", cap: 830, capTier: "mega", employees: 127855, founded: 2003,
+    revenue: "$97B", color: "#CC0000",
+    policies: [
+      { title: "EV Tax Credits (IRA)", text: "Inflation Reduction Act's $7,500 EV tax credit boosted Tesla demand — but domestic battery content requirements and income caps have since limited eligibility for some models.", impact: "med" },
+      { title: "Autonomous Vehicle Regulation", text: "NHTSA and state DMV rules govern FSD deployment. Tesla's robotaxi ambitions require federal framework that doesn't yet exist — regulatory uncertainty is the primary barrier.", impact: "high" },
+      { title: "CAFE / Emissions Standards", text: "EPA's tightened vehicle emissions rules accelerate EV adoption mandates — Tesla's zero-emission fleet earns regulatory credits it can sell to legacy automakers ($1.8B revenue stream).", impact: "low" }
+    ],
+    why: "Tesla earns nearly $2B/year selling emissions credits to competitors — a pure policy revenue stream. Meanwhile, FSD/robotaxi commercialization is entirely contingent on federal autonomous vehicle rules that are still being written."
+  },
+  {
+    name: "Intuit", lat: 37.2755, lng: -122.1400, zip: "94043", city: "Mountain View",
+    sector: "Fintech / Tax / SMB", cap: 175, capTier: "large", employees: 17800, founded: 1983,
+    revenue: "$16B", color: "#365EBF",
+    policies: [
+      { title: "IRS Free File / Direct File", text: "IRS's free Direct File program (launched 2024) is the most direct competitive threat to TurboTax — a government product competing with Intuit's core revenue. Intuit spent $11M lobbying against it.", impact: "high" },
+      { title: "FTC Settlement (2023)", text: "FTC ruled Intuit's 'free' TurboTax advertising was deceptive — Intuit paid $141M settlement and faces stricter advertising requirements for free tier claims.", impact: "med" },
+      { title: "Open Banking (CFPB 1033)", text: "CFPB's open banking rule requiring financial data portability benefits Intuit's data aggregation businesses (Mint/Credit Karma) while also enabling new competitors.", impact: "med" }
+    ],
+    why: "Intuit faces a rare threat: a government agency building the competing product. IRS Direct File is policy-as-disruption — Intuit's $6B TurboTax business is directly in the crosshairs of a democratization mandate."
+  },
+  {
+    name: "HP Enterprise", lat: 37.3387, lng: -121.8853, zip: "95054", city: "San Jose",
+    sector: "Enterprise IT / Cloud", cap: 22, capTier: "mid", employees: 62000, founded: 2015,
+    revenue: "$30B", color: "#00B388",
+    policies: [
+      { title: "Federal IT Modernization", text: "FITARA mandates and OMB cloud-first policy drive HPE's GreenLake federal deployments. Government IT refresh cycles are a direct policy lever.", impact: "low" },
+      { title: "Huawei Competitor Ban", text: "FCC and export restrictions removing Huawei from US and allied markets created white space for HPE's networking equipment in telco and enterprise.", impact: "low" },
+      { title: "AI Infrastructure Investment", text: "CHIPS Act and AI executive orders create federal demand for AI-optimized infrastructure — HPE's supercomputer division (Cray) holds multiple national lab contracts.", impact: "low" }
+    ],
+    why: "HPE is the infrastructure layer that makes policy-mandated IT modernization possible. Federal mandates to move off legacy systems and adopt AI-ready infrastructure are HPE's clearest growth policy signal."
+  },
+  {
+    name: "eBay", lat: 37.3763, lng: -121.9673, zip: "95125", city: "San Jose",
+    sector: "E-Commerce / Marketplace", cap: 30, capTier: "mid", employees: 11600, founded: 1995,
+    revenue: "$10B", color: "#E53238",
+    policies: [
+      { title: "1099-K Reporting (IRS)", text: "IRS rule lowering the 1099-K reporting threshold from $20,000 to $600 for marketplace sellers directly impacts eBay's seller base — millions of casual resellers face new tax reporting burdens.", impact: "high" },
+      { title: "Marketplace Facilitator Laws", text: "All US states now require platforms like eBay to collect and remit sales tax — increasing operational complexity but also leveling the playing field vs. individual sellers.", impact: "med" },
+      { title: "Counterfeit Liability", text: "INFORM Act (2023) requires marketplaces to verify high-volume sellers — increasing compliance burden but reducing counterfeit liability exposure.", impact: "low" }
+    ],
+    why: "eBay lives and dies by tax policy. The IRS's 1099-K threshold change is estimated to affect 30M+ Americans who sell on eBay — creating friction that suppresses seller activity and buyer supply."
+  },
+  {
+    name: "Electronic Arts", lat: 37.5313, lng: -122.2625, zip: "94065", city: "Redwood City",
+    sector: "Gaming / Entertainment", cap: 33, capTier: "mid", employees: 9800, founded: 1982,
+    revenue: "$7B", color: "#FF4747",
+    policies: [
+      { title: "Loot Box Legislation", text: "Multiple countries (Belgium, Netherlands) banned loot boxes as gambling. US FTC investigated but hasn't acted — EA's Ultimate Team franchise generates ~$2B/year in loot box revenue.", impact: "high" },
+      { title: "Kids Privacy (COPPA 2.0)", text: "Proposed COPPA updates restricting data collection on under-16s would affect EA's online game personalization and in-game advertising for younger demographics.", impact: "med" },
+      { title: "Sports Licensing Regulation", text: "EU collective licensing proposals could change how sports leagues license player names/likenesses — affecting EA's FIFA/Madden franchise economics.", impact: "med" }
+    ],
+    why: "EA's most profitable product (Ultimate Team loot boxes) is legal in the US but banned in parts of Europe. One federal gambling classification decision could reshape EA's entire revenue model overnight."
+  }
+];
+
+// Init map
+const map = L.map('map', {
+  center: [37.38, -122.0],
+  zoom: 11,
+  zoomControl: true,
+  attributionControl: false
+});
+
+// Dark tile layer
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  maxZoom: 19
+}).addTo(map);
+
+let markers = [];
+let currentFilter = 'all';
+
+function getRadius(cap, tier) {
+  if (tier === 'mega') return 28;
+  if (tier === 'large') return 18;
+  return 12;
+}
+
+function createMarker(company) {
+  const radius = getRadius(company.cap, company.capTier);
+  const opacity = company.capTier === 'mega' ? 0.85 : company.capTier === 'large' ? 0.7 : 0.55;
+
+  // Outer pulse circle
+  const pulseIcon = L.divIcon({
+    className: '',
+    html: `
+      <div style="position:relative; width:${radius*2+16}px; height:${radius*2+16}px; transform:translate(-50%,-50%)">
+        <div style="
+          position:absolute; top:8px; left:8px;
+          width:${radius*2}px; height:${radius*2}px;
+          border-radius:50%;
+          background:rgba(0,212,255,${opacity*0.25});
+          border:2px solid rgba(0,212,255,${opacity*0.6});
+          animation:pulse ${2 + Math.random()}s ease-out infinite;
+          cursor:pointer;
+          display:flex; align-items:center; justify-content:center;
+        ">
+          <div style="
+            width:${radius}px; height:${radius}px;
+            border-radius:50%;
+            background:rgba(0,212,255,${opacity*0.5});
+            border:1px solid rgba(0,212,255,0.9);
+          "></div>
+        </div>
+      </div>`,
+    iconSize: [radius*2+16, radius*2+16],
+    iconAnchor: [radius+8, radius+8]
+  });
+
+  const marker = L.marker([company.lat, company.lng], { icon: pulseIcon });
+
+  // ZIP label
+  const zipLabel = L.divIcon({
+    className: 'zip-label',
+    html: `<div style="white-space:nowrap; text-shadow:0 0 8px rgba(0,212,255,0.8)">${company.zip}</div>`,
+    iconAnchor: [0, -radius - 6]
+  });
+
+  const zipMarker = L.marker([company.lat, company.lng], { icon: zipLabel, interactive: false });
+
+  // Company name label
+  const nameLabel = L.divIcon({
+    className: '',
+    html: `<div style="
+      white-space:nowrap;
+      font-family:'Space Grotesk',sans-serif;
+      font-size:${company.capTier === 'mega' ? 12 : 10}px;
+      font-weight:${company.capTier === 'mega' ? 700 : 600};
+      color:rgba(255,255,255,0.9);
+      text-shadow:0 1px 4px rgba(0,0,0,0.9), 0 0 12px rgba(0,0,0,0.8);
+      pointer-events:none;
+    ">${company.name}</div>`,
+    iconAnchor: [0, -radius - 18]
+  });
+
+  const nameMarker = L.marker([company.lat, company.lng], { icon: nameLabel, interactive: false });
+
+  marker.on('click', () => showDetail(company));
+  marker.bindTooltip(`<b>${company.name}</b><br>ZIP: ${company.zip} · $${company.cap}B market cap`, {
+    className: 'tooltip-custom',
+    direction: 'top',
+    offset: [0, -radius]
+  });
+
+  return { marker, zipMarker, nameMarker, company };
+}
+
+function showDetail(company) {
+  document.getElementById('placeholder').style.display = 'none';
+  const detail = document.getElementById('companyDetail');
+  detail.style.display = 'flex';
+
+  document.getElementById('detailName').textContent = company.name;
+  document.getElementById('detailZip').textContent = `📍 ${company.zip}`;
+  document.getElementById('detailSector').textContent = company.sector;
+  document.getElementById('detailCap').textContent = `$${company.cap}B`;
+  document.getElementById('detailEmp').textContent = company.employees.toLocaleString();
+  document.getElementById('empBar').style.width = Math.min(100, (company.employees / 200000) * 100) + '%';
+  document.getElementById('detailFounded').textContent = company.founded;
+  document.getElementById('detailCity').textContent = company.city;
+  document.getElementById('detailRevenue').textContent = company.revenue;
+
+  const policyHtml = company.policies.map(p => `
+    <div class="policy-card">
+      <div class="policy-title">⚖️ ${p.title}</div>
+      <div class="policy-text">${p.text}</div>
+      <span class="policy-impact impact-${p.impact}">${p.impact === 'high' ? '🔴 HIGH IMPACT' : p.impact === 'med' ? '🟡 MED IMPACT' : '🟢 LOW IMPACT'}</span>
+    </div>
+  `).join('');
+  document.getElementById('policyCards').innerHTML = policyHtml;
+  document.getElementById('whyMatters').innerHTML = company.why;
+}
+
+function filterSize(tier, btn) {
+  currentFilter = tier;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  markers.forEach(({ marker, zipMarker, nameMarker, company }) => {
+    const show = tier === 'all' ||
+      (tier === 'mega' && company.capTier === 'mega') ||
+      (tier === 'large' && (company.capTier === 'mega' || company.capTier === 'large')) ||
+      (tier === 'mid' && true);
+
+    if (show) {
+      if (!map.hasLayer(marker)) map.addLayer(marker);
+      if (!map.hasLayer(zipMarker)) map.addLayer(zipMarker);
+      if (!map.hasLayer(nameMarker)) map.addLayer(nameMarker);
+    } else {
+      if (map.hasLayer(marker)) map.removeLayer(marker);
+      if (map.hasLayer(zipMarker)) map.removeLayer(zipMarker);
+      if (map.hasLayer(nameMarker)) map.removeLayer(nameMarker);
+    }
+  });
+
+  updateStats();
+}
+
+function updateStats() {
+  const visible = markers.filter(({ company }) =>
+    currentFilter === 'all' ||
+    (currentFilter === 'mega' && company.capTier === 'mega') ||
+    (currentFilter === 'large' && (company.capTier === 'mega' || company.capTier === 'large')) ||
+    (currentFilter === 'mid' && true)
+  );
+  const totalCap = visible.reduce((s, { company }) => s + company.cap, 0);
+  const totalEmp = visible.reduce((s, { company }) => s + company.employees, 0);
+  document.getElementById('companyCount').textContent = visible.length;
+  document.getElementById('totalCap').textContent = '$' + (totalCap/1000).toFixed(1) + 'T';
+  document.getElementById('totalEmp').textContent = (totalEmp/1000).toFixed(0) + 'K';
+}
+
+// Add all markers
+companies.forEach(company => {
+  const m = createMarker(company);
+  markers.push(m);
+  map.addLayer(m.marker);
+  map.addLayer(m.zipMarker);
+  map.addLayer(m.nameMarker);
+});
+
+updateStats();
+</script>
+</body>
+</html>

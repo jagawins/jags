@@ -15,6 +15,7 @@ import AICapitalScale from "./pages/AICapitalScale";
 import MedtronicCaseStudy from "./pages/MedtronicCaseStudy";
 import Speaking from "./pages/Speaking";
 import SVPolicyMap from "./pages/SVPolicyMap";
+import SoCalPolicyMap from "./pages/SoCalPolicyMap";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +39,7 @@ const App = () => (
             <Route path="/faq" element={<FAQ />} />
             <Route path="/speaking" element={<Speaking />} />
             <Route path="/sv-policy-map" element={<SVPolicyMap />} />
+            <Route path="/socal-policy-map" element={<SoCalPolicyMap />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

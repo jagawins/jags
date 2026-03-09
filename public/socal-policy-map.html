@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Southern California Tech Ecosystem & Policy Map | Jag Mariappan</title>
+
+<!-- Primary Meta Tags -->
+<meta name="title" content="Southern California Tech Ecosystem & Policy Map | Jag Mariappan">
+<meta name="description" content="Interactive map of Southern California's tech ecosystem — market cap, ZIP codes, policy impact, and regulatory landscape for major tech companies.">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jagmariappan.com/socal-policy-map">
+<meta property="og:title" content="Southern California Tech Ecosystem & Policy Map | Jag Mariappan">
+<meta property="og:description" content="Interactive map of Southern California's tech ecosystem — market cap, ZIP codes, policy impact, and regulatory landscape for major tech companies.">
+<meta property="og:image" content="https://jagmariappan.com/og-image-new.png">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://jagmariappan.com/socal-policy-map">
+<meta property="twitter:title" content="Southern California Tech Ecosystem & Policy Map | Jag Mariappan">
+<meta property="twitter:description" content="Interactive map of Southern California's tech ecosystem — market cap, ZIP codes, policy impact, and regulatory landscape for major tech companies.">
+<meta property="twitter:image" content="https://jagmariappan.com/og-image-new.png">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://jagmariappan.com/socal-policy-map">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07080F;
+    --panel: #0D0F1E;
+    --border: #1E2240;
+    --accent: #FF6B6B;
+    --accent2: #FFB347;
+    --teal: #00E5CC;
+    --text: #EDF0FF;
+    --muted: #5A6080;
+    --card: #111328;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--bg); color:var(--text); height:100vh; overflow:hidden; display:flex; flex-direction:column; }
+
+  .byline-bar {
+    padding:6px 20px;
+    background:var(--card);
+    border-bottom:1px solid var(--border);
+    font-size:11px;
+    color:var(--muted);
+    flex-shrink:0;
+    z-index:1001;
+  }
+  .byline-bar a {
+    color:var(--teal);
+    text-decoration:none;
+    font-weight:600;
+  }
+  .byline-bar a:hover {
+    text-decoration:underline;
+  }
+
+  header {
+    padding:10px 20px;
+    background:var(--panel);
+    border-bottom:1px solid var(--border);
+    display:flex; align-items:center; justify-content:space-between;
+    flex-shrink:0; z-index:1000;
+  }
+  .header-left h1 { font-family:'Syne',sans-serif; font-size:17px; font-weight:800; color:var(--accent); letter-spacing:0.04em; }
+  .header-left p { font-size:10px; color:var(--muted); margin-top:1px; }
+
+  .controls { display:flex; align-items:center; gap:16px; }
+  .filter-btn {
+    padding:4px 10px; border-radius:4px; border:1px solid var(--border);
+    background:transparent; color:var(--muted); font-size:10px;
+    font-family:'Plus Jakarta Sans',sans-serif; cursor:pointer; transition:all 0.2s; font-weight:600;
+  }
+  .filter-btn.active,.filter-btn:hover { background:var(--accent); color:#fff; border-color:var(--accent); }
+
+  .legend { display:flex; gap:14px; font-size:10px; color:var(--muted); align-items:center; }
+  .leg-dot { border-radius:50%; border:2px solid rgba(255,107,107,0.4); display:inline-block; }
+
+  .main { display:flex; flex:1; overflow:hidden; }
+  #map { flex:1; }
+
+  .side {
+    width:340px; background:var(--panel); border-left:1px solid var(--border);
+    display:flex; flex-direction:column; overflow:hidden;
+  }
+
+  .ph {
+    height:100%; display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    color:var(--muted); text-align:center; padding:40px 24px; gap:12px;
+  }
+  .ph .ico { font-size:44px; opacity:0.25; }
+  .ph p { font-size:12px; line-height:1.7; max-width:200px; }
+
+  .det-header { padding:16px 18px; border-bottom:1px solid var(--border); flex-shrink:0; }
+  .det-name { font-family:'Syne',sans-serif; font-size:21px; font-weight:800; }
+  .det-tags { display:flex; gap:8px; margin-top:8px; flex-wrap:wrap; }
+  .tag { padding:2px 8px; border-radius:3px; font-size:10px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; }
+  .tag-zip { background:rgba(255,107,107,0.12); color:var(--accent); border:1px solid rgba(255,107,107,0.3); }
+  .tag-sec { background:rgba(255,179,71,0.12); color:var(--accent2); border:1px solid rgba(255,179,71,0.3); }
+  .tag-cap { background:rgba(0,229,204,0.12); color:var(--teal); border:1px solid rgba(0,229,204,0.3); }
+
+  .det-body { flex:1; overflow-y:auto; padding:14px 18px; }
+  .det-body::-webkit-scrollbar { width:3px; }
+  .det-body::-webkit-scrollbar-thumb { background:var(--border); }
+
+  .stats { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:14px; }
+  .sc { background:var(--card); border:1px solid var(--border); border-radius:7px; padding:9px 11px; }
+  .sc-label { font-size:9px; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; }
+  .sc-val { font-size:15px; font-weight:700; margin-top:2px; }
+
+  .sec-hd {
+    font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--accent); margin:14px 0 8px; display:flex; align-items:center; gap:6px;
+  }
+  .sec-hd::after { content:''; flex:1; height:1px; background:var(--border); }
+
+  .pol { background:rgba(255,107,107,0.04); border:1px solid rgba(255,107,107,0.18); border-radius:7px; padding:11px 13px; margin-bottom:8px; }
+  .pol-title { font-size:11px; font-weight:700; color:var(--accent); margin-bottom:3px; }
+  .pol-text { font-size:11px; color:#7A82A8; line-height:1.65; }
+  .pol-badge { display:inline-block; margin-top:5px; padding:2px 7px; border-radius:3px; font-size:9px; font-weight:800; letter-spacing:0.04em; }
+  .hi { background:rgba(255,60,60,0.18); color:#FF5555; }
+  .md { background:rgba(255,180,0,0.18); color:#FFB800; }
+  .lo { background:rgba(0,220,130,0.18); color:#00DC82; }
+
+  .why { font-size:11px; color:#7A82A8; line-height:1.7; background:var(--card); border:1px solid var(--border); border-radius:7px; padding:11px 13px; }
+
+  .emp-bar { height:3px; background:var(--border); border-radius:2px; margin-top:5px; }
+  .emp-fill { height:100%; border-radius:2px; background:linear-gradient(90deg,var(--accent),var(--accent2)); }
+
+  footer {
+    padding:7px 20px; background:var(--panel); border-top:1px solid var(--border);
+    display:flex; gap:18px; font-size:10px; color:var(--muted); flex-shrink:0;
+    flex-wrap:wrap; align-items:center;
+  }
+  footer strong { color:var(--teal); }
+  .footer-cta {
+    margin-left:auto;
+    color:var(--accent);
+    text-decoration:none;
+    font-weight:600;
+    transition:color 0.2s;
+  }
+  .footer-cta:hover {
+    color:var(--teal);
+    text-decoration:underline;
+  }
+
+  .leaflet-container { background:#060810 !important; font-family:'Plus Jakarta Sans',sans-serif; }
+  .zip-lbl { background:transparent!important; border:none!important; font-size:9px; color:rgba(255,107,107,0.55); font-family:'DM Mono',monospace; font-weight:500; pointer-events:none; }
+  .tt { background:var(--panel)!important; border:1px solid var(--border)!important; color:var(--text)!important; font-family:'Plus Jakarta Sans',sans-serif!important; font-size:11px!important; padding:6px 10px!important; border-radius:6px!important; box-shadow:0 4px 20px rgba(0,0,0,0.6)!important; }
+</style>
+</head>
+<body>
+
+<div class="byline-bar">
+  Built by <a href="https://jagmariappan.com" target="_blank">Jag Mariappan</a> — Enterprise AI & Platform Transformation, Stanford Medicine
+</div>
+
+<header>
+  <div class="header-left">
+    <h1>🌴 Southern California Tech Ecosystem</h1>
+    <p>Market cap · ZIP codes · Policy impact · Click any company to explore</p>
+  </div>
+  <div class="controls">
+    <div style="display:flex;gap:6px">
+      <button class="filter-btn active" onclick="filterSize('all',this)">All</button>
+      <button class="filter-btn" onclick="filterSize('mega',this)">$100B+</button>
+      <button class="filter-btn" onclick="filterSize('large',this)">$10B+</button>
+      <button class="filter-btn" onclick="filterSize('mid',this)">$1B+</button>
+    </div>
+    <div class="legend">
+      <span><span class="leg-dot" style="width:26px;height:26px;background:rgba(255,107,107,0.35);display:inline-block"></span> $100B+</span>
+      <span><span class="leg-dot" style="width:17px;height:17px;background:rgba(255,107,107,0.25);display:inline-block"></span> $10B+</span>
+      <span><span class="leg-dot" style="width:11px;height:11px;background:rgba(255,107,107,0.18);display:inline-block"></span> $1B+</span>
+    </div>
+  </div>
+</header>
+
+<div class="main">
+  <div id="map"></div>
+  <div class="side">
+    <div class="ph" id="ph">
+      <div class="ico">🌴</div>
+      <p>Click any company to see ZIP code, market cap, employees, and the policy battles shaping its future</p>
+    </div>
+    <div id="det" style="display:none;flex-direction:column;height:100%">
+      <div class="det-header">
+        <div class="det-name" id="dName"></div>
+        <div class="det-tags">
+          <span class="tag tag-zip" id="dZip"></span>
+          <span class="tag tag-sec" id="dSec"></span>
+          <span class="tag tag-cap" id="dCap"></span>
+        </div>
+      </div>
+      <div class="det-body">
+        <div class="stats">
+          <div class="sc"><div class="sc-label">Employees</div><div class="sc-val" id="dEmp"></div><div class="emp-bar"><div class="emp-fill" id="dEmpBar"></div></div></div>
+          <div class="sc"><div class="sc-label">Founded</div><div class="sc-val" id="dFounded"></div></div>
+          <div class="sc"><div class="sc-label">City</div><div class="sc-val" id="dCity" style="font-size:12px"></div></div>
+          <div class="sc"><div class="sc-label">Revenue (2024)</div><div class="sc-val" id="dRev"></div></div>
+        </div>
+        <div class="sec-hd">Policy Landscape</div>
+        <div id="dPols"></div>
+        <div class="sec-hd">Why It Matters</div>
+        <div class="why" id="dWhy"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>Companies shown: <strong id="fCount">0</strong></span>
+  <span>Combined Market Cap: <strong id="fCap">$0</strong></span>
+  <span>Total Employees: <strong id="fEmp">0</strong></span>
+  <a href="https://jagmariappan.com/speaking" class="footer-cta">Interested in how policy shapes enterprise technology strategy? Invite Jag to speak →</a>
+</footer>
+
+<script>
+const cos = [
+  {
+    name:"Walt Disney", lat:34.1575, lng:-118.3257, zip:"91521", city:"Burbank",
+    sector:"Media / Entertainment", cap:190, capTier:"mega", employees:233000, founded:1923,
+    revenue:"$91B", color:"#1565C0",
+    policies:[
+      {title:"Streaming & Net Neutrality",text:"FCC's restored net neutrality rules prevent ISPs from throttling Disney+ delivery. With 150M+ subscribers globally, bandwidth discrimination could directly raise streaming costs and degrade quality.",impact:"md"},
+      {title:"AI & Hollywood Strike Fallout (SAG-AFTRA)",text:"The 2023 SAG-AFTRA strike produced landmark AI provisions limiting studios' use of AI-generated likenesses without consent. Disney faces compliance costs and restrictions on AI-generated content across film and TV.",impact:"hi"},
+      {title:"ESPN Streaming & Sports Gambling Regulation",text:"Disney's planned standalone ESPN streaming app intersects with state-by-state sports betting regulation — a potential $5B+ revenue opportunity that's been geographically fragmented by inconsistent state laws.",impact:"md"}
+    ],
+    why:"Disney sits at the collision point of three converging policy forces: AI content regulation, streaming infrastructure rules, and sports gambling law. Its pivot to streaming-first makes every one of these existential, not just operational."
+  },
+  {
+    name:"Qualcomm", lat:32.8974, lng:-117.2009, zip:"92121", city:"San Diego",
+    sector:"Semiconductors / 5G / AI", cap:165, capTier:"mega", employees:51000, founded:1985,
+    revenue:"$39B", color:"#1976D2",
+    policies:[
+      {title:"5G Spectrum Allocation (FCC)",text:"FCC's ongoing 5G spectrum auctions and mid-band allocation directly determine how fast Qualcomm's modem chips reach market deployment. C-band and 3.5GHz decisions shape Qualcomm's entire smartphone roadmap.",impact:"hi"},
+      {title:"China Export Controls / Huawei",text:"BIS restrictions on chip sales to Huawei removed Qualcomm's largest single customer. Qualcomm has received limited licenses, but the ongoing uncertainty suppresses ~$8B in potential annual revenue.",impact:"hi"},
+      {title:"FTC Antitrust Consent Decree",text:"Following a 2019 FTC antitrust ruling on Qualcomm's FRAND licensing practices, ongoing consent decree compliance shapes how Qualcomm licenses its essential 5G patents to every smartphone maker globally.",impact:"md"}
+    ],
+    why:"Qualcomm invented the economic model of licensing mobile patents. Every major policy decision about wireless spectrum, export controls, and antitrust directly flows through Qualcomm's P&L — it's the most policy-leveraged chip company outside of NVIDIA."
+  },
+  {
+    name:"SpaceX", lat:33.9206, lng:-118.3280, zip:"90250", city:"Hawthorne",
+    sector:"Aerospace / Satellite / Defense", cap:350, capTier:"mega", employees:13000, founded:2002,
+    revenue:"$13B", color:"#212121",
+    policies:[
+      {title:"FCC Starlink Spectrum & Interference Rules",text:"SpaceX's Starlink operates under FCC spectrum licenses that are actively contested by Amazon (Project Kuiper) and OneWeb. Spectrum allocation decisions directly cap how many satellites Starlink can operate.",impact:"hi"},
+      {title:"FAA Launch Licensing Reform",text:"SpaceX's Starship program requires FAA launch licenses that have faced environmental review delays. Congress is actively debating FAA reform to streamline commercial launch approvals — a direct SpaceX lobbying priority.",impact:"hi"},
+      {title:"Defense Contracts & ITAR",text:"SpaceX holds billions in DoD contracts but faces ITAR (International Traffic in Arms Regulations) compliance requirements that limit international Starlink deployments — including contested military aid decisions.",impact:"md"}
+    ],
+    why:"SpaceX is simultaneously the world's most advanced launch company and one of the most regulated. Its $350B valuation is almost entirely dependent on continued FCC spectrum rights and FAA launch licenses — both of which are actively contested by competitors and regulators."
+  },
+  {
+    name:"Snap Inc", lat:34.0195, lng:-118.4912, zip:"90405", city:"Santa Monica",
+    sector:"Social Media / AR / Advertising", cap:17, capTier:"large", employees:5400, founded:2011,
+    revenue:"$5.4B", color:"#FFFC00",
+    policies:[
+      {title:"Kids Online Safety Act (KOSA)",text:"Proposed federal legislation requiring platforms to enable strongest privacy settings by default for minors. Snapchat's core Gen Z demographic makes KOSA an existential regulatory threat — it could mandate parental approval for core features.",impact:"hi"},
+      {title:"State Age Verification Laws",text:"California's AB 2273, Utah's Social Media Regulation Act, and 10+ state copycat laws require age verification for minors. Compliance costs and user friction directly impact Snap's growth in its core demographic.",impact:"hi"},
+      {title:"AR Glasses & FTC Privacy Rules",text:"Snap's AR glasses (Spectacles) and AR advertising tools face emerging FTC biometric data rules — capturing facial geometry in public spaces is a regulatory frontier with no clear federal standard yet.",impact:"md"}
+    ],
+    why:"Snap's entire business model is built on the demographic that every regulator is trying to protect. KOSA alone could require parental consent for the majority of Snap's US daily active users — a structural existential threat disguised as a child safety bill."
+  },
+  {
+    name:"Activision Blizzard (Microsoft)", lat:34.0375, lng:-118.4835, zip:"90405", city:"Santa Monica",
+    sector:"Gaming / Cloud / Entertainment", cap:69, capTier:"mega", employees:17000, founded:1979,
+    revenue:"$9.5B", color:"#0078D4",
+    policies:[
+      {title:"FTC Microsoft Acquisition Battle",text:"The FTC's 18-month effort to block Microsoft's $69B acquisition of Activision Blizzard was the largest gaming antitrust case in history. The FTC lost — but set precedent for future gaming M&A scrutiny.",impact:"hi"},
+      {title:"Loot Box & Gambling Regulation",text:"Call of Duty and Diablo's in-game purchase systems face the same loot box gambling classification risk as EA — EU bans, state-level US proposals, and FTC scrutiny of 'dark pattern' purchasing flows.",impact:"md"},
+      {title:"Game Workers Union & NLRB",text:"Activision Blizzard QA workers unionized in 2022 — the first major gaming studio union in the US. NLRB rulings on gaming worker classifications could reshape the entire studio labor model.",impact:"md"}
+    ],
+    why:"The Microsoft-Activision deal rewrote gaming antitrust doctrine. The FTC's failure to block it — after winning in court initially — means gaming M&A is now effectively open season. Every major gaming deal for the next decade will cite this case."
+  },
+  {
+    name:"Warner Bros. Discovery", lat:34.1530, lng:-118.3386, zip:"91522", city:"Burbank",
+    sector:"Media / Streaming / IP", cap:19, capTier:"large", employees:35000, founded:1923,
+    revenue:"$41B", color:"#1565C0",
+    policies:[
+      {title:"Streaming Consolidation & DOJ M&A Rules",text:"WBD's merger with Discovery (2022) and potential future consolidation with Paramount or NBCUniversal face DOJ antitrust review. Hollywood is consolidating faster than regulators can evaluate it.",impact:"hi"},
+      {title:"AI & Writer's Room IP",text:"WGA strike provisions limiting AI use in writers' rooms create compliance requirements for WBD's content production — and open legal questions about AI-trained on WBD's film and TV catalog.",impact:"md"},
+      {title:"Sports Rights & Antitrust Exemption",text:"WBD's TNT Sports lost NBA broadcast rights in 2024 partly because of the NBA's exclusive negotiating structure. Sports league antitrust exemptions are now under Congressional scrutiny — WBD is lobbying for reform.",impact:"md"}
+    ],
+    why:"WBD carries $40B+ in debt from the Discovery merger and needs either a major streaming win or another consolidation move to survive. Both paths — streaming dominance and M&A — are directly constrained by DOJ antitrust posture."
+  },
+  {
+    name:"Northrop Grumman", lat:33.9197, lng:-118.3285, zip:"90245", city:"El Segundo",
+    sector:"Defense / Aerospace / AI", cap:68, capTier:"mega", employees:101000, founded:1939,
+    revenue:"$41B", color:"#1A237E",
+    policies:[
+      {title:"Defense Budget & NDAA",text:"Northrop's $41B revenue is almost entirely government-sourced. The National Defense Authorization Act sets funding levels for B-21 Raider bomber, GBSD nuclear missile, and Space Force programs — every dollar is a legislative decision.",impact:"hi"},
+      {title:"AI in Defense (DoD AI Strategy)",text:"DoD's AI adoption strategy — including JADC2 (Joint All-Domain Command and Control) — creates a multi-billion dollar pipeline for Northrop's autonomous systems and AI-enabled defense platforms.",impact:"lo"},
+      {title:"Export Controls & FMS",text:"Foreign Military Sales regulations control which countries can receive Northrop's technology. Restrictions on allies affect international revenue and constrain Northrop's growth outside US government contracts.",impact:"md"}
+    ],
+    why:"Northrop is a pure policy company — it has no commercial customers. Every revenue dollar requires a Congressional appropriation, a DoD contract award, or an export license. Its entire business model is legislative in nature."
+  },
+  {
+    name:"Hulu (Disney/Comcast)", lat:34.0182, lng:-118.4780, zip:"90404", city:"Santa Monica",
+    sector:"Streaming / Advertising", cap:27, capTier:"large", employees:3000, founded:2007,
+    revenue:"$6.5B", color:"#1CE783",
+    policies:[
+      {title:"Disney–Comcast Buyout Valuation",text:"Disney is buying out Comcast's 33% Hulu stake in a deal triggered by a 2024 valuation arbitration. The outcome — potentially $27B+ — was set by contractual appraisal, not market negotiation. A landmark streaming valuation precedent.",impact:"hi"},
+      {title:"Streaming Ad Targeting (FTC/CPRA)",text:"Hulu's ad-supported tier targets viewers using behavioral data. California's CPRA and proposed federal privacy law could restrict cross-platform targeting that drives Hulu's $4B+ advertising revenue.",impact:"md"},
+      {title:"Net Neutrality & Broadband Access",text:"As Comcast (ISP) exits Hulu ownership, the net neutrality conflict-of-interest concern fades — but FCC broadband rules still govern the delivery infrastructure Hulu depends on.",impact:"lo"}
+    ],
+    why:"Hulu is the only major streaming service where its ownership structure was literally determined by regulatory arbitration, not business negotiation. The Disney-Comcast valuation dispute is a landmark case study in how media M&A rules create company value."
+  },
+  {
+    name:"Riot Games (Tencent)", lat:34.0360, lng:-118.3989, zip:"90034", city:"Culver City",
+    sector:"Gaming / Esports / Media", cap:8, capTier:"mid", employees:4500, founded:2006,
+    revenue:"$2.1B", color:"#D32F2F",
+    policies:[
+      {title:"CFIUS & Chinese Ownership",text:"Riot is 100% owned by Tencent, a Chinese company. CFIUS (Committee on Foreign Investment) has the authority to review and potentially force divestiture of Chinese-owned US tech companies handling American user data — the same mechanism targeting TikTok.",impact:"hi"},
+      {title:"Esports Labor & Union Regulation",text:"Riot's League Championship Series operates like a sports league but with no player union equivalent to the NFLPA or MLBPA. NLRB rulings on worker classification in esports could force Riot to recognize player collective bargaining.",impact:"md"},
+      {title:"Skin & Cosmetic Microtransaction Rules",text:"League of Legends' skin ecosystem generates ~$1.5B annually through cosmetic purchases. FTC scrutiny of gaming 'dark patterns' and EU digital markets rules on virtual currency could mandate pricing transparency that suppresses impulse purchases.",impact:"md"}
+    ],
+    why:"Riot is the most CFIUS-exposed gaming company in the US. Its Tencent ownership puts it one executive order away from a forced divestiture order — the exact scenario that played out with TikTok and ByteDance. Its $1.5B skin economy is also directly in the FTC's crosshairs."
+  },
+  {
+    name:"Relativity Space", lat:33.7700, lng:-118.1937, zip:"90802", city:"Long Beach",
+    sector:"Aerospace / Manufacturing / AI", cap:4.2, capTier:"mid", employees:900, founded:2015,
+    revenue:"$0.3B", color:"#311B92",
+    policies:[
+      {title:"FAA Commercial Launch Reform",text:"Relativity's Terran R rocket requires FAA launch licenses. Current FAA review timelines (12–18 months) are longer than Relativity's rocket development cycles — a regulatory bottleneck Congress is actively trying to fix.",impact:"hi"},
+      {title:"CHIPS Act & Advanced Manufacturing",text:"Relativity's 3D-printed rocket manufacturing approach qualifies for advanced manufacturing incentives under CHIPS Act-adjacent programs. DOD also funds additive manufacturing R&D directly relevant to Relativity's core tech.",impact:"md"},
+      {title:"DoD Small Launch Contracts (STP)",text:"Space Force's Space Test Program and DoD's small launch contracts provide Relativity's primary near-term revenue path. Congressional defense appropriations directly fund its commercial viability.",impact:"md"}
+    ],
+    why:"Relativity Space is betting its entire business on two things: FAA launch approvals moving faster and DoD paying for small launch. Both are pure policy outcomes. Its 3D-printed manufacturing model could transform defense supply chains — if regulators let it launch."
+  },
+  {
+    name:"Skechers", lat:33.8958, lng:-118.3614, zip:"90254", city:"Manhattan Beach",
+    sector:"Consumer / Retail / eCommerce", cap:7.5, capTier:"mid", employees:16000, founded:1992,
+    revenue:"$9B", color:"#BF360C",
+    policies:[
+      {title:"China Tariffs & Trade Policy",text:"Skechers manufactures ~60% of its footwear in China and Vietnam. Section 301 tariffs on Chinese goods have added hundreds of millions in import costs. Any escalation in US-China trade policy directly compresses Skechers' margins.",impact:"hi"},
+      {title:"FTC Made-in-USA Labeling Rules",text:"Skechers has faced FTC scrutiny over 'Made in USA' claims on products partially manufactured abroad. FTC's updated enforcement guidelines create compliance risk across Skechers' domestic marketing.",impact:"md"},
+      {title:"eCommerce & Sales Tax (Wayfair Ruling)",text:"Post-Wayfair, Skechers must collect sales tax in all 50 states for online sales — adding compliance infrastructure costs and creating pricing friction in its fast-growing direct-to-consumer channel.",impact:"lo"}
+    ],
+    why:"Skechers is a clean case study in how trade policy becomes retail strategy. Its China manufacturing concentration means every US-China tariff escalation is a direct hit to earnings — the company has spent $400M+ on supply chain diversification driven entirely by trade policy."
+  },
+  {
+    name:"TikTok / ByteDance US", lat:34.0139, lng:-118.4068, zip:"90232", city:"Culver City",
+    sector:"Social Media / AI / Advertising", cap:300, capTier:"mega", employees:7000, founded:2012,
+    revenue:"$16B (US)", color:"#010101",
+    policies:[
+      {title:"Divest-or-Ban Law (PAFACA)",text:"The Protecting Americans from Foreign Adversary Controlled Applications Act requires ByteDance to divest TikTok's US operations or face a ban. Enforcement has been delayed but the law remains in effect — TikTok's US existence is a policy decision, not a business one.",impact:"hi"},
+      {title:"CFIUS National Security Review",text:"CFIUS has been reviewing TikTok's US operations since 2019. Project Texas — a $1.5B data localization effort with Oracle as data trustee — was TikTok's proposed structural remedy. Its adequacy remains unresolved.",impact:"hi"},
+      {title:"FTC Children's Privacy (COPPA)",text:"TikTok paid a $5.7M COPPA fine in 2019. With 32M+ US users under 18, ongoing FTC scrutiny of TikTok for Kids and minors' data collection remains one of the most active FTC enforcement targets in tech.",impact:"md"}
+    ],
+    why:"TikTok is the starkest example in American business of a company whose entire existence in a market is a policy decision. It doesn't matter how good the product is — whether TikTok operates in the US next year is determined in Washington, not in Culver City."
+  },
+  {
+    name:"Raytheon (RTX)", lat:33.9153, lng:-118.3893, zip:"90245", city:"El Segundo",
+    sector:"Defense / Missiles / AI", cap:155, capTier:"mega", employees:185000, founded:1922,
+    revenue:"$80B", color:"#0D47A1",
+    policies:[
+      {title:"Ukraine/Taiwan Defense Contracts",text:"RTX's Patriot missile systems and Stinger missiles are central to US military aid packages. Congressional foreign aid appropriations directly fund RTX's production surge — the Ukraine war alone generated $4B+ in incremental RTX orders.",impact:"lo"},
+      {title:"NDAA & Pentagon Procurement Reform",text:"The NDAA sets RTX's production funding levels for Tomahawk missiles, Javelin systems, and Raytheon radar programs. Pentagon's 'other transaction authority' reform has allowed faster RTX contract awards outside traditional procurement.",impact:"lo"},
+      {title:"Export Controls & International Sales",text:"RTX's Foreign Military Sales require State Department ITAR approval for every international deal. Restrictions on Saudi Arabia, Turkey, and other markets have delayed or cancelled billions in RTX contracts.",impact:"md"}
+    ],
+    why:"RTX makes money when the world is dangerous and Congress pays the bill. Its revenue forecast is essentially a geopolitical threat assessment translated into appropriations line items. ITAR export restrictions are simultaneously RTX's biggest compliance burden and its competitive moat."
+  },
+  {
+    name:"Verizon Business (LA Campus)", lat:34.0195, lng:-118.4100, zip:"90025", city:"West Los Angeles",
+    sector:"Telecom / 5G / Enterprise", cap:160, capTier:"mega", employees:105000, founded:2000,
+    revenue:"$134B", color:"#CD040B",
+    policies:[
+      {title:"FCC 5G Spectrum Auctions",text:"Verizon spent $52B on C-band spectrum in 2021's FCC auction — the largest spectrum purchase in US history. FCC's ongoing spectrum management decisions determine how quickly Verizon can deploy that investment.",impact:"hi"},
+      {title:"Net Neutrality Restoration",text:"FCC's restored net neutrality rules prevent Verizon from offering paid prioritization to streaming services — removing a multi-billion dollar potential revenue stream from its broadband business.",impact:"hi"},
+      {title:"Rural Broadband (BEAD Program)",text:"The $42B BEAD broadband infrastructure program creates subsidy opportunities for Verizon's fiber expansion — but also mandates open-access requirements that could force Verizon to share infrastructure with competitors.",impact:"md"}
+    ],
+    why:"Verizon spent $52B on spectrum — the single largest regulatory license purchase in corporate history. Every FCC spectrum, net neutrality, and broadband subsidy decision directly governs whether that $52B generates the expected return."
+  }
+];
+
+const map = L.map('map',{center:[34.05,-118.25],zoom:10,zoomControl:true,attributionControl:false});
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:19}).addTo(map);
+
+let markers=[], currentFilter='all';
+
+function getR(tier){return tier==='mega'?26:tier==='large'?17:11;}
+
+function mkMarker(c){
+  const r=getR(c.capTier);
+  const op=c.capTier==='mega'?0.9:c.capTier==='large'?0.7:0.5;
+  const dur=(2+Math.random()).toFixed(1);
+
+  const icon=L.divIcon({
+    className:'',
+    html:`<div style="position:relative;width:${r*2+16}px;height:${r*2+16}px;transform:translate(-50%,-50%)">
+      <div style="position:absolute;top:8px;left:8px;width:${r*2}px;height:${r*2}px;border-radius:50%;
+        background:rgba(255,107,107,${op*0.22});border:2px solid rgba(255,107,107,${op*0.65});
+        animation:pulse ${dur}s ease-out infinite;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+        <div style="width:${r}px;height:${r}px;border-radius:50%;background:rgba(255,107,107,${op*0.55});border:1px solid rgba(255,107,107,0.95);"></div>
+      </div></div>`,
+    iconSize:[r*2+16,r*2+16],iconAnchor:[r+8,r+8]
+  });
+
+  const zipIcon=L.divIcon({
+    className:'zip-lbl',
+    html:`<div style="white-space:nowrap;text-shadow:0 0 8px rgba(255,107,107,0.7)">${c.zip}</div>`,
+    iconAnchor:[0,-r-5]
+  });
+
+  const nameIcon=L.divIcon({
+    className:'',
+    html:`<div style="white-space:nowrap;font-family:'Plus Jakarta Sans',sans-serif;font-size:${c.capTier==='mega'?11:9}px;font-weight:${c.capTier==='mega'?700:600};color:rgba(255,255,255,0.92);text-shadow:0 1px 4px rgba(0,0,0,0.95),0 0 10px rgba(0,0,0,0.8);pointer-events:none">${c.name}</div>`,
+    iconAnchor:[0,-r-17]
+  });
+
+  const m=L.marker([c.lat,c.lng],{icon});
+  const zm=L.marker([c.lat,c.lng],{icon:zipIcon,interactive:false});
+  const nm=L.marker([c.lat,c.lng],{icon:nameIcon,interactive:false});
+
+  m.on('click',()=>showDetail(c));
+  m.bindTooltip(`<b>${c.name}</b><br>ZIP: ${c.zip} · $${c.cap}B cap`,{className:'tt',direction:'top',offset:[0,-r]});
+
+  return{m,zm,nm,c};
+}
+
+function showDetail(c){
+  document.getElementById('ph').style.display='none';
+  const det=document.getElementById('det');
+  det.style.display='flex';
+  document.getElementById('dName').textContent=c.name;
+  document.getElementById('dZip').textContent=`📍 ${c.zip}`;
+  document.getElementById('dSec').textContent=c.sector;
+  document.getElementById('dCap').textContent=`$${c.cap}B`;
+  document.getElementById('dEmp').textContent=c.employees.toLocaleString();
+  document.getElementById('dEmpBar').style.width=Math.min(100,(c.employees/250000)*100)+'%';
+  document.getElementById('dFounded').textContent=c.founded;
+  document.getElementById('dCity').textContent=c.city;
+  document.getElementById('dRev').textContent=c.revenue;
+  document.getElementById('dPols').innerHTML=c.policies.map(p=>`
+    <div class="pol">
+      <div class="pol-title">⚖️ ${p.title}</div>
+      <div class="pol-text">${p.text}</div>
+      <span class="pol-badge ${p.impact==='hi'?'hi':p.impact==='md'?'md':'lo'}">${p.impact==='hi'?'🔴 HIGH IMPACT':p.impact==='md'?'🟡 MED IMPACT':'🟢 LOW IMPACT'}</span>
+    </div>`).join('');
+  document.getElementById('dWhy').innerHTML=c.why;
+}
+
+function filterSize(tier,btn){
+  currentFilter=tier;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  markers.forEach(({m,zm,nm,c})=>{
+    const show=tier==='all'||
+      (tier==='mega'&&c.capTier==='mega')||
+      (tier==='large'&&(c.capTier==='mega'||c.capTier==='large'))||
+      tier==='mid';
+    if(show){if(!map.hasLayer(m))map.addLayer(m);if(!map.hasLayer(zm))map.addLayer(zm);if(!map.hasLayer(nm))map.addLayer(nm);}
+    else{if(map.hasLayer(m))map.removeLayer(m);if(map.hasLayer(zm))map.removeLayer(zm);if(map.hasLayer(nm))map.removeLayer(nm);}
+  });
+  updateStats();
+}
+
+function updateStats(){
+  const vis=markers.filter(({c})=>currentFilter==='all'||(currentFilter==='mega'&&c.capTier==='mega')||(currentFilter==='large'&&(c.capTier==='mega'||c.capTier==='large'))||currentFilter==='mid');
+  const cap=vis.reduce((s,{c})=>s+c.cap,0);
+  const emp=vis.reduce((s,{c})=>s+c.employees,0);
+  document.getElementById('fCount').textContent=vis.length;
+  document.getElementById('fCap').textContent='$'+(cap/1000).toFixed(1)+'T';
+  document.getElementById('fEmp').textContent=(emp/1000).toFixed(0)+'K';
+}
+
+// Add pulse animation
+const style=document.createElement('style');
+style.textContent=`@keyframes pulse{0%{transform:scale(1);opacity:0.8}100%{transform:scale(2.4);opacity:0}}`;
+document.head.appendChild(style);
+
+cos.forEach(c=>{const mk=mkMarker(c);markers.push(mk);map.addLayer(mk.m);map.addLayer(mk.zm);map.addLayer(mk.nm);});
+updateStats();
+</script>
+</body>
+</html>

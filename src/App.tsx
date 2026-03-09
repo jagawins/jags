@@ -39,6 +39,7 @@ const App = () => (
             <Route path="/faq" element={<FAQ />} />
             <Route path="/speaking" element={<Speaking />} />
             <Route path="/sv-policy-map" element={<SVPolicyMap />} />
+            <Route path="/socal-policy-map" element={<SoCalPolicyMap />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

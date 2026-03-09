@@ -15,6 +15,7 @@ import AICapitalScale from "./pages/AICapitalScale";
 import MedtronicCaseStudy from "./pages/MedtronicCaseStudy";
 import Speaking from "./pages/Speaking";
 import SVPolicyMap from "./pages/SVPolicyMap";
+import SoCalPolicyMap from "./pages/SoCalPolicyMap";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();

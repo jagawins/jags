@@ -71,11 +71,11 @@ const Hero = () => {
             className="lg:col-span-4 order-1 lg:order-2 animate-fade-in"
             style={{ opacity: 0, animationDelay: '100ms', animationFillMode: 'forwards' }}
           >
-            <div className="relative w-40 h-40 md:w-48 md:h-48 lg:w-full lg:aspect-square mx-auto lg:mx-0">
+            <div className="relative w-44 h-44 md:w-52 md:h-52 lg:w-56 lg:h-56 mx-auto lg:mx-0">
               <img
                 src={jagHeadshot}
                 alt="Jag Mariappan - Executive Operator"
-                className="w-full h-full object-cover rounded-sm"
+                className="w-full h-full object-cover object-top rounded-full border-2 border-border"
               />
             </div>
           </div>

@@ -4,8 +4,8 @@ const SVPolicyMap = () => {
   return (
     <>
       <SEO
-        title="Silicon Valley Tech Ecosystem & Policy Map"
-        description="Interactive map of Silicon Valley's tech ecosystem — market cap, ZIP codes, policy impact, and regulatory landscape for major tech companies."
+        title="Silicon Valley Healthcare AI Policy Map | Jag Mariappan"
+        description="Interactive map of Silicon Valley's healthcare AI policy landscape — regulations, governance frameworks, and stakeholders shaping the future of health tech."
         keywords="Silicon Valley, tech ecosystem, policy map, AI regulation, antitrust, CHIPS Act, tech companies"
         url="https://jagmariappan.com/sv-policy-map"
       />

@@ -54,8 +54,8 @@ const FAQ = () => {
   return (
     <Layout>
       <SEO
-        title="FAQ | Jag Mariappan"
-        description="Frequently asked questions about Jag Mariappan's expertise in healthcare operations, AI systems, enterprise governance, and digital transformation."
+        title="FAQ | Jag Mariappan — Healthcare AI & Transformation Questions"
+        description="Common questions about Jag Mariappan's work, speaking topics, healthcare AI strategy, and enterprise transformation approach. Quick answers here."
         keywords="Jag Mariappan FAQ, healthcare operations, AI systems, enterprise governance, digital transformation, leadership philosophy"
         url="https://jagmariappan.com/faq"
       />

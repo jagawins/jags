@@ -59,8 +59,8 @@ const Speaking = () => {
   return (
     <Layout>
       <SEO
-        title="Speaking & Engagements"
-        description="Book Jag Mariappan for keynotes on healthcare AI governance, platform transformation, and enterprise leadership. Stanford Medicine, Google, IBM experience."
+        title="Speaking | Jag Mariappan — Healthcare AI & Governance Speaker"
+        description="Book Jag Mariappan for keynotes and panels on healthcare AI governance, digital transformation, and enterprise leadership. Stanford Medicine practitioner."
         keywords="healthcare AI speaker, Jag Mariappan speaking, AI governance keynote, enterprise transformation speaker, healthcare technology speaker, Stanford Medicine"
         url="https://jagmariappan.com/speaking"
       />

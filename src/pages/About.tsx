@@ -38,8 +38,8 @@ const About = () => {
   return (
     <Layout>
       <SEO 
-        title="About Jag Mariappan"
-        description="Jag Mariappan — Senior Director at Stanford Medicine. 25+ years building and exiting healthcare technology companies. Harvard Business School alumnus. Contact for advisory and speaking."
+        title="About Jag Mariappan | Senior Director, Stanford Medicine"
+        description="Learn about Jag Mariappan — Senior Director at Stanford Medicine, healthcare AI strategist, enterprise operator, and HBS alum with global impact."
         keywords="Jag Mariappan about, healthcare digital transformation leader, Stanford Medicine executive, Harvard Business School, healthcare AI biography, contact"
         url="https://jagmariappan.com/about"
       />

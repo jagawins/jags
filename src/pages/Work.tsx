@@ -140,8 +140,8 @@ const Work = () => {
   return (
     <Layout>
       <SEO 
-        title="Work & Case Studies"
-        description="Portfolio of enterprise transformation: Stanford Medicine, Medtronic Diabetes, Bairo Healthcare (sold), VerityAxis (sold), AXIVA, Medhara. 25+ years building healthcare AI systems."
+        title="Work & Experience | Jag Mariappan — Healthcare AI Executive"
+        description="Explore Jag Mariappan's career history: Stanford Medicine, global operations, AI systems, and enterprise governance spanning 25+ years."
         keywords="Jag Mariappan work, Stanford Medicine, Medtronic, healthcare AI, enterprise transformation, Bairo Healthcare, VerityAxis, AXIVA, digital health portfolio"
         url="https://jagmariappan.com/work"
       />

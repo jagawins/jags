@@ -3,6 +3,13 @@ import SEO from "@/components/SEO";
 import { ArrowUpRight } from "lucide-react";
 const posts = [
   {
+    title: "Healthcare AI Governance Is the Executive Competency of 2026",
+    url: "/writing/healthcare-ai-governance-executive-competency",
+    date: "March 2026",
+    excerpt: "Why the most important skill for health system leaders isn't understanding AI — it's governing it. A practitioner's guide from Stanford Medicine.",
+    internal: true,
+  },
+  {
     title: "The Chair Theory",
     url: "https://myjmr.org/2025/12/27/the-chair-theory/",
     date: "December 2025",

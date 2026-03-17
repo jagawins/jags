@@ -1,5 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
+import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 const posts = [
   {

@@ -74,7 +74,7 @@ const Hero = () => {
             <div className="relative w-44 h-44 md:w-52 md:h-52 lg:w-56 lg:h-56 mx-auto lg:mx-0">
               <img
                 src={jagHeadshot}
-                alt="Jag Mariappan - Executive Operator"
+                alt="Jag Mariappan, Senior Director Enterprise Operations at Stanford Medicine"
                 className="w-full h-full object-cover object-top rounded-full border-2 border-border"
               />
             </div>

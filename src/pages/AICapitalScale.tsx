@@ -7,8 +7,9 @@ const AICapitalScale = () => {
   return (
     <Layout>
       <SEO
-        title="AI Capital & Institutional Scale in Regulated Healthcare"
-        description="Frameworks and playbooks for funding, governing, and scaling AI in regulated systems. Capital allocation models. Governance architecture. Adoption mechanics."
+        title="AI Capital & Institutional Scale"
+        description="Frameworks for funding, governing, and scaling AI in regulated healthcare. Capital allocation model, governance architecture, and institutional adoption playbook by Jag Mariappan."
+        keywords="AI capital allocation, healthcare AI governance, institutional AI adoption, governance architecture, AI scaling framework, healthcare enterprise AI, Jag Mariappan"
         url="https://jagmariappan.com/ai-capital-scale"
       />
 

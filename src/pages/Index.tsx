@@ -14,8 +14,9 @@ const Index = () => {
   return (
     <Layout>
       <SEO 
-        description="Jag Mariappan builds frameworks for AI capital allocation, governance architecture, and institutional adoption in regulated enterprises. Thought leadership and doctrine for executives and founders."
-        keywords="Jag Mariappan, AI Capital Allocation, Governance Architecture, Institutional Adoption, Regulated Healthcare, Healthcare AI, Enterprise Transformation"
+        title="Jag Mariappan | Healthcare AI & Enterprise Transformation"
+        description="Jag Mariappan — Senior Director at Stanford Medicine. Frameworks for AI capital allocation, governance architecture, and institutional adoption in regulated healthcare enterprises."
+        keywords="Jag Mariappan, healthcare AI governance, AI capital allocation, governance architecture, institutional adoption, Stanford Medicine, enterprise transformation, digital health"
       />
       <Hero />
       <ValueSnapshot />

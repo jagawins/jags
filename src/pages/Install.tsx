@@ -53,8 +53,8 @@ const Install = () => {
   return (
     <Layout>
       <SEO
-        title="Install App | Jag Mariappan"
-        description="Install the Jag Mariappan app on your device for quick access to insights on operating leverage and partner-led growth."
+        title="Install App"
+        description="Install the Jag Mariappan progressive web app for quick access to healthcare AI frameworks, case studies, and enterprise transformation insights."
       />
 
       <section className="py-16 md:py-24">

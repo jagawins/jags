@@ -38,9 +38,9 @@ const About = () => {
   return (
     <Layout>
       <SEO 
-        title="About"
-        description="Executive operator building at the intersection of healthcare, AI, and governance. 15+ years founding companies, leading operations, and guiding organizations through complex transitions."
-        keywords="Jag Mariappan, About, Executive Operator, Healthcare AI, Stanford Medicine, Leadership, Biography"
+        title="About Jag Mariappan"
+        description="Jag Mariappan — Senior Director at Stanford Medicine. 25+ years building and exiting healthcare technology companies. Harvard Business School alumnus. Contact for advisory and speaking."
+        keywords="Jag Mariappan about, healthcare digital transformation leader, Stanford Medicine executive, Harvard Business School, healthcare AI biography, contact"
         url="https://jagmariappan.com/about"
       />
       <section className="section-spacing">
@@ -52,7 +52,7 @@ const About = () => {
                 <div className="w-48 md:w-full aspect-square">
                   <img
                     src={jagHeadshot}
-                    alt="Jag Mariappan"
+                    alt="Jag Mariappan, Senior Director Enterprise Operations at Stanford Medicine"
                     className="w-full h-full object-cover rounded-sm"
                   />
                 </div>

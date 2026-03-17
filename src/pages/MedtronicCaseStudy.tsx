@@ -9,8 +9,8 @@ const MedtronicCaseStudy = () => {
   return (
     <Layout>
       <SEO
-        title="Medtronic 770G to 780G Case Study"
-        description="How Medtronic digitized diabetes management: FOTA, governance architecture, cloud infrastructure, and adoption mechanics for the 770G to 780G platform transformation."
+        title="Medtronic 770 to 780 Transition Case Study | Jag Mariappan"
+        description="How Jag Mariappan led the Medtronic insulin pump transition from the 770 to 780 — enterprise operations, vendor management, and patient outcomes."
         keywords="Medtronic case study, 770G to 780G, diabetes technology, FOTA medical device, healthcare digital transformation, connected medical device, insulin pump platform"
         url="https://jagmariappan.com/case-studies/medtronic-770-to-780"
       />

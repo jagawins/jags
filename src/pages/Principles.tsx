@@ -37,8 +37,8 @@ const Principles = () => {
   return (
     <Layout>
       <SEO 
-        title="Operating Principles"
-        description="Leadership principles from Jag Mariappan: clarity reduces friction, systems outlast heroics, decisions beat consensus. Executive philosophy for healthcare AI."
+        title="Principles | Jag Mariappan's Leadership & Governance Framework"
+        description="The leadership principles and operating values behind Jag Mariappan's approach to healthcare AI governance, enterprise transformation, and team building."
         keywords="Jag Mariappan principles, leadership philosophy, executive decision making, systems thinking, healthcare AI leadership, operational excellence"
         url="https://jagmariappan.com/principles"
       />

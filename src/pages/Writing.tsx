@@ -41,8 +41,8 @@ const Writing = () => {
   return (
     <Layout>
       <SEO 
-        title="Writing & Insights on Healthcare AI"
-        description="Essays and thought leadership on healthcare AI governance, enterprise transformation, and operational excellence by Jag Mariappan."
+        title="Writing & Insights | Healthcare AI & Transformation — Jag Mariappan"
+        description="Thought leadership articles, frameworks, and essays on healthcare AI, enterprise transformation, and governance from a Stanford Medicine insider."
         keywords="Jag Mariappan writing, healthcare AI thought leadership, AI governance essays, enterprise transformation insights, healthcare operations blog"
         url="https://jagmariappan.com/writing"
       />

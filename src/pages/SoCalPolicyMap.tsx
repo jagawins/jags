@@ -4,8 +4,8 @@ const SoCalPolicyMap = () => {
   return (
     <>
       <SEO
-        title="Southern California Tech Ecosystem & Policy Map"
-        description="Interactive map of Southern California's tech ecosystem — market cap, ZIP codes, policy impact, and regulatory landscape for major tech companies."
+        title="Southern California Healthcare AI Policy Map | Jag Mariappan"
+        description="Interactive map of Southern California's healthcare AI policy landscape — tracking regulations, governance initiatives, and key organizations shaping health tech."
         keywords="Southern California, tech ecosystem, policy map, AI regulation, antitrust, tech companies, Los Angeles, San Diego"
         url="https://jagmariappan.com/socal-policy-map"
       />

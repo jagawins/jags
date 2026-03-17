@@ -64,34 +64,39 @@ const Writing = () => {
           </div>
 
           <div className="space-y-0">
-            {posts.map((post, index) => (
-              <a
-                key={index}
-                href={post.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block border-t border-border py-10 transition-colors hover:bg-muted/30 animate-fade-in"
-                style={{ opacity: 0, animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
-              >
-                <div className="flex items-start justify-between gap-6">
-                  <div className="flex-1">
-                    <h2 className="font-serif text-xl md:text-2xl font-medium text-foreground group-hover:text-primary transition-colors leading-tight mb-3">
-                      {post.title}
-                    </h2>
-                    <p className="text-muted-foreground leading-relaxed mb-2 max-w-2xl">
-                      {post.excerpt}
-                    </p>
-                    <p className="text-sm text-muted-foreground/70">
-                      {post.date}
-                    </p>
+            {posts.map((post, index) => {
+              const isInternal = 'internal' in post && post.internal;
+              const Wrapper = isInternal ? Link : 'a';
+              const linkProps = isInternal
+                ? { to: post.url }
+                : { href: post.url, target: "_blank", rel: "noopener noreferrer" };
+              return (
+                <Wrapper
+                  key={index}
+                  {...(linkProps as any)}
+                  className="group block border-t border-border py-10 transition-colors hover:bg-muted/30 animate-fade-in"
+                  style={{ opacity: 0, animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
+                >
+                  <div className="flex items-start justify-between gap-6">
+                    <div className="flex-1">
+                      <h2 className="font-serif text-xl md:text-2xl font-medium text-foreground group-hover:text-primary transition-colors leading-tight mb-3">
+                        {post.title}
+                      </h2>
+                      <p className="text-muted-foreground leading-relaxed mb-2 max-w-2xl">
+                        {post.excerpt}
+                      </p>
+                      <p className="text-sm text-muted-foreground/70">
+                        {post.date}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-2 text-primary shrink-0 mt-1">
+                      <span className="text-sm hidden sm:inline">{isInternal ? "Read" : "Read"}</span>
+                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 text-primary shrink-0 mt-1">
-                    <span className="text-sm hidden sm:inline">Read</span>
-                    <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </div>
-                </div>
-              </a>
-            ))}
+                </Wrapper>
+              );
+            })}
           </div>
 
           {/* Featured on Medium */}

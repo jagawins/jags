@@ -52,7 +52,7 @@ const About = () => {
                 <div className="w-48 md:w-full aspect-square">
                   <img
                     src={jagHeadshot}
-                    alt="Jag Mariappan"
+                    alt="Jag Mariappan, Senior Director Enterprise Operations at Stanford Medicine"
                     className="w-full h-full object-cover rounded-sm"
                   />
                 </div>

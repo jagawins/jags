@@ -41,6 +41,7 @@ const App = () => (
             <Route path="/speaking" element={<Speaking />} />
             <Route path="/sv-policy-map" element={<SVPolicyMap />} />
             <Route path="/socal-policy-map" element={<SoCalPolicyMap />} />
+            <Route path="/writing/healthcare-ai-governance-executive-competency" element={<BlogHealthcareAIGovernance />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

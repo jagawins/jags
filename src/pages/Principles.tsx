@@ -38,8 +38,8 @@ const Principles = () => {
     <Layout>
       <SEO 
         title="Operating Principles"
-        description="The documented beliefs that govern how I build, lead, and make decisions. Clarity, systems thinking, and intentional execution."
-        keywords="Jag Mariappan, Principles, Leadership Philosophy, Decision Making, Systems Thinking, Executive Mindset"
+        description="Leadership principles from Jag Mariappan: clarity reduces friction, systems outlast heroics, decisions beat consensus. Executive philosophy for healthcare AI."
+        keywords="Jag Mariappan principles, leadership philosophy, executive decision making, systems thinking, healthcare AI leadership, operational excellence"
         url="https://jagmariappan.com/principles"
       />
       <section className="section-spacing">

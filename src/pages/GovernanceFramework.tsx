@@ -372,7 +372,7 @@ const GovernanceFramework = () => {
                   <span className="text-muted-foreground">Pilot only</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="px-3 py-1 rounded bg-yellow-500/10 text-yellow-600 font-medium">35–45</span>
+                  <span className="px-3 py-1 rounded bg-accent text-accent-foreground font-medium">35–45</span>
                   <span className="text-muted-foreground">Controlled expansion</span>
                 </div>
                 <div className="flex items-center gap-3">

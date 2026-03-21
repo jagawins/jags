@@ -17,6 +17,8 @@ import Speaking from "./pages/Speaking";
 import SVPolicyMap from "./pages/SVPolicyMap";
 import SoCalPolicyMap from "./pages/SoCalPolicyMap";
 import BlogHealthcareAIGovernance from "./pages/BlogHealthcareAIGovernance";
+import GovernanceFramework from "./pages/GovernanceFramework";
+import MeasuringROI from "./pages/MeasuringROI";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +44,8 @@ const App = () => (
             <Route path="/sv-policy-map" element={<SVPolicyMap />} />
             <Route path="/socal-policy-map" element={<SoCalPolicyMap />} />
             <Route path="/writing/healthcare-ai-governance-executive-competency" element={<BlogHealthcareAIGovernance />} />
+            <Route path="/healthcare-ai-governance-framework" element={<GovernanceFramework />} />
+            <Route path="/measuring-roi-of-ai-in-healthcare" element={<MeasuringROI />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

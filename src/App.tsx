@@ -19,6 +19,7 @@ import SoCalPolicyMap from "./pages/SoCalPolicyMap";
 import BlogHealthcareAIGovernance from "./pages/BlogHealthcareAIGovernance";
 import GovernanceFramework from "./pages/GovernanceFramework";
 import MeasuringROI from "./pages/MeasuringROI";
+import AgenticAI from "./pages/AgenticAI";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();

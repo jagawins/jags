@@ -4,6 +4,22 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 const posts = [
   {
+    title: "Healthcare AI Governance Framework for Health Systems in 2026",
+    url: "/healthcare-ai-governance-framework",
+    date: "March 2026",
+    excerpt: "A board-ready five-layer governance model for evaluating, approving, scaling, and retiring AI across enterprise health systems. Includes executive scorecard.",
+    internal: true,
+    flagship: true,
+  },
+  {
+    title: "Measuring ROI of AI in Healthcare",
+    url: "/measuring-roi-of-ai-in-healthcare",
+    date: "March 2026",
+    excerpt: "Quantitative frameworks for cost avoidance, throughput acceleration, denial reduction, labor leverage, and quality correlation — with real math.",
+    internal: true,
+    flagship: true,
+  },
+  {
     title: "Healthcare AI Governance Is the Executive Competency of 2026",
     url: "/writing/healthcare-ai-governance-executive-competency",
     date: "March 2026",

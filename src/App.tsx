@@ -19,6 +19,7 @@ import SoCalPolicyMap from "./pages/SoCalPolicyMap";
 import BlogHealthcareAIGovernance from "./pages/BlogHealthcareAIGovernance";
 import GovernanceFramework from "./pages/GovernanceFramework";
 import MeasuringROI from "./pages/MeasuringROI";
+import AgenticAI from "./pages/AgenticAI";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -46,6 +47,7 @@ const App = () => (
             <Route path="/writing/healthcare-ai-governance-executive-competency" element={<BlogHealthcareAIGovernance />} />
             <Route path="/healthcare-ai-governance-framework" element={<GovernanceFramework />} />
             <Route path="/measuring-roi-of-ai-in-healthcare" element={<MeasuringROI />} />
+            <Route path="/agentic-ai-in-clinical-and-operational-workflows" element={<AgenticAI />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

@@ -20,6 +20,14 @@ const posts = [
     flagship: true,
   },
   {
+    title: "Agentic AI in Clinical and Operational Workflows",
+    url: "/agentic-ai-in-clinical-and-operational-workflows",
+    date: "March 2026",
+    excerpt: "The executive guide to autonomy levels 0–4, governance, risk matrix, regulatory anchors, monitoring design, and vendor selection for agentic AI in healthcare.",
+    internal: true,
+    flagship: true,
+  },
+  {
     title: "Healthcare AI Governance Is the Executive Competency of 2026",
     url: "/writing/healthcare-ai-governance-executive-competency",
     date: "March 2026",

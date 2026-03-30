@@ -20,6 +20,7 @@ import BlogHealthcareAIGovernance from "./pages/BlogHealthcareAIGovernance";
 import GovernanceFramework from "./pages/GovernanceFramework";
 import MeasuringROI from "./pages/MeasuringROI";
 import AgenticAI from "./pages/AgenticAI";
+import AxivaBriefing from "./pages/AxivaBriefing";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();

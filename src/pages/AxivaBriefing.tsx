@@ -20,7 +20,7 @@ const AxivaBriefing = () => {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Article",
-            headline: "Axiva Daily Briefing Agent — The Decision Layer Between Your Inputs and Your Impact",
+            headline: "Axiva Daily Briefing Agent  - The Decision Layer Between Your Inputs and Your Impact",
             author: { "@type": "Person", name: "Jag Mariappan" },
             datePublished: "2026-03-30",
             description: "An AI-powered executive briefing agent that replaces inbox-driven mornings with structured, impact-ranked daily priorities.",
@@ -38,7 +38,7 @@ const AxivaBriefing = () => {
               <span className="text-primary"> already behind.</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
-              They open email. They scan Slack. They react. By 9 AM, their priorities are hijacked — not by strategy, not by impact, but by whoever spoke the loudest.
+              They open email. They scan Slack. They react. By 9 AM, their priorities are hijacked  - not by strategy, not by impact, but by whoever spoke the loudest.
             </p>
             <a
               href="https://chatgpt.com/g/g-69c9db002ce88191aaaf957118dcecfe"
@@ -117,19 +117,19 @@ const AxivaBriefing = () => {
                 <ul className="space-y-3 text-muted-foreground">
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="w-4 h-4 mt-1 text-primary/70 shrink-0" />
-                    <span><strong className="text-foreground">Top 3 priorities</strong> — ranked by deadline and impact</span>
+                    <span><strong className="text-foreground">Top 3 priorities</strong>  - ranked by deadline and impact</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="w-4 h-4 mt-1 text-primary/70 shrink-0" />
-                    <span><strong className="text-foreground">Preparation flags</strong> — what actually needs prep before meetings</span>
+                    <span><strong className="text-foreground">Preparation flags</strong>  - what actually needs prep before meetings</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="w-4 h-4 mt-1 text-primary/70 shrink-0" />
-                    <span><strong className="text-foreground">Inbox triage</strong> — what in your inbox truly matters</span>
+                    <span><strong className="text-foreground">Inbox triage</strong>  - what in your inbox truly matters</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <TrendingUp className="w-4 h-4 mt-1 text-primary/70 shrink-0" />
-                    <span><strong className="text-foreground">3 industry signals</strong> — you should not ignore today</span>
+                    <span><strong className="text-foreground">3 industry signals</strong>  - you should not ignore today</span>
                   </li>
                 </ul>
               </div>

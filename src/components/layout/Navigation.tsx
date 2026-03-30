@@ -9,6 +9,7 @@ const navLinks = [
   { href: "/principles", label: "Principles" },
   { href: "/writing", label: "Writing" },
   { href: "/speaking", label: "Speaking" },
+  { href: "/axiva-daily-briefing", label: "GPT" },
   { href: "/about", label: "About" },
 ];
 

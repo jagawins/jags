@@ -10,8 +10,8 @@ const AxivaBriefing = () => {
       <SEO
         title="Axiva Daily Briefing Agent | AI-Powered Executive Decision Layer"
         description="Stop reacting to your inbox. Axiva is the AI briefing agent that ranks your priorities by deadline and impact, surfaces what matters, and delivers clarity in under 2 minutes."
-        canonical="/axiva-daily-briefing"
         keywords="AI executive briefing, daily priority agent, executive productivity AI, decision support tool, AI chief of staff"
+        url="https://jagmariappan.com/axiva-daily-briefing"
       />
 
       <script

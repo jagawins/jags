@@ -1,34 +1,50 @@
 import { Link, useLocation } from "react-router-dom";
-import { Linkedin } from "lucide-react";
+import { Linkedin, ChevronDown } from "lucide-react";
+import { useState } from "react";
 import logo from "@/assets/logo.svg";
 
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/work", label: "Work" },
-  { href: "/ai-capital-scale", label: "AI Capital & Scale" },
-  { href: "/principles", label: "Principles" },
-  { href: "/writing", label: "Writing" },
-  { href: "/speaking", label: "Speaking" },
-  { href: "/axiva-daily-briefing", label: "GPT" },
-  { href: "/about", label: "About" },
+type NavItem = { href: string; label: string; description?: string };
+
+const navGroups: { label: string; items: NavItem[] }[] = [
+  {
+    label: "What I've Built",
+    items: [
+      { href: "/work", label: "Work & Experience", description: "25+ years operating across regulated systems" },
+      { href: "/ai-capital-scale", label: "AI Capital & Scale", description: "Capital allocation doctrine" },
+      { href: "/healthcare-ai-governance-framework", label: "Governance Framework", description: "Pillar: AI governance for health systems" },
+      { href: "/measuring-roi-of-ai-in-healthcare", label: "Measuring ROI", description: "Pillar: financial discipline for AI" },
+      { href: "/agentic-ai-in-clinical-and-operational-workflows", label: "Agentic AI in Healthcare", description: "Pillar: clinical and operational workflows" },
+      { href: "/case-studies/medtronic-770-to-780", label: "Medtronic 770G → 780G", description: "Case study" },
+    ],
+  },
+  {
+    label: "Thoughts & Speaking",
+    items: [
+      { href: "/principles", label: "Operating Principles" },
+      { href: "/writing", label: "Writing & Insights" },
+      { href: "/speaking", label: "Speaking & Engagements" },
+      { href: "/axiva-daily-briefing", label: "GPT: Axiva Briefing" },
+    ],
+  },
+  {
+    label: "Connect",
+    items: [
+      { href: "/about", label: "About & Contact" },
+      { href: "/faq", label: "FAQ" },
+    ],
+  },
 ];
 
 const Navigation = () => {
   const location = useLocation();
+  const [openGroup, setOpenGroup] = useState<string | null>(null);
 
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border/40">
       <nav className="container-narrow">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link 
-            to="/" 
-            className="flex items-center gap-3"
-          >
-            <img 
-              src={logo} 
-              alt="Jag Mariappan Logo" 
-              className="h-10 md:h-12 w-auto"
-            />
+          <Link to="/" className="flex items-center gap-3">
+            <img src={logo} alt="Jag Mariappan Logo" className="h-10 md:h-12 w-auto" />
             <div className="flex flex-col">
               <span className="font-serif text-lg md:text-xl font-medium text-foreground hover:text-primary transition-colors">
                 Jag Mariappan
@@ -38,26 +54,51 @@ const Navigation = () => {
               </span>
             </div>
           </Link>
-          
-          <div className="hidden md:flex items-center gap-8">
-            <ul className="flex items-center gap-8">
-              {navLinks.slice(1).map((link) => (
-                <li key={link.href}>
-                  <Link
-                    to={link.href}
-                    className={`text-sm tracking-wide transition-colors ${
-                      location.pathname === link.href
-                        ? "text-foreground"
-                        : "text-muted-foreground hover:text-foreground"
-                    }`}
+
+          <div className="hidden md:flex items-center gap-2">
+            <ul className="flex items-center gap-1">
+              {navGroups.map((group) => (
+                <li
+                  key={group.label}
+                  className="relative"
+                  onMouseEnter={() => setOpenGroup(group.label)}
+                  onMouseLeave={() => setOpenGroup(null)}
+                >
+                  <button
+                    className="flex items-center gap-1 px-3 py-2 text-sm tracking-wide text-muted-foreground hover:text-foreground transition-colors"
+                    aria-expanded={openGroup === group.label}
                   >
-                    {link.label}
-                  </Link>
+                    {group.label}
+                    <ChevronDown className="w-3 h-3" />
+                  </button>
+                  {openGroup === group.label && (
+                    <div className="absolute left-0 top-full pt-2 w-72">
+                      <div className="bg-background border border-border shadow-md rounded-sm overflow-hidden">
+                        <ul className="py-2">
+                          {group.items.map((item) => (
+                            <li key={item.href}>
+                              <Link
+                                to={item.href}
+                                className={`block px-4 py-2.5 text-sm transition-colors hover:bg-muted/60 ${
+                                  location.pathname === item.href ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                                }`}
+                              >
+                                <div className="font-medium text-foreground">{item.label}</div>
+                                {item.description && (
+                                  <div className="text-xs text-muted-foreground mt-0.5">{item.description}</div>
+                                )}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  )}
                 </li>
               ))}
             </ul>
-            
-            <div className="flex items-center gap-3 pl-4 border-l border-border/60">
+
+            <div className="flex items-center gap-3 pl-3 ml-2 border-l border-border/60">
               <a
                 href="https://www.linkedin.com/in/jagawins/"
                 target="_blank"
@@ -67,32 +108,22 @@ const Navigation = () => {
               >
                 <Linkedin className="w-4 h-4" />
               </a>
-              <a
-                href="https://myjmr.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+              <Link
+                to="/about#contact"
+                className="px-4 py-2 text-sm font-medium bg-foreground text-background hover:bg-foreground/85 transition-colors rounded-sm"
               >
-                Blog
-              </a>
-              <a
-                href="https://medium.com/@jagawins/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Insights
-              </a>
+                Let's talk
+              </Link>
             </div>
           </div>
 
-          {/* Mobile menu button */}
           <MobileNav />
         </div>
       </nav>
     </header>
   );
 };
+
 const MobileNav = () => {
   const location = useLocation();
 
@@ -107,22 +138,33 @@ const MobileNav = () => {
           </div>
         </summary>
         <div className="absolute left-0 right-0 top-full bg-background border-b border-border shadow-sm">
-          <ul className="container-narrow py-6 space-y-4">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  to={link.href}
-                  className={`block text-base transition-colors ${
-                    location.pathname === link.href
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              </li>
+          <div className="container-narrow py-6 space-y-6">
+            {navGroups.map((group) => (
+              <div key={group.label}>
+                <p className="tag-outcome mb-3">{group.label}</p>
+                <ul className="space-y-3">
+                  {group.items.map((item) => (
+                    <li key={item.href}>
+                      <Link
+                        to={item.href}
+                        className={`block text-base transition-colors ${
+                          location.pathname === item.href ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+            <Link
+              to="/about#contact"
+              className="block text-center px-4 py-3 text-sm font-medium bg-foreground text-background hover:bg-foreground/85 transition-colors rounded-sm"
+            >
+              Let's talk
+            </Link>
+          </div>
         </div>
       </details>
     </div>

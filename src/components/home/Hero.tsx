@@ -52,14 +52,20 @@ const Hero = () => {
               style={{ opacity: 0, animationDelay: '300ms', animationFillMode: 'forwards' }}
             >
               <Link
+                to="/about#contact"
+                className="px-5 py-2.5 text-sm font-medium bg-foreground text-background hover:bg-foreground/85 transition-colors rounded-sm"
+              >
+                Schedule a call
+              </Link>
+              <Link
                 to="/ai-capital-scale"
-                className="px-5 py-2.5 text-sm font-medium border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
+                className="px-5 py-2.5 text-sm font-medium border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors rounded-sm"
               >
                 Explore AI Capital & Scale
               </Link>
               <Link
                 to="/work"
-                className="px-5 py-2.5 text-sm font-medium border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
+                className="px-5 py-2.5 text-sm font-medium border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors rounded-sm"
               >
                 View Experience
               </Link>

@@ -53,9 +53,18 @@ const Principles = () => {
             </p>
           </div>
 
-          <figure className="max-w-3xl mb-16 border-l-4 border-primary pl-6 py-2 animate-fade-in">
+          <figure className="max-w-3xl mb-12 border-l-4 border-primary pl-6 py-2 animate-fade-in">
             <blockquote className="font-serif text-2xl md:text-3xl text-foreground leading-snug italic">
               "AI systems can't scale without earning the trust of customers, employees, executives, and regulators. That requires governance."
+            </blockquote>
+            <figcaption className="mt-4 text-sm text-muted-foreground tracking-wide uppercase">
+              — Jag Mariappan
+            </figcaption>
+          </figure>
+
+          <figure className="max-w-3xl mb-16 border-l-4 border-primary pl-6 py-2 animate-fade-in">
+            <blockquote className="font-serif text-2xl md:text-3xl text-foreground leading-snug italic">
+              "My strategy is grounded in business value, not technological experimentation. On AI, I always start from the business and customer needs, the pain points of employees, and where AI can actually help."
             </blockquote>
             <figcaption className="mt-4 text-sm text-muted-foreground tracking-wide uppercase">
               — Jag Mariappan

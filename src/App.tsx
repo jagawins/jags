@@ -21,6 +21,7 @@ import GovernanceFramework from "./pages/GovernanceFramework";
 import MeasuringROI from "./pages/MeasuringROI";
 import AgenticAI from "./pages/AgenticAI";
 import AxivaBriefing from "./pages/AxivaBriefing";
+import IDPDecisionSystem from "./pages/IDPDecisionSystem";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -50,6 +51,7 @@ const App = () => (
             <Route path="/measuring-roi-of-ai-in-healthcare" element={<MeasuringROI />} />
             <Route path="/agentic-ai-in-clinical-and-operational-workflows" element={<AgenticAI />} />
             <Route path="/axiva-daily-briefing" element={<AxivaBriefing />} />
+            <Route path="/idp-decision-system" element={<IDPDecisionSystem />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

@@ -15,6 +15,7 @@ const navGroups: { label: string; items: NavItem[] }[] = [
       { href: "/measuring-roi-of-ai-in-healthcare", label: "Measuring ROI", description: "Pillar: financial discipline for AI" },
       { href: "/agentic-ai-in-clinical-and-operational-workflows", label: "Agentic AI in Healthcare", description: "Pillar: clinical and operational workflows" },
       { href: "/case-studies/medtronic-770-to-780", label: "Medtronic 770G → 780G", description: "Case study" },
+      { href: "/idp-decision-system", label: "IDP Decision System", description: "Drug program alignment & risk scoring" },
     ],
   },
   {

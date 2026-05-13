@@ -2,6 +2,14 @@ import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
+import bookCover from "@/assets/silence-is-success.png";
+
+const bookRetailers = [
+  { name: "Apple Books", url: "https://books.apple.com/us/book/silence-is-success-vijays-quiet-revolution/id6768719644" },
+  { name: "Rakuten Kobo", url: "https://www.kobo.com/us/en/ebook/silence-is-success-vijay-s-quiet-revolution" },
+  { name: "Books2Read (all stores)", url: "https://books2read.com/u/bMLjpa" },
+  { name: "Thalia", url: "https://www.thalia.de/shop/home/artikeldetails/A1079815620" },
+];
 const posts = [
   {
     title: "Healthcare AI Governance Framework for Health Systems in 2026",
@@ -83,9 +91,55 @@ const Writing = () => {
           <div className="max-w-3xl mb-16 animate-fade-in">
             <h1 className="heading-display text-foreground mb-6">Writing</h1>
             <p className="body-large text-muted-foreground">
-              Thinking documented. Essays on purpose, focus, and building systems that scale.
+              Author, essayist, and operator. Published book, long-form essays, and frameworks on purpose, focus, and building systems that scale.
             </p>
           </div>
+
+          {/* Published Book */}
+          <div className="border-t border-border pt-12 mb-20 animate-fade-in">
+            <p className="tag-outcome mb-6">Published Book</p>
+            <div className="grid md:grid-cols-[260px_1fr] gap-10 items-start">
+              <a
+                href="https://books2read.com/u/bMLjpa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block group"
+              >
+                <img
+                  src={bookCover}
+                  alt="Silence is Success — Vijay's Quiet Revolution in Tamil Nadu, by Jagadeesan Mariappan"
+                  className="w-full max-w-[240px] shadow-lg group-hover:shadow-xl transition-shadow"
+                />
+              </a>
+              <div>
+                <h2 className="font-serif text-2xl md:text-3xl font-medium text-foreground leading-tight mb-3">
+                  Silence is Success: Vijay's Quiet Revolution in Tamil Nadu
+                </h2>
+                <p className="text-sm text-muted-foreground/80 mb-5">A Political Biography by Jagadeesan Mariappan</p>
+                <p className="text-muted-foreground leading-relaxed mb-8 max-w-2xl">
+                  "He said nothing. He changed everything." From silver screen to Secretariat —
+                  how India's most unlikely Chief Minister built a movement in silence.
+                </p>
+                <p className="tag-outcome mb-3">Available in Ebook</p>
+                <ul className="flex flex-wrap gap-x-6 gap-y-3">
+                  {bookRetailers.map((r) => (
+                    <li key={r.name}>
+                      <a
+                        href={r.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="link-executive inline-flex items-center gap-1.5 text-sm"
+                      >
+                        {r.name}
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
 
           <div className="space-y-0">
             {posts.map((post, index) => {

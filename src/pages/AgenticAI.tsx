@@ -55,8 +55,8 @@ const AgenticAI = () => {
   return (
     <Layout>
       <SEO
-        title="Agentic AI in Clinical and Operational Workflows — Jag Mariappan"
-        description="The executive guide to autonomy, governance, risk, and ROI for agentic AI in healthcare. Autonomy levels 0–4, risk matrix, regulatory anchors, monitoring design, and vendor selection."
+        title="Agentic AI in Healthcare Workflows | Jag Mariappan"
+        description="Executive guide to autonomy, governance, risk, and ROI for agentic AI in healthcare. Autonomy levels, risk matrix, and vendor selection."
         keywords="agentic AI healthcare, AI agents clinical workflows, autonomous AI health systems, agentic AI governance, AI autonomy levels healthcare, healthcare AI risk matrix"
         url="https://jagmariappan.com/agentic-ai-in-clinical-and-operational-workflows"
       />

@@ -81,11 +81,33 @@ const Writing = () => {
   return (
     <Layout>
       <SEO 
-        title="Writing & Insights | Healthcare AI & Transformation — Jag Mariappan"
-        description="Thought leadership articles, frameworks, and essays on healthcare AI, enterprise transformation, and governance from a Stanford Medicine insider."
-        keywords="Jag Mariappan writing, healthcare AI thought leadership, AI governance essays, enterprise transformation insights, healthcare operations blog"
+        title="Writing & Books | Jag Mariappan — Author of Silence is Success"
+        description="Author of 'Silence is Success: Vijay's Quiet Revolution in Tamil Nadu' (Apple Books, Kobo, Thalia). Essays and frameworks on healthcare AI, governance, and transformation."
+        keywords="Jag Mariappan author, Silence is Success book, Jagadeesan Mariappan, Vijay Tamil Nadu biography, healthcare AI writing, AI governance essays"
         url="https://jagmariappan.com/writing"
+        type="book"
+        image="https://jagmariappan.com/silence-is-success-cover.png"
       />
+      <Helmet>
+        <meta property="book:author" content="Jagadeesan Mariappan" />
+        <meta property="og:see_also" content="https://books2read.com/u/bMLjpa" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Book",
+          "name": "Silence is Success: Vijay's Quiet Revolution in Tamil Nadu",
+          "author": { "@type": "Person", "name": "Jagadeesan Mariappan" },
+          "bookFormat": "https://schema.org/EBook",
+          "inLanguage": "en",
+          "image": "https://jagmariappan.com/silence-is-success-cover.png",
+          "url": "https://books2read.com/u/bMLjpa",
+          "description": "A political biography of Tamil Nadu's most unlikely Chief Minister — how Vijay built a movement in silence.",
+          "sameAs": [
+            "https://books.apple.com/us/book/silence-is-success-vijays-quiet-revolution/id6768719644",
+            "https://www.kobo.com/us/en/ebook/silence-is-success-vijay-s-quiet-revolution",
+            "https://www.thalia.de/shop/home/artikeldetails/A1079815620"
+          ]
+        })}</script>
+      </Helmet>
       <section className="section-spacing">
         <div className="container-narrow">
           <div className="max-w-3xl mb-16 animate-fade-in">

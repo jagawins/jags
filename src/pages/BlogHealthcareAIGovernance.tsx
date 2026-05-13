@@ -59,7 +59,7 @@ const BlogHealthcareAIGovernance = () => {
   return (
     <Layout>
       <SEO
-        title="Healthcare AI Governance Is the Executive Competency of 2026 | Jag Mariappan"
+        title="Healthcare AI Governance: Executive Competency 2026"
         description="A Stanford Medicine practitioner's guide to healthcare AI governance — what it is, why 2026 is the inflection point, and the 4 governance failures most health systems make."
         keywords="healthcare AI governance, AI governance framework healthcare, responsible AI adoption, AI risk management, healthcare AI oversight, Jag Mariappan"
         url="https://jagmariappan.com/writing/healthcare-ai-governance-executive-competency"

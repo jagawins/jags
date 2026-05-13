@@ -14,8 +14,8 @@ const Index = () => {
   return (
     <Layout>
       <SEO 
-        title="Jag Mariappan | Healthcare AI & Enterprise Transformation Leader"
-        description="Senior Director at Stanford Medicine with 25+ years leading healthcare operations, AI governance, and enterprise transformation. Advisor. Speaker. Operator."
+        title="Jag Mariappan | Healthcare AI & Transformation"
+        description="Senior Director at Stanford Medicine. 25+ years leading healthcare operations, AI governance, and enterprise transformation. Advisor. Speaker."
         keywords="Jag Mariappan, healthcare AI governance, AI capital allocation, governance architecture, institutional adoption, Stanford Medicine, enterprise transformation, digital health"
       />
       <Hero />

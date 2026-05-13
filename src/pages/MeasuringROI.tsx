@@ -31,8 +31,8 @@ const MeasuringROI = () => {
   return (
     <Layout>
       <SEO
-        title="Measuring ROI of AI in Healthcare — Quantitative Frameworks | Jag Mariappan"
-        description="Quantitative frameworks for measuring AI ROI in healthcare — cost avoidance, throughput acceleration, denial reduction, labor leverage, and quality improvement models."
+        title="Measuring ROI of AI in Healthcare | Jag Mariappan"
+        description="Quantitative frameworks for AI ROI in healthcare: cost avoidance, throughput, denial reduction, labor leverage, and quality models."
         keywords="measuring ROI of AI in healthcare, healthcare AI ROI framework, AI capital allocation healthcare, healthcare AI business case, AI investment healthcare, Jag Mariappan"
         url="https://jagmariappan.com/measuring-roi-of-ai-in-healthcare"
       />

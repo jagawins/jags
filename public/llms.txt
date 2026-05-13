@@ -53,16 +53,25 @@ LinkedIn: https://www.linkedin.com/in/jagawins/
 X/Twitter: https://x.com/AXORAHQ
 
 ## Pages
-- Home: https://jagmariappan.com/
-- Work: https://jagmariappan.com/work
-- AI Capital & Scale: https://jagmariappan.com/ai-capital-scale
-- Speaking: https://jagmariappan.com/speaking
-- Principles: https://jagmariappan.com/principles
-- Writing: https://jagmariappan.com/writing
-- Blog — Healthcare AI Governance Is the Executive Competency of 2026: https://jagmariappan.com/writing/healthcare-ai-governance-executive-competency
-- FAQ: https://jagmariappan.com/faq
-- About: https://jagmariappan.com/about
-- Case Study — Medtronic 770G to 780G: https://jagmariappan.com/case-studies/medtronic-770-to-780
+- [Home](/): Overview of Jag Mariappan's executive portfolio.
+- [Work](/work): Roles, ventures, exits, and enterprise leadership history.
+- [AI Capital & Scale](/ai-capital-scale): Frameworks for funding, governing, and scaling AI in regulated systems.
+- [Healthcare AI Governance Framework](/healthcare-ai-governance-framework): Board-ready five-layer governance model for enterprise health systems.
+- [Measuring ROI of AI in Healthcare](/measuring-roi-of-ai-in-healthcare): Quantitative frameworks for AI ROI in healthcare.
+- [Agentic AI in Clinical and Operational Workflows](/agentic-ai-in-clinical-and-operational-workflows): Executive guide to autonomy, governance, risk, and ROI for agentic AI.
+- [Speaking](/speaking): Keynote topics, formats, and engagements.
+- [Principles](/principles): Operating principles and leadership philosophy.
+- [Writing](/writing): Essays on healthcare AI, governance, and operations.
+- [Healthcare AI Governance Is the Executive Competency of 2026](/writing/healthcare-ai-governance-executive-competency): Why governing AI is the defining executive skill.
+- [Medtronic 770G to 780G Case Study](/case-studies/medtronic-770-to-780): Scaling a connected medical device platform.
+- [AXIVA Daily Briefing](/axiva-daily-briefing): GPT-powered daily executive briefing tool.
+- [IDP Decision System](/idp-decision-system): Decision intelligence system for IDP milestones and alignment.
+- [About](/about): Background and contact.
+- [FAQ](/faq): Common questions about expertise and focus areas.
+
+## Optional
+- [Silicon Valley Policy Map](/sv-policy-map): Interactive healthcare AI policy landscape map.
+- [Southern California Policy Map](/socal-policy-map): Interactive SoCal healthcare AI policy landscape map.
 
 ## Speaking Topics
 - Why 70% of Healthcare AI Projects Fail — And What Stanford Medicine Does Differently

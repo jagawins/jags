@@ -2,6 +2,14 @@ import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
+import bookCover from "@/assets/silence-is-success.png";
+
+const bookRetailers = [
+  { name: "Apple Books", url: "https://books.apple.com/us/book/silence-is-success-vijays-quiet-revolution/id6768719644" },
+  { name: "Rakuten Kobo", url: "https://www.kobo.com/us/en/ebook/silence-is-success-vijay-s-quiet-revolution" },
+  { name: "Books2Read (all stores)", url: "https://books2read.com/u/bMLjpa" },
+  { name: "Thalia", url: "https://www.thalia.de/shop/home/artikeldetails/A1079815620" },
+];
 const posts = [
   {
     title: "Healthcare AI Governance Framework for Health Systems in 2026",

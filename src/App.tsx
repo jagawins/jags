@@ -53,6 +53,7 @@ const App = () => (
             <Route path="/agentic-ai-in-clinical-and-operational-workflows" element={<AgenticAI />} />
             <Route path="/axiva-daily-briefing" element={<AxivaBriefing />} />
             <Route path="/idp-decision-system" element={<IDPDecisionSystem />} />
+            <Route path="/resume-match-pro" element={<ResumeMatchPro />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

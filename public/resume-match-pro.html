@@ -112,14 +112,14 @@ function toggleKey(){
 function resetAll(){
   document.getElementById('jdText').value='';
   document.getElementById('resumeText').value='';
-  document.getElementById('apiKey').value='';
   document.getElementById('resumeMeta').textContent='No file loaded';
   document.getElementById('jdMeta').textContent='No file loaded';
   resumeFileHandle = null; jdFileHandle = null; parsedResult = null;
   ['score','criteria','optimize','gaps','checklist','raw'].forEach(t=>document.getElementById('pane-'+t).innerHTML='<div class="empty">Cleared.</div>');
-  document.getElementById('pane-score').innerHTML='<div class="empty">Paste or upload a JD and resume, add your API key, then click Analyze with AI.</div>';
+  document.getElementById('pane-score').innerHTML='<div class="empty">Paste or upload a JD and resume, then click Analyze with AI.</div>';
   document.querySelector('[data-tab="score"]').click();
 }
+
 function loadDemo(){
   document.getElementById('jdText').value=`Executive Enterprise Applications & Digital Transformation Leader\nOwn the strategic roadmap, budget and day-to-day management of G&A business systems supporting Sales, Marketing and finance systems across enterprise and consumer segments. Collaborate with executive leadership. Lead implementation of digital technologies, AI-driven tools, automation platforms, workflow optimization, governance, data integrity, system security, SOX processes, vendor evaluations, RFP processes, SaaS vendor negotiations, and team development. Requires 15+ years progressive IT leadership, large-scale transformation initiatives, strong people leadership, advanced program leadership, executive presence, stakeholder engagement, strategic thinking.`;
   document.getElementById('resumeText').value=`Jagadeesan Mariappan\nDirector, Business Applications | 20+ Years | G&A Systems · Digital Transformation · AI-Enabled Enterprise Platforms\nSenior Director, Enterprise Applications & Portfolio Governance, Stanford Medicine (2022-Present): enterprise application governance across Workday HCM, ServiceNow GRC/IRM, $10M digital transformation, AI-driven analytics and automation, $2.1M vendor savings, 60+ programs, mentored team, SOX controls.\nDirector, Enterprise Application Strategy & Digital Platforms, Google (2018-2021): 100+ concurrent programs across Sales, Marketing, Finance, HR, Operations; AI Center of Excellence, 50+ deployed ML models, led global team of 45, multi-million-dollar budget, consumer-facing G&A systems.\nIBM Global Services: $154M portfolio, SOX programs, vendor relationships, manufacturing clients.\nMBA, BS Computer Science.`;

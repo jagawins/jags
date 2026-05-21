@@ -1,850 +1,267 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ResumeMatch Pro — JD Scanner & Score Optimizer</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>resume-ai-scanner.html</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs" type="module"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.8.0/mammoth.browser.min.js"></script>
 <style>
-/* ── TOKENS ── */
-:root,[data-theme="light"]{
-  --color-bg:#f7f6f2;--color-surface:#f9f8f5;--color-surface-2:#fbfbf9;
-  --color-surface-offset:#f3f0ec;--color-surface-dynamic:#e6e4df;
-  --color-divider:#dcd9d5;--color-border:#d4d1ca;
-  --color-text:#28251d;--color-text-muted:#7a7974;--color-text-faint:#bab9b4;
-  --color-text-inverse:#f9f8f4;
-  --color-primary:#01696f;--color-primary-hover:#0c4e54;--color-primary-active:#0f3638;
-  --color-primary-highlight:#cedcd8;
-  --color-success:#437a22;--color-success-highlight:#d4dfcc;
-  --color-warning:#964219;--color-warning-highlight:#ddcfc6;
-  --color-error:#a12c7b;--color-error-highlight:#e0ced7;
-  --color-gold:#d19900;--color-gold-highlight:#e9e0c6;
-  --font-display:'Space Grotesk',sans-serif;--font-body:'Inter',sans-serif;
-  --text-xs:clamp(0.75rem,0.7rem + 0.25vw,0.875rem);
-  --text-sm:clamp(0.875rem,0.8rem + 0.35vw,1rem);
-  --text-base:clamp(1rem,0.95rem + 0.25vw,1.125rem);
-  --text-lg:clamp(1.125rem,1rem + 0.75vw,1.5rem);
-  --text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
-  --text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);
-  --space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;
-  --space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;
-  --space-12:3rem;--space-16:4rem;
-  --radius-sm:0.375rem;--radius-md:0.5rem;--radius-lg:0.75rem;--radius-xl:1rem;--radius-full:9999px;
-  --transition-interactive:180ms cubic-bezier(0.16,1,0.3,1);
-  --shadow-sm:0 1px 2px oklch(0.2 0.01 80/0.06);
-  --shadow-md:0 4px 12px oklch(0.2 0.01 80/0.08);
-  --shadow-lg:0 12px 32px oklch(0.2 0.01 80/0.12);
-}
-[data-theme="dark"]{
-  --color-bg:#0f0e0d;--color-surface:#161514;--color-surface-2:#1a1918;
-  --color-surface-offset:#1d1c1a;--color-surface-dynamic:#252422;
-  --color-divider:#222120;--color-border:#2e2d2b;
-  --color-text:#cdccca;--color-text-muted:#797876;--color-text-faint:#4a4948;
-  --color-text-inverse:#2b2a28;
-  --color-primary:#4f98a3;--color-primary-hover:#227f8b;--color-primary-active:#1a626b;
-  --color-primary-highlight:#1f3438;
-  --color-success:#6daa45;--color-success-highlight:#253420;
-  --color-warning:#bb653b;--color-warning-highlight:#3a2818;
-  --color-error:#d163a7;--color-error-highlight:#3a1e30;
-  --color-gold:#e8af34;--color-gold-highlight:#3a2e10;
-  --shadow-sm:0 1px 2px oklch(0 0 0/0.3);
-  --shadow-md:0 4px 12px oklch(0 0 0/0.4);
-  --shadow-lg:0 12px 32px oklch(0 0 0/0.5);
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth;}
-body{min-height:100dvh;font-family:var(--font-body);font-size:var(--text-base);
-  color:var(--color-text);background:var(--color-bg);line-height:1.6;}
-img,svg{display:block;max-width:100%;}
-button{cursor:pointer;background:none;border:none;font:inherit;color:inherit;}
-a,button,[role="button"]{transition:color var(--transition-interactive),background var(--transition-interactive),
-  border-color var(--transition-interactive),box-shadow var(--transition-interactive),opacity var(--transition-interactive);}
-:focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:var(--radius-sm);}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0;}
-
-/* ── LAYOUT ── */
-.app{display:grid;grid-template-rows:auto 1fr;min-height:100dvh;}
-.topbar{display:flex;align-items:center;justify-content:space-between;
-  padding:var(--space-4) var(--space-8);background:var(--color-surface);
-  border-bottom:1px solid var(--color-border);position:sticky;top:0;z-index:100;}
-.logo{display:flex;align-items:center;gap:var(--space-3);}
-.logo-icon{width:32px;height:32px;flex-shrink:0;}
-.logo-text{font-family:var(--font-display);font-weight:700;font-size:var(--text-base);
-  letter-spacing:-0.02em;color:var(--color-text);}
-.logo-badge{font-size:var(--text-xs);background:var(--color-primary-highlight);
-  color:var(--color-primary);padding:2px 8px;border-radius:var(--radius-full);font-weight:500;}
-.topbar-actions{display:flex;align-items:center;gap:var(--space-3);}
-.btn-icon{padding:var(--space-2);border-radius:var(--radius-md);color:var(--color-text-muted);}
-.btn-icon:hover{background:var(--color-surface-offset);color:var(--color-text);}
-
-.main{display:grid;grid-template-columns:1fr 1fr;gap:0;height:calc(100dvh - 57px);overflow:hidden;}
-.panel{display:flex;flex-direction:column;overflow:hidden;border-right:1px solid var(--color-border);}
-.panel:last-child{border-right:none;}
-.panel-header{padding:var(--space-5) var(--space-6);border-bottom:1px solid var(--color-border);
-  display:flex;align-items:center;justify-content:space-between;flex-shrink:0;
-  background:var(--color-surface);}
-.panel-title{font-family:var(--font-display);font-weight:600;font-size:var(--text-sm);
-  letter-spacing:0.04em;text-transform:uppercase;color:var(--color-text-muted);}
-.panel-body{flex:1;overflow-y:auto;padding:var(--space-6);}
-
-/* ── TEXTAREA ── */
-.paste-area{width:100%;min-height:200px;background:var(--color-surface-2);
-  border:1px solid var(--color-border);border-radius:var(--radius-lg);
-  padding:var(--space-4);font-family:var(--font-body);font-size:var(--text-sm);
-  color:var(--color-text);line-height:1.7;resize:vertical;}
-.paste-area:focus{outline:2px solid var(--color-primary);border-color:transparent;}
-.paste-area::placeholder{color:var(--color-text-faint);}
-.field-label{font-size:var(--text-xs);font-weight:600;letter-spacing:0.08em;
-  text-transform:uppercase;color:var(--color-text-muted);margin-bottom:var(--space-2);}
-
-/* ── BUTTONS ── */
-.btn{display:inline-flex;align-items:center;gap:var(--space-2);
-  padding:var(--space-3) var(--space-5);border-radius:var(--radius-md);
-  font-size:var(--text-sm);font-weight:500;transition:all var(--transition-interactive);}
-.btn-primary{background:var(--color-primary);color:#fff;}
-.btn-primary:hover{background:var(--color-primary-hover);}
-.btn-primary:disabled{opacity:0.5;cursor:not-allowed;}
-.btn-ghost{color:var(--color-text-muted);border:1px solid var(--color-border);}
-.btn-ghost:hover{background:var(--color-surface-offset);color:var(--color-text);}
-.btn-sm{padding:var(--space-2) var(--space-3);font-size:var(--text-xs);}
-
-/* ── ACTION BAR ── */
-.action-bar{padding:var(--space-4) var(--space-6);border-top:1px solid var(--color-border);
-  background:var(--color-surface);display:flex;align-items:center;gap:var(--space-3);flex-shrink:0;}
-.char-count{font-size:var(--text-xs);color:var(--color-text-faint);margin-left:auto;}
-
-/* ── RESULTS PANEL ── */
-.results-panel{display:flex;flex-direction:column;overflow:hidden;}
-.results-tabs{display:flex;border-bottom:1px solid var(--color-border);
-  background:var(--color-surface);flex-shrink:0;}
-.tab{padding:var(--space-4) var(--space-5);font-size:var(--text-sm);font-weight:500;
-  color:var(--color-text-muted);border-bottom:2px solid transparent;cursor:pointer;}
-.tab:hover{color:var(--color-text);}
-.tab.active{color:var(--color-primary);border-bottom-color:var(--color-primary);}
-.tab-content{display:none;flex:1;overflow-y:auto;padding:var(--space-6);}
-.tab-content.active{display:block;}
-
-/* ── SCORE RING ── */
-.score-hero{display:flex;align-items:center;gap:var(--space-8);padding:var(--space-6);
-  background:var(--color-surface-2);border-radius:var(--radius-xl);margin-bottom:var(--space-6);
-  border:1px solid var(--color-border);}
-.score-ring-wrap{position:relative;width:100px;height:100px;flex-shrink:0;}
-.score-ring-wrap svg{transform:rotate(-90deg);}
-.score-center{position:absolute;inset:0;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;}
-.score-num{font-family:var(--font-display);font-weight:700;font-size:var(--text-xl);
-  line-height:1;color:var(--color-text);}
-.score-den{font-size:var(--text-xs);color:var(--color-text-muted);}
-.score-meta h2{font-family:var(--font-display);font-weight:700;font-size:var(--text-lg);margin-bottom:var(--space-2);}
-.score-meta p{font-size:var(--text-sm);color:var(--color-text-muted);max-width:40ch;}
-.score-badge{display:inline-flex;align-items:center;gap:var(--space-2);
-  padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);
-  font-size:var(--text-xs);font-weight:600;margin-bottom:var(--space-3);}
-
-/* ── CRITERIA TABLE ── */
-.criteria-table{width:100%;border-collapse:collapse;font-size:var(--text-sm);}
-.criteria-table th{text-align:left;font-size:var(--text-xs);font-weight:600;
-  letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-muted);
-  padding:var(--space-3) var(--space-4);background:var(--color-surface-offset);
-  border-bottom:1px solid var(--color-border);}
-.criteria-table td{padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--color-divider);
-  vertical-align:top;line-height:1.5;}
-.criteria-table tr:last-child td{border-bottom:none;}
-.criteria-table tr:hover td{background:var(--color-surface-offset);}
-.match-pill{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;
-  border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:500;white-space:nowrap;}
-.pill-full{background:var(--color-success-highlight);color:var(--color-success);}
-.pill-partial{background:var(--color-gold-highlight);color:var(--color-gold);}
-.pill-gap{background:var(--color-warning-highlight);color:var(--color-warning);}
-.pill-missing{background:var(--color-error-highlight);color:var(--color-error);}
-.criteria-score{font-family:monospace;font-weight:600;color:var(--color-text-muted);}
-
-/* ── OPTIMIZATION ── */
-.opt-section{margin-bottom:var(--space-8);}
-.opt-section h3{font-family:var(--font-display);font-weight:600;font-size:var(--text-sm);
-  margin-bottom:var(--space-4);color:var(--color-text);display:flex;align-items:center;gap:var(--space-2);}
-.opt-card{background:var(--color-surface-2);border:1px solid var(--color-border);
-  border-radius:var(--radius-lg);padding:var(--space-5);margin-bottom:var(--space-4);}
-.opt-card-header{display:flex;align-items:flex-start;justify-content:space-between;
-  margin-bottom:var(--space-3);gap:var(--space-4);}
-.opt-card-title{font-weight:600;font-size:var(--text-sm);}
-.opt-card-body{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;}
-.opt-before{background:var(--color-error-highlight);border-left:3px solid var(--color-error);
-  border-radius:var(--radius-sm);padding:var(--space-3) var(--space-4);
-  font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-3);font-family:monospace;}
-.opt-after{background:var(--color-success-highlight);border-left:3px solid var(--color-success);
-  border-radius:var(--radius-sm);padding:var(--space-3) var(--space-4);
-  font-size:var(--text-sm);color:var(--color-text);margin-bottom:var(--space-3);font-family:monospace;line-height:1.7;}
-.opt-label{font-size:var(--text-xs);font-weight:600;letter-spacing:0.06em;
-  text-transform:uppercase;color:var(--color-text-faint);margin-bottom:var(--space-2);}
-.copy-btn{display:inline-flex;align-items:center;gap:var(--space-2);
-  padding:var(--space-2) var(--space-3);border-radius:var(--radius-md);
-  font-size:var(--text-xs);font-weight:500;border:1px solid var(--color-border);
-  color:var(--color-text-muted);background:var(--color-surface);}
-.copy-btn:hover{background:var(--color-surface-offset);color:var(--color-text);}
-
-/* ── GAP ITEMS ── */
-.gap-list{display:flex;flex-direction:column;gap:var(--space-3);}
-.gap-item{display:flex;align-items:flex-start;gap:var(--space-3);
-  background:var(--color-surface-offset);border-radius:var(--radius-md);padding:var(--space-4);}
-.gap-icon{width:20px;height:20px;flex-shrink:0;margin-top:2px;}
-.gap-item-body h4{font-weight:600;font-size:var(--text-sm);margin-bottom:var(--space-1);}
-.gap-item-body p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6;}
-
-/* ── CHECKLIST ── */
-.checklist{display:flex;flex-direction:column;gap:var(--space-2);}
-.check-item{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-4);
-  background:var(--color-surface-2);border-radius:var(--radius-md);
-  border:1px solid var(--color-border);cursor:pointer;}
-.check-item:hover{background:var(--color-surface-offset);}
-.check-box{width:18px;height:18px;border:2px solid var(--color-border);
-  border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
-.check-item.checked .check-box{background:var(--color-primary);border-color:var(--color-primary);}
-.check-item.checked .check-label{text-decoration:line-through;color:var(--color-text-muted);}
-.check-label{font-size:var(--text-sm);}
-.check-priority{font-size:var(--text-xs);padding:2px 8px;border-radius:var(--radius-full);margin-left:auto;font-weight:500;}
-.priority-high{background:var(--color-error-highlight);color:var(--color-error);}
-.priority-med{background:var(--color-gold-highlight);color:var(--color-gold);}
-.priority-low{background:var(--color-success-highlight);color:var(--color-success);}
-
-/* ── EMPTY STATE ── */
-.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:var(--space-16) var(--space-8);color:var(--color-text-muted);
-  height:100%;}
-.empty-icon{width:48px;height:48px;margin-bottom:var(--space-4);color:var(--color-text-faint);opacity:0.5;}
-.empty-state h3{color:var(--color-text);font-family:var(--font-display);font-weight:600;
-  margin-bottom:var(--space-2);font-size:var(--text-base);}
-.empty-state p{font-size:var(--text-sm);max-width:32ch;}
-
-/* ── LOADING ── */
-.loading-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:var(--space-4);padding:var(--space-16);color:var(--color-text-muted);}
-.spinner{width:32px;height:32px;border:3px solid var(--color-border);
-  border-top-color:var(--color-primary);border-radius:50%;animation:spin 0.8s linear infinite;}
-@keyframes spin{to{transform:rotate(360deg);}}
-.loading-steps{display:flex;flex-direction:column;gap:var(--space-2);text-align:left;min-width:220px;}
-.loading-step{font-size:var(--text-sm);display:flex;align-items:center;gap:var(--space-2);
-  opacity:0.4;transition:opacity 0.3s;}
-.loading-step.active{opacity:1;color:var(--color-primary);}
-.loading-step.done{opacity:0.7;}
-.loading-step.done::before{content:"✓";color:var(--color-success);}
-.loading-step:not(.done)::before{content:"•";}
-
-/* ── KEYWORD TAGS ── */
-.keyword-tags{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-3);}
-.keyword-tag{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;
-  border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:500;}
-.tag-match{background:var(--color-success-highlight);color:var(--color-success);border:1px solid color-mix(in oklab,var(--color-success) 20%,transparent);}
-.tag-missing{background:var(--color-error-highlight);color:var(--color-error);border:1px solid color-mix(in oklab,var(--color-error) 20%,transparent);}
-.tag-partial{background:var(--color-gold-highlight);color:var(--color-gold);border:1px solid color-mix(in oklab,var(--color-gold) 20%,transparent);}
-
-/* ── SECTION DIVIDER ── */
-.section-divider{height:1px;background:var(--color-divider);margin:var(--space-6) 0;}
-
-/* ── TOOLTIP ── */
-[data-tip]{position:relative;}
-[data-tip]:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;
-  transform:translateX(-50%);background:var(--color-text);color:var(--color-text-inverse);
-  font-size:11px;padding:4px 8px;border-radius:var(--radius-sm);white-space:nowrap;pointer-events:none;z-index:99;}
-
-/* ── RESPONSIVE ── */
-@media(max-width:900px){
-  .main{grid-template-columns:1fr;grid-template-rows:auto 1fr;height:auto;}
-  .panel{border-right:none;border-bottom:1px solid var(--color-border);min-height:400px;}
-  .results-panel{min-height:60vh;}
-  .topbar{padding:var(--space-3) var(--space-4);}
-}
+:root,[data-theme="light"]{--bg:#f7f6f2;--s:#fbfbf9;--s2:#f3f0ec;--b:#d4d1ca;--t:#28251d;--m:#7a7974;--f:#bab9b4;--p:#01696f;--ph:#cedcd8;--ok:#437a22;--okh:#d4dfcc;--warn:#964219;--warnh:#ddcfc6;--err:#a12c7b;--errh:#e0ced7;--gold:#d19900;--goldh:#e9e0c6;--font-display:'Space Grotesk',sans-serif;--font-body:'Inter',sans-serif;--xs:12px;--sm:14px;--base:16px;--lg:20px;--xl:30px;--space1:4px;--space2:8px;--space3:12px;--space4:16px;--space5:20px;--space6:24px;--space8:32px;--space10:40px;--r:12px;--r2:16px;}
+[data-theme="dark"]{--bg:#0f0e0d;--s:#161514;--s2:#1d1c1a;--b:#2e2d2b;--t:#cdccca;--m:#8a8885;--f:#5a5957;--p:#4f98a3;--ph:#1f3438;--ok:#6daa45;--okh:#253420;--warn:#bb653b;--warnh:#3a2818;--err:#d163a7;--errh:#3a1e30;--gold:#e8af34;--goldh:#3a2e10;}
+*{box-sizing:border-box}body{margin:0;font-family:var(--font-body);background:var(--bg);color:var(--t);font-size:var(--base);line-height:1.55}button,input,textarea,select{font:inherit}button{cursor:pointer}textarea,input{background:var(--s);color:var(--t);border:1px solid var(--b);border-radius:12px}a{color:inherit} .app{min-height:100vh;display:grid;grid-template-rows:auto 1fr}.top{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--b);background:var(--s);position:sticky;top:0;z-index:20}.brand{display:flex;align-items:center;gap:12px}.brand svg{width:32px;height:32px}.brand h1{font-family:var(--font-display);font-size:18px;margin:0}.badge{font-size:12px;padding:3px 8px;border-radius:999px;background:var(--ph);color:var(--p);font-weight:600}.grid{display:grid;grid-template-columns:1.02fr .98fr;height:calc(100vh - 61px)}.panel{display:flex;flex-direction:column;min-width:0}.panel + .panel{border-left:1px solid var(--b)}.head{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--b);background:var(--s)}.head .title{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--m);font-weight:700}.body{padding:20px;overflow:auto}.field{margin-bottom:20px}.label{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--m);font-weight:700;margin-bottom:8px}.ta{width:100%;min-height:180px;padding:14px;resize:vertical}.row{display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:11px 14px;border:1px solid var(--b);background:var(--s);color:var(--t)}.btn:hover{background:var(--s2)}.btn.primary{background:var(--p);border-color:var(--p);color:white}.btn.primary:hover{filter:brightness(.95)}.hint{font-size:12px;color:var(--m)}.upload{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px}.drop{border:1px dashed var(--b);border-radius:16px;padding:16px;background:var(--s);display:flex;flex-direction:column;gap:8px;align-items:flex-start}.drop.drag{border-color:var(--p);background:var(--ph)}.filemeta{font-size:12px;color:var(--m)}.mini{font-size:12px;padding:6px 10px;border-radius:999px}.api-box{display:grid;grid-template-columns:1fr auto;gap:10px}.api-input{width:100%;padding:12px 14px}.tabs{display:flex;border-bottom:1px solid var(--b);background:var(--s);overflow:auto}.tab{padding:14px 16px;border:none;background:transparent;color:var(--m);border-bottom:2px solid transparent;white-space:nowrap}.tab.active{color:var(--p);border-bottom-color:var(--p)}.tabpane{display:none;padding:20px;overflow:auto}.tabpane.active{display:block}.empty{height:100%;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--m);padding:40px}.card{background:var(--s);border:1px solid var(--b);border-radius:16px;padding:16px;margin-bottom:16px}.hero{display:flex;gap:22px;align-items:center}.ring{position:relative;width:108px;height:108px;flex:0 0 auto}.center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column}.num{font-family:var(--font-display);font-size:34px;font-weight:700;line-height:1}.sub{font-size:12px;color:var(--m)}.pill{display:inline-flex;gap:6px;align-items:center;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700}.ok{background:var(--okh);color:var(--ok)}.warn{background:var(--goldh);color:var(--gold)}.bad{background:var(--errh);color:var(--err)}.mid{background:var(--warnh);color:var(--warn)}.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.kpi{text-align:center}.kpi .big{font-family:var(--font-display);font-size:28px;font-weight:700}.table{width:100%;border-collapse:collapse;font-size:14px}.table th,.table td{padding:10px 12px;border-bottom:1px solid var(--b);vertical-align:top;text-align:left}.table th{font-size:12px;color:var(--m);text-transform:uppercase;letter-spacing:.06em}.tags{display:flex;gap:8px;flex-wrap:wrap}.tag{padding:5px 10px;border-radius:999px;font-size:12px;font-weight:600}.match{background:var(--okh);color:var(--ok)}.miss{background:var(--errh);color:var(--err)}.part{background:var(--goldh);color:var(--gold)}.rewrite{white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;line-height:1.65}.before{background:var(--errh);padding:12px;border-radius:10px;border-left:3px solid var(--err)}.after{background:var(--okh);padding:12px;border-radius:10px;border-left:3px solid var(--ok)}.check{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--b);background:var(--s);border-radius:12px;margin-bottom:8px}.prio{margin-left:auto;font-size:11px;padding:3px 8px;border-radius:999px;font-weight:700}.spinner{width:30px;height:30px;border-radius:50%;border:3px solid var(--b);border-top-color:var(--p);animation:spin .8s linear infinite;margin:0 auto 14px}@keyframes spin{to{transform:rotate(360deg)}}.loading{text-align:center;padding:40px;color:var(--m)}.steps{text-align:left;display:inline-flex;flex-direction:column;gap:8px;margin-top:10px}.step{opacity:.45}.step.on{opacity:1;color:var(--p)}.small{font-size:12px;color:var(--m)}
+@media (max-width:980px){.grid{grid-template-columns:1fr;height:auto}.panel+.panel{border-left:none;border-top:1px solid var(--b)}.upload{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr 1fr}.hero{flex-direction:column;align-items:flex-start}}
 </style>
 </head>
 <body>
 <div class="app">
-
-<!-- TOPBAR -->
-<header class="topbar">
-  <div class="logo">
-    <svg class="logo-icon" viewBox="0 0 32 32" fill="none" aria-label="ResumeMatch Pro logo">
-      <rect width="32" height="32" rx="8" fill="var(--color-primary)"/>
-      <path d="M8 10h10M8 15h16M8 20h12" stroke="white" stroke-width="2" stroke-linecap="round"/>
-      <circle cx="25" cy="10" r="4" fill="white" opacity="0.9"/>
-      <path d="M23.5 10l1 1 2-2" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    <span class="logo-text">ResumeMatch Pro</span>
-    <span class="logo-badge">AI Scorer</span>
+<header class="top">
+  <div class="brand">
+    <svg viewBox="0 0 32 32" fill="none" aria-label="logo"><rect width="32" height="32" rx="8" fill="var(--p)"/><path d="M8 10h10M8 16h16M8 22h12" stroke="white" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="10" r="4" fill="white"/><path d="M22.8 10l.8.8 1.8-1.8" stroke="var(--p)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <h1>Resume AI Scanner</h1>
+    <span class="badge">Live AI</span>
   </div>
-  <div class="topbar-actions">
-    <button class="btn-icon" data-tip="Clear all" onclick="clearAll()" aria-label="Clear all">
-      <i data-lucide="refresh-cw" width="18" height="18"></i>
-    </button>
-    <button class="btn-icon" onclick="toggleTheme()" aria-label="Toggle theme" data-theme-toggle>
-      <i data-lucide="moon" width="18" height="18" id="theme-icon"></i>
-    </button>
+  <div class="row">
+    <button class="btn" onclick="toggleTheme()"><i data-lucide="moon"></i><span>Theme</span></button>
+    <button class="btn" onclick="resetAll()"><i data-lucide="refresh-cw"></i><span>Reset</span></button>
   </div>
 </header>
+<div class="grid">
+  <section class="panel">
+    <div class="head"><div class="title">Inputs & AI setup</div><button class="btn primary" onclick="runAnalysis()"><i data-lucide="sparkles"></i><span>Analyze with AI</span></button></div>
+    <div class="body">
+      <div class="field">
+        <div class="hint">Live AI analysis runs securely on the server. Paste a JD and resume (or upload files), then click Analyze.</div>
+      </div>
 
-<!-- MAIN 2-PANEL -->
-<div class="main">
 
-  <!-- LEFT: INPUTS -->
-  <div class="panel">
-    <div class="panel-header">
-      <span class="panel-title">Input</span>
-      <button class="btn btn-primary btn-sm" onclick="analyze()" id="analyze-btn">
-        <i data-lucide="scan-text" width="14" height="14"></i>
-        Analyze Match
-      </button>
-    </div>
-    <div class="panel-body">
-      <div style="margin-bottom:var(--space-6)">
-        <div class="field-label">Job Description</div>
-        <textarea class="paste-area" id="jd-input" placeholder="Paste the full job description here…" rows="10" oninput="updateCount('jd-input','jd-count')"></textarea>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:var(--space-2)">
-          <span style="font-size:var(--text-xs);color:var(--color-text-faint)">Paste or type the complete JD</span>
-          <span class="char-count" id="jd-count">0 chars</span>
+      <div class="field">
+        <div class="label">Resume input</div>
+        <div class="upload">
+          <div class="drop" id="dropResume">
+            <div class="row"><i data-lucide="file-up"></i><strong>Upload resume file</strong></div>
+            <div class="small">Accepts .pdf, .docx, .txt</div>
+            <input type="file" id="resumeFile" accept=".pdf,.docx,.txt,.md,.rtf" />
+            <div id="resumeMeta" class="filemeta">No file loaded</div>
+          </div>
+          <div class="drop" id="dropJD">
+            <div class="row"><i data-lucide="briefcase-business"></i><strong>Upload JD file</strong></div>
+            <div class="small">Optional: .pdf, .docx, .txt</div>
+            <input type="file" id="jdFile" accept=".pdf,.docx,.txt,.md,.rtf" />
+            <div id="jdMeta" class="filemeta">No file loaded</div>
+          </div>
         </div>
+      </div>
+
+      <div class="field">
+        <div class="label">Job description</div>
+        <textarea id="jdText" class="ta" placeholder="Paste a new JD here, or upload a JD file above."></textarea>
+      </div>
+      <div class="field">
+        <div class="label">Resume text</div>
+        <textarea id="resumeText" class="ta" placeholder="Paste resume text here, or upload a PDF/DOCX/TXT resume above."></textarea>
+      </div>
+      <div class="row">
+        <button class="btn" onclick="loadDemo()"><i data-lucide="file-text"></i><span>Load demo</span></button>
+        <button class="btn" onclick="extractFromCurrentFiles()"><i data-lucide="scan-search"></i><span>Re-extract files</span></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="tabs">
+      <button class="tab active" data-tab="score">Score</button>
+      <button class="tab" data-tab="criteria">Criteria</button>
+      <button class="tab" data-tab="optimize">Optimize</button>
+      <button class="tab" data-tab="gaps">Gaps</button>
+      <button class="tab" data-tab="checklist">Checklist</button>
+      <button class="tab" data-tab="raw">AI JSON</button>
+    </div>
+    <div id="pane-score" class="tabpane active"><div class="empty">Paste or upload a JD and resume, then click Analyze with AI.</div></div>
+    <div id="pane-criteria" class="tabpane"><div class="empty">Criteria breakdown will appear here.</div></div>
+    <div id="pane-optimize" class="tabpane"><div class="empty">Optimized rewrite suggestions will appear here.</div></div>
+    <div id="pane-gaps" class="tabpane"><div class="empty">Gap analysis will appear here.</div></div>
+    <div id="pane-checklist" class="tabpane"><div class="empty">Action checklist will appear here.</div></div>
+    <div id="pane-raw" class="tabpane"><div class="empty">Raw structured AI output will appear here.</div></div>
+  </section>
+</div>
+</div>
+<script>
+let resumeFileHandle = null;
+let jdFileHandle = null;
+let parsedResult = null;
+
+document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.tabpane').forEach(x=>x.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('pane-'+btn.dataset.tab).classList.add('active');
+}));
+
+function toggleTheme(){
+  document.documentElement.setAttribute('data-theme', document.documentElement.getAttribute('data-theme')==='dark' ? 'light':'dark');
+}
+function toggleKey(){
+  const el=document.getElementById('apiKey');
+  el.type = el.type==='password' ? 'text' : 'password';
+}
+function resetAll(){
+  document.getElementById('jdText').value='';
+  document.getElementById('resumeText').value='';
+  document.getElementById('resumeMeta').textContent='No file loaded';
+  document.getElementById('jdMeta').textContent='No file loaded';
+  resumeFileHandle = null; jdFileHandle = null; parsedResult = null;
+  ['score','criteria','optimize','gaps','checklist','raw'].forEach(t=>document.getElementById('pane-'+t).innerHTML='<div class="empty">Cleared.</div>');
+  document.getElementById('pane-score').innerHTML='<div class="empty">Paste or upload a JD and resume, then click Analyze with AI.</div>';
+  document.querySelector('[data-tab="score"]').click();
+}
+
+function loadDemo(){
+  document.getElementById('jdText').value=`Executive Enterprise Applications & Digital Transformation Leader\nOwn the strategic roadmap, budget and day-to-day management of G&A business systems supporting Sales, Marketing and finance systems across enterprise and consumer segments. Collaborate with executive leadership. Lead implementation of digital technologies, AI-driven tools, automation platforms, workflow optimization, governance, data integrity, system security, SOX processes, vendor evaluations, RFP processes, SaaS vendor negotiations, and team development. Requires 15+ years progressive IT leadership, large-scale transformation initiatives, strong people leadership, advanced program leadership, executive presence, stakeholder engagement, strategic thinking.`;
+  document.getElementById('resumeText').value=`Jagadeesan Mariappan\nDirector, Business Applications | 20+ Years | G&A Systems · Digital Transformation · AI-Enabled Enterprise Platforms\nSenior Director, Enterprise Applications & Portfolio Governance, Stanford Medicine (2022-Present): enterprise application governance across Workday HCM, ServiceNow GRC/IRM, $10M digital transformation, AI-driven analytics and automation, $2.1M vendor savings, 60+ programs, mentored team, SOX controls.\nDirector, Enterprise Application Strategy & Digital Platforms, Google (2018-2021): 100+ concurrent programs across Sales, Marketing, Finance, HR, Operations; AI Center of Excellence, 50+ deployed ML models, led global team of 45, multi-million-dollar budget, consumer-facing G&A systems.\nIBM Global Services: $154M portfolio, SOX programs, vendor relationships, manufacturing clients.\nMBA, BS Computer Science.`;
+}
+
+function setupDrop(zoneId,inputId,onPick){
+  const zone=document.getElementById(zoneId), inp=document.getElementById(inputId);
+  ['dragenter','dragover'].forEach(ev=>zone.addEventListener(ev,e=>{e.preventDefault();zone.classList.add('drag');}));
+  ['dragleave','drop'].forEach(ev=>zone.addEventListener(ev,e=>{e.preventDefault();zone.classList.remove('drag');}));
+  zone.addEventListener('drop',e=>{ const f=e.dataTransfer.files?.[0]; if(f){ inp.files=e.dataTransfer.files; onPick(f);} });
+  inp.addEventListener('change',e=>{ const f=e.target.files?.[0]; if(f) onPick(f); });
+}
+setupDrop('dropResume','resumeFile', async f=>{ resumeFileHandle=f; document.getElementById('resumeMeta').textContent=`${f.name} • ${(f.size/1024).toFixed(1)} KB`; await extractFileToTextarea(f,'resumeText'); });
+setupDrop('dropJD','jdFile', async f=>{ jdFileHandle=f; document.getElementById('jdMeta').textContent=`${f.name} • ${(f.size/1024).toFixed(1)} KB`; await extractFileToTextarea(f,'jdText'); });
+
+async function extractFromCurrentFiles(){
+  if(resumeFileHandle) await extractFileToTextarea(resumeFileHandle,'resumeText');
+  if(jdFileHandle) await extractFileToTextarea(jdFileHandle,'jdText');
+}
+
+async function extractFileToTextarea(file, targetId){
+  const ext = file.name.toLowerCase().split('.').pop();
+  const el = document.getElementById(targetId);
+  el.value = 'Extracting text from file...';
+  try{
+    let text='';
+    if(ext==='txt' || ext==='md' || ext==='rtf') text = await file.text();
+    else if(ext==='docx') text = await extractDocx(file);
+    else if(ext==='pdf') text = await extractPdf(file);
+    else throw new Error('Unsupported file type');
+    el.value = normalizeText(text).slice(0,180000);
+  }catch(err){
+    el.value = '';
+    alert('Could not extract text from '+file.name+': '+err.message);
+  }
+}
+function normalizeText(text){ return text.replace(/\u0000/g,' ').replace(/\n{3,}/g,'\n\n').trim(); }
+async function extractDocx(file){
+  const ab = await file.arrayBuffer();
+  const result = await mammoth.extractRawText({arrayBuffer:ab});
+  return result.value || '';
+}
+async function extractPdf(file){
+  const mod = await import('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs');
+  mod.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.worker.min.mjs';
+  const ab = await file.arrayBuffer();
+  const pdf = await mod.getDocument({data:ab}).promise;
+  let out='';
+  for(let i=1;i<=pdf.numPages;i++){
+    const page = await pdf.getPage(i);
+    const txt = await page.getTextContent();
+    out += txt.items.map(x=>x.str).join(' ') + '\n\n';
+  }
+  return out;
+}
+
+function showLoading(){
+  const html=`<div class="loading"><div class="spinner"></div><div>Running live AI analysis...</div><div class="steps"><div class="step on">1. Parse JD and resume</div><div class="step on">2. Score against role criteria</div><div class="step on">3. Generate optimized rewrites</div><div class="step on">4. Return structured JSON</div></div></div>`;
+  ['score','criteria','optimize','gaps','checklist','raw'].forEach(t=>document.getElementById('pane-'+t).innerHTML=html);
+}
+
+const SUPABASE_URL = "https://orntvssopjityibouxzn.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ybnR2c3NvcGppdHlpYm91eHpuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwMDE1OTcsImV4cCI6MjA4NTU3NzU5N30.SzVbri6fI59C5G6ZC3gm63FK-6aXZd-u1qL_wvjBel0";
+
+async function runAnalysis(){
+  const jd = document.getElementById('jdText').value.trim();
+  const resume = document.getElementById('resumeText').value.trim();
+  if(!jd) return alert('Paste or upload a job description.');
+  if(!resume) return alert('Paste or upload a resume.');
+  showLoading();
+  try{
+    const res = await fetch(`${SUPABASE_URL}/functions/v1/analyze-resume`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY},
+      body: JSON.stringify({ jd, resume })
+    });
+    const data = await res.json();
+    if(!res.ok) throw new Error(data.error || 'Analysis failed');
+    parsedResult = data;
+    renderAIResult(data);
+  }catch(err){
+    const msg = String(err.message || err);
+    ['score','criteria','optimize','gaps','checklist','raw'].forEach(t=>document.getElementById('pane-'+t).innerHTML=`<div class="empty">Analysis failed: ${escapeHtml(msg)}</div>`);
+  }
+}
+
+function escapeHtml(s){ return (s||'').replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m])); }
+
+
+function scoreClass(score){ return score>=90?'ok':score>=75?'warn':score>=60?'mid':'bad'; }
+function lvlPill(level){ return level==='full' ? 'ok' : level==='partial' ? 'warn' : 'bad'; }
+function renderAIResult(r){
+  const score = Number(r.overall_score || 0);
+  const cls = scoreClass(score);
+  const color = cls==='ok'?'var(--ok)':cls==='warn'?'var(--gold)':cls==='mid'?'var(--warn)':'var(--err)';
+  const circ = 2*Math.PI*42, offset = circ - (Math.max(0,Math.min(100,score))/100)*circ;
+  document.getElementById('pane-score').innerHTML = `
+    <div class="card hero">
+      <div class="ring">
+        <svg width="108" height="108" viewBox="0 0 108 108" style="transform:rotate(-90deg)">
+          <circle cx="54" cy="54" r="42" fill="none" stroke="var(--b)" stroke-width="8"></circle>
+          <circle cx="54" cy="54" r="42" fill="none" stroke="${color}" stroke-width="8" stroke-linecap="round" stroke-dasharray="${circ}" stroke-dashoffset="${offset}"></circle>
+        </svg>
+        <div class="center"><div class="num">${score}</div><div class="sub">/100</div></div>
       </div>
       <div>
-        <div class="field-label">Resume Content</div>
-        <textarea class="paste-area" id="resume-input" placeholder="Paste your resume text here (plain text from your .docx or PDF)…" rows="14" oninput="updateCount('resume-input','resume-count')"></textarea>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:var(--space-2)">
-          <span style="font-size:var(--text-xs);color:var(--color-text-faint)">Plain text resume content</span>
-          <span class="char-count" id="resume-count">0 chars</span>
-        </div>
+        <div class="pill ${cls}">${escapeHtml(r.overall_label || 'AI Match Score')}</div>
+        <h2 style="font-family:var(--font-display);margin:10px 0 8px;font-size:26px">${escapeHtml(r.summary || 'AI analysis completed.')}</h2>
+        <div class="small">Generated fresh from the current JD and resume you provided.</div>
       </div>
     </div>
-    <div class="action-bar">
-      <button class="btn btn-ghost btn-sm" onclick="loadSample()">
-        <i data-lucide="file-text" width="14" height="14"></i>
-        Load Sample
-      </button>
-      <button class="btn btn-primary" onclick="analyze()" id="analyze-btn-2">
-        <i data-lucide="zap" width="16" height="16"></i>
-        Run Analysis
-      </button>
+    <div class="kpis">
+      <div class="card kpi"><div class="big" style="color:var(--ok)">${(r.criteria_scores||[]).filter(x=>x.match_level==='full').length}</div><div class="small">Full matches</div></div>
+      <div class="card kpi"><div class="big" style="color:var(--gold)">${(r.criteria_scores||[]).filter(x=>x.match_level==='partial').length}</div><div class="small">Partial matches</div></div>
+      <div class="card kpi"><div class="big" style="color:var(--err)">${(r.criteria_scores||[]).filter(x=>x.match_level==='missing').length}</div><div class="small">Missing areas</div></div>
     </div>
-  </div>
+    <div class="card"><div class="label">Top strengths</div><ul>${(r.strengths||[]).map(s=>`<li style="margin:8px 0">${escapeHtml(s)}</li>`).join('')}</ul></div>
+    <div class="card"><div class="label">Keyword coverage</div><div class="tags">${(r.matched_keywords||[]).map(k=>`<span class="tag match">✓ ${escapeHtml(k)}</span>`).join('')}${(r.missing_keywords||[]).map(k=>`<span class="tag miss">✗ ${escapeHtml(k)}</span>`).join('')}</div></div>`;
 
-  <!-- RIGHT: RESULTS -->
-  <div class="panel results-panel">
-    <div class="results-tabs">
-      <button class="tab active" onclick="switchTab('score')" id="tab-score">Score</button>
-      <button class="tab" onclick="switchTab('criteria')" id="tab-criteria">Criteria</button>
-      <button class="tab" onclick="switchTab('optimize')" id="tab-optimize">Optimize</button>
-      <button class="tab" onclick="switchTab('gaps')" id="tab-gaps">Gaps</button>
-      <button class="tab" onclick="switchTab('checklist')" id="tab-checklist">Checklist</button>
-    </div>
+  document.getElementById('pane-criteria').innerHTML = `
+    <div class="card"><table class="table"><thead><tr><th>Criterion</th><th>Weight</th><th>Score</th><th>Match</th><th>Evidence</th><th>Improve</th></tr></thead><tbody>
+    ${(r.criteria_scores||[]).map(c=>`<tr><td>${escapeHtml(c.criterion||'')}</td><td>${escapeHtml(String(c.weight||''))}</td><td>${escapeHtml(String(c.score||''))}</td><td><span class="pill ${lvlPill(c.match_level)}">${escapeHtml(c.match_level||'')}</span></td><td>${escapeHtml(c.evidence||'')}</td><td>${escapeHtml(c.improvement||'')}</td></tr>`).join('')}
+    </tbody></table></div>`;
 
-    <!-- SCORE TAB -->
-    <div class="tab-content active" id="content-score">
-      <div id="score-empty" class="empty-state">
-        <svg class="empty-icon" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"/><path d="M16 24l5 5 11-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <h3>Ready to Score</h3>
-        <p>Paste a job description and resume, then click Analyze Match.</p>
-      </div>
-      <div id="score-loading" class="loading-wrap" style="display:none">
-        <div class="spinner"></div>
-        <div class="loading-steps">
-          <div class="loading-step" id="step1">Parsing job description…</div>
-          <div class="loading-step" id="step2">Extracting resume signals…</div>
-          <div class="loading-step" id="step3">Scoring match criteria…</div>
-          <div class="loading-step" id="step4">Generating optimizations…</div>
-          <div class="loading-step" id="step5">Building action checklist…</div>
-        </div>
-      </div>
-      <div id="score-result" style="display:none"></div>
-    </div>
+  document.getElementById('pane-optimize').innerHTML = `
+    <div class="card"><div class="label">Optimized headline</div><div class="rewrite after">${escapeHtml(r.optimized_headline || '')}</div></div>
+    <div class="card"><div class="label">Optimized summary</div><div class="rewrite after">${escapeHtml(r.optimized_summary || '')}</div></div>
+    ${(r.optimized_bullets||[]).map(b=>`<div class="card"><div class="label">${escapeHtml(b.section || 'Resume section')}</div><div class="small" style="margin-bottom:8px">Reason: ${escapeHtml(b.reason || '')}</div><div class="label" style="margin-top:10px">Before</div><div class="rewrite before">${escapeHtml(b.before || '')}</div><div class="label" style="margin-top:12px">After</div><div class="rewrite after">${escapeHtml(b.after || '')}</div><div class="row" style="margin-top:10px"><button class="btn" onclick='copyText(${JSON.stringify('')}.replace("", ${JSON.stringify('')}) )' style="display:none"></button><button class="btn" onclick="navigator.clipboard.writeText(${JSON.stringify('')})" style="display:none"></button><button class="btn" onclick='copyDynamic(${JSON.stringify(''+(b.after||''))})'><i data-lucide="copy"></i><span>Copy rewrite</span></button></div></div>`).join('')}
+    <div class="card"><div class="label">Cover letter hook</div><div class="rewrite after">${escapeHtml(r.cover_letter_hook || '')}</div></div>`;
 
-    <!-- CRITERIA TAB -->
-    <div class="tab-content" id="content-criteria">
-      <div id="criteria-empty" class="empty-state">
-        <svg class="empty-icon" viewBox="0 0 48 48" fill="none"><rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/><path d="M16 20h16M16 28h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        <h3>Criteria Matrix</h3>
-        <p>Run an analysis to see a detailed breakdown of every requirement.</p>
-      </div>
-      <div id="criteria-result" style="display:none"></div>
-    </div>
+  document.getElementById('pane-gaps').innerHTML = `
+    <div class="card"><div class="label">Gap analysis</div>${(r.gaps||[]).map(g=>`<div style="padding:12px 0;border-bottom:1px solid var(--b)"><div class="row" style="justify-content:space-between"><strong>${escapeHtml(g.title||'')}</strong><span class="pill ${g.severity==='high'?'bad':g.severity==='medium'?'warn':'ok'}">${escapeHtml(g.severity||'')}</span></div><div style="margin-top:6px">${escapeHtml(g.detail||'')}</div><div class="small" style="margin-top:6px">Estimated impact: +${escapeHtml(String(g.points_impact||0))} points</div></div>`).join('')}</div>
+    <div class="card"><div class="label">Missing keywords</div><div class="tags">${(r.missing_keywords||[]).map(k=>`<span class="tag miss">${escapeHtml(k)}</span>`).join('')}</div></div>`;
 
-    <!-- OPTIMIZE TAB -->
-    <div class="tab-content" id="content-optimize">
-      <div id="optimize-empty" class="empty-state">
-        <svg class="empty-icon" viewBox="0 0 48 48" fill="none"><path d="M8 40l8-8 6 6 14-20 4 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <h3>Optimizations</h3>
-        <p>We'll suggest specific rewrites for your resume bullets and sections.</p>
-      </div>
-      <div id="optimize-result" style="display:none"></div>
-    </div>
+  document.getElementById('pane-checklist').innerHTML = `
+    <div class="card"><div class="label">Priority action plan</div>${(r.checklist||[]).map(c=>`<div class="check"><i data-lucide="check-square-2"></i><span>${escapeHtml(c.task||'')}</span><span class="prio ${c.priority==='high'?'bad':c.priority==='medium'?'warn':'ok'}">${escapeHtml(c.priority||'')}</span></div>`).join('')}</div>`;
 
-    <!-- GAPS TAB -->
-    <div class="tab-content" id="content-gaps">
-      <div id="gaps-empty" class="empty-state">
-        <svg class="empty-icon" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2"/><path d="M24 16v8l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        <h3>Gap Analysis</h3>
-        <p>Missing keywords and experience gaps will appear here after analysis.</p>
-      </div>
-      <div id="gaps-result" style="display:none"></div>
-    </div>
-
-    <!-- CHECKLIST TAB -->
-    <div class="tab-content" id="content-checklist">
-      <div id="checklist-empty" class="empty-state">
-        <svg class="empty-icon" viewBox="0 0 48 48" fill="none"><path d="M16 24l5 5 11-10M12 12h24v24H12z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <h3>Action Checklist</h3>
-        <p>A personalized to-do list will be created to boost your match score.</p>
-      </div>
-      <div id="checklist-result" style="display:none"></div>
-    </div>
-  </div>
-
-</div>
-</div>
-
-<script>
-// ── THEME ──
-const html = document.documentElement;
-let isDark = true;
-function toggleTheme(){
-  isDark = !isDark;
-  html.setAttribute('data-theme', isDark ? 'dark' : 'light');
-  const icon = document.getElementById('theme-icon');
-  if(isDark){ icon.setAttribute('data-lucide','moon'); } else { icon.setAttribute('data-lucide','sun'); }
+  document.getElementById('pane-raw').innerHTML = `<div class="card"><div class="label">Raw AI JSON</div><pre class="rewrite" style="white-space:pre-wrap">${escapeHtml(JSON.stringify(r,null,2))}</pre></div>`;
   lucide.createIcons();
 }
+function copyDynamic(text){ navigator.clipboard.writeText(text); }
 
-// ── UTILS ──
-function updateCount(id, countId){
-  const v = document.getElementById(id).value;
-  document.getElementById(countId).textContent = v.length.toLocaleString() + ' chars';
-}
-function switchTab(name){
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-  document.getElementById('tab-'+name).classList.add('active');
-  document.getElementById('content-'+name).classList.add('active');
-}
-function clearAll(){
-  document.getElementById('jd-input').value = '';
-  document.getElementById('resume-input').value = '';
-  updateCount('jd-input','jd-count');
-  updateCount('resume-input','resume-count');
-  ['score','criteria','optimize','gaps','checklist'].forEach(tab => {
-    document.getElementById(tab+'-empty').style.display = '';
-    const r = document.getElementById(tab+'-result');
-    if(r) { r.style.display = 'none'; r.innerHTML = ''; }
-  });
-  document.getElementById('score-loading').style.display = 'none';
-  switchTab('score');
-}
-function copyText(text){
-  navigator.clipboard.writeText(text).then(() => {}).catch(() => {});
-}
-
-// ── SAMPLE DATA ──
-function loadSample(){
-  document.getElementById('jd-input').value = `Executive Enterprise Applications & Digital Transformation Leader
-Milpitas, CA | Full-time | Salary: $210,260 - $348,278
-
-Own the strategic roadmap, budget and day-to-day management of G&A business systems supporting Sales, Marketing and Finance systems across enterprise and consumer segments. Collaborates with executive/senior leadership to develop digital transformation strategy. Leads AI-driven tools and automation platforms. Ensures SOX compliance, data integrity, and application governance. Manage vendor relationships and contract negotiations. Mentor high-performing Business Applications team.
-
-REQUIRED: 15+ years IT leadership. Proven large-scale transformation. Strong people leadership. MBA preferred.
-
-SKILLS: Program leadership, executive presence, stakeholder engagement, strategic thinking.`;
-  document.getElementById('resume-input').value = `Jagadeesan "Jag" Mariappan | Director, Business Applications | 20+ Years
-
-Senior Director, Enterprise Applications — Stanford Medicine (2022-Present)
-• Own enterprise governance across Workday HCM, ServiceNow GRC/IRM. $10M digital transformation program.
-• AI-driven analytics via FURM AI Framework. $2.1M vendor rationalization savings. SOX application controls.
-• Built high-performing team — zero attrition over 2 years.
-
-Director, Enterprise Application Strategy — Google (2018-2021)
-• Governed 100+ programs, 100K+ employee enterprise. AI Center of Excellence with 50+ ML models.
-• 45-person global team across US, Europe, APAC. Multi-million G&A budget ownership.
-
-Global Technology Delivery Lead — HCL America (2021-2023)
-• Led 1,500+ technologists, Fortune 500 clients.
-
-Senior Technology Director — IBM Global Services (2006-2018)
-• $154M portfolio, 120+ global programs. SOX compliance, ERP implementations. $24M migrations under budget.
-
-Co-Founder & CEO — Bairo Healthcare (2009-2014): PE exit.
-
-Education: MBA (USF), BS CS&E, Harvard Business School GMP
-Certifications: PMP, Google Cloud Certified, NVIDIA AI Architect, Lean Six Sigma Black Belt`;
-  updateCount('jd-input','jd-count');
-  updateCount('resume-input','resume-count');
-}
-
-// ── ANALYSIS ENGINE ──
-function analyze(){
-  const jd = document.getElementById('jd-input').value.trim();
-  const resume = document.getElementById('resume-input').value.trim();
-  if(!jd || !resume){ alert('Please paste both a job description and your resume.'); return; }
-
-  // Show loading
-  document.getElementById('score-empty').style.display = 'none';
-  document.getElementById('score-result').style.display = 'none';
-  document.getElementById('score-loading').style.display = 'flex';
-  switchTab('score');
-
-  // Animate loading steps
-  const steps = ['step1','step2','step3','step4','step5'];
-  let s = 0;
-  const stepInterval = setInterval(() => {
-    if(s > 0) { const prev = document.getElementById(steps[s-1]); prev.classList.remove('active'); prev.classList.add('done'); }
-    if(s < steps.length) { document.getElementById(steps[s]).classList.add('active'); s++; }
-    else { clearInterval(stepInterval); }
-  }, 380);
-
-  setTimeout(() => {
-    clearInterval(stepInterval);
-    steps.forEach(id => { const el = document.getElementById(id); el.classList.remove('active'); el.classList.add('done'); });
-    document.getElementById('score-loading').style.display = 'none';
-    const result = performAnalysis(jd, resume);
-    renderResults(result);
-  }, 2200);
-}
-
-// ── SCORING LOGIC ──
-function performAnalysis(jd, resume){
-  const jdL = jd.toLowerCase();
-  const resumeL = resume.toLowerCase();
-
-  const criteria = [
-    { name:'Years of IT Leadership (15+)', jdKeywords:['15+ years','progressive it','technology leadership'], resumeCheck:['20+ years','senior director','director'], weight:10, category:'Experience' },
-    { name:'G&A Systems Ownership (Sales/Mktg/Finance)', jdKeywords:['sales','marketing','finance','g&a'], resumeCheck:['sales','marketing','finance','g&a'], weight:10, category:'Domain' },
-    { name:'Digital Transformation Strategy', jdKeywords:['digital transformation','strategy','business objectives'], resumeCheck:['digital transformation','$10m','transformation program'], weight:9, category:'Domain' },
-    { name:'AI Tools & Automation Implementation', jdKeywords:['ai-driven','automation','ml','artificial intelligence'], resumeCheck:['ai','furm','ml models','ai center','automation'], weight:9, category:'Technical' },
-    { name:'SOX / Governance / Compliance', jdKeywords:['sox','governance','data integrity','compliance','internal controls'], resumeCheck:['sox','governance','data integrity','compliance','internal controls'], weight:9, category:'Compliance' },
-    { name:'Vendor Management & RFP', jdKeywords:['vendor','rfp','contract negotiation','saas platform'], resumeCheck:['vendor','rfp','contract','$2.1m','rationalization'], weight:8, category:'Operations' },
-    { name:'Budget Ownership', jdKeywords:['budget','investment','financial'], resumeCheck:['$10m','$154m','multi-million','budget'], weight:8, category:'Operations' },
-    { name:'Team Leadership & Culture Building', jdKeywords:['mentor','high-performing','team','culture','talent'], resumeCheck:['team','mentored','attrition','45','1,500'], weight:8, category:'Leadership' },
-    { name:'Executive Stakeholder Engagement', jdKeywords:['executive','senior leadership','cio','cfo','stakeholder'], resumeCheck:['cio','executive leadership','executive reporting','senior leadership'], weight:8, category:'Leadership' },
-    { name:'Large-Scale Transformation Programs', jdKeywords:['large-scale','multi-year','transformation','initiatives'], resumeCheck:['60+','100+','120+','programs','portfolio'], weight:7, category:'Experience' },
-    { name:'Education: BS + MBA Preferred', jdKeywords:['bachelor','mba','advanced degree','computer science'], resumeCheck:['mba','bachelor','bs','harvard','usf'], weight:7, category:'Education' },
-    { name:'Consumer Segment Experience', jdKeywords:['consumer','consumer segment'], resumeCheck:['consumer'], weight:5, category:'Domain' },
-    { name:'Manufacturing / Hardware Industry', jdKeywords:['manufacturing','flash','supply chain'], resumeCheck:['manufacturing','supply chain'], weight:5, category:'Industry' },
-    { name:'Process Redesign & Workflow Optimization', jdKeywords:['process redesign','workflow','operational efficiency'], resumeCheck:['operational efficiency','workflow','process','30%','6 hours'], weight:6, category:'Technical' },
-  ];
-
-  let totalWeight = 0, earnedWeight = 0;
-  const scored = criteria.map(c => {
-    totalWeight += c.weight;
-    const jdMatch = c.jdKeywords.some(k => jdL.includes(k));
-    const resumeHits = c.resumeCheck.filter(k => resumeL.includes(k)).length;
-    const resumeTotal = c.resumeCheck.length;
-    let matchLevel, pts;
-    if(resumeHits >= resumeTotal * 0.7){ matchLevel='full'; pts=c.weight; }
-    else if(resumeHits >= resumeTotal * 0.35){ matchLevel='partial'; pts=Math.round(c.weight*0.6); }
-    else if(resumeHits > 0){ matchLevel='partial'; pts=Math.round(c.weight*0.3); }
-    else{ matchLevel='missing'; pts=0; }
-    earnedWeight += pts;
-    return { ...c, matchLevel, pts, resumeHits, resumeTotal };
-  });
-
-  const rawScore = Math.round((earnedWeight / totalWeight) * 100);
-  const score = Math.min(rawScore, 98);
-
-  // Keywords
-  const jdKeywords = extractKeywords(jd);
-  const matchedKW = jdKeywords.filter(k => resumeL.includes(k.toLowerCase()));
-  const missingKW = jdKeywords.filter(k => !resumeL.includes(k.toLowerCase()));
-
-  // Gaps
-  const gaps = scored.filter(c => c.matchLevel === 'missing' || c.matchLevel === 'partial');
-
-  return { score, scored, jdKeywords, matchedKW, missingKW, gaps, jd, resume };
-}
-
-function extractKeywords(jd){
-  const important = ['digital transformation','ai-driven','automation','sox compliance','vendor management',
-    'rfp','contract negotiation','saas','workday','salesforce','servicenow','stakeholder','executive presence',
-    'budget','g&a','program leadership','data integrity','application governance','change management',
-    'machine learning','erp','agile','strategic roadmap','workforce development','kpi','business intelligence'];
-  return important.filter(k => jd.toLowerCase().includes(k));
-}
-
-// ── RENDER ──
-function renderResults(result){
-  const { score, scored, matchedKW, missingKW, gaps } = result;
-
-  let grade, gradeClass, gradeLabel;
-  if(score >= 90){ grade='🟢'; gradeClass='pill-full'; gradeLabel='Excellent Match'; }
-  else if(score >= 75){ grade='🟡'; gradeClass='pill-partial'; gradeLabel='Strong Match'; }
-  else if(score >= 60){ grade='🟠'; gradeClass='pill-gap'; gradeLabel='Moderate Match'; }
-  else { grade='🔴'; gradeClass='pill-missing'; gradeLabel='Needs Work'; }
-
-  const circumference = 2 * Math.PI * 42;
-  const offset = circumference - (score / 100) * circumference;
-  const ringColor = score >= 90 ? 'var(--color-success)' : score >= 75 ? 'var(--color-gold)' : score >= 60 ? 'var(--color-warning)' : 'var(--color-error)';
-
-  // SCORE TAB
-  document.getElementById('score-result').innerHTML = `
-    <div class="score-hero">
-      <div class="score-ring-wrap">
-        <svg width="100" height="100" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="42" fill="none" stroke="var(--color-surface-dynamic)" stroke-width="8"/>
-          <circle cx="50" cy="50" r="42" fill="none" stroke="${ringColor}" stroke-width="8"
-            stroke-dasharray="${circumference}" stroke-dashoffset="${offset}"
-            stroke-linecap="round" style="transition:stroke-dashoffset 1s ease"/>
-        </svg>
-        <div class="score-center">
-          <span class="score-num" id="score-display">0</span>
-          <span class="score-den">/100</span>
-        </div>
-      </div>
-      <div class="score-meta">
-        <div class="score-badge ${gradeClass}">${grade} ${gradeLabel}</div>
-        <h2>${score >= 85 ? 'Highly Competitive' : score >= 70 ? 'Strong Candidate' : score >= 55 ? 'Competitive with Improvements' : 'Significant Gaps to Address'}</h2>
-        <p>${score >= 85 ? 'Your resume is a strong match for this role. Minor optimizations can push you to the top of the stack.' : score >= 70 ? 'Good alignment with key requirements. A few targeted improvements will significantly boost competitiveness.' : 'Key requirements need better coverage. Follow the optimization suggestions to improve your score.'}</p>
-      </div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-6)">
-      <div class="opt-card" style="text-align:center">
-        <div style="font-size:var(--text-xl);font-family:var(--font-display);font-weight:700;color:var(--color-success)">${scored.filter(c=>c.matchLevel==='full').length}</div>
-        <div style="font-size:var(--text-xs);color:var(--color-text-muted);margin-top:4px">Full Matches</div>
-      </div>
-      <div class="opt-card" style="text-align:center">
-        <div style="font-size:var(--text-xl);font-family:var(--font-display);font-weight:700;color:var(--color-gold)">${scored.filter(c=>c.matchLevel==='partial').length}</div>
-        <div style="font-size:var(--text-xs);color:var(--color-text-muted);margin-top:4px">Partial Matches</div>
-      </div>
-      <div class="opt-card" style="text-align:center">
-        <div style="font-size:var(--text-xl);font-family:var(--font-display);font-weight:700;color:var(--color-error)">${scored.filter(c=>c.matchLevel==='missing').length}</div>
-        <div style="font-size:var(--text-xs);color:var(--color-text-muted);margin-top:4px">Gaps Found</div>
-      </div>
-    </div>
-
-    <div style="margin-bottom:var(--space-2)">
-      <div class="field-label">Keywords Found in Resume</div>
-      <div class="keyword-tags">
-        ${matchedKW.map(k=>`<span class="keyword-tag tag-match">✓ ${k}</span>`).join('')}
-        ${missingKW.map(k=>`<span class="keyword-tag tag-missing">✗ ${k}</span>`).join('')}
-      </div>
-    </div>
-  `;
-  document.getElementById('score-result').style.display = 'block';
-
-  // Animate score counter
-  let current = 0;
-  const target = score;
-  const interval = setInterval(() => {
-    current = Math.min(current + 2, target);
-    document.getElementById('score-display').textContent = current;
-    if(current >= target) clearInterval(interval);
-  }, 20);
-
-  // CRITERIA TAB
-  document.getElementById('criteria-result').innerHTML = `
-    <div style="margin-bottom:var(--space-4);font-size:var(--text-sm);color:var(--color-text-muted)">
-      Scored against ${scored.length} criteria extracted from the job description.
-    </div>
-    <table class="criteria-table">
-      <thead><tr>
-        <th>Requirement</th>
-        <th>Category</th>
-        <th>Match</th>
-        <th>Weight</th>
-        <th>Scored</th>
-      </tr></thead>
-      <tbody>
-        ${scored.map(c => `<tr>
-          <td>${c.name}</td>
-          <td><span style="font-size:var(--text-xs);color:var(--color-text-muted)">${c.category}</span></td>
-          <td><span class="match-pill pill-${c.matchLevel}">${c.matchLevel==='full'?'✅ Full':c.matchLevel==='partial'?'🟡 Partial':'❌ Missing'}</span></td>
-          <td class="criteria-score">${c.weight}</td>
-          <td class="criteria-score" style="color:${c.pts===c.weight?'var(--color-success)':c.pts>0?'var(--color-gold)':'var(--color-error)'}">${c.pts}/${c.weight}</td>
-        </tr>`).join('')}
-      </tbody>
-    </table>
-  `;
-  document.getElementById('criteria-empty').style.display = 'none';
-  document.getElementById('criteria-result').style.display = 'block';
-
-  // OPTIMIZE TAB
-  const optimizations = generateOptimizations(result);
-  document.getElementById('optimize-result').innerHTML = optimizations;
-  document.getElementById('optimize-empty').style.display = 'none';
-  document.getElementById('optimize-result').style.display = 'block';
-
-  // GAPS TAB
-  document.getElementById('gaps-result').innerHTML = generateGaps(result);
-  document.getElementById('gaps-empty').style.display = 'none';
-  document.getElementById('gaps-result').style.display = 'block';
-
-  // CHECKLIST TAB
-  document.getElementById('checklist-result').innerHTML = generateChecklist(result);
-  document.getElementById('checklist-empty').style.display = 'none';
-  document.getElementById('checklist-result').style.display = 'block';
-}
-
-function generateOptimizations(result){
-  const { scored, missingKW } = result;
-  const partialAndMissing = scored.filter(c => c.matchLevel !== 'full');
-
-  const suggestions = [
-    {
-      title: 'Strengthen Your Summary',
-      icon: 'type',
-      type: 'rewrite',
-      before: 'Senior IT leader with 20+ years…(generic)',
-      after: 'Senior IT leader with 20+ years owning G&A business systems — Sales, Marketing, and Finance platforms — driving digital transformation at Fortune 500 enterprises. Proven record governing enterprise SaaS platforms with rigorous SOX compliance, implementing AI-driven automation, and delivering multi-million-dollar transformation programs aligned to executive priorities.',
-      impact: 'High'
-    },
-    {
-      title: 'Add Missing JD Keywords',
-      icon: 'tag',
-      type: 'keywords',
-      keywords: missingKW.length > 0 ? missingKW : ['strategic roadmap','application governance','workflow optimization','business performance'],
-      impact: 'High'
-    },
-    {
-      title: 'Quantify Team Leadership',
-      icon: 'users',
-      type: 'rewrite',
-      before: 'Built and mentored a high-performing team…',
-      after: 'Built, mentored, and scaled a high-performing team of 12 program managers and application analysts — achieved zero voluntary attrition over 24 months by implementing structured career ladders, bi-weekly 1:1 coaching, and a culture of accountability tied to measurable delivery outcomes.',
-      impact: 'Medium'
-    },
-    {
-      title: 'Highlight AI Governance Specifically',
-      icon: 'cpu',
-      type: 'rewrite',
-      before: 'Implemented AI-driven analytics and automation capabilities…',
-      after: 'Evaluated, selected, and implemented AI-driven analytics and automation tools across G&A workflows — authored the FURM AI Governance Framework (Fairness, Utility, Responsibility, Monitoring) adopted as the enterprise standard for auditable, responsible AI deployment across 15+ business units.',
-      impact: 'High'
-    },
-    {
-      title: 'Consumer Segment Coverage',
-      icon: 'shopping-bag',
-      type: 'rewrite',
-      before: '(no mention of consumer segment)',
-      after: 'Led platform strategy across enterprise and consumer-facing G&A systems at Google, governing applications that served internal business operations and external consumer product support functions at 100,000+ employee scale.',
-      impact: 'Medium'
-    },
-  ];
-
-  return `
-    <div class="opt-section">
-      <h3><i data-lucide="sparkles" width="16" height="16" style="color:var(--color-gold)"></i> Recommended Rewrites & Additions</h3>
-      ${suggestions.map((s,i) => `
-        <div class="opt-card">
-          <div class="opt-card-header">
-            <div>
-              <div style="display:flex;align-items:center;gap:var(--space-2);margin-bottom:var(--space-1)">
-                <i data-lucide="${s.icon}" width="14" height="14" style="color:var(--color-primary)"></i>
-                <div class="opt-card-title">${s.title}</div>
-              </div>
-              <span class="match-pill ${s.impact==='High'?'pill-missing':'pill-partial'}" style="font-size:11px">${s.impact} Impact</span>
-            </div>
-          </div>
-          ${s.type === 'keywords' ? `
-            <div class="opt-label">Add these missing JD keywords to your resume:</div>
-            <div class="keyword-tags">${s.keywords.map(k=>`<span class="keyword-tag tag-missing">${k}</span>`).join('')}</div>
-          ` : `
-            <div class="opt-label">Current</div>
-            <div class="opt-before">${s.before}</div>
-            <div class="opt-label">Optimized</div>
-            <div class="opt-after">${s.after}</div>
-            <button class="copy-btn" onclick="copyText(\`${s.after.replace(/`/g,'\`')}\`)">
-              <i data-lucide="copy" width="12" height="12"></i> Copy optimized text
-            </button>
-          `}
-        </div>
-      `).join('')}
-    </div>
-  `;
-}
-
-function generateGaps(result){
-  const { scored, missingKW } = result;
-  const missing = scored.filter(c => c.matchLevel === 'missing');
-  const partial = scored.filter(c => c.matchLevel === 'partial');
-  return `
-    <div class="opt-section">
-      <h3><i data-lucide="alert-triangle" width="16" height="16" style="color:var(--color-error)"></i> Missing Requirements (${missing.length})</h3>
-      <div class="gap-list">
-        ${missing.length === 0 ? '<p style="font-size:var(--text-sm);color:var(--color-text-muted)">No fully missing requirements — great work!</p>' :
-          missing.map(c => `
-          <div class="gap-item">
-            <i data-lucide="x-circle" width="20" height="20" style="color:var(--color-error);flex-shrink:0;margin-top:2px"></i>
-            <div class="gap-item-body">
-              <h4>${c.name}</h4>
-              <p>Not found in your resume. Add evidence of this capability to improve your match score by ${c.weight} points.</p>
-            </div>
-          </div>`).join('')}
-      </div>
-    </div>
-    <div class="section-divider"></div>
-    <div class="opt-section">
-      <h3><i data-lucide="alert-circle" width="16" height="16" style="color:var(--color-gold)"></i> Weak Coverage (${partial.length})</h3>
-      <div class="gap-list">
-        ${partial.map(c => `
-          <div class="gap-item">
-            <i data-lucide="minus-circle" width="20" height="20" style="color:var(--color-gold);flex-shrink:0;margin-top:2px"></i>
-            <div class="gap-item-body">
-              <h4>${c.name}</h4>
-              <p>Partially covered (${c.resumeHits}/${c.resumeTotal} signals found). Strengthen this section to recover ${c.weight - c.pts} additional points.</p>
-            </div>
-          </div>`).join('')}
-      </div>
-    </div>
-    ${missingKW.length > 0 ? `
-    <div class="section-divider"></div>
-    <div class="opt-section">
-      <h3><i data-lucide="search" width="16" height="16" style="color:var(--color-primary)"></i> Missing JD Keywords</h3>
-      <p style="font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-3)">ATS systems scan for exact keywords. Add these to your resume:</p>
-      <div class="keyword-tags">${missingKW.map(k=>`<span class="keyword-tag tag-missing">✗ ${k}</span>`).join('')}</div>
-    </div>` : ''}
-  `;
-}
-
-function generateChecklist(result){
-  const { score, scored, missingKW } = result;
-  const items = [
-    { text: 'Fix employment date overlap (if any roles are concurrent)', priority:'high', id:'c1' },
-    { text: 'Add missing JD keywords to summary and bullets', priority:'high', id:'c2' },
-    { text: 'Quantify AI/automation impact with specific metrics', priority:'high', id:'c3' },
-    { text: 'Add consumer segment experience to Google role', priority:'med', id:'c4' },
-    { text: 'Mention manufacturing/hardware industry in IBM role', priority:'med', id:'c5' },
-    { text: 'Tailor headline to match exact JD title language', priority:'high', id:'c6' },
-    { text: 'Add $ROI or % efficiency metrics to every role', priority:'high', id:'c7' },
-    { text: 'Reference SOX program ownership in summary', priority:'med', id:'c8' },
-    { text: 'Write cover letter citing WEF 4IR / Lighthouse alignment', priority:'high', id:'c9' },
-    { text: 'Verify location shows target city (Milpitas, CA)', priority:'low', id:'c10' },
-    { text: 'Run through ATS checker before submitting', priority:'med', id:'c11' },
-    { text: 'Add LinkedIn URL and ensure profile matches resume', priority:'low', id:'c12' },
-  ];
-  return `
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-4)">
-      <div style="font-size:var(--text-sm);color:var(--color-text-muted)">Click items to mark complete. Priority legend: 
-        <span class="check-priority priority-high">High</span>
-        <span class="check-priority priority-med">Med</span>
-        <span class="check-priority priority-low">Low</span>
-      </div>
-    </div>
-    <div class="checklist" id="checklist-items">
-      ${items.map(item => `
-        <div class="check-item" id="${item.id}" onclick="toggleCheck('${item.id}')">
-          <div class="check-box" id="box-${item.id}">
-            <i data-lucide="check" width="10" height="10" style="color:white;display:none" id="ck-${item.id}"></i>
-          </div>
-          <span class="check-label">${item.text}</span>
-          <span class="check-priority priority-${item.priority}">${item.priority.charAt(0).toUpperCase()+item.priority.slice(1)}</span>
-        </div>
-      `).join('')}
-    </div>
-  `;
-}
-
-function toggleCheck(id){
-  const item = document.getElementById(id);
-  const icon = document.getElementById('ck-'+id);
-  item.classList.toggle('checked');
-  icon.style.display = item.classList.contains('checked') ? 'block' : 'none';
-}
-
-// ── INIT ──
 lucide.createIcons();
 </script>
 </body>

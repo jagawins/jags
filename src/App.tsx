@@ -22,6 +22,7 @@ import MeasuringROI from "./pages/MeasuringROI";
 import AgenticAI from "./pages/AgenticAI";
 import AxivaBriefing from "./pages/AxivaBriefing";
 import IDPDecisionSystem from "./pages/IDPDecisionSystem";
+import ResumeMatchPro from "./pages/ResumeMatchPro";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();

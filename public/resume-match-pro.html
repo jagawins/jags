@@ -35,20 +35,9 @@
     <div class="head"><div class="title">Inputs & AI setup</div><button class="btn primary" onclick="runAnalysis()"><i data-lucide="sparkles"></i><span>Analyze with AI</span></button></div>
     <div class="body">
       <div class="field">
-        <div class="label">API Key</div>
-        <div class="api-box">
-          <input id="apiKey" class="api-input" type="password" placeholder="Paste OpenAI API key (sk-...) or OpenRouter key" />
-          <button class="btn" onclick="toggleKey()"><i data-lucide="eye"></i><span>Show</span></button>
-        </div>
-        <div class="row" style="margin-top:10px">
-          <select id="provider" class="api-input" style="max-width:190px">
-            <option value="openai">OpenAI</option>
-            <option value="openrouter">OpenRouter</option>
-          </select>
-          <input id="model" class="api-input" placeholder="Model: gpt-4o-mini or openai/gpt-4o-mini" value="gpt-4o-mini" />
-        </div>
-        <div class="hint" style="margin-top:8px">This version uses a real AI API on every run, so each JD/resume pair gets fresh analysis.</div>
+        <div class="hint">Live AI analysis runs securely on the server. Paste a JD and resume (or upload files), then click Analyze.</div>
       </div>
+
 
       <div class="field">
         <div class="label">Resume input</div>

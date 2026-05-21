@@ -81,7 +81,7 @@ Deno.serve(async (req) => {
       },
       body: JSON.stringify({
         model: "claude-sonnet-4-5",
-        max_tokens: 4096,
+        max_tokens: 8192,
         system: SYSTEM_PROMPT,
         messages: [
           { role: "user", content: `JOB DESCRIPTION:\n${jd}\n\nRESUME:\n${resume}` },

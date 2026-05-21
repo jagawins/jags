@@ -181,102 +181,33 @@ function showLoading(){
   ['score','criteria','optimize','gaps','checklist','raw'].forEach(t=>document.getElementById('pane-'+t).innerHTML=html);
 }
 
+const SUPABASE_URL = "https://orntvssopjityibouxzn.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ybnR2c3NvcGppdHlpYm91eHpuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwMDE1OTcsImV4cCI6MjA4NTU3NzU5N30.SzVbri6fI59C5G6ZC3gm63FK-6aXZd-u1qL_wvjBel0";
+
 async function runAnalysis(){
-  const apiKey = document.getElementById('apiKey').value.trim();
-  const provider = document.getElementById('provider').value;
-  const model = document.getElementById('model').value.trim();
   const jd = document.getElementById('jdText').value.trim();
   const resume = document.getElementById('resumeText').value.trim();
-  if(!apiKey) return alert('Add your API key first.');
   if(!jd) return alert('Paste or upload a job description.');
   if(!resume) return alert('Paste or upload a resume.');
   showLoading();
-
-  const schemaPrompt = `You are an expert ATS and executive resume evaluator. Analyze the provided Job Description and Resume and return ONLY valid JSON. No markdown, no commentary.
-JSON shape:
-{
-  "overall_score": number,
-  "overall_label": string,
-  "summary": string,
-  "strengths": [string],
-  "gaps": [{"title": string, "severity": "high"|"medium"|"low", "detail": string, "points_impact": number}],
-  "criteria_scores": [{"criterion": string, "weight": number, "score": number, "match_level": "full"|"partial"|"missing", "evidence": string, "improvement": string}],
-  "matched_keywords": [string],
-  "missing_keywords": [string],
-  "optimized_summary": string,
-  "optimized_headline": string,
-  "optimized_bullets": [{"section": string, "before": string, "after": string, "reason": string}],
-  "checklist": [{"task": string, "priority": "high"|"medium"|"low"}],
-  "cover_letter_hook": string
-}
-Rules:
-- Score 0 to 100.
-- Use the actual content provided; do not reuse previous analyses.
-- Make criteria specific to this JD, 10 to 16 criteria.
-- Optimized bullets must be concise, ATS-friendly, and truthful in tone.
-- If evidence is weak, say so.
-- Return strict JSON only.`;
-
-  const userContent = `JOB DESCRIPTION:\n${jd}\n\nRESUME:\n${resume}`;
-
   try{
-    let jsonText='';
-    if(provider==='openai') jsonText = await callOpenAI(apiKey, model || 'gpt-4o-mini', schemaPrompt, userContent);
-    else jsonText = await callOpenRouter(apiKey, model || 'openai/gpt-4o-mini', schemaPrompt, userContent);
-    const parsed = safeJsonParse(jsonText);
-    parsedResult = parsed;
-    renderAIResult(parsed);
+    const res = await fetch(`${SUPABASE_URL}/functions/v1/analyze-resume`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY},
+      body: JSON.stringify({ jd, resume })
+    });
+    const data = await res.json();
+    if(!res.ok) throw new Error(data.error || 'Analysis failed');
+    parsedResult = data;
+    renderAIResult(data);
   }catch(err){
     const msg = String(err.message || err);
     ['score','criteria','optimize','gaps','checklist','raw'].forEach(t=>document.getElementById('pane-'+t).innerHTML=`<div class="empty">Analysis failed: ${escapeHtml(msg)}</div>`);
   }
 }
 
-async function callOpenAI(key, model, systemPrompt, userContent){
-  const res = await fetch('https://api.openai.com/v1/chat/completions', {
-    method:'POST',
-    headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},
-    body: JSON.stringify({
-      model,
-      temperature:0.2,
-      response_format:{type:'json_object'},
-      messages:[
-        {role:'system', content:systemPrompt},
-        {role:'user', content:userContent}
-      ]
-    })
-  });
-  const data = await res.json();
-  if(!res.ok) throw new Error(data.error?.message || 'OpenAI request failed');
-  return data.choices?.[0]?.message?.content || '{}';
-}
-
-async function callOpenRouter(key, model, systemPrompt, userContent){
-  const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method:'POST',
-    headers:{'Content-Type':'application/json','Authorization':'Bearer '+key,'HTTP-Referer':'https://local-app','X-Title':'Resume AI Scanner'},
-    body: JSON.stringify({
-      model,
-      temperature:0.2,
-      response_format:{type:'json_object'},
-      messages:[
-        {role:'system', content:systemPrompt},
-        {role:'user', content:userContent}
-      ]
-    })
-  });
-  const data = await res.json();
-  if(!res.ok) throw new Error(data.error?.message || data.message || 'OpenRouter request failed');
-  return data.choices?.[0]?.message?.content || '{}';
-}
-
-function safeJsonParse(text){
-  try { return JSON.parse(text); } catch(e) {}
-  const match = text.match(/\{[\s\S]*\}/);
-  if(match) return JSON.parse(match[0]);
-  throw new Error('Model did not return valid JSON. Raw output: '+text.slice(0,500));
-}
 function escapeHtml(s){ return (s||'').replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m])); }
+
 
 function scoreClass(score){ return score>=90?'ok':score>=75?'warn':score>=60?'mid':'bad'; }
 function lvlPill(level){ return level==='full' ? 'ok' : level==='partial' ? 'warn' : 'bad'; }

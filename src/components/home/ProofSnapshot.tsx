@@ -10,13 +10,19 @@ const proofPoints = [
     description: "Production systems operating across regulated markets",
   },
   {
-    metric: "15+",
-    label: "Years Operating",
-    description: "Scaling $150M+ portfolios in regulated markets",
+    metric: "$154M",
+    label: "P&L Owned",
+    description: "Direct P&L accountability managing enterprise portfolios at IBM across regulated markets",
   },
 ];
 
 const executionNarratives = [
+  {
+    title: "C-Suite Reporting at Current Scale",
+    domain: "Stanford Medicine",
+    fact: "Reports directly to CMO and CIO with accountability for AI and digital health strategy — budget authority, vendor approval, and technology governance decisions escalated to institutional executive leadership.",
+    outcome: "Presents AI governance frameworks and platform adoption metrics to institutional governance committees at board-equivalent level, closing the loop between operational execution and executive accountability.",
+  },
   {
     title: "Ecosystem Scale",
     domain: "AI/Healthcare",
@@ -28,6 +34,12 @@ const executionNarratives = [
     domain: "Global Operations",
     fact: "Orchestrated global operations for 3 live platforms across disparate regulatory environments.",
     outcome: "Standardized deal governance across cross-functional teams, reducing contract-to-close time by 30 days.",
+  },
+  {
+    title: "Research Informatics Infrastructure",
+    domain: "Academic Health System",
+    fact: "Built governed data infrastructure at Stanford Medicine spanning Databricks implementation, Qualtrics clinical workflow integration, and enterprise security governance.",
+    outcome: "Established the FURM AI Governance Framework and accelerated research data access timelines — transforming unstructured clinical data into board-reportable intelligence.",
   },
 ];
 

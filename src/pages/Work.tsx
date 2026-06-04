@@ -4,18 +4,37 @@ const projects = [
   {
     name: "Stanford Medicine",
     outcome: "Scaling Institutional AI & Digital Health",
-    role: "Executive Leader, Enterprise Transformation (VP-Equivalent)",
+    role: "VP-Equivalent Executive — Enterprise AI, Research Informatics & Governance",
     bullets: [
+      "Reports directly to C-suite executive leadership (CMO, CIO) with accountability for AI and digital health strategy across the institution — including budget authority, vendor approval, and technology governance decisions escalated to executive administration",
+      "Presents AI governance frameworks, platform adoption metrics, and compliance posture to institutional leadership and governance committees at board-equivalent level",
       "Leading enterprise-scale portfolios spanning digital health, AI-enabled patient experience, and data/security governance within a premier academic health system",
-      "Aligning platform roadmaps and adoption across clinical, operational, and technology stakeholders under executive governance",
-      "Architecting governance frameworks for emerging technology deployment at institutional scale",
-      "Driving cross-functional alignment between clinical leadership, IT, and executive administration",
+      "Architecting research informatics infrastructure including Databricks data platform implementation, Qualtrics clinical workflow integration, and enterprise security governance programs",
+      "Developed the FURM AI Governance Framework — a board-reportable decision architecture for deploying AI in regulated clinical environments",
+      "Driving cross-functional alignment between clinical leadership, IT, research operations, and executive administration",
+      "Overhauled security approval processes to accelerate research data access timelines without compromising compliance posture",
     ],
     relevance:
-      "Leading enterprise-scale portfolios spanning digital health, AI-enabled patient experience, and data/security governance within a premier academic health system.",
+      "C-suite-reporting VP-equivalent with direct accountability to institutional executive leadership — budget authority, board-level governance reporting, and enterprise AI strategy ownership inside one of the world's premier academic health systems.",
     keyAchievement:
-      "Aligning platform roadmaps and adoption across clinical, operational, and technology stakeholders under executive governance.",
+      "Created the FURM AI Governance Framework — a board-reportable architecture presented to institutional governance committees and now governing AI deployment across clinical and operational domains at scale.",
     featured: true,
+  },
+  {
+    name: "IBM",
+    outcome: "Enterprise Scale",
+    role: "Executive Portfolio Leader — $154M P&L, Global Operations",
+    bullets: [
+      "Owned and managed a $154M revenue portfolio across global enterprise accounts in regulated industries",
+      "Led cross-functional teams spanning sales, delivery, and technical operations at enterprise scale",
+      "Recognized with IBM Eminence & Excellence Award (2012) and IBM Outstanding Contributor Award (2013) for exceptional commercial and operational leadership",
+      "Built the enterprise execution discipline — governance, accountability structures, and operating cadence — that informed all subsequent operator and executive roles",
+    ],
+    relevance:
+      "Demonstrated C-suite-adjacent P&L ownership and global operating accountability at one of the world's largest technology enterprises.",
+    keyAchievement:
+      "Managed a $154M portfolio with direct accountability for revenue, delivery, and governance — the foundational proof of executive-scale operating experience.",
+    featured: false,
   },
   {
     name: "Medtronic Diabetes",
@@ -140,9 +159,9 @@ const Work = () => {
   return (
     <Layout>
       <SEO 
-        title="Work & Experience | Jag Mariappan — Healthcare AI Executive"
-        description="Explore Jag Mariappan's career history: Stanford Medicine, global operations, AI systems, and enterprise governance spanning 25+ years."
-        keywords="Jag Mariappan work, Stanford Medicine, Medtronic, healthcare AI, enterprise transformation, Bairo Healthcare, VerityAxis, AXIVA, digital health portfolio"
+        title="Work & Experience | Jag Mariappan — VP Healthcare AI, Board Governance, Research Informatics"
+        description="VP-level executive record: $154M P&L at IBM, C-suite roles (CEO, COO, CPO), research informatics at Stanford Medicine, two exits. 25+ years in healthcare AI and enterprise governance."
+        keywords="Jag Mariappan work, VP healthcare AI, research informatics, Stanford Medicine, IBM P&L, Medtronic, healthcare executive, enterprise transformation, board governance, C-suite healthcare, Bairo Healthcare, AXIVA"
         url="https://jagmariappan.com/work"
       />
       <section className="section-spacing">

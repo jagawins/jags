@@ -1,5 +1,9 @@
 const capabilities = [
   {
+    title: "Board Governance",
+    description: "Translating operational complexity into board-level clarity — risk frameworks, fiduciary reporting, and governance structures that executives and directors can act on.",
+  },
+  {
     title: "Alliances",
     description: "Designing co-sell frameworks that turn technology partners into primary growth engines.",
   },
@@ -17,15 +21,15 @@ const PartnerOperations = () => {
   return (
     <section className="py-20 md:py-28 border-t border-border">
       <div className="container-narrow">
-        <p className="tag-outcome mb-6">Partner-Led Execution & Governance</p>
-        <p 
+        <p className="tag-outcome mb-6">Executive & Board-Level Capabilities</p>
+        <p
           className="body-large text-muted-foreground max-w-2xl mb-12 animate-fade-in"
           style={{ opacity: 0, animationDelay: '150ms', animationFillMode: 'forwards' }}
         >
-          I build the infrastructure required to scale through external ecosystems. This moves beyond "relationships" into structured operating facts.
+          C-suite and board-ready execution across governance, alliances, and operational infrastructure. This moves beyond "relationships" into structured operating facts.
         </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
           {capabilities.map((capability, index) => (
             <div 
               key={index}

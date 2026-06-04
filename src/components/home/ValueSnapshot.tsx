@@ -1,7 +1,7 @@
 const items = [
-  { title: "AI Capital Discipline", line: "Realized value over projected promise." },
-  { title: "Governance as Architecture", line: "Design before deployment." },
-  { title: "Institutional Adoption", line: "Usage as the primary KPI." },
+  { title: "Technical Execution", line: "Close enough to the architecture to earn engineering trust." },
+  { title: "Strategic Vision", line: "Multi-year AI platform thinking grounded in business outcomes." },
+  { title: "Organizational Adoption", line: "Change leadership that makes AI stick across the enterprise." },
   { title: "Research Informatics", line: "Data infrastructure built for clinical and operational truth." },
 ];
 

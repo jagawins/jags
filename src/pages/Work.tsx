@@ -41,15 +41,14 @@ const projects = [
     outcome: "Digitizing the 770G to 780G Platform",
     role: "Senior Director and Operator — Connected Health & Software-Defined Medical Devices",
     bullets: [
-      "Led transformation of Medtronic's diabetes management ecosystem by architecting and scaling digital capabilities that recaptured market competitiveness",
-      "Developed and deployed secure firmware over-the-air (FOTA) capability to transition users from legacy 770G to 780G without physical device exchanges",
+      "Evaluated and directed architecture tradeoffs for firmware over-the-air (FOTA) delivery — maintaining credibility with engineering teams while driving the product decision that eliminated physical device exchanges",
+      "Led transformation of Medtronic's diabetes management ecosystem by architecting and scaling digital capabilities that recaptured market competitiveness against Dexcom",
       "Scaled real-time caregiver connectivity via CarePartner App with secure data sharing, alerts, and scalable backend architecture supporting regulated data flows",
-      "Built digital governance architecture balancing product velocity with regulatory oversight, including cybersecurity-aligned development lifecycle and FDA compliance",
-      "Enabled a continuous software upgrade path — transforming a hardware-centric business model and increasing upgrade rates through digital scalability",
-      "Positioned Medtronic to regain competitive ground against Dexcom and other digital competitors",
+      "Designed cybersecurity-aligned development lifecycle and FDA compliance architecture — balancing product velocity with regulatory oversight at medical device scale",
+      "Enabled a continuous software upgrade path — transforming a hardware-centric business model into a software-defined delivery model",
     ],
     relevance:
-      "Demonstrated ability to digitize and scale a connected medical device platform within a regulated enterprise, shifting upgrade economics from hardware replacement to software-defined delivery.",
+      "Demonstrated technical depth to evaluate architecture tradeoffs and hold engineering accountable, while driving the strategic and regulatory decisions that transformed Medtronic's upgrade economics.",
     keyAchievement:
       "Deployed firmware over-the-air capability that eliminated physical device exchanges, extending platform lifespan and transforming Medtronic's upgrade economics.",
     featured: false,
@@ -101,13 +100,13 @@ const projects = [
     outcome: "Live",
     role: "Chief Operating Officer",
     bullets: [
-      "Operationalized AI platform serving real-time clinical decision support",
-      "Designed and implemented SOC 2 and HIPAA compliance programs",
-      "Built operational infrastructure supporting 99.9% uptime SLAs",
-      "Established vendor management and procurement frameworks",
+      "Evaluated AI model architecture tradeoffs and infrastructure design decisions, maintaining technical credibility with engineering while driving operational accountability",
+      "Designed and implemented SOC 2 and HIPAA compliance programs from the ground up — translating regulatory requirements into engineering constraints the team could execute against",
+      "Built operational infrastructure supporting 99.9% uptime SLAs for real-time clinical decision support — a reliability standard that required both technical judgment and vendor governance",
+      "Established procurement frameworks and vendor accountability structures that aligned external dependencies to internal engineering standards",
     ],
     relevance:
-      "Proven ability to operationalize complex AI systems while maintaining strict compliance and reliability standards.",
+      "COO role requiring genuine technical fluency — evaluating architecture, setting compliance infrastructure, and holding engineering to uptime and security standards in a regulated clinical AI environment.",
     featured: false,
   },
   {

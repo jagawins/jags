@@ -5,6 +5,7 @@ import AISearchBox from "@/components/home/AISearchBox";
 import FeaturedFrameworks from "@/components/home/FeaturedFrameworks";
 import ProofSnapshot from "@/components/home/ProofSnapshot";
 import PartnerOperations from "@/components/home/PartnerOperations";
+import IntegratorPositioning from "@/components/home/IntegratorPositioning";
 import Awards from "@/components/home/Awards";
 import RecentWork from "@/components/home/RecentWork";
 import HomeCTA from "@/components/home/HomeCTA";
@@ -25,6 +26,7 @@ const Index = () => {
       <AISearchBox />
       <FeaturedFrameworks />
       <ProofSnapshot />
+      <IntegratorPositioning />
       <PartnerOperations />
       <Awards />
       <RecentWork />

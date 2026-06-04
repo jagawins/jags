@@ -38,9 +38,9 @@ const About = () => {
   return (
     <Layout>
       <SEO 
-        title="About Jag Mariappan | Senior Director, Stanford Medicine"
-        description="Learn about Jag Mariappan — Senior Director at Stanford Medicine, healthcare AI strategist, enterprise operator, and HBS alum with global impact."
-        keywords="Jag Mariappan about, healthcare digital transformation leader, Stanford Medicine executive, Harvard Business School, healthcare AI biography, contact"
+        title="About Jag Mariappan | Senior Director and Vice President, Healthcare AI"
+        description="Jagadeesan Mariappan (Jag Mariappan) — Senior Director and Vice President at Stanford Medicine with $154M P&L ownership, C-suite roles (CEO, COO, CPO), research informatics expertise, and two successful exits. Harvard Business School alumnus."
+        keywords="Jag Mariappan, Jagadeesan Mariappan, Senior Director Vice President healthcare AI, Stanford Medicine executive, research informatics, board governance, Harvard Business School, healthcare AI biography"
         url="https://jagmariappan.com/about"
       />
       <section className="section-spacing">
@@ -61,6 +61,9 @@ const About = () => {
                 <h1 className="heading-display text-foreground mb-6">About</h1>
                 <p className="body-large text-muted-foreground max-w-2xl">
                   Executive operator building at the intersection of healthcare, AI, and governance.
+                </p>
+                <p className="text-sm text-muted-foreground mt-3">
+                  Also known as Jagadeesan Mariappan — Senior Director and Vice President, Healthcare AI & Enterprise Governance.
                 </p>
               </div>
             </div>

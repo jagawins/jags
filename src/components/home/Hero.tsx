@@ -14,19 +14,19 @@ const Hero = () => {
               className="heading-display text-foreground mb-6 animate-fade-in"
               style={{ opacity: 0, animationFillMode: 'forwards' }}
             >
-              Senior Director and Institutional Operator Architecting AI Capital, Governance, and Scale
+              Senior Director and Vice President | Healthcare AI, Board Governance, and Enterprise Scale
             </h1>
             <p 
               className="body-large text-muted-foreground max-w-2xl mb-4 animate-fade-in"
               style={{ opacity: 0, animationDelay: '150ms', animationFillMode: 'forwards' }}
             >
-              Designing and deploying AI systems that survive regulatory scrutiny, align with capital discipline, and scale across complex healthcare enterprises.
+              Senior Director and Vice President with $154M P&L ownership, two successful exits, and C-suite roles across healthcare AI, research informatics, and regulated enterprise systems.
             </p>
             <p 
               className="text-base text-muted-foreground max-w-2xl mb-6 italic animate-fade-in"
               style={{ opacity: 0, animationDelay: '200ms', animationFillMode: 'forwards' }}
             >
-              From funding decisions to governance architecture to real-world adoption — I build AI that compounds inside regulated systems.
+              CEO. COO. CPO. Founder. Board Advisor. Each role rooted in the same discipline: building AI systems that survive capital scrutiny, regulatory pressure, and institutional scale.
             </p>
 
             {/* Visual flow diagram */}
@@ -80,7 +80,7 @@ const Hero = () => {
             <div className="relative w-44 h-44 md:w-52 md:h-52 lg:w-56 lg:h-56 mx-auto lg:mx-0">
               <img
                 src={jagHeadshot}
-                alt="Jag Mariappan, Senior Director Enterprise Operations at Stanford Medicine"
+                alt="Jag Mariappan, Senior Director and Vice President, Healthcare AI and Board Governance"
                 className="w-full h-full object-cover object-top rounded-full border-2 border-border"
               />
             </div>

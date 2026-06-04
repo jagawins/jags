@@ -9,14 +9,16 @@ import Awards from "@/components/home/Awards";
 import RecentWork from "@/components/home/RecentWork";
 import HomeCTA from "@/components/home/HomeCTA";
 import SEO from "@/components/SEO";
+import PersonSchema from "@/components/PersonSchema";
 
 const Index = () => {
   return (
     <Layout>
-      <SEO 
-        title="Jag Mariappan | Healthcare AI & Transformation"
-        description="Senior Director at Stanford Medicine. 25+ years leading healthcare operations, AI governance, and enterprise transformation. Advisor. Speaker."
-        keywords="Jag Mariappan, healthcare AI governance, AI capital allocation, governance architecture, institutional adoption, Stanford Medicine, enterprise transformation, digital health"
+      <PersonSchema />
+      <SEO
+        title="Jag Mariappan | Senior Director and Vice President, Healthcare AI & Board Governance"
+        description="Senior Director and Vice President with $154M P&L ownership, C-suite roles (CEO, COO, CPO), and board advisory experience across healthcare AI, research informatics, and enterprise governance. Stanford Medicine. Harvard Business School."
+        keywords="Jag Mariappan, Senior Director Vice President healthcare AI, Vice President healthcare technology, Chief AI Officer, board advisor healthcare, research informatics, AI governance, healthcare executive, enterprise transformation, Stanford Medicine, C-suite healthcare, digital health executive"
       />
       <Hero />
       <ValueSnapshot />

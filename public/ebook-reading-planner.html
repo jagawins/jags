@@ -145,8 +145,13 @@
             </div>
           </div>
           <div style="margin-top:1rem;">
-            <label for="ebookText">Paste ebook text</label>
-            <textarea id="ebookText" placeholder="Paste a table of contents, a chapter, or a chunk of the ebook here..."></textarea>
+            <label for="ebookFile">Upload ebook file</label>
+            <input id="ebookFile" type="file" accept=".pdf,.epub,application/pdf,application/epub+zip" />
+            <div class="tiny" id="fileStatus">Upload a PDF or EPUB to auto-fill the text field, or paste text manually.</div>
+          </div>
+          <div style="margin-top:1rem;">
+            <label for="ebookText">Extracted or pasted ebook text</label>
+            <textarea id="ebookText" placeholder="Upload a PDF or EPUB, or paste a table of contents, chapter, or excerpt here..."></textarea>
             <div class="tiny">Tip: For a long ebook, start with the table of contents and first chapter.</div>
           </div>
           <div class="actions">

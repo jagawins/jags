@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ebook Reading Planner</title>
+  <title>Ebook Reading Planner — AI-Enhanced</title>
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs" type="module"></script>
   <script src="https://cdn.jsdelivr.net/npm/epubjs/dist/epub.min.js"></script>
@@ -14,55 +14,95 @@
       --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
       --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
       --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
-      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
-      --color-bg: #f7f6f2; --color-surface: #f9f8f5; --color-surface-2: #fbfbf9; --color-surface-offset: #edeae5; --color-border: #d4d1ca; --color-text: #28251d; --color-text-muted: #6f6d67; --color-text-faint: #95928d; --color-text-inverse: #f9f8f4; --color-primary: #01696f; --color-primary-hover: #0c4e54; --color-primary-highlight: #cedcd8; --color-warning: #964219; --color-error: #a12c7b; --shadow-sm: 0 1px 2px rgba(30,27,20,.06); --shadow-md: 0 6px 18px rgba(30,27,20,.08); --radius-sm:.375rem; --radius-md:.625rem; --radius-lg:1rem; --radius-xl:1.25rem; --font-body:'Satoshi', sans-serif;
+      --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;
+      --color-bg:#f7f6f2;--color-surface:#f9f8f5;--color-surface-2:#fbfbf9;--color-surface-offset:#edeae5;--color-border:#d4d1ca;--color-text:#28251d;--color-text-muted:#6f6d67;--color-text-faint:#95928d;--color-text-inverse:#f9f8f4;--color-primary:#01696f;--color-primary-hover:#0c4e54;--color-primary-highlight:#cedcd8;--color-ai:#5b3fd8;--color-ai-hover:#4530a8;--color-ai-highlight:#ede9fb;--color-warning:#964219;--color-error:#a12c7b;--shadow-sm:0 1px 2px rgba(30,27,20,.06);--shadow-md:0 6px 18px rgba(30,27,20,.08);--radius-sm:.375rem;--radius-md:.625rem;--radius-lg:1rem;--radius-xl:1.25rem;--font-body:'Satoshi',sans-serif;
     }
     [data-theme="dark"] {
-      --color-bg:#171614; --color-surface:#1c1b19; --color-surface-2:#201f1d; --color-surface-offset:#22211f; --color-border:#393836; --color-text:#e4e1db; --color-text-muted:#b0aba1; --color-text-faint:#817d75; --color-text-inverse:#171614; --color-primary:#4f98a3; --color-primary-hover:#227f8b; --color-primary-highlight:#2f3b3d; --color-warning:#c77b53; --color-error:#d163a7; --shadow-sm:0 1px 2px rgba(0,0,0,.25); --shadow-md:0 8px 24px rgba(0,0,0,.35);
+      --color-bg:#171614;--color-surface:#1c1b19;--color-surface-2:#201f1d;--color-surface-offset:#22211f;--color-border:#393836;--color-text:#e4e1db;--color-text-muted:#b0aba1;--color-text-faint:#817d75;--color-text-inverse:#171614;--color-primary:#4f98a3;--color-primary-hover:#227f8b;--color-primary-highlight:#2f3b3d;--color-ai:#9b85f5;--color-ai-hover:#7c6ad4;--color-ai-highlight:#2a2550;--color-warning:#c77b53;--color-error:#d163a7;--shadow-sm:0 1px 2px rgba(0,0,0,.25);--shadow-md:0 8px 24px rgba(0,0,0,.35);
     }
-    * { box-sizing: border-box; }
-    html, body { margin:0; min-height:100%; }
-    body { font-family:var(--font-body); font-size:var(--text-base); color:var(--color-text); background:linear-gradient(180deg,var(--color-bg),var(--color-surface)); line-height:1.55; }
-    button, textarea, input, select { font:inherit; }
-    .app { max-width:1200px; margin:0 auto; padding:var(--space-6); }
-    .topbar { display:flex; justify-content:space-between; align-items:center; gap:var(--space-4); margin-bottom:var(--space-6); }
-    .brand { display:flex; gap:var(--space-3); align-items:center; }
-    .logo { width:42px; height:42px; border-radius:12px; background:var(--color-primary); color:var(--color-text-inverse); display:grid; place-items:center; box-shadow:var(--shadow-md); }
-    .brand h1 { font-size:var(--text-xl); line-height:1.05; margin:0; }
-    .brand p { margin:0; color:var(--color-text-muted); font-size:var(--text-sm); }
-    .theme-toggle { min-width:44px; min-height:44px; border:1px solid color-mix(in srgb, var(--color-text) 12%, transparent); border-radius:999px; background:var(--color-surface-2); color:var(--color-text); cursor:pointer; }
-    .hero { display:grid; grid-template-columns:1.25fr .9fr; gap:var(--space-6); margin-bottom:var(--space-6); }
-    .panel { background:color-mix(in srgb, var(--color-surface) 92%, transparent); border:1px solid color-mix(in srgb, var(--color-text) 10%, transparent); border-radius:var(--radius-xl); box-shadow:var(--shadow-sm); }
-    .hero-card { padding:var(--space-6); }
-    .hero-card h2 { font-size:var(--text-xl); margin:0 0 var(--space-3); line-height:1.1; }
-    .hero-card p { color:var(--color-text-muted); max-width:62ch; }
-    .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-3); margin-top:var(--space-5); }
-    .stat { padding:var(--space-4); border-radius:var(--radius-lg); background:var(--color-surface-2); border:1px solid color-mix(in srgb, var(--color-text) 8%, transparent); }
-    .stat strong { display:block; font-size:var(--text-lg); }
-    .stat span { color:var(--color-text-muted); font-size:var(--text-sm); }
-    .quick-guide { padding:var(--space-6); }
-    .quick-guide h3, .section-title { margin:0 0 var(--space-4); font-size:var(--text-lg); }
-    .quick-guide ol { margin:0; padding-left:1.25rem; color:var(--color-text-muted); }
-    .layout { display:grid; grid-template-columns:1.25fr .9fr; gap:var(--space-6); }
-    .workspace, .sidebar { display:grid; gap:var(--space-6); }
-    .card { padding:var(--space-5); }
-    label { display:block; font-size:var(--text-sm); font-weight:700; margin-bottom:var(--space-2); }
-    textarea, input, select { width:100%; border:1px solid var(--color-border); background:var(--color-surface-2); color:var(--color-text); border-radius:var(--radius-md); padding:0.9rem 1rem; }
-    textarea { min-height:260px; resize:vertical; }
-    .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:var(--space-4); }
-    .actions { display:flex; flex-wrap:wrap; gap:var(--space-3); margin-top:var(--space-4); }
-    .btn { min-height:44px; padding:0.8rem 1rem; border-radius:999px; border:1px solid transparent; cursor:pointer; }
-    .btn-primary { background:var(--color-primary); color:var(--color-text-inverse); }
-    .btn-primary:hover { background:var(--color-primary-hover); }
-    .btn-secondary { background:var(--color-surface-2); color:var(--color-text); border-color:color-mix(in srgb, var(--color-text) 12%, transparent); }
-    .output { white-space:pre-wrap; background:var(--color-surface-2); border:1px solid color-mix(in srgb, var(--color-text) 8%, transparent); border-radius:var(--radius-lg); padding:var(--space-5); min-height:220px; }
-    .list { display:grid; gap:var(--space-3); }
-    .list-item { padding:var(--space-4); border-radius:var(--radius-lg); background:var(--color-surface-2); border:1px solid color-mix(in srgb, var(--color-text) 8%, transparent); }
-    .list-item strong { display:block; margin-bottom:var(--space-1); }
-    .muted { color:var(--color-text-muted); }
-    .tiny { font-size:var(--text-xs); color:var(--color-text-faint); }
-    .badge { display:inline-flex; align-items:center; gap:.35rem; padding:.35rem .7rem; border-radius:999px; background:var(--color-primary-highlight); color:var(--color-primary); font-size:var(--text-xs); font-weight:700; }
-    @media (max-width: 920px){ .hero, .layout, .grid-2, .stats { grid-template-columns:1fr; } .app { padding:var(--space-4);} }
+    *{box-sizing:border-box;}
+    html,body{margin:0;min-height:100%;}
+    body{font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:linear-gradient(180deg,var(--color-bg),var(--color-surface));line-height:1.55;}
+    button,textarea,input,select{font:inherit;}
+    .app{max-width:1200px;margin:0 auto;padding:var(--space-6);}
+    .topbar{display:flex;justify-content:space-between;align-items:center;gap:var(--space-4);margin-bottom:var(--space-6);}
+    .brand{display:flex;gap:var(--space-3);align-items:center;}
+    .logo{width:42px;height:42px;border-radius:12px;background:var(--color-primary);color:var(--color-text-inverse);display:grid;place-items:center;box-shadow:var(--shadow-md);}
+    .brand h1{font-size:var(--text-xl);line-height:1.05;margin:0;}
+    .brand p{margin:0;color:var(--color-text-muted);font-size:var(--text-sm);}
+    .topbar-right{display:flex;align-items:center;gap:var(--space-3);}
+    .theme-toggle{min-width:44px;min-height:44px;border:1px solid color-mix(in srgb,var(--color-text) 12%,transparent);border-radius:999px;background:var(--color-surface-2);color:var(--color-text);cursor:pointer;}
+    .ai-mode-badge{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .9rem;border-radius:999px;font-size:var(--text-xs);font-weight:700;border:1.5px solid;cursor:pointer;transition:background .15s;}
+    .ai-mode-badge.on{background:var(--color-ai-highlight);color:var(--color-ai);border-color:var(--color-ai);}
+    .ai-mode-badge.off{background:var(--color-surface-2);color:var(--color-text-muted);border-color:var(--color-border);}
+    .hero{display:grid;grid-template-columns:1.25fr .9fr;gap:var(--space-6);margin-bottom:var(--space-6);}
+    .panel{background:color-mix(in srgb,var(--color-surface) 92%,transparent);border:1px solid color-mix(in srgb,var(--color-text) 10%,transparent);border-radius:var(--radius-xl);box-shadow:var(--shadow-sm);}
+    .panel.ai-active{border-color:color-mix(in srgb,var(--color-ai) 35%,transparent);}
+    .hero-card{padding:var(--space-6);}
+    .hero-card h2{font-size:var(--text-xl);margin:0 0 var(--space-3);line-height:1.1;}
+    .hero-card p{color:var(--color-text-muted);max-width:62ch;}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3);margin-top:var(--space-5);}
+    .stat{padding:var(--space-4);border-radius:var(--radius-lg);background:var(--color-surface-2);border:1px solid color-mix(in srgb,var(--color-text) 8%,transparent);}
+    .stat strong{display:block;font-size:var(--text-lg);}
+    .stat span{color:var(--color-text-muted);font-size:var(--text-sm);}
+    .quick-guide{padding:var(--space-6);}
+    .quick-guide h3,.section-title{margin:0 0 var(--space-4);font-size:var(--text-lg);}
+    .quick-guide ol{margin:0;padding-left:1.25rem;color:var(--color-text-muted);}
+    /* AI Settings Panel */
+    .ai-settings{margin-bottom:var(--space-6);padding:var(--space-5);display:none;}
+    .ai-settings.visible{display:block;}
+    .ai-settings h3{margin:0 0 var(--space-3);font-size:var(--text-base);}
+    .key-row{display:flex;gap:var(--space-3);align-items:flex-end;}
+    .key-row input{flex:1;}
+    .key-hint{font-size:var(--text-xs);color:var(--color-text-faint);margin-top:var(--space-2);}
+    .layout{display:grid;grid-template-columns:1.25fr .9fr;gap:var(--space-6);}
+    .workspace,.sidebar{display:grid;gap:var(--space-6);}
+    .card{padding:var(--space-5);}
+    label{display:block;font-size:var(--text-sm);font-weight:700;margin-bottom:var(--space-2);}
+    textarea,input,select{width:100%;border:1px solid var(--color-border);background:var(--color-surface-2);color:var(--color-text);border-radius:var(--radius-md);padding:.9rem 1rem;}
+    textarea{min-height:260px;resize:vertical;}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);}
+    .actions{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-4);}
+    .btn{min-height:44px;padding:.8rem 1rem;border-radius:999px;border:1px solid transparent;cursor:pointer;font-weight:600;transition:background .15s,opacity .15s;}
+    .btn:disabled{opacity:.45;cursor:not-allowed;}
+    .btn-primary{background:var(--color-primary);color:var(--color-text-inverse);}
+    .btn-primary:hover:not(:disabled){background:var(--color-primary-hover);}
+    .btn-ai{background:var(--color-ai);color:#fff;}
+    .btn-ai:hover:not(:disabled){background:var(--color-ai-hover);}
+    .btn-secondary{background:var(--color-surface-2);color:var(--color-text);border-color:color-mix(in srgb,var(--color-text) 12%,transparent);}
+    .output{white-space:pre-wrap;background:var(--color-surface-2);border:1px solid color-mix(in srgb,var(--color-text) 8%,transparent);border-radius:var(--radius-lg);padding:var(--space-5);min-height:220px;}
+    .output.ai-output{border-color:color-mix(in srgb,var(--color-ai) 25%,transparent);background:color-mix(in srgb,var(--color-ai-highlight) 40%,var(--color-surface-2));}
+    .output.streaming{animation:pulse 1.5s infinite;}
+    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.65;}}
+    .list{display:grid;gap:var(--space-3);}
+    .list-item{padding:var(--space-4);border-radius:var(--radius-lg);background:var(--color-surface-2);border:1px solid color-mix(in srgb,var(--color-text) 8%,transparent);}
+    .list-item strong{display:block;margin-bottom:var(--space-1);}
+    .muted{color:var(--color-text-muted);}
+    .tiny{font-size:var(--text-xs);color:var(--color-text-faint);}
+    .badge{display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .7rem;border-radius:999px;background:var(--color-primary-highlight);color:var(--color-primary);font-size:var(--text-xs);font-weight:700;}
+    .badge.ai{background:var(--color-ai-highlight);color:var(--color-ai);}
+    .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-4);}
+    .section-header h3{margin:0;font-size:var(--text-lg);}
+    /* Chat */
+    .chat-container{display:flex;flex-direction:column;gap:var(--space-3);min-height:180px;max-height:340px;overflow-y:auto;background:var(--color-surface-2);border:1px solid color-mix(in srgb,var(--color-text) 8%,transparent);border-radius:var(--radius-lg);padding:var(--space-4);margin-bottom:var(--space-3);}
+    .chat-msg{padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);font-size:var(--text-sm);line-height:1.5;max-width:90%;}
+    .chat-msg.user{background:var(--color-primary-highlight);color:var(--color-primary);align-self:flex-end;font-weight:600;}
+    .chat-msg.ai{background:var(--color-ai-highlight);color:var(--color-text);border:1px solid color-mix(in srgb,var(--color-ai) 20%,transparent);}
+    .chat-msg.system{color:var(--color-text-faint);font-style:italic;font-size:var(--text-xs);align-self:center;}
+    .chat-input-row{display:flex;gap:var(--space-2);}
+    .chat-input-row input{flex:1;}
+    /* Flashcards */
+    .flashcard-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3);}
+    .flashcard{padding:var(--space-4);border-radius:var(--radius-lg);background:var(--color-ai-highlight);border:1px solid color-mix(in srgb,var(--color-ai) 20%,transparent);cursor:pointer;transition:transform .15s;}
+    .flashcard:hover{transform:translateY(-2px);}
+    .flashcard .fc-front{font-weight:700;font-size:var(--text-sm);color:var(--color-ai);margin-bottom:var(--space-2);}
+    .flashcard .fc-back{font-size:var(--text-sm);color:var(--color-text-muted);display:none;}
+    .flashcard.flipped .fc-back{display:block;}
+    .flashcard.flipped .fc-front{color:var(--color-text);}
+    .flashcard .fc-hint{font-size:var(--text-xs);color:var(--color-text-faint);margin-top:var(--space-2);}
+    /* Full-width AI section */
+    .ai-full{margin-top:var(--space-6);}
+    @media(max-width:920px){.hero,.layout,.grid-2,.stats,.flashcard-grid{grid-template-columns:1fr;}.app{padding:var(--space-4);}}
   </style>
 </head>
 <body>
@@ -78,30 +118,50 @@
         </div>
         <div>
           <h1>Ebook Reading Planner</h1>
-          <p>Paste any ebook chunk, get a repeatable 20-minute understanding routine.</p>
+          <p>Paste any ebook chunk — get a repeatable reading routine, AI summary, and flashcards.</p>
         </div>
       </div>
-      <button class="theme-toggle" data-theme-toggle aria-label="Switch theme">◐</button>
+      <div class="topbar-right">
+        <button class="ai-mode-badge off" id="aiToggle" aria-label="Toggle AI mode">✦ AI Mode: Off</button>
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch theme">◐</button>
+      </div>
     </header>
+
+    <!-- AI Settings Panel -->
+    <div class="panel ai-settings" id="aiSettings">
+      <h3>⚙ AI Setup — Claude API Key</h3>
+      <p class="muted" style="font-size:var(--text-sm);margin:0 0 var(--space-3);">Your key is stored only in your browser (localStorage) and never sent anywhere except Anthropic's API directly.</p>
+      <div class="key-row">
+        <div style="flex:1;">
+          <label for="apiKey">Anthropic API Key</label>
+          <input id="apiKey" type="password" placeholder="sk-ant-..." autocomplete="off" />
+        </div>
+        <button class="btn btn-ai" id="saveKeyBtn">Save Key</button>
+        <button class="btn btn-secondary" id="clearKeyBtn">Clear</button>
+      </div>
+      <p class="key-hint">Get a key at console.anthropic.com → API Keys. The planner uses claude-haiku-4-5 (fast, low cost).</p>
+    </div>
 
     <section class="hero">
       <div class="panel hero-card">
-        <span class="badge">Reusable workflow</span>
-        <h2>Turn raw ebook text into a fast reading plan, chapter map, and skim strategy.</h2>
-        <p>This tool is built for business books, nonfiction, manuals, essays, and most structured ebooks. Paste a full chapter, a table of contents, or a chunk of text, then generate a plain-English roadmap before you actually read.</p>
+        <span class="badge" id="heroBadge">Local mode</span>
+        <h2>Turn raw ebook text into a fast reading plan, AI summary, and retention flashcards.</h2>
+        <p>Works on business books, nonfiction, manuals, and essays. Paste a chapter or TOC. Enable AI Mode for Claude-powered insights and Q&amp;A.</p>
         <div class="stats">
           <div class="stat"><strong>20 min</strong><span>Suggested first-pass routine</span></div>
-          <div class="stat"><strong>3 outputs</strong><span>Summary, routine, and key terms</span></div>
-          <div class="stat"><strong>Any chunk</strong><span>Works on TOCs, chapters, or excerpts</span></div>
+          <div class="stat"><strong>5 outputs</strong><span>Plan, summary, ideas, cues, flashcards</span></div>
+          <div class="stat"><strong>AI Q&amp;A</strong><span>Ask anything about the text</span></div>
         </div>
       </div>
       <aside class="panel quick-guide">
         <h3>How to use it</h3>
         <ol>
-          <li>Paste ebook text or the table of contents.</li>
-          <li>Set the book type and your goal.</li>
-          <li>Generate the reading plan.</li>
-          <li>Use the 20-minute routine before your full read.</li>
+          <li>Click <strong>AI Mode</strong> and enter your API key for full AI features.</li>
+          <li>Paste ebook text or upload a PDF / EPUB.</li>
+          <li>Set the book type and your reading goal.</li>
+          <li>Hit <strong>Generate plan</strong> — or <strong>Generate with AI</strong>.</li>
+          <li>Use the chat to ask questions about the text.</li>
+          <li>Study the flashcards for retention.</li>
         </ol>
       </aside>
     </section>
@@ -113,7 +173,7 @@
           <div class="grid-2">
             <div>
               <label for="bookTitle">Book or chapter title</label>
-              <input id="bookTitle" placeholder="Example: Good Strategy Bad Strategy - Chapter 1" />
+              <input id="bookTitle" placeholder="Example: Good Strategy Bad Strategy — Chapter 1" />
             </div>
             <div>
               <label for="bookType">Book type</label>
@@ -155,42 +215,88 @@
             <div class="tiny">Tip: For a long ebook, start with the table of contents and first chapter.</div>
           </div>
           <div class="actions">
-            <button class="btn btn-primary" id="generateBtn">Generate plan</button>
+            <button class="btn btn-ai" id="generateAiBtn" disabled title="Enable AI Mode first">✦ Generate with AI</button>
+            <button class="btn btn-primary" id="generateBtn">Generate (local)</button>
             <button class="btn btn-secondary" id="sampleBtn">Load sample</button>
             <button class="btn btn-secondary" id="clearBtn">Clear</button>
           </div>
         </div>
 
         <div class="panel card">
-          <h3 class="section-title">20-minute routine</h3>
+          <div class="section-header">
+            <h3>Reading routine</h3>
+            <span class="badge" id="routineBadge">Local</span>
+          </div>
           <div id="routineOutput" class="output muted">Your routine appears here.</div>
         </div>
 
         <div class="panel card">
-          <h3 class="section-title">Plain-English summary</h3>
+          <div class="section-header">
+            <h3>Summary</h3>
+            <span class="badge" id="summaryBadge">Local</span>
+          </div>
           <div id="summaryOutput" class="output muted">Your fast summary appears here.</div>
         </div>
       </main>
 
       <aside class="sidebar">
         <div class="panel card">
-          <h3 class="section-title">Key ideas</h3>
+          <div class="section-header">
+            <h3>Key ideas</h3>
+            <span class="badge" id="ideasBadge">Local</span>
+          </div>
           <div id="ideasOutput" class="list muted">
             <div class="list-item">Important ideas and repeated themes will appear here.</div>
           </div>
         </div>
 
         <div class="panel card">
-          <h3 class="section-title">Reading cues</h3>
+          <div class="section-header">
+            <h3>Reading cues</h3>
+            <span class="badge" id="cuesBadge">Local</span>
+          </div>
           <div id="cuesOutput" class="list muted">
             <div class="list-item">Signals like repeated words, names, frameworks, and likely important passages will appear here.</div>
           </div>
         </div>
       </aside>
     </section>
+
+    <!-- AI-only full-width sections -->
+    <div class="ai-full" id="aiSections" style="display:none;">
+
+      <!-- Flashcards -->
+      <div class="panel card" style="margin-bottom:var(--space-6);">
+        <div class="section-header">
+          <h3>✦ AI Flashcards <span class="badge ai">AI</span></h3>
+          <button class="btn btn-ai" id="flashcardBtn" style="min-height:36px;padding:.5rem .9rem;font-size:var(--text-sm);">Generate flashcards</button>
+        </div>
+        <p class="muted" style="font-size:var(--text-sm);margin:0 0 var(--space-4);">Click a card to reveal the answer. Tap again to flip back.</p>
+        <div id="flashcardGrid" class="flashcard-grid">
+          <div class="flashcard"><div class="fc-front">Generate a plan first to create flashcards.</div></div>
+        </div>
+      </div>
+
+      <!-- AI Chat -->
+      <div class="panel card">
+        <div class="section-header">
+          <h3>✦ Ask the AI <span class="badge ai">AI</span></h3>
+          <span class="tiny">Asks Claude questions about your pasted text</span>
+        </div>
+        <div class="chat-container" id="chatContainer">
+          <div class="chat-msg system">Generate a plan first, then ask anything about the book.</div>
+        </div>
+        <div class="chat-input-row">
+          <input id="chatInput" placeholder="What is the main argument? What should I focus on? Summarize chapter 2..." />
+          <button class="btn btn-ai" id="chatSendBtn">Ask</button>
+        </div>
+      </div>
+
+    </div>
   </div>
 
   <script>
+    // ─── Theme ───────────────────────────────────────────────────────────────
     const themeBtn = document.querySelector('[data-theme-toggle]');
     const root = document.documentElement;
     let currentTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -200,140 +306,199 @@
       root.setAttribute('data-theme', currentTheme);
     });
 
+    // ─── AI Mode State ────────────────────────────────────────────────────────
+    let aiEnabled = false;
+    let apiKey = localStorage.getItem('erp_claude_key') || '';
+    if (apiKey) document.getElementById('apiKey').value = apiKey;
+
+    const aiToggle = document.getElementById('aiToggle');
+    const aiSettings = document.getElementById('aiSettings');
+    const generateAiBtn = document.getElementById('generateAiBtn');
+    const aiSections = document.getElementById('aiSections');
+    const heroBadge = document.getElementById('heroBadge');
+
+    function setAiMode(on) {
+      aiEnabled = on && !!apiKey;
+      aiToggle.textContent = `✦ AI Mode: ${aiEnabled ? 'On' : 'Off'}`;
+      aiToggle.className = `ai-mode-badge ${aiEnabled ? 'on' : 'off'}`;
+      generateAiBtn.disabled = !aiEnabled;
+      aiSections.style.display = aiEnabled ? 'block' : 'none';
+      heroBadge.textContent = aiEnabled ? '✦ AI Mode active' : 'Local mode';
+      heroBadge.className = aiEnabled ? 'badge ai' : 'badge';
+      document.querySelectorAll('.panel').forEach(p => {
+        if (aiEnabled) p.classList.add('ai-active'); else p.classList.remove('ai-active');
+      });
+    }
+
+    aiToggle.addEventListener('click', () => {
+      if (!apiKey && !aiEnabled) {
+        aiSettings.classList.toggle('visible');
+      } else {
+        setAiMode(!aiEnabled);
+        aiSettings.classList.remove('visible');
+      }
+    });
+
+    document.getElementById('saveKeyBtn').addEventListener('click', () => {
+      apiKey = document.getElementById('apiKey').value.trim();
+      if (!apiKey) return;
+      localStorage.setItem('erp_claude_key', apiKey);
+      aiSettings.classList.remove('visible');
+      setAiMode(true);
+    });
+
+    document.getElementById('clearKeyBtn').addEventListener('click', () => {
+      apiKey = '';
+      localStorage.removeItem('erp_claude_key');
+      document.getElementById('apiKey').value = '';
+      setAiMode(false);
+    });
+
+    // ─── Claude API call ──────────────────────────────────────────────────────
+    async function callClaude(systemPrompt, userMessage, onChunk) {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'x-api-key': apiKey,
+          'anthropic-version': '2023-06-01',
+          'content-type': 'application/json',
+          'anthropic-dangerous-direct-browser-access': 'true',
+        },
+        body: JSON.stringify({
+          model: 'claude-haiku-4-5-20251001',
+          max_tokens: 1024,
+          stream: true,
+          system: systemPrompt,
+          messages: [{ role: 'user', content: userMessage }],
+        }),
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err?.error?.message || `API error ${res.status}`);
+      }
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let full = '';
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        const chunk = decoder.decode(value);
+        for (const line of chunk.split('\n')) {
+          if (!line.startsWith('data: ')) continue;
+          const data = line.slice(6).trim();
+          if (data === '[DONE]') break;
+          try {
+            const parsed = JSON.parse(data);
+            const text = parsed?.delta?.text || '';
+            if (text) { full += text; onChunk(full); }
+          } catch {}
+        }
+      }
+      return full;
+    }
+
+    // ─── Local JS Helpers ─────────────────────────────────────────────────────
     let pdfjsLib = null;
     import('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs').then(mod => {
       pdfjsLib = mod;
-      if (pdfjsLib?.GlobalWorkerOptions) {
-        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.worker.min.mjs';
-      }
+      if (pdfjsLib?.GlobalWorkerOptions) pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.worker.min.mjs';
     }).catch(() => {});
 
     const sampleText = `Table of Contents\n1. Why strategy matters\n2. Good strategy vs bad strategy\n3. Diagnosing the challenge\n4. Guiding policy\n5. Coherent action\n\nChapter 1\nA good strategy honestly identifies the challenge and concentrates effort on the most important actions. Bad strategy often avoids the real problem, uses vague goals, and mistakes ambition for strategy. The author argues that leaders need a clear diagnosis, a guiding policy, and coordinated actions that fit together.`;
 
     const stopWords = new Set(['the','and','for','that','with','this','from','have','into','your','about','they','them','their','were','been','being','when','what','where','which','while','there','would','could','should','then','than','because','after','before','also','just','very','more','most','some','such','only','much','many','over','under','between','within','without','into','onto','each','same','like','does','did','doing','done','will','shall','must','need','using','used','uses','across','through','chapter','book']);
 
-    const splitSentences = (text) => text
-      .replace(/\s+/g, ' ')
-      .match(/[^.!?]+[.!?]?/g)?.map(s => s.trim()).filter(Boolean) || [];
+    const splitSentences = t => t.replace(/\s+/g,' ').match(/[^.!?]+[.!?]?/g)?.map(s=>s.trim()).filter(Boolean)||[];
+    const splitParagraphs = t => t.split(/\n\s*\n|\n/).map(p=>p.trim()).filter(Boolean);
 
-    const splitParagraphs = (text) => text.split(/\n\s*\n|\n/).map(p => p.trim()).filter(Boolean);
-
-    function extractKeywords(text){
-      const words = (text.toLowerCase().match(/[a-z][a-z\-']{2,}/g) || []).filter(w => !stopWords.has(w));
+    function extractKeywords(text) {
+      const words = (text.toLowerCase().match(/[a-z][a-z\-']{2,}/g)||[]).filter(w=>!stopWords.has(w));
       const counts = {};
-      for (const word of words) counts[word] = (counts[word] || 0) + 1;
+      for (const w of words) counts[w] = (counts[w]||0)+1;
       return Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,8).map(([word,count])=>({word,count}));
     }
 
-    function topSentences(text, limit=3){
+    function topSentences(text, limit=3) {
       const sentences = splitSentences(text);
-      const keywords = extractKeywords(text).map(k => k.word);
-      const scored = sentences.map(sentence => {
-        const lower = sentence.toLowerCase();
-        const score = keywords.reduce((sum, keyword) => sum + (lower.includes(keyword) ? 1 : 0), 0) + (sentence.length > 70 ? 1 : 0);
-        return { sentence, score };
-      });
-      return scored.sort((a,b)=>b.score-a.score).slice(0,limit).map(x=>x.sentence);
+      const keywords = extractKeywords(text).map(k=>k.word);
+      return sentences.map(s => ({
+        sentence: s,
+        score: keywords.reduce((sum,kw) => sum+(s.toLowerCase().includes(kw)?1:0), 0) + (s.length>70?1:0)
+      })).sort((a,b)=>b.score-a.score).slice(0,limit).map(x=>x.sentence);
     }
 
-    function detectStructure(text){
-      const lines = text.split('\n').map(x => x.trim()).filter(Boolean);
-      const headingLike = lines.filter(line => /^([0-9]+[.)]|chapter|part|section)/i.test(line) || (line.length < 60 && /^[A-Z0-9\s:,-]+$/.test(line)));
-      return headingLike.slice(0,8);
+    function detectStructure(text) {
+      return text.split('\n').map(x=>x.trim()).filter(Boolean)
+        .filter(line => /^([0-9]+[.)]|chapter|part|section)/i.test(line)||(line.length<60&&/^[A-Z0-9\s:,-]+$/.test(line)))
+        .slice(0,8);
     }
 
-    function makeRoutine(minutes, type, goal, title, text){
+    function makeRoutine(minutes, type, goal, title, text) {
       const structure = detectStructure(text);
-      const stage2 = type === 'technical' ? 'scan examples, step names, definitions, and repeated process words' : type === 'fiction' ? 'scan scene shifts, characters, tension points, and repeated motives' : 'scan headings, repeated claims, examples, and conclusion-style lines';
-      const stage3 = goal === 'study' ? 'note 3-5 key ideas and one question per section' : goal === 'skim' ? 'mark only the argument spine and skip supporting detail on the first pass' : goal === 'review' ? 'compare this chunk with what you already remember and fill only the gaps' : 'identify what matters, what can wait, and what needs a slow reread later';
-
-      if (minutes === 15) return [
-        'Minute 1-2: Read the title and inspect the structure. Ask: what kind of chapter is this and what is it trying to do?',
-        `Minute 3-8: ${stage2}.`,
-        `Minute 9-12: ${stage3}.`,
-        'Minute 13-15: Write a 3-line recap: main point, supporting idea, what to read slowly.'
-      ];
-
-      if (minutes === 30) return [
-        'Minute 1-5: Preview the structure, chapter names, and any introductions or summaries.',
-        `Minute 6-16: ${stage2}. Capture repeated terms and likely anchor passages.`,
-        `Minute 17-24: ${stage3}.`,
-        'Minute 25-30: Read the most central section slowly, then write a short map of the whole chunk.'
-      ];
-
-      return [
-        'Minute 1-3: Preview the structure. Read the title, scan headings, and decide what the chapter is mainly trying to prove, teach, or show.',
-        `Minute 4-10: ${stage2}. Ignore perfection; aim for the argument or story spine.`,
-        `Minute 11-16: ${stage3}.`,
-        'Minute 17-20: Write a one-paragraph recap in your own words, then tag one section as high priority for the actual read.'
-      ].concat(structure.length ? [`Likely structure cues: ${structure.join(' | ')}`] : []);
+      const stage2 = type==='technical'?'scan examples, step names, definitions, and repeated process words':type==='fiction'?'scan scene shifts, characters, tension points, and repeated motives':'scan headings, repeated claims, examples, and conclusion-style lines';
+      const stage3 = goal==='study'?'note 3–5 key ideas and one question per section':goal==='skim'?'mark only the argument spine and skip supporting detail on the first pass':goal==='review'?'compare this chunk with what you already remember and fill only the gaps':'identify what matters, what can wait, and what needs a slow reread later';
+      if (minutes===15) return ['Minute 1–2: Read the title and inspect the structure. Ask: what kind of chapter is this and what is it trying to do?',`Minute 3–8: ${stage2}.`,`Minute 9–12: ${stage3}.`,'Minute 13–15: Write a 3-line recap: main point, supporting idea, what to read slowly.'];
+      if (minutes===30) return ['Minute 1–5: Preview the structure, chapter names, and any introductions or summaries.',`Minute 6–16: ${stage2}. Capture repeated terms and likely anchor passages.`,`Minute 17–24: ${stage3}.`,'Minute 25–30: Read the most central section slowly, then write a short map of the whole chunk.'];
+      return ['Minute 1–3: Preview the structure. Read the title, scan headings, and decide what the chapter is mainly trying to prove, teach, or show.',`Minute 4–10: ${stage2}. Ignore perfection; aim for the argument or story spine.`,`Minute 11–16: ${stage3}.`,'Minute 17–20: Write a one-paragraph recap in your own words, then tag one section as high priority for the actual read.'].concat(structure.length?[`Likely structure cues: ${structure.join(' | ')}`]:[]);
     }
 
-
-    async function extractPdfText(file){
+    // ─── File Upload ──────────────────────────────────────────────────────────
+    async function extractPdfText(file) {
       if (!pdfjsLib?.getDocument) throw new Error('PDF reader failed to load.');
       const buffer = await file.arrayBuffer();
-      const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
+      const pdf = await pdfjsLib.getDocument({data:buffer}).promise;
       const pages = [];
-      for (let i = 1; i <= pdf.numPages; i++) {
+      for (let i=1;i<=pdf.numPages;i++) {
         const page = await pdf.getPage(i);
         const content = await page.getTextContent();
-        const pageText = content.items.map(item => item.str).join(' ');
-        pages.push(pageText.trim());
+        pages.push(content.items.map(item=>item.str).join(' ').trim());
       }
       return pages.join('\n\n');
     }
 
-    async function extractEpubText(file){
+    async function extractEpubText(file) {
       if (typeof ePub === 'undefined') throw new Error('EPUB reader failed to load.');
       const buffer = await file.arrayBuffer();
       const book = ePub(buffer);
       await book.ready;
-      const spineItems = book.spine?.spineItems || [];
       const sections = [];
-      for (const item of spineItems.slice(0, 20)) {
+      for (const item of (book.spine?.spineItems||[]).slice(0,20)) {
         try {
-          const sectionText = await item.load(book.load.bind(book)).then(() => {
-            const doc = item.document;
-            const raw = doc?.body?.textContent || '';
+          const text = await item.load(book.load.bind(book)).then(()=>{
+            const raw = item.document?.body?.textContent||'';
             item.unload();
-            return raw.replace(/\s+/g, ' ').trim();
+            return raw.replace(/\s+/g,' ').trim();
           });
-          if (sectionText) sections.push(sectionText);
-        } catch (e) {}
+          if (text) sections.push(text);
+        } catch {}
       }
       return sections.join('\n\n');
     }
 
-    async function handleFileUpload(event){
+    async function handleFileUpload(event) {
       const file = event.target.files?.[0];
       const status = document.getElementById('fileStatus');
       if (!file) return;
       status.textContent = `Reading ${file.name}...`;
       try {
-        let extracted = '';
         const lower = file.name.toLowerCase();
-        if (lower.endsWith('.pdf') || file.type === 'application/pdf') {
-          extracted = await extractPdfText(file);
-        } else if (lower.endsWith('.epub') || file.type === 'application/epub+zip') {
-          extracted = await extractEpubText(file);
-        } else {
-          throw new Error('Unsupported file type. Please upload a PDF or EPUB.');
-        }
-
-        document.getElementById('ebookText').value = extracted.slice(0, 50000);
-        if (!document.getElementById('bookTitle').value.trim()) {
-          document.getElementById('bookTitle').value = file.name.replace(/\.(pdf|epub)$/i, '');
-        }
-        const truncated = extracted.length > 50000 ? ' Text was trimmed to the first 50,000 characters for speed.' : '';
-        status.textContent = `Loaded ${file.name}.${truncated}`;
-      } catch (error) {
-        status.textContent = error.message || 'Could not read that file.';
+        let extracted = lower.endsWith('.pdf')||file.type==='application/pdf'
+          ? await extractPdfText(file)
+          : await extractEpubText(file);
+        document.getElementById('ebookText').value = extracted.slice(0,50000);
+        if (!document.getElementById('bookTitle').value.trim())
+          document.getElementById('bookTitle').value = file.name.replace(/\.(pdf|epub)$/i,'');
+        status.textContent = `Loaded ${file.name}.${extracted.length>50000?' Text trimmed to 50,000 chars.':''}`;
+      } catch(e) {
+        status.textContent = e.message || 'Could not read that file.';
       }
     }
 
-    function generate(){
-      const title = document.getElementById('bookTitle').value.trim() || 'Untitled ebook chunk';
+    // ─── Local Generate ───────────────────────────────────────────────────────
+    function generateLocal() {
+      const title = document.getElementById('bookTitle').value.trim()||'Untitled';
       const type = document.getElementById('bookType').value;
       const goal = document.getElementById('goal').value;
       const minutes = Number(document.getElementById('timeBudget').value);
@@ -347,54 +512,225 @@
         return;
       }
 
-      const paragraphs = splitParagraphs(text);
       const keywords = extractKeywords(text);
       const top = topSentences(text, 4);
       const structure = detectStructure(text);
-      const approxWords = (text.match(/\b\w+\b/g) || []).length;
-      const readingLevel = approxWords > 2200 ? 'long chunk' : approxWords > 900 ? 'medium chunk' : 'short chunk';
+      const approxWords = (text.match(/\b\w+\b/g)||[]).length;
+      const readingLevel = approxWords>2200?'long chunk':approxWords>900?'medium chunk':'short chunk';
 
-      const routine = makeRoutine(minutes, type, goal, title, text).map((step, idx) => `${idx + 1}. ${step}`).join('\n\n');
-      document.getElementById('routineOutput').textContent = `Title: ${title}\nType: ${type}\nGoal: ${goal}\nLength: ${readingLevel} (${approxWords} words)\n\n${routine}`;
+      setBadge('routineBadge','Local');
+      setBadge('summaryBadge','Local');
+      setBadge('ideasBadge','Local');
+      setBadge('cuesBadge','Local');
+
+      const routine = makeRoutine(minutes,type,goal,title,text).map((s,i)=>`${i+1}. ${s}`).join('\n\n');
+      const el = document.getElementById('routineOutput');
+      el.textContent = `Title: ${title}\nType: ${type}\nGoal: ${goal}\nLength: ${readingLevel} (${approxWords} words)\n\n${routine}`;
+      el.classList.remove('ai-output');
 
       const summaryParts = [];
       summaryParts.push(`${title} appears to focus on ${keywords.slice(0,3).map(k=>k.word).join(', ')}.`);
       if (top[0]) summaryParts.push(`Main takeaway: ${top[0]}`);
       if (top[1]) summaryParts.push(`Supporting point: ${top[1]}`);
-      if (structure.length) summaryParts.push(`Visible structure: ${structure.slice(0,5).join(' -> ')}`);
-      summaryParts.push(`Best first-pass reading move: ${type === 'technical' ? 'understand the process and definitions before details.' : type === 'fiction' ? 'track who wants what, and where the tension shifts.' : 'identify the core claim, the examples, and the conclusion.'}`);
-      document.getElementById('summaryOutput').textContent = summaryParts.join('\n\n');
+      if (structure.length) summaryParts.push(`Visible structure: ${structure.slice(0,5).join(' → ')}`);
+      summaryParts.push(`Best first-pass move: ${type==='technical'?'understand the process and definitions before details.':type==='fiction'?'track who wants what, and where the tension shifts.':'identify the core claim, the examples, and the conclusion.'}`);
+      const sel = document.getElementById('summaryOutput');
+      sel.textContent = summaryParts.join('\n\n');
+      sel.classList.remove('ai-output');
 
-      const ideas = keywords.slice(0,6).map((item, index) => {
-        const emphasis = index < 3 ? 'Likely core idea' : 'Repeated supporting term';
-        return `<div class="list-item"><strong>${item.word}</strong><div class="muted">${emphasis}. Appears ${item.count} times in the pasted text.</div></div>`;
-      }).join('');
-      document.getElementById('ideasOutput').innerHTML = ideas || '<div class="list-item">No strong repeated terms found.</div>';
+      document.getElementById('ideasOutput').innerHTML = keywords.slice(0,6).map((item,i)=>`<div class="list-item"><strong>${item.word}</strong><div class="muted">${i<3?'Likely core idea':'Repeated supporting term'}. Appears ${item.count} times.</div></div>`).join('')||'<div class="list-item">No strong repeated terms found.</div>';
 
       const cueItems = [];
-      if (structure.length) cueItems.push({title:'Headings or section cues', text:structure.slice(0,6).join(' | ')});
-      cueItems.push({title:'Best lines to skim first', text:top.slice(0,3).join(' ')});
-      cueItems.push({title:'What to slow down on', text:type === 'technical' ? 'Definitions, numbered steps, commands, or example workflows.' : type === 'fiction' ? 'Scene turns, character goals, and emotionally loaded passages.' : 'Definitions, frameworks, and any paragraph that sounds like a conclusion or contrast.'});
-      cueItems.push({title:'What to skip on first pass', text:type === 'technical' ? 'Redundant screenshots, repeated examples, and edge cases.' : type === 'fiction' ? 'Minor description unless it changes plot or mood.' : 'Extended anecdotes that repeat the same point.'});
-      document.getElementById('cuesOutput').innerHTML = cueItems.map(item => `<div class="list-item"><strong>${item.title}</strong><div class="muted">${item.text}</div></div>`).join('');
+      if (structure.length) cueItems.push({title:'Headings / section cues',text:structure.slice(0,6).join(' | ')});
+      cueItems.push({title:'Best lines to skim first',text:top.slice(0,3).join(' ')});
+      cueItems.push({title:'What to slow down on',text:type==='technical'?'Definitions, numbered steps, commands, or example workflows.':type==='fiction'?'Scene turns, character goals, and emotionally loaded passages.':'Definitions, frameworks, and any paragraph that sounds like a conclusion or contrast.'});
+      cueItems.push({title:'What to skip on first pass',text:type==='technical'?'Redundant screenshots, repeated examples, and edge cases.':type==='fiction'?'Minor description unless it changes plot or mood.':'Extended anecdotes that repeat the same point.'});
+      document.getElementById('cuesOutput').innerHTML = cueItems.map(item=>`<div class="list-item"><strong>${item.title}</strong><div class="muted">${item.text}</div></div>`).join('');
+
+      lastGeneratedText = text;
+      lastTitle = title;
     }
 
-    document.getElementById('ebookFile').addEventListener('change', handleFileUpload);
-    document.getElementById('generateBtn').addEventListener('click', generate);
-    document.getElementById('sampleBtn').addEventListener('click', () => {
-      document.getElementById('bookTitle').value = 'Good Strategy Bad Strategy - sample';
-      document.getElementById('ebookText').value = sampleText;
-      generate();
+    // ─── AI Generate ──────────────────────────────────────────────────────────
+    let lastGeneratedText = '';
+    let lastTitle = '';
+
+    function setBadge(id, label, isAi = false) {
+      const el = document.getElementById(id);
+      el.textContent = isAi ? '✦ AI' : label;
+      el.className = isAi ? 'badge ai' : 'badge';
+    }
+
+    async function generateWithAI() {
+      const title = document.getElementById('bookTitle').value.trim() || 'Untitled';
+      const type = document.getElementById('bookType').value;
+      const goal = document.getElementById('goal').value;
+      const minutes = Number(document.getElementById('timeBudget').value);
+      const text = document.getElementById('ebookText').value.trim();
+
+      if (!text) { alert('Paste some ebook text first.'); return; }
+
+      lastGeneratedText = text;
+      lastTitle = title;
+
+      // First run local for instant structure/ideas
+      generateLocal();
+
+      const typeLabel = {nonfiction:'nonfiction/business',technical:'technical/instructional',memoir:'memoir/narrative nonfiction',fiction:'fiction'}[type];
+      const goalLabel = {understand:'understand before reading',skim:'skim for core argument',study:'study and retain',review:'review after reading'}[goal];
+      const systemPrompt = `You are an expert reading coach and book analyst. You help readers extract maximum value from text efficiently. Be concise, specific, and actionable. Format your response with clear section headers using markdown-style bold labels.`;
+
+      // AI Routine
+      const routineEl = document.getElementById('routineOutput');
+      routineEl.textContent = '✦ Generating AI reading routine...';
+      routineEl.classList.add('streaming','ai-output');
+      setBadge('routineBadge', '', true);
+
+      // AI Summary
+      const summaryEl = document.getElementById('summaryOutput');
+      summaryEl.textContent = '✦ AI summary generating after routine...';
+      summaryEl.classList.add('ai-output');
+      setBadge('summaryBadge', '', true);
+      setBadge('ideasBadge', '', true);
+      setBadge('cuesBadge', '', true);
+
+      try {
+        const textSnippet = text.slice(0, 6000);
+
+        await callClaude(systemPrompt,
+          `Book/chapter: "${title}" | Type: ${typeLabel} | Goal: ${goalLabel} | Time: ${minutes} minutes\n\nTEXT:\n${textSnippet}\n\nCreate a precise, time-stamped ${minutes}-minute reading routine tailored to this specific text. Include: what to look for in each phase, which specific sections to prioritize, and one "anchor sentence" from the text to orient the reader. Make it concrete and specific to this content, not generic advice.`,
+          (partial) => { routineEl.textContent = partial; }
+        );
+        routineEl.classList.remove('streaming');
+
+        await callClaude(systemPrompt,
+          `Book/chapter: "${title}" | Type: ${typeLabel}\n\nTEXT:\n${textSnippet}\n\nProvide:\n**Core Argument:** One sentence stating the central claim or story.\n**Key Insight:** The single most important idea a reader must not miss.\n**Supporting Evidence:** 2–3 specific examples or points from the text.\n**What to Watch For:** A pattern, framework, or recurring theme unique to this text.\n**First Read Priority:** Which section or passage to read most carefully, and why.`,
+          (partial) => { summaryEl.textContent = partial; }
+        );
+        summaryEl.classList.remove('streaming');
+
+        // AI Key Ideas
+        const ideasEl = document.getElementById('ideasOutput');
+        ideasEl.innerHTML = '<div class="list-item muted">✦ Extracting AI-powered key ideas...</div>';
+        const ideasText = await callClaude(systemPrompt,
+          `From this text: "${title}"\n\n${textSnippet}\n\nList exactly 5 key ideas or concepts. For each, give: a short bold title (3–5 words), one sentence explaining why it matters, and one direct quote or reference from the text. Format as JSON array: [{"title":"...","why":"...","ref":"..."}]`,
+          () => {}
+        );
+        try {
+          const ideas = JSON.parse(ideasText.match(/\[[\s\S]*\]/)?.[0] || '[]');
+          ideasEl.innerHTML = ideas.map(idea => `<div class="list-item"><strong>${idea.title}</strong><div class="muted">${idea.why}</div><div class="tiny" style="margin-top:4px;font-style:italic;">"${idea.ref}"</div></div>`).join('') || ideasEl.innerHTML;
+        } catch { /* keep existing */ }
+
+        // AI Cues
+        const cuesEl = document.getElementById('cuesOutput');
+        cuesEl.innerHTML = '<div class="list-item muted">✦ Generating AI reading cues...</div>';
+        const cuesText = await callClaude(systemPrompt,
+          `For this text: "${title}"\n\n${textSnippet}\n\nProvide 4 specific reading cues as JSON: [{"title":"...","text":"..."}]. Include: (1) what signals importance in this specific text, (2) where to slow down, (3) what to skim, (4) one "hidden gem" — something easy to miss but highly valuable. Be specific to this content.`,
+          () => {}
+        );
+        try {
+          const cues = JSON.parse(cuesText.match(/\[[\s\S]*\]/)?.[0] || '[]');
+          cuesEl.innerHTML = cues.map(c => `<div class="list-item"><strong>${c.title}</strong><div class="muted">${c.text}</div></div>`).join('') || cuesEl.innerHTML;
+        } catch { /* keep existing */ }
+
+        addChatMessage('system', `✦ Plan generated for "${title}". Ask me anything about this text.`);
+
+      } catch(e) {
+        routineEl.classList.remove('streaming');
+        alert(`AI error: ${e.message}`);
+      }
+    }
+
+    // ─── Flashcards ───────────────────────────────────────────────────────────
+    document.getElementById('flashcardBtn').addEventListener('click', async () => {
+      if (!lastGeneratedText) { alert('Generate a plan first.'); return; }
+      const grid = document.getElementById('flashcardGrid');
+      grid.innerHTML = '<div class="flashcard"><div class="fc-front">✦ Generating flashcards...</div></div>';
+
+      try {
+        const text = await callClaude(
+          'You are a spaced-repetition flashcard creator. Create high-quality, testable flashcards from book content.',
+          `From this text: "${lastTitle}"\n\n${lastGeneratedText.slice(0,5000)}\n\nCreate 6 flashcards as JSON: [{"front":"question or concept","back":"answer or explanation","hint":"one-word category"}]. Make questions specific, testable, and valuable for retention. Not trivial facts — test understanding.`,
+          () => {}
+        );
+        const cards = JSON.parse(text.match(/\[[\s\S]*\]/)?.[0] || '[]');
+        if (!cards.length) throw new Error('No cards returned');
+        grid.innerHTML = cards.map(card => `
+          <div class="flashcard" onclick="this.classList.toggle('flipped')">
+            <div class="fc-front">Q: ${card.front}</div>
+            <div class="fc-back">${card.back}</div>
+            <div class="fc-hint">${card.hint} · click to flip</div>
+          </div>
+        `).join('');
+      } catch(e) {
+        grid.innerHTML = `<div class="flashcard"><div class="fc-front">Error: ${e.message}</div></div>`;
+      }
     });
+
+    // ─── Chat ─────────────────────────────────────────────────────────────────
+    function addChatMessage(role, text) {
+      const container = document.getElementById('chatContainer');
+      const div = document.createElement('div');
+      div.className = `chat-msg ${role}`;
+      div.textContent = text;
+      container.appendChild(div);
+      container.scrollTop = container.scrollHeight;
+      return div;
+    }
+
+    async function sendChat() {
+      const input = document.getElementById('chatInput');
+      const question = input.value.trim();
+      if (!question) return;
+      if (!lastGeneratedText) { addChatMessage('system', 'Generate a plan first so I have text context.'); return; }
+      input.value = '';
+
+      addChatMessage('user', question);
+      const aiMsg = addChatMessage('ai', '✦ Thinking...');
+
+      try {
+        await callClaude(
+          `You are an expert reading coach. You have read the following text and help readers understand it deeply.\n\nTEXT: ${lastGeneratedText.slice(0,6000)}`,
+          question,
+          (partial) => { aiMsg.textContent = partial; document.getElementById('chatContainer').scrollTop = 9999; }
+        );
+      } catch(e) {
+        aiMsg.textContent = `Error: ${e.message}`;
+      }
+    }
+
+    document.getElementById('chatSendBtn').addEventListener('click', sendChat);
+    document.getElementById('chatInput').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); } });
+
+    // ─── Wire up buttons ──────────────────────────────────────────────────────
+    document.getElementById('ebookFile').addEventListener('change', handleFileUpload);
+    document.getElementById('generateBtn').addEventListener('click', generateLocal);
+    document.getElementById('generateAiBtn').addEventListener('click', generateWithAI);
+
+    document.getElementById('sampleBtn').addEventListener('click', () => {
+      document.getElementById('bookTitle').value = 'Good Strategy Bad Strategy — sample';
+      document.getElementById('ebookText').value = sampleText;
+      if (aiEnabled) generateWithAI(); else generateLocal();
+    });
+
     document.getElementById('clearBtn').addEventListener('click', () => {
       document.getElementById('bookTitle').value = '';
       document.getElementById('ebookText').value = '';
       document.getElementById('fileStatus').textContent = 'Upload a PDF or EPUB to auto-fill the text field, or paste text manually.';
       document.getElementById('routineOutput').textContent = 'Your routine appears here.';
+      document.getElementById('routineOutput').classList.remove('ai-output');
       document.getElementById('summaryOutput').textContent = 'Your fast summary appears here.';
+      document.getElementById('summaryOutput').classList.remove('ai-output');
       document.getElementById('ideasOutput').innerHTML = '<div class="list-item">Important ideas and repeated themes will appear here.</div>';
       document.getElementById('cuesOutput').innerHTML = '<div class="list-item">Signals like repeated words, names, frameworks, and likely important passages will appear here.</div>';
+      document.getElementById('flashcardGrid').innerHTML = '<div class="flashcard"><div class="fc-front">Generate a plan first to create flashcards.</div></div>';
+      document.getElementById('chatContainer').innerHTML = '<div class="chat-msg system">Generate a plan first, then ask anything about the book.</div>';
+      lastGeneratedText = ''; lastTitle = '';
+      ['routineBadge','summaryBadge','ideasBadge','cuesBadge'].forEach(id => setBadge(id,'Local'));
     });
+
+    // Init
+    if (apiKey) setAiMode(true);
   </script>
 </body>
 </html>

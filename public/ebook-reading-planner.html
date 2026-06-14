@@ -445,7 +445,9 @@
     }
 
     // ─── File Upload ──────────────────────────────────────────────────────────
-    async function extractPdfText(file) {
+    let bookPages = []; // full page-by-page store for large book navigation
+
+    async function extractPdfPages(file) {
       if (!pdfjsLib?.getDocument) throw new Error('PDF reader failed to load.');
       const buffer = await file.arrayBuffer();
       const pdf = await pdfjsLib.getDocument({data:buffer}).promise;
@@ -455,16 +457,16 @@
         const content = await page.getTextContent();
         pages.push(content.items.map(item=>item.str).join(' ').trim());
       }
-      return pages.join('\n\n');
+      return pages;
     }
 
-    async function extractEpubText(file) {
+    async function extractEpubSections(file) {
       if (typeof ePub === 'undefined') throw new Error('EPUB reader failed to load.');
       const buffer = await file.arrayBuffer();
       const book = ePub(buffer);
       await book.ready;
       const sections = [];
-      for (const item of (book.spine?.spineItems||[]).slice(0,20)) {
+      for (const item of (book.spine?.spineItems||[])) {
         try {
           const text = await item.load(book.load.bind(book)).then(()=>{
             const raw = item.document?.body?.textContent||'';
@@ -474,60 +476,145 @@
           if (text) sections.push(text);
         } catch {}
       }
-      return sections.join('\n\n');
+      return sections;
+    }
+
+    // Detect chapter boundaries from page array
+    function detectChapters(pages) {
+      const chapterRe = /^(chapter|part|section|introduction|preface|prologue|epilogue|conclusion|appendix)\b/i;
+      const shortLineRe = /^.{2,60}$/;
+      const chapters = [];
+      for (let i=0;i<pages.length;i++) {
+        const firstLine = pages[i].trim().split(/\n/)[0]?.trim() || pages[i].slice(0,80).trim();
+        if (chapterRe.test(firstLine) || (shortLineRe.test(firstLine) && /^[A-Z0-9]/.test(firstLine) && i>0)) {
+          chapters.push({ title: firstLine.slice(0,80), pageIndex: i });
+        }
+      }
+      return chapters;
+    }
+
+    // Build smart sample: TOC area + opening of each chapter + final pages
+    function buildSmartSample(pages, chapters) {
+      const parts = [];
+      // First 8 pages (TOC, preface, intro)
+      parts.push(pages.slice(0,8).join('\n\n'));
+      // First ~400 chars of each detected chapter
+      for (const ch of chapters.slice(0,30)) {
+        parts.push(`\n--- ${ch.title} (page ${ch.pageIndex+1}) ---\n` + pages[ch.pageIndex].slice(0,400));
+      }
+      // If no chapters detected, sample every ~10% through the book
+      if (!chapters.length) {
+        const step = Math.max(1, Math.floor(pages.length/8));
+        for (let i=step;i<pages.length;i+=step) parts.push(pages[i].slice(0,300));
+      }
+      // Last 3 pages (conclusion)
+      parts.push(pages.slice(-3).join('\n\n'));
+      return parts.join('\n\n').slice(0,50000);
+    }
+
+    function renderChapterPicker(chapters, pages, fileName) {
+      let picker = document.getElementById('chapterPicker');
+      if (!picker) {
+        picker = document.createElement('div');
+        picker.id = 'chapterPicker';
+        picker.style.cssText = 'margin-top:1rem;';
+        document.getElementById('ebookFile').closest('.card').insertBefore(picker, document.getElementById('ebookText').parentElement);
+      }
+      if (!chapters.length) { picker.innerHTML=''; return; }
+
+      picker.innerHTML = `
+        <label>Select a chapter to analyze</label>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.5rem;">
+          ${chapters.map((ch,i)=>`<button class="btn btn-secondary chapter-btn" style="min-height:36px;padding:.4rem .8rem;font-size:var(--text-xs);border-radius:.5rem;" data-idx="${i}">${ch.title.slice(0,40)}</button>`).join('')}
+        </div>
+        <div class="tiny" id="chapterHint">Click a chapter to load it into the text area.</div>
+      `;
+
+      picker.querySelectorAll('.chapter-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const idx = Number(btn.dataset.idx);
+          const ch = chapters[idx];
+          const nextIdx = chapters[idx+1]?.pageIndex ?? pages.length;
+          const chapterText = pages.slice(ch.pageIndex, nextIdx).join('\n\n');
+          document.getElementById('ebookText').value = chapterText.slice(0,50000);
+          document.getElementById('chapterHint').textContent = `Loaded: ${ch.title} (${(chapterText.length/1000).toFixed(0)}k chars)`;
+          picker.querySelectorAll('.chapter-btn').forEach(b=>b.style.background='');
+          btn.style.background='var(--color-primary-highlight)';
+          if (aiEnabled) await aiAutoFill(chapterText, `${fileName} — ${ch.title}`);
+        });
+      });
+    }
+
+    async function aiAutoFill(text, titleHint) {
+      const status = document.getElementById('fileStatus');
+      status.textContent = '✦ AI is analyzing and filling inputs...';
+      try {
+        const result = await callClaude(
+          'You are a book analyst. Return a JSON object only — no explanation, no markdown, just raw JSON.',
+          `Analyze this ebook text and return ONLY a JSON object:
+{
+  "title": "actual book/chapter title (max 70 chars)",
+  "bookType": "nonfiction" | "technical" | "memoir" | "fiction",
+  "goal": "understand" | "skim" | "study" | "review",
+  "timeBudget": "15" | "20" | "30",
+  "reason": "one sentence explaining choices"
+}
+Title hint: ${titleHint}
+TEXT:
+${text.slice(0,3000)}`,
+          () => {}
+        );
+        const json = JSON.parse(result.match(/\{[\s\S]*\}/)?.[0]||'{}');
+        if (json.title) document.getElementById('bookTitle').value = json.title;
+        if (json.bookType) document.getElementById('bookType').value = json.bookType;
+        if (json.goal) document.getElementById('goal').value = json.goal;
+        if (json.timeBudget) document.getElementById('timeBudget').value = json.timeBudget;
+        status.textContent = `✦ AI filled inputs. ${json.reason||''}`;
+      } catch(e) {
+        status.textContent = `AI fill failed: ${e.message}`;
+      }
     }
 
     async function handleFileUpload(event) {
       const file = event.target.files?.[0];
       const status = document.getElementById('fileStatus');
       if (!file) return;
-      status.textContent = `Reading ${file.name}...`;
+      const isLarge = file.size > 500*1024; // > 500KB is probably a full book
+      status.textContent = `Reading ${file.name}${isLarge?' (large file, extracting structure)...':'...'}`;
       try {
         const lower = file.name.toLowerCase();
-        let extracted = lower.endsWith('.pdf')||file.type==='application/pdf'
-          ? await extractPdfText(file)
-          : await extractEpubText(file);
-        document.getElementById('ebookText').value = extracted.slice(0,50000);
-        const truncated = extracted.length>50000?' Text trimmed to 50,000 chars.':'';
+        const isPdf = lower.endsWith('.pdf')||file.type==='application/pdf';
 
-        if (aiEnabled) {
-          status.textContent = `✦ AI is reading ${file.name} and filling inputs...`;
-          try {
-            const snippet = extracted.slice(0,3000);
-            const result = await callClaude(
-              'You are a book analyst. Analyze the provided text and return a JSON object only — no explanation, no markdown, just raw JSON.',
-              `Analyze this ebook text and return ONLY a JSON object with these fields:
-{
-  "title": "the actual book title and chapter/section if detectable, otherwise a clean descriptive title (max 60 chars)",
-  "bookType": one of exactly: "nonfiction" | "technical" | "memoir" | "fiction",
-  "goal": one of exactly: "understand" | "skim" | "study" | "review" — pick the most appropriate based on the content complexity and typical reader intent,
-  "timeBudget": one of exactly: "15" | "20" | "30" — based on content density and length,
-  "reason": "one sentence explaining your choices"
-}
-
-TEXT:
-${snippet}`,
-              () => {}
-            );
-
-            const json = JSON.parse(result.match(/\{[\s\S]*\}/)?.[0] || '{}');
-
-            if (json.title) document.getElementById('bookTitle').value = json.title;
-            if (json.bookType) document.getElementById('bookType').value = json.bookType;
-            if (json.goal) document.getElementById('goal').value = json.goal;
-            if (json.timeBudget) document.getElementById('timeBudget').value = json.timeBudget;
-
-            status.textContent = `✦ AI filled all inputs from ${file.name}.${truncated} ${json.reason||''}`;
-          } catch(aiErr) {
-            // AI field fill failed — fall back to filename title
-            if (!document.getElementById('bookTitle').value.trim())
-              document.getElementById('bookTitle').value = file.name.replace(/\.(pdf|epub)$/i,'');
-            status.textContent = `Loaded ${file.name}.${truncated} (AI field fill failed: ${aiErr.message})`;
-          }
+        if (isPdf) {
+          bookPages = await extractPdfPages(file);
         } else {
+          bookPages = await extractEpubSections(file);
+        }
+
+        const totalChars = bookPages.reduce((s,p)=>s+p.length,0);
+        const isBook = totalChars > 60000;
+        const chapters = isBook ? detectChapters(bookPages) : [];
+
+        if (isBook) {
+          // Smart sample for large books
+          const sample = buildSmartSample(bookPages, chapters);
+          document.getElementById('ebookText').value = sample;
+          renderChapterPicker(chapters, bookPages, file.name.replace(/\.(pdf|epub)$/i,''));
+          const chCount = chapters.length ? `${chapters.length} chapters detected. ` : '';
+          status.textContent = `✦ Large book loaded (${(totalChars/1000).toFixed(0)}k chars total). ${chCount}Smart sample loaded — or pick a chapter above.`;
           if (!document.getElementById('bookTitle').value.trim())
             document.getElementById('bookTitle').value = file.name.replace(/\.(pdf|epub)$/i,'');
-          status.textContent = `Loaded ${file.name}.${truncated}`;
+          if (aiEnabled) await aiAutoFill(sample, file.name.replace(/\.(pdf|epub)$/i,''));
+        } else {
+          // Small file — load everything as before
+          const full = bookPages.join('\n\n');
+          document.getElementById('ebookText').value = full.slice(0,50000);
+          const chapterPicker = document.getElementById('chapterPicker');
+          if (chapterPicker) chapterPicker.innerHTML='';
+          if (!document.getElementById('bookTitle').value.trim())
+            document.getElementById('bookTitle').value = file.name.replace(/\.(pdf|epub)$/i,'');
+          status.textContent = `Loaded ${file.name}.`;
+          if (aiEnabled) await aiAutoFill(full, file.name.replace(/\.(pdf|epub)$/i,''));
         }
       } catch(e) {
         status.textContent = e.message || 'Could not read that file.';

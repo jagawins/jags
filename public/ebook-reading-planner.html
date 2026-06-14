@@ -488,9 +488,47 @@
           ? await extractPdfText(file)
           : await extractEpubText(file);
         document.getElementById('ebookText').value = extracted.slice(0,50000);
-        if (!document.getElementById('bookTitle').value.trim())
-          document.getElementById('bookTitle').value = file.name.replace(/\.(pdf|epub)$/i,'');
-        status.textContent = `Loaded ${file.name}.${extracted.length>50000?' Text trimmed to 50,000 chars.':''}`;
+        const truncated = extracted.length>50000?' Text trimmed to 50,000 chars.':'';
+
+        if (aiEnabled) {
+          status.textContent = `✦ AI is reading ${file.name} and filling inputs...`;
+          try {
+            const snippet = extracted.slice(0,3000);
+            const result = await callClaude(
+              'You are a book analyst. Analyze the provided text and return a JSON object only — no explanation, no markdown, just raw JSON.',
+              `Analyze this ebook text and return ONLY a JSON object with these fields:
+{
+  "title": "the actual book title and chapter/section if detectable, otherwise a clean descriptive title (max 60 chars)",
+  "bookType": one of exactly: "nonfiction" | "technical" | "memoir" | "fiction",
+  "goal": one of exactly: "understand" | "skim" | "study" | "review" — pick the most appropriate based on the content complexity and typical reader intent,
+  "timeBudget": one of exactly: "15" | "20" | "30" — based on content density and length,
+  "reason": "one sentence explaining your choices"
+}
+
+TEXT:
+${snippet}`,
+              () => {}
+            );
+
+            const json = JSON.parse(result.match(/\{[\s\S]*\}/)?.[0] || '{}');
+
+            if (json.title) document.getElementById('bookTitle').value = json.title;
+            if (json.bookType) document.getElementById('bookType').value = json.bookType;
+            if (json.goal) document.getElementById('goal').value = json.goal;
+            if (json.timeBudget) document.getElementById('timeBudget').value = json.timeBudget;
+
+            status.textContent = `✦ AI filled all inputs from ${file.name}.${truncated} ${json.reason||''}`;
+          } catch(aiErr) {
+            // AI field fill failed — fall back to filename title
+            if (!document.getElementById('bookTitle').value.trim())
+              document.getElementById('bookTitle').value = file.name.replace(/\.(pdf|epub)$/i,'');
+            status.textContent = `Loaded ${file.name}.${truncated} (AI field fill failed: ${aiErr.message})`;
+          }
+        } else {
+          if (!document.getElementById('bookTitle').value.trim())
+            document.getElementById('bookTitle').value = file.name.replace(/\.(pdf|epub)$/i,'');
+          status.textContent = `Loaded ${file.name}.${truncated}`;
+        }
       } catch(e) {
         status.textContent = e.message || 'Could not read that file.';
       }

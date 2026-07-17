@@ -166,9 +166,16 @@ const Speaking = () => {
                 >
                   <div className="flex items-start gap-3">
                     <topic.icon className="w-5 h-5 text-primary mt-1 shrink-0" />
-                    <h3 className="font-serif text-lg font-medium text-foreground leading-snug">
-                      {topic.title}
-                    </h3>
+                    <div className="flex-1">
+                      {topic.category && (
+                        <p className="text-[10px] uppercase tracking-widest text-muted-foreground/70 font-medium mb-1.5">
+                          {topic.category}
+                        </p>
+                      )}
+                      <h3 className="font-serif text-lg font-medium text-foreground leading-snug">
+                        {topic.title}
+                      </h3>
+                    </div>
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed pl-8">
                     {topic.description}

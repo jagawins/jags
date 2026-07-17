@@ -24,6 +24,7 @@ import AxivaBriefing from "./pages/AxivaBriefing";
 import IDPDecisionSystem from "./pages/IDPDecisionSystem";
 import ResumeMatchPro from "./pages/ResumeMatchPro";
 import EbookReadingPlanner from "./pages/EbookReadingPlanner";
+import ResearchInformatics from "./pages/ResearchInformatics";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();

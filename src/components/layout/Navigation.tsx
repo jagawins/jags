@@ -27,6 +27,7 @@ const navGroups: { label: string; items: NavItem[] }[] = [
       { href: "/principles", label: "Operating Principles" },
       { href: "/writing", label: "Writing & Insights" },
       { href: "/speaking", label: "Speaking & Engagements" },
+      { href: "/research-vision-frameworks", label: "Research Vision & Frameworks", description: "Infographic: infrastructure for research-competitive health systems" },
       { href: "/axiva-daily-briefing", label: "GPT: Axiva Briefing" },
     ],
   },

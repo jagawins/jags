@@ -25,6 +25,7 @@ import IDPDecisionSystem from "./pages/IDPDecisionSystem";
 import ResumeMatchPro from "./pages/ResumeMatchPro";
 import EbookReadingPlanner from "./pages/EbookReadingPlanner";
 import ResearchInformatics from "./pages/ResearchInformatics";
+import ResearchVisionFrameworks from "./pages/ResearchVisionFrameworks";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -58,6 +59,7 @@ const App = () => (
             <Route path="/resume-match-pro" element={<ResumeMatchPro />} />
             <Route path="/ebook-reading-planner" element={<EbookReadingPlanner />} />
             <Route path="/research-informatics-hpc" element={<ResearchInformatics />} />
+            <Route path="/research-vision-frameworks" element={<ResearchVisionFrameworks />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

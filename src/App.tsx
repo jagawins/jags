@@ -57,6 +57,7 @@ const App = () => (
             <Route path="/idp-decision-system" element={<IDPDecisionSystem />} />
             <Route path="/resume-match-pro" element={<ResumeMatchPro />} />
             <Route path="/ebook-reading-planner" element={<EbookReadingPlanner />} />
+            <Route path="/research-informatics-hpc" element={<ResearchInformatics />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

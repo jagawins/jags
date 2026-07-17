@@ -1,11 +1,12 @@
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Mic, Users, Building2, Lightbulb } from "lucide-react";
+import { ArrowUpRight, Mic, Users, Building2, Lightbulb, Cpu, Shield, FlaskConical, Database, Network, GitBranch, DollarSign } from "lucide-react";
 
 const topics = [
   {
     icon: Building2,
+    category: "Keynote",
     title:
       "Why 70% of Healthcare AI Projects Fail — And What Stanford Medicine Does Differently",
     description:
@@ -13,6 +14,7 @@ const topics = [
   },
   {
     icon: Lightbulb,
+    category: "Platform Strategy",
     title:
       "I Built 7 HealthTech Products and Sold the Company. Here's What Enterprise Leaders Get Wrong About Platform Transformation.",
     description:
@@ -20,6 +22,7 @@ const topics = [
   },
   {
     icon: Users,
+    category: "Data Infrastructure",
     title:
       "The Data Foundation for Healthcare AI: What We Built at Stanford (Databricks, Qualtrics, and the Governance Layer Nobody Talks About)",
     description:
@@ -27,10 +30,67 @@ const topics = [
   },
   {
     icon: Mic,
+    category: "Leadership",
     title:
       "From Wipro to Stanford Medicine: The Unconventional Path to VP-Level Technology Leadership",
     description:
       "Wipro → IBM (12 years, $154M P&L) → Founded Bairo (7 products, PE exit) → Medtronic (FDA devices) → Google (Cloud + Revenue Cycle) → Stanford Medicine (AI + Enterprise Platforms). I'll share the leadership lessons from each chapter, the career decisions that seemed wrong at the time, and why the most valuable VP skill isn't technical — it's knowing when to build, when to operate, and when to walk away.",
+  },
+  {
+    icon: Building2,
+    category: "Keynote",
+    title: "The Research-Ready Health System: Building Infrastructure That Says Yes",
+    description:
+      "Why the gap between research ambition and compute capability is the most consequential problem in academic medicine — and a five-layer framework for closing it. Includes the pharmaceutical partnership problem: what health systems lose when infrastructure can't answer yes.",
+  },
+  {
+    icon: Cpu,
+    category: "Technical Leadership",
+    title: "HPC Governance: The Policy Layer Nobody Builds",
+    description:
+      "Fair-share scheduling, compute allocation equity, charge-back models, and the governance architecture that prevents expensive GPU clusters from being captured by the loudest three research groups. Practical models from multi-hospital health systems.",
+  },
+  {
+    icon: FlaskConical,
+    category: "Research Strategy",
+    title: "Multimodal AI in Clinical Research: Architecture for the Next Decade",
+    description:
+      "How to integrate genomics, medical imaging, EHR data, and wearable sensor streams into unified research datasets — with the governance and compute architecture required to make the result HIPAA-compliant and scientifically reproducible.",
+  },
+  {
+    icon: DollarSign,
+    category: "Executive Education",
+    title: "GPU Economics for Health System Leaders: Build, Burst, or Both?",
+    description:
+      "The on-premises vs. cloud GPU decision has a calculable break-even point. A practitioner's framework for evaluating research computing capital investments, modeling utilization scenarios, and designing hybrid architectures that grow with research demand.",
+  },
+  {
+    icon: Database,
+    category: "Research Informatics",
+    title: "i2b2, OMOP, and the Clinical Data Substrate: Unlocking Your Patient Population",
+    description:
+      "How i2b2 and OMOP CDM transform institutional clinical data into a queryable research asset — enabling AI-enhanced trial recruitment, feasibility analysis in hours instead of weeks, and cross-institutional federated queries that multiply the scientific value of existing clinical operations.",
+  },
+  {
+    icon: Shield,
+    category: "Compliance Architecture",
+    title: "HIPAA-Compliant Research Computing: Compliance as Competitive Advantage",
+    description:
+      "Institutions that build HIPAA-compliant research computing correctly find that compliance posture enables pharmaceutical partnerships and federal grant eligibility that non-compliant environments cannot access. The architecture of getting this right — and why it is a revenue enabler, not a cost center.",
+  },
+  {
+    icon: Network,
+    category: "Emerging Technology",
+    title: "Federated Learning in Healthcare: Computing Across Institutions Without Moving Data",
+    description:
+      "NVIDIA FLARE, federated query, and privacy-preserving record linkage as the enabling architecture for multi-institutional research on rare disease, genomics, and population health — without any patient data crossing institutional boundaries.",
+  },
+  {
+    icon: GitBranch,
+    category: "Research Operations",
+    title: "MLOps and Reproducibility: Clinical AI That Survives Peer Review",
+    description:
+      "Containers (Singularity/Apptainer), workflow managers (Nextflow, Snakemake), provenance tracking, and the operational infrastructure that makes clinical AI models reproducible by independent teams — a prerequisite for publication, regulatory submission, and real-world deployment.",
   },
 ];
 
@@ -106,9 +166,16 @@ const Speaking = () => {
                 >
                   <div className="flex items-start gap-3">
                     <topic.icon className="w-5 h-5 text-primary mt-1 shrink-0" />
-                    <h3 className="font-serif text-lg font-medium text-foreground leading-snug">
-                      {topic.title}
-                    </h3>
+                    <div className="flex-1">
+                      {topic.category && (
+                        <p className="text-[10px] uppercase tracking-widest text-muted-foreground/70 font-medium mb-1.5">
+                          {topic.category}
+                        </p>
+                      )}
+                      <h3 className="font-serif text-lg font-medium text-foreground leading-snug">
+                        {topic.title}
+                      </h3>
+                    </div>
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed pl-8">
                     {topic.description}

@@ -24,6 +24,7 @@ import AxivaBriefing from "./pages/AxivaBriefing";
 import IDPDecisionSystem from "./pages/IDPDecisionSystem";
 import ResumeMatchPro from "./pages/ResumeMatchPro";
 import EbookReadingPlanner from "./pages/EbookReadingPlanner";
+import ResearchInformatics from "./pages/ResearchInformatics";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -56,6 +57,7 @@ const App = () => (
             <Route path="/idp-decision-system" element={<IDPDecisionSystem />} />
             <Route path="/resume-match-pro" element={<ResumeMatchPro />} />
             <Route path="/ebook-reading-planner" element={<EbookReadingPlanner />} />
+            <Route path="/research-informatics-hpc" element={<ResearchInformatics />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

@@ -25,6 +25,7 @@ import IDPDecisionSystem from "./pages/IDPDecisionSystem";
 import ResumeMatchPro from "./pages/ResumeMatchPro";
 import EbookReadingPlanner from "./pages/EbookReadingPlanner";
 import ResearchInformatics from "./pages/ResearchInformatics";
+import ResearchVisionFrameworks from "./pages/ResearchVisionFrameworks";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();

@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Vision & Frameworks | Jag Mariappan</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0f172a; color: #e2e8f0; font-family: Georgia, 'Times New Roman', serif; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 60px 24px 80px; }
+
+    .page-header { text-align: center; margin-bottom: 90px; padding-bottom: 60px; border-bottom: 1px solid #1e293b; }
+    .eyebrow { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; color: #0ea5e9; font-family: Arial, sans-serif; margin-bottom: 20px; }
+    h1 { font-size: 44px; color: #f1f5f9; line-height: 1.18; margin-bottom: 22px; font-weight: bold; }
+    .lead { font-size: 17px; color: #94a3b8; line-height: 1.75; max-width: 680px; margin: 0 auto; }
+
+    .block { margin-bottom: 96px; }
+    .block-num { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #0ea5e9; font-family: Arial, sans-serif; margin-bottom: 10px; }
+    .block-title { font-size: 27px; color: #f1f5f9; margin-bottom: 14px; font-weight: bold; }
+    .block-desc { font-size: 15px; color: #94a3b8; line-height: 1.78; max-width: 700px; margin-bottom: 32px; }
+
+    .chart-wrap { background: #111827; border-radius: 14px; border: 1px solid #1e293b; overflow: hidden; }
+    svg { display: block; width: 100%; height: auto; }
+    .caption { font-size: 12px; color: #475569; text-align: center; margin-top: 16px; font-style: italic; font-family: Arial, sans-serif; line-height: 1.5; }
+
+    .rule { border: none; border-top: 1px solid #1e293b; margin: 90px 0; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+    .card { background: #111827; border: 1px solid #1e293b; border-radius: 10px; padding: 26px; }
+    .card-tag { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #0ea5e9; font-family: Arial, sans-serif; margin-bottom: 12px; }
+    .card-title { font-size: 16px; color: #f1f5f9; margin-bottom: 10px; line-height: 1.4; font-weight: bold; }
+    .card-body { font-size: 13px; color: #64748b; line-height: 1.65; }
+
+    .vision-card { background: #111827; border: 1px solid #1e293b; border-radius: 10px; padding: 26px; }
+
+    .footer { text-align: center; padding: 40px 0 0; border-top: 1px solid #1e293b; color: #475569; font-size: 14px; font-family: Arial, sans-serif; }
+    .footer a { color: #0ea5e9; text-decoration: none; }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 30px; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="eyebrow">Research Vision &amp; Frameworks</div>
+    <h1>Research Informatics &amp;<br>Scientific Computing</h1>
+    <p class="lead">Frameworks, architectures, and operational models for building the research computing infrastructure that lets health systems say yes to science. Built from twenty-five years of practice at the intersection of clinical operations, regulated technology, and large-scale data platforms.</p>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- INFOGRAPHIC 1: RESEARCH COMPUTING READINESS MODEL         -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="block">
+    <div class="block-num">Framework 01</div>
+    <div class="block-title">The Research Computing Readiness Model</div>
+    <div class="block-desc">Five layers that must be built coherently and in sequence. Most health systems have Layer 1. Few have all five. The gap between Layer 1 and Layer 5 is where pharmaceutical partnerships are declined, federal grants go to better-equipped competitors, and research faculty recruits choose elsewhere.</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg">
+        <rect width="900" height="560" fill="#111827"/>
+
+        <!-- Background hint text -->
+        <text x="450" y="30" text-anchor="middle" fill="#1e3a5f" font-size="11" font-family="Arial, sans-serif" letter-spacing="2">FOUNDATION → IMPACT</text>
+
+        <!-- Layer 1 COMPUTE — widest, bottom -->
+        <rect x="20" y="450" width="860" height="78" rx="7" fill="#92400e"/>
+        <rect x="20" y="450" width="860" height="4" rx="0" fill="#d97706"/>
+        <text x="200" y="484" fill="#fef3c7" font-size="13" font-weight="bold" font-family="Arial, sans-serif" letter-spacing="1">01 — COMPUTE</text>
+        <text x="200" y="503" fill="#fde68a" font-size="11" font-family="Arial, sans-serif">GPU clusters · HPC nodes · Parallel storage (Lustre / VAST) · Network interconnect · Cloud burst</text>
+        <text x="845" y="494" text-anchor="end" fill="#d97706" font-size="10" font-family="Arial, sans-serif" font-weight="bold">FOUNDATION</text>
+
+        <!-- Layer 2 DATA -->
+        <rect x="65" y="362" width="770" height="78" rx="7" fill="#064e3b"/>
+        <rect x="65" y="362" width="770" height="4" rx="0" fill="#059669"/>
+        <text x="245" y="396" fill="#d1fae5" font-size="13" font-weight="bold" font-family="Arial, sans-serif" letter-spacing="1">02 — DATA</text>
+        <text x="245" y="416" fill="#6ee7b7" font-size="11" font-family="Arial, sans-serif">OMOP CDM · i2b2 / tranSMART · Research data warehouse · Genomics repository · Imaging archive</text>
+
+        <!-- Layer 3 COMPLIANCE -->
+        <rect x="155" y="274" width="590" height="78" rx="7" fill="#3b0764"/>
+        <rect x="155" y="274" width="590" height="4" rx="0" fill="#7c3aed"/>
+        <text x="310" y="308" fill="#ede9fe" font-size="13" font-weight="bold" font-family="Arial, sans-serif" letter-spacing="1">03 — COMPLIANCE</text>
+        <text x="310" y="328" fill="#c4b5fd" font-size="11" font-family="Arial, sans-serif">HIPAA architecture · BAA governance · De-identification pipelines · Audit logging · IRB-to-compute workflow</text>
+
+        <!-- Layer 4 ACCESS -->
+        <rect x="245" y="186" width="410" height="78" rx="7" fill="#0c2a4a"/>
+        <rect x="245" y="186" width="410" height="4" rx="0" fill="#0369a1"/>
+        <text x="395" y="220" fill="#bae6fd" font-size="13" font-weight="bold" font-family="Arial, sans-serif" letter-spacing="1">04 — ACCESS</text>
+        <text x="395" y="240" fill="#7dd3fc" font-size="11" font-family="Arial, sans-serif">Researcher onboarding · Self-service provisioning · Helpdesk · Training programs</text>
+
+        <!-- Layer 5 VALUE — narrowest, top -->
+        <rect x="340" y="98" width="220" height="78" rx="7" fill="#0c4a6e"/>
+        <rect x="340" y="98" width="220" height="4" rx="0" fill="#0ea5e9"/>
+        <text x="450" y="133" text-anchor="middle" fill="#e0f2fe" font-size="13" font-weight="bold" font-family="Arial, sans-serif" letter-spacing="1">05 — VALUE</text>
+        <text x="450" y="153" text-anchor="middle" fill="#7dd3fc" font-size="11" font-family="Arial, sans-serif">Grants · Publications · Pharma partnerships · Competitive position</text>
+        <text x="450" y="170" text-anchor="middle" fill="#0ea5e9" font-size="10" font-family="Arial, sans-serif" font-weight="bold">IMPACT</text>
+
+        <!-- Right-side bracket -->
+        <line x1="886" y1="108" x2="886" y2="520" stroke="#1e3a5f" stroke-width="1.5"/>
+        <line x1="882" y1="108" x2="890" y2="108" stroke="#1e3a5f" stroke-width="1.5"/>
+        <line x1="882" y1="520" x2="890" y2="520" stroke="#1e3a5f" stroke-width="1.5"/>
+
+        <!-- Bottom note -->
+        <text x="450" y="546" text-anchor="middle" fill="#334155" font-size="11" font-family="Arial, sans-serif" font-style="italic">Institutions that invest in Layer 1 but skip Layers 2–5 have expensive hardware running at low utilization.</text>
+      </svg>
+    </div>
+    <p class="caption">The Research Computing Readiness Model — five interdependent layers every academic medical center must build to generate science at scale</p>
+  </div>
+
+  <hr class="rule">
+
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- INFOGRAPHIC 2: MULTIMODAL AI CONVERGENCE                  -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="block">
+    <div class="block-num">Research Area 01</div>
+    <div class="block-title">Multimodal AI: Where the Next Decade of Clinical Research Lives</div>
+    <div class="block-desc">The most powerful clinical AI models will not be trained on a single data type. Genomic sequence, medical imaging, continuous sensor streams, and structured EHR data each capture a different dimension of patient biology. Integrating them into a unified research compute architecture is the defining infrastructure challenge of the next decade.</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 900 540" xmlns="http://www.w3.org/2000/svg">
+        <rect width="900" height="540" fill="#111827"/>
+
+        <!-- Connecting lines (behind nodes) -->
+        <line x1="200" y1="155" x2="380" y2="238" stroke="#0ea5e9" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.5"/>
+        <line x1="700" y1="155" x2="520" y2="238" stroke="#0ea5e9" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.5"/>
+        <line x1="200" y1="385" x2="380" y2="302" stroke="#0ea5e9" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.5"/>
+        <line x1="700" y1="385" x2="520" y2="302" stroke="#0ea5e9" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.5"/>
+
+        <!-- Center node -->
+        <circle cx="450" cy="270" r="88" fill="#0c1a2e" stroke="#0ea5e9" stroke-width="2"/>
+        <circle cx="450" cy="270" r="82" fill="#0f172a"/>
+        <text x="450" y="256" text-anchor="middle" fill="#38bdf8" font-size="15" font-weight="bold" font-family="Arial, sans-serif">Clinical AI</text>
+        <text x="450" y="276" text-anchor="middle" fill="#38bdf8" font-size="15" font-weight="bold" font-family="Arial, sans-serif">Research</text>
+        <text x="450" y="300" text-anchor="middle" fill="#334155" font-size="11" font-family="Arial, sans-serif">Multimodal fusion</text>
+        <text x="450" y="318" text-anchor="middle" fill="#334155" font-size="11" font-family="Arial, sans-serif">GPU · HPC · HIPAA</text>
+
+        <!-- TOP-LEFT: Genomics -->
+        <rect x="60" y="60" width="195" height="95" rx="10" fill="#022c22" stroke="#059669" stroke-width="1.5"/>
+        <rect x="60" y="60" width="195" height="4" rx="0" fill="#059669"/>
+        <text x="157" y="92" text-anchor="middle" fill="#34d399" font-size="13" font-weight="bold" font-family="Arial, sans-serif">GENOMICS</text>
+        <text x="157" y="110" text-anchor="middle" fill="#6ee7b7" font-size="11" font-family="Arial, sans-serif">WGS · RNA-seq · GWAS</text>
+        <text x="157" y="127" text-anchor="middle" fill="#6ee7b7" font-size="11" font-family="Arial, sans-serif">Variant calling · Annotation</text>
+        <text x="157" y="145" text-anchor="middle" fill="#475569" font-size="10" font-family="Arial, sans-serif">100–200 GB per sample</text>
+
+        <!-- TOP-RIGHT: Medical Imaging -->
+        <rect x="645" y="60" width="195" height="95" rx="10" fill="#0c1a3e" stroke="#0284c7" stroke-width="1.5"/>
+        <rect x="645" y="60" width="195" height="4" rx="0" fill="#0284c7"/>
+        <text x="742" y="92" text-anchor="middle" fill="#38bdf8" font-size="13" font-weight="bold" font-family="Arial, sans-serif">MEDICAL IMAGING</text>
+        <text x="742" y="110" text-anchor="middle" fill="#7dd3fc" font-size="11" font-family="Arial, sans-serif">MRI · CT · Radiology</text>
+        <text x="742" y="127" text-anchor="middle" fill="#7dd3fc" font-size="11" font-family="Arial, sans-serif">Pathology WSI · DICOM</text>
+        <text x="742" y="145" text-anchor="middle" fill="#475569" font-size="10" font-family="Arial, sans-serif">0.5–15 GB per study</text>
+
+        <!-- BOTTOM-LEFT: EHR / Clinical -->
+        <rect x="60" y="385" width="195" height="95" rx="10" fill="#1e1b4b" stroke="#6d28d9" stroke-width="1.5"/>
+        <rect x="60" y="385" width="195" height="4" rx="0" fill="#6d28d9"/>
+        <text x="157" y="417" text-anchor="middle" fill="#a78bfa" font-size="13" font-weight="bold" font-family="Arial, sans-serif">EHR / CLINICAL</text>
+        <text x="157" y="435" text-anchor="middle" fill="#c4b5fd" font-size="11" font-family="Arial, sans-serif">OMOP · i2b2 · Notes</text>
+        <text x="157" y="452" text-anchor="middle" fill="#c4b5fd" font-size="11" font-family="Arial, sans-serif">Labs · Meds · Diagnoses</text>
+        <text x="157" y="470" text-anchor="middle" fill="#475569" font-size="10" font-family="Arial, sans-serif">Structured + unstructured</text>
+
+        <!-- BOTTOM-RIGHT: Wearables / Sensors -->
+        <rect x="645" y="385" width="195" height="95" rx="10" fill="#431407" stroke="#ea580c" stroke-width="1.5"/>
+        <rect x="645" y="385" width="195" height="4" rx="0" fill="#ea580c"/>
+        <text x="742" y="417" text-anchor="middle" fill="#fb923c" font-size="13" font-weight="bold" font-family="Arial, sans-serif">WEARABLES / IoT</text>
+        <text x="742" y="435" text-anchor="middle" fill="#fdba74" font-size="11" font-family="Arial, sans-serif">CGM · ECG · RPM · Activity</text>
+        <text x="742" y="452" text-anchor="middle" fill="#fdba74" font-size="11" font-family="Arial, sans-serif">Continuous streams</text>
+        <text x="742" y="470" text-anchor="middle" fill="#475569" font-size="10" font-family="Arial, sans-serif">High-frequency time series</text>
+
+        <!-- Data volume annotation bars (small horizontal bars under center) -->
+        <text x="450" y="530" text-anchor="middle" fill="#334155" font-size="11" font-family="Arial, sans-serif" font-style="italic">Each modality demands different storage, compute, and pipeline architecture — unified by the research informatics layer</text>
+      </svg>
+    </div>
+    <p class="caption">Multimodal clinical AI research — four data types, each with different infrastructure requirements, converging on a unified research compute platform</p>
+  </div>
+
+  <hr class="rule">
+
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- INFOGRAPHIC 3: HPC ARCHITECTURE STACK                     -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="block">
+    <div class="block-num">Research Area 02</div>
+    <div class="block-title">HPC Architecture for Academic Medical Centers</div>
+    <div class="block-desc">Modern research HPC is a layered architecture — not a monolithic cluster. Workload management governs access across compute tiers. Storage architecture determines whether the GPU investment delivers throughput or sits idle. Cloud burst handles peak demand without displacing concurrent research jobs. Getting each layer right requires different expertise.</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arr" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+            <polygon points="0 0, 8 3.5, 0 7" fill="#334155"/>
+          </marker>
+          <marker id="arr-blue" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+            <polygon points="0 0, 8 3.5, 0 7" fill="#0369a1"/>
+          </marker>
+        </defs>
+        <rect width="900" height="560" fill="#111827"/>
+
+        <!-- Tier labels (left spine) -->
+        <text x="14" y="95" fill="#334155" font-size="9" font-family="Arial" font-weight="bold" writing-mode="tb-rl" text-anchor="middle">USERS</text>
+        <text x="14" y="205" fill="#334155" font-size="9" font-family="Arial" font-weight="bold" writing-mode="tb-rl" text-anchor="middle">SCHEDULER</text>
+        <text x="14" y="330" fill="#334155" font-size="9" font-family="Arial" font-weight="bold" writing-mode="tb-rl" text-anchor="middle">COMPUTE</text>
+        <text x="14" y="435" fill="#334155" font-size="9" font-family="Arial" font-weight="bold" writing-mode="tb-rl" text-anchor="middle">STORAGE</text>
+        <text x="14" y="515" fill="#334155" font-size="9" font-family="Arial" font-weight="bold" writing-mode="tb-rl" text-anchor="middle">BURST</text>
+
+        <!-- Researcher group boxes (top) -->
+        <rect x="80" y="50" width="185" height="72" rx="7" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="172" y="78" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="bold" font-family="Arial, sans-serif">Research Group A</text>
+        <text x="172" y="96" text-anchor="middle" fill="#64748b" font-size="10" font-family="Arial, sans-serif">Genomics · Imaging AI</text>
+        <text x="172" y="113" text-anchor="middle" fill="#475569" font-size="9" font-family="Arial, sans-serif">Job submission</text>
+
+        <rect x="357" y="50" width="185" height="72" rx="7" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="449" y="78" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="bold" font-family="Arial, sans-serif">Research Group B</text>
+        <text x="449" y="96" text-anchor="middle" fill="#64748b" font-size="10" font-family="Arial, sans-serif">Clinical AI · NLP</text>
+        <text x="449" y="113" text-anchor="middle" fill="#475569" font-size="9" font-family="Arial, sans-serif">Job submission</text>
+
+        <rect x="634" y="50" width="185" height="72" rx="7" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="726" y="78" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="bold" font-family="Arial, sans-serif">Research Group C</text>
+        <text x="726" y="96" text-anchor="middle" fill="#64748b" font-size="10" font-family="Arial, sans-serif">Drug Discovery · Omics</text>
+        <text x="726" y="113" text-anchor="middle" fill="#475569" font-size="9" font-family="Arial, sans-serif">Job submission</text>
+
+        <!-- Arrows down to scheduler -->
+        <line x1="172" y1="122" x2="360" y2="170" stroke="#334155" stroke-width="1.5" marker-end="url(#arr)"/>
+        <line x1="449" y1="122" x2="449" y2="168" stroke="#334155" stroke-width="1.5" marker-end="url(#arr)"/>
+        <line x1="726" y1="122" x2="540" y2="170" stroke="#334155" stroke-width="1.5" marker-end="url(#arr)"/>
+
+        <!-- Slurm Scheduler -->
+        <rect x="240" y="170" width="420" height="72" rx="8" fill="#0c2040" stroke="#0369a1" stroke-width="2"/>
+        <text x="450" y="198" text-anchor="middle" fill="#38bdf8" font-size="14" font-weight="bold" font-family="Arial, sans-serif">Slurm Workload Manager</text>
+        <text x="450" y="217" text-anchor="middle" fill="#7dd3fc" font-size="11" font-family="Arial, sans-serif">Fair-share scheduling · Priority queues · Resource governance</text>
+        <text x="450" y="234" text-anchor="middle" fill="#1e3a5f" font-size="10" font-family="Arial, sans-serif">Equitable allocation across all research groups</text>
+
+        <!-- Arrows from scheduler to compute -->
+        <line x1="350" y1="242" x2="240" y2="288" stroke="#0369a1" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-blue)"/>
+        <line x1="550" y1="242" x2="660" y2="288" stroke="#0369a1" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-blue)"/>
+
+        <!-- Bare-metal GPU -->
+        <rect x="80" y="290" width="320" height="100" rx="8" fill="#1a1030" stroke="#7c3aed" stroke-width="1.5"/>
+        <rect x="80" y="290" width="320" height="4" rx="0" fill="#7c3aed"/>
+        <text x="240" y="320" text-anchor="middle" fill="#a78bfa" font-size="13" font-weight="bold" font-family="Arial, sans-serif">Bare-metal GPU</text>
+        <text x="240" y="339" text-anchor="middle" fill="#c4b5fd" font-size="11" font-family="Arial, sans-serif">NVIDIA H100 / A100 · NVLink</text>
+        <text x="240" y="357" text-anchor="middle" fill="#c4b5fd" font-size="11" font-family="Arial, sans-serif">Distributed DL training · Multi-GPU inference</text>
+        <text x="240" y="378" text-anchor="middle" fill="#6d28d9" font-size="9" font-family="Arial, sans-serif" font-weight="bold" letter-spacing="1">HIGH-INTENSITY WORKLOADS</text>
+
+        <!-- Virtualized GPU -->
+        <rect x="500" y="290" width="320" height="100" rx="8" fill="#0a1a12" stroke="#059669" stroke-width="1.5"/>
+        <rect x="500" y="290" width="320" height="4" rx="0" fill="#059669"/>
+        <text x="660" y="320" text-anchor="middle" fill="#34d399" font-size="13" font-weight="bold" font-family="Arial, sans-serif">Virtualized GPU</text>
+        <text x="660" y="339" text-anchor="middle" fill="#6ee7b7" font-size="11" font-family="Arial, sans-serif">NVIDIA vGPU · Shared pools · VMs</text>
+        <text x="660" y="357" text-anchor="middle" fill="#6ee7b7" font-size="11" font-family="Arial, sans-serif">Batch jobs · Interactive research · Dev</text>
+        <text x="660" y="378" text-anchor="middle" fill="#065f46" font-size="9" font-family="Arial, sans-serif" font-weight="bold" letter-spacing="1">GENERAL RESEARCH WORKLOADS</text>
+
+        <!-- VS connector -->
+        <text x="450" y="348" text-anchor="middle" fill="#1e3a5f" font-size="14" font-family="Arial, sans-serif" font-weight="bold">⟷</text>
+
+        <!-- Arrows to storage -->
+        <line x1="240" y1="390" x2="350" y2="422" stroke="#475569" stroke-width="1.5" marker-end="url(#arr)"/>
+        <line x1="660" y1="390" x2="550" y2="422" stroke="#475569" stroke-width="1.5" marker-end="url(#arr)"/>
+
+        <!-- Parallel Storage -->
+        <rect x="180" y="424" width="540" height="72" rx="8" fill="#1a120a" stroke="#92400e" stroke-width="1.5"/>
+        <rect x="180" y="424" width="540" height="4" rx="0" fill="#d97706"/>
+        <text x="450" y="453" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="bold" font-family="Arial, sans-serif">Parallel File System</text>
+        <text x="450" y="472" text-anchor="middle" fill="#fde68a" font-size="11" font-family="Arial, sans-serif">Lustre · IBM Spectrum Scale · VAST Data · WekaFS</text>
+        <text x="450" y="489" text-anchor="middle" fill="#92400e" font-size="10" font-family="Arial, sans-serif">Petabyte-scale · High-throughput I/O · Data co-located with compute</text>
+
+        <!-- Cloud burst dashed line + box -->
+        <line x1="450" y1="496" x2="450" y2="514" stroke="#334155" stroke-width="1" stroke-dasharray="4,3"/>
+        <rect x="190" y="514" width="520" height="34" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="350" y="536" fill="#334155" font-size="11" font-family="Arial, sans-serif" font-weight="bold">Cloud Burst (BAA-covered):</text>
+        <text x="510" y="536" fill="#1e3a5f" font-size="11" font-family="Arial, sans-serif">AWS P4d · Azure NDm A100 · Google A3 (H100)</text>
+      </svg>
+    </div>
+    <p class="caption">HPC architecture stack — from researcher job submission through workload governance, compute tiers, parallel storage, and cloud burst overflow</p>
+  </div>
+
+  <hr class="rule">
+
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- INFOGRAPHIC 4: RESEARCH INFORMATICS PIPELINE             -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="block">
+    <div class="block-num">Research Area 03</div>
+    <div class="block-title">From Patient Care to Scientific Evidence: The 8-Stage Pipeline</div>
+    <div class="block-desc">Clinical data does not become research evidence automatically. It flows through a series of transformation, governance, and compute stages — each with its own quality bar, compliance requirement, and infrastructure dependency. Most health systems have stages 1 and 2 functioning. Research-ready institutions have governed, automated pathways through all eight.</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 900 310" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arr2" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto">
+            <polygon points="0 0, 7 3, 0 6" fill="#334155"/>
+          </marker>
+        </defs>
+        <rect width="900" height="310" fill="#111827"/>
+
+        <!-- Stage label top -->
+        <text x="450" y="30" text-anchor="middle" fill="#334155" font-size="11" font-family="Arial, sans-serif" letter-spacing="1">CLINICAL DATA → RESEARCH EVIDENCE — 8-STAGE TRANSFORMATION</text>
+
+        <!-- Stages: 8 boxes across, y=60 to y=185 -->
+        <!-- Box width: ~90px, gap+arrow: ~20px. 8*90 + 7*20 = 720+140 = 860 — fits in 900 with 20px margins -->
+        <!-- x positions: 20, 130, 240, 350, 460, 570, 680, 790 — but that's 790+90=880 ✓ -->
+
+        <!-- S1: Patient Care -->
+        <rect x="20" y="60" width="90" height="90" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="65" y="85" text-anchor="middle" fill="#64748b" font-size="10" font-weight="bold" font-family="Arial">PATIENT</text>
+        <text x="65" y="100" text-anchor="middle" fill="#64748b" font-size="10" font-weight="bold" font-family="Arial">CARE</text>
+        <text x="65" y="118" text-anchor="middle" fill="#475569" font-size="9" font-family="Arial">Encounters</text>
+        <text x="65" y="132" text-anchor="middle" fill="#475569" font-size="9" font-family="Arial">Procedures</text>
+        <text x="65" y="146" text-anchor="middle" fill="#334155" font-size="9" font-family="Arial">Labs · Notes</text>
+        <!-- Arrow -->
+        <line x1="110" y1="105" x2="128" y2="105" stroke="#334155" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+        <!-- S2: EHR -->
+        <rect x="130" y="60" width="90" height="90" rx="6" fill="#0c1a2e" stroke="#0369a1" stroke-width="1.5"/>
+        <text x="175" y="85" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="bold" font-family="Arial">EHR</text>
+        <text x="175" y="100" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="bold" font-family="Arial">Epic / Oracle</text>
+        <text x="175" y="118" text-anchor="middle" fill="#7dd3fc" font-size="9" font-family="Arial">Structured data</text>
+        <text x="175" y="132" text-anchor="middle" fill="#7dd3fc" font-size="9" font-family="Arial">Clinical notes</text>
+        <text x="175" y="146" text-anchor="middle" fill="#7dd3fc" font-size="9" font-family="Arial">Orders · Labs</text>
+        <line x1="220" y1="105" x2="238" y2="105" stroke="#334155" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+        <!-- S3: Data Warehouse -->
+        <rect x="240" y="60" width="90" height="90" rx="6" fill="#022c22" stroke="#059669" stroke-width="1.5"/>
+        <text x="285" y="85" text-anchor="middle" fill="#34d399" font-size="10" font-weight="bold" font-family="Arial">DATA</text>
+        <text x="285" y="100" text-anchor="middle" fill="#34d399" font-size="10" font-weight="bold" font-family="Arial">WAREHOUSE</text>
+        <text x="285" y="118" text-anchor="middle" fill="#6ee7b7" font-size="9" font-family="Arial">OMOP CDM</text>
+        <text x="285" y="132" text-anchor="middle" fill="#6ee7b7" font-size="9" font-family="Arial">Normalized</text>
+        <text x="285" y="146" text-anchor="middle" fill="#6ee7b7" font-size="9" font-family="Arial">Research-grade</text>
+        <line x1="330" y1="105" x2="348" y2="105" stroke="#334155" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+        <!-- S4: i2b2 -->
+        <rect x="350" y="60" width="90" height="90" rx="6" fill="#1e1b4b" stroke="#6d28d9" stroke-width="1.5"/>
+        <text x="395" y="85" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="bold" font-family="Arial">i2b2</text>
+        <text x="395" y="100" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="bold" font-family="Arial">QUERY</text>
+        <text x="395" y="118" text-anchor="middle" fill="#c4b5fd" font-size="9" font-family="Arial">Cohort builder</text>
+        <text x="395" y="132" text-anchor="middle" fill="#c4b5fd" font-size="9" font-family="Arial">Feasibility</text>
+        <text x="395" y="146" text-anchor="middle" fill="#c4b5fd" font-size="9" font-family="Arial">tranSMART</text>
+        <line x1="440" y1="105" x2="458" y2="105" stroke="#334155" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+        <!-- S5: IRB / Governance -->
+        <rect x="460" y="60" width="90" height="90" rx="6" fill="#1a1209" stroke="#d97706" stroke-width="1.5"/>
+        <text x="505" y="85" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold" font-family="Arial">IRB /</text>
+        <text x="505" y="100" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold" font-family="Arial">GOVERNANCE</text>
+        <text x="505" y="118" text-anchor="middle" fill="#fde68a" font-size="9" font-family="Arial">DUA · Access</text>
+        <text x="505" y="132" text-anchor="middle" fill="#fde68a" font-size="9" font-family="Arial">De-identify</text>
+        <text x="505" y="146" text-anchor="middle" fill="#fde68a" font-size="9" font-family="Arial">BAA check</text>
+        <line x1="550" y1="105" x2="568" y2="105" stroke="#334155" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+        <!-- S6: HPC / GPU -->
+        <rect x="570" y="60" width="90" height="90" rx="6" fill="#0c1a3e" stroke="#0ea5e9" stroke-width="1.5"/>
+        <text x="615" y="85" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="bold" font-family="Arial">HPC / GPU</text>
+        <text x="615" y="100" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="bold" font-family="Arial">COMPUTE</text>
+        <text x="615" y="118" text-anchor="middle" fill="#7dd3fc" font-size="9" font-family="Arial">NVIDIA H100</text>
+        <text x="615" y="132" text-anchor="middle" fill="#7dd3fc" font-size="9" font-family="Arial">Slurm · MLOps</text>
+        <text x="615" y="146" text-anchor="middle" fill="#7dd3fc" font-size="9" font-family="Arial">Containers</text>
+        <line x1="660" y1="105" x2="678" y2="105" stroke="#334155" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+        <!-- S7: AI Model / Results -->
+        <rect x="680" y="60" width="90" height="90" rx="6" fill="#2a0a1a" stroke="#db2777" stroke-width="1.5"/>
+        <text x="725" y="85" text-anchor="middle" fill="#f472b6" font-size="10" font-weight="bold" font-family="Arial">AI MODEL</text>
+        <text x="725" y="100" text-anchor="middle" fill="#f472b6" font-size="10" font-weight="bold" font-family="Arial">/ RESULTS</text>
+        <text x="725" y="118" text-anchor="middle" fill="#fbcfe8" font-size="9" font-family="Arial">Validated</text>
+        <text x="725" y="132" text-anchor="middle" fill="#fbcfe8" font-size="9" font-family="Arial">Reproducible</text>
+        <text x="725" y="146" text-anchor="middle" fill="#fbcfe8" font-size="9" font-family="Arial">Provenance</text>
+        <line x1="770" y1="105" x2="788" y2="105" stroke="#334155" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+        <!-- S8: Scientific Impact -->
+        <rect x="790" y="48" width="96" height="114" rx="6" fill="#022c22" stroke="#16a34a" stroke-width="2"/>
+        <rect x="790" y="48" width="96" height="4" rx="0" fill="#16a34a"/>
+        <text x="838" y="80" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold" font-family="Arial">SCIENTIFIC</text>
+        <text x="838" y="96" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="bold" font-family="Arial">IMPACT</text>
+        <text x="838" y="116" text-anchor="middle" fill="#86efac" font-size="9" font-family="Arial">Grants</text>
+        <text x="838" y="130" text-anchor="middle" fill="#86efac" font-size="9" font-family="Arial">Publications</text>
+        <text x="838" y="144" text-anchor="middle" fill="#86efac" font-size="9" font-family="Arial">Trials · Pharma</text>
+
+        <!-- HIPAA compliance bracket -->
+        <rect x="350" y="178" width="310" height="24" rx="4" fill="#1a1209" stroke="#92400e" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="505" y="195" text-anchor="middle" fill="#d97706" font-size="10" font-family="Arial, sans-serif">← PHI compliance boundary (Stages 4–6) →</text>
+
+        <!-- Bottom note -->
+        <text x="450" y="252" text-anchor="middle" fill="#334155" font-size="11" font-family="Arial, sans-serif" font-style="italic">Stage 1–2: Most health systems  ·  Stage 3–5: Research-capable institutions  ·  Stage 6–8: Research-competitive institutions</text>
+
+        <!-- Stage numbers at bottom -->
+        <text x="65" y="275" text-anchor="middle" fill="#1e3a5f" font-size="9" font-family="Arial">01</text>
+        <text x="175" y="275" text-anchor="middle" fill="#1e3a5f" font-size="9" font-family="Arial">02</text>
+        <text x="285" y="275" text-anchor="middle" fill="#1e3a5f" font-size="9" font-family="Arial">03</text>
+        <text x="395" y="275" text-anchor="middle" fill="#1e3a5f" font-size="9" font-family="Arial">04</text>
+        <text x="505" y="275" text-anchor="middle" fill="#1e3a5f" font-size="9" font-family="Arial">05</text>
+        <text x="615" y="275" text-anchor="middle" fill="#1e3a5f" font-size="9" font-family="Arial">06</text>
+        <text x="725" y="275" text-anchor="middle" fill="#1e3a5f" font-size="9" font-family="Arial">07</text>
+        <text x="838" y="275" text-anchor="middle" fill="#1e3a5f" font-size="9" font-family="Arial">08</text>
+      </svg>
+    </div>
+    <p class="caption">The research informatics pipeline — from patient care through governance, HPC compute, and model validation to scientific and commercial impact</p>
+  </div>
+
+  <hr class="rule">
+
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- INFOGRAPHIC 5: FEDERATED RESEARCH NETWORK                 -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="block">
+    <div class="block-num">Research Area 04</div>
+    <div class="block-title">Federated Research Computing: Cross-Institutional Science Without Moving Data</div>
+    <div class="block-desc">The most important research questions require patient populations no single institution has. Federated computing enables multi-institutional research without PHI ever leaving the originating institution — through federated query, privacy-preserving record linkage, and federated model training with NVIDIA FLARE.</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg">
+        <rect width="900" height="520" fill="#111827"/>
+
+        <!-- Connecting lines (dashed = PHI-safe channels) -->
+        <line x1="195" y1="120" x2="395" y2="228" stroke="#0ea5e9" stroke-width="1.5" stroke-dasharray="7,4" opacity="0.6"/>
+        <line x1="705" y1="120" x2="505" y2="228" stroke="#0ea5e9" stroke-width="1.5" stroke-dasharray="7,4" opacity="0.6"/>
+        <line x1="155" y1="278" x2="362" y2="278" stroke="#0ea5e9" stroke-width="1.5" stroke-dasharray="7,4" opacity="0.6"/>
+        <line x1="745" y1="278" x2="538" y2="278" stroke="#0ea5e9" stroke-width="1.5" stroke-dasharray="7,4" opacity="0.6"/>
+        <line x1="450" y1="400" x2="450" y2="346" stroke="#0ea5e9" stroke-width="1.5" stroke-dasharray="7,4" opacity="0.6"/>
+
+        <!-- Center aggregator hub -->
+        <circle cx="450" cy="278" r="82" fill="#0c1a2e" stroke="#0ea5e9" stroke-width="2"/>
+        <circle cx="450" cy="278" r="76" fill="#0a1525"/>
+        <text x="450" y="262" text-anchor="middle" fill="#38bdf8" font-size="13" font-weight="bold" font-family="Arial, sans-serif">Research</text>
+        <text x="450" y="280" text-anchor="middle" fill="#38bdf8" font-size="13" font-weight="bold" font-family="Arial, sans-serif">Aggregator</text>
+        <text x="450" y="300" text-anchor="middle" fill="#334155" font-size="10" font-family="Arial, sans-serif">Federated hub</text>
+        <text x="450" y="316" text-anchor="middle" fill="#1e3a5f" font-size="10" font-family="Arial, sans-serif">NVIDIA FLARE · PCORnet</text>
+
+        <!-- Institution boxes -->
+        <!-- TL -->
+        <rect x="55" y="42" width="180" height="95" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="145" y="66" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="bold" font-family="Arial">Institution A</text>
+        <text x="145" y="83" text-anchor="middle" fill="#64748b" font-size="10" font-family="Arial">Local PHI · i2b2 · OMOP</text>
+        <text x="145" y="99" text-anchor="middle" fill="#64748b" font-size="10" font-family="Arial">Local HPC · GPU compute</text>
+        <rect x="100" y="110" width="90" height="20" rx="4" fill="#022c22"/>
+        <text x="145" y="125" text-anchor="middle" fill="#4ade80" font-size="9" font-family="Arial, sans-serif">🔒 PHI protected</text>
+
+        <!-- TR -->
+        <rect x="665" y="42" width="180" height="95" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="755" y="66" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="bold" font-family="Arial">Institution B</text>
+        <text x="755" y="83" text-anchor="middle" fill="#64748b" font-size="10" font-family="Arial">Local PHI · i2b2 · OMOP</text>
+        <text x="755" y="99" text-anchor="middle" fill="#64748b" font-size="10" font-family="Arial">Local HPC · GPU compute</text>
+        <rect x="710" y="110" width="90" height="20" rx="4" fill="#022c22"/>
+        <text x="755" y="125" text-anchor="middle" fill="#4ade80" font-size="9" font-family="Arial, sans-serif">🔒 PHI protected</text>
+
+        <!-- ML -->
+        <rect x="20" y="230" width="135" height="95" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="87" y="255" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="bold" font-family="Arial">Institution C</text>
+        <text x="87" y="272" text-anchor="middle" fill="#64748b" font-size="10" font-family="Arial">Local PHI</text>
+        <text x="87" y="288" text-anchor="middle" fill="#64748b" font-size="10" font-family="Arial">i2b2 · OMOP</text>
+        <rect x="42" y="302" width="90" height="20" rx="4" fill="#022c22"/>
+        <text x="87" y="317" text-anchor="middle" fill="#4ade80" font-size="9" font-family="Arial, sans-serif">🔒 PHI safe</text>
+
+        <!-- MR -->
+        <rect x="745" y="230" width="135" height="95" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="812" y="255" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="bold" font-family="Arial">Institution D</text>
+        <text x="812" y="272" text-anchor="middle" fill="#64748b" font-size="10" font-family="Arial">Local PHI</text>
+        <text x="812" y="288" text-anchor="middle" fill="#64748b" font-size="10" font-family="Arial">i2b2 · OMOP</text>
+        <rect x="767" y="302" width="90" height="20" rx="4" fill="#022c22"/>
+        <text x="812" y="317" text-anchor="middle" fill="#4ade80" font-size="9" font-family="Arial, sans-serif">🔒 PHI safe</text>
+
+        <!-- Bottom -->
+        <rect x="340" y="402" width="220" height="95" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="450" y="427" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="bold" font-family="Arial">Institution E</text>
+        <text x="450" y="445" text-anchor="middle" fill="#64748b" font-size="10" font-family="Arial">Local PHI · i2b2 · OMOP</text>
+        <text x="450" y="461" text-anchor="middle" fill="#64748b" font-size="10" font-family="Arial">Regional AMC anchor</text>
+        <rect x="405" y="472" width="90" height="20" rx="4" fill="#022c22"/>
+        <text x="450" y="487" text-anchor="middle" fill="#4ade80" font-size="9" font-family="Arial, sans-serif">🔒 PHI protected</text>
+
+        <!-- Legend -->
+        <line x1="270" y1="168" x2="310" y2="168" stroke="#0ea5e9" stroke-width="1.5" stroke-dasharray="7,4"/>
+        <text x="318" y="172" fill="#475569" font-size="10" font-family="Arial, sans-serif">Aggregate stats or model weights only — no PHI crosses boundaries</text>
+
+        <!-- Bottom note -->
+        <text x="450" y="510" text-anchor="middle" fill="#334155" font-size="11" font-family="Arial, sans-serif" font-style="italic">Five institutions answer a single research question together. No patient data ever leaves any institution.</text>
+      </svg>
+    </div>
+    <p class="caption">Federated research computing network — multi-institutional collaboration using aggregate query results and model weights, never raw PHI</p>
+  </div>
+
+  <hr class="rule">
+
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- INFOGRAPHIC 6: GPU ECONOMICS                              -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="block">
+    <div class="block-num">Research Area 05</div>
+    <div class="block-title">GPU Economics: The Build vs. Burst Decision Framework</div>
+    <div class="block-desc">The on-premises versus cloud GPU decision is an economics question with a calculable break-even point. Based on analysis across multiple institutional contexts, that threshold falls between 25,000 and 35,000 annual GPU-hours. Below it, cloud burst is economically rational. Above it, on-premises hardware generates substantial savings while providing dedicated availability for continuous research pipelines.</div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+        <rect width="900" height="420" fill="#111827"/>
+
+        <!-- Chart area background -->
+        <rect x="80" y="40" width="770" height="300" rx="4" fill="#0a0f1a" stroke="#1e293b" stroke-width="1"/>
+
+        <!-- Y-axis label (rotated) -->
+        <text x="22" y="195" text-anchor="middle" fill="#475569" font-size="11" font-family="Arial, sans-serif" transform="rotate(-90, 22, 195)">Cost per GPU-hour</text>
+
+        <!-- X-axis label -->
+        <text x="465" y="410" text-anchor="middle" fill="#475569" font-size="11" font-family="Arial, sans-serif">Annual GPU-hours consumed</text>
+
+        <!-- Grid lines and Y labels -->
+        <!-- Y scale: y=40 ($35) to y=340 ($0). Range = 300px / $35 = 8.57px per dollar -->
+        <!-- $30 → y = 40 + (35-30)*8.57 = 40+42.9 = 83 -->
+        <!-- $25 → y = 40 + (35-25)*8.57 = 40+85.7 = 126 -->
+        <!-- $20 → y = 40 + (35-20)*8.57 = 40+128.6 = 169 -->
+        <!-- $16 → y = 40 + (35-16)*8.57 = 40+162.8 = 203 -->
+        <!-- $10 → y = 40 + (35-10)*8.57 = 40+214.3 = 254 -->
+        <!-- $5  → y = 40 + (35-5)*8.57  = 40+257.1 = 297 -->
+        <!-- $2  → y = 40 + (35-2)*8.57  = 40+282.9 = 323 -->
+
+        <line x1="80" y1="83" x2="850" y2="83" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4"/>
+        <text x="72" y="87" text-anchor="end" fill="#475569" font-size="10" font-family="Arial">$30</text>
+
+        <line x1="80" y1="126" x2="850" y2="126" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4"/>
+        <text x="72" y="130" text-anchor="end" fill="#475569" font-size="10" font-family="Arial">$25</text>
+
+        <line x1="80" y1="169" x2="850" y2="169" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4"/>
+        <text x="72" y="173" text-anchor="end" fill="#475569" font-size="10" font-family="Arial">$20</text>
+
+        <line x1="80" y1="203" x2="850" y2="203" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4"/>
+        <text x="72" y="207" text-anchor="end" fill="#0ea5e9" font-size="10" font-family="Arial" font-weight="bold">$16</text>
+
+        <line x1="80" y1="254" x2="850" y2="254" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4"/>
+        <text x="72" y="258" text-anchor="end" fill="#475569" font-size="10" font-family="Arial">$10</text>
+
+        <line x1="80" y1="297" x2="850" y2="297" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4"/>
+        <text x="72" y="301" text-anchor="end" fill="#475569" font-size="10" font-family="Arial">$5</text>
+
+        <!-- X axis: 0 to 100K. Width=770px. 1K = 7.7px. x = 80 + hours*0.0077 -->
+        <!-- 10K → 80+77=157, 25K → 80+192.5=272, 35K → 80+269.5=349, 50K → 80+385=465, 75K → 80+577.5=657, 100K → 850 -->
+        <text x="80" y="355" text-anchor="middle" fill="#475569" font-size="10" font-family="Arial">0</text>
+        <text x="157" y="355" text-anchor="middle" fill="#475569" font-size="10" font-family="Arial">10K</text>
+        <text x="272" y="355" text-anchor="middle" fill="#475569" font-size="10" font-family="Arial">25K</text>
+        <text x="349" y="355" text-anchor="middle" fill="#f59e0b" font-size="10" font-family="Arial" font-weight="bold">35K</text>
+        <text x="465" y="355" text-anchor="middle" fill="#475569" font-size="10" font-family="Arial">50K</text>
+        <text x="657" y="355" text-anchor="middle" fill="#475569" font-size="10" font-family="Arial">75K</text>
+        <text x="850" y="355" text-anchor="middle" fill="#475569" font-size="10" font-family="Arial">100K</text>
+
+        <!-- Cloud GPU flat line at $16 (y=203) -->
+        <line x1="80" y1="203" x2="850" y2="203" stroke="#0ea5e9" stroke-width="2.5"/>
+
+        <!-- On-premises curve — starts high (off chart at 0), decreasing hyperbolically -->
+        <!-- Points: (80, 40→$35 off chart), (157, 126→$25), (272, 203→$17), (349, 222→$13), (465, 262→$8.5), (657, 289→$5.4), (850, 306→$3.4) -->
+        <!-- Let me use: (80,40) start off chart, then decreasing -->
+        <!-- On-prem: At 5K hrs: ~$32. At 10K: ~$22. At 20K: ~$18. At 35K: ~$16 (crossover). At 50K: $11. At 75K: $7. At 100K: $5 -->
+        <!-- $22 → y=40+(35-22)*8.57=40+111.4=151 -->
+        <!-- $18 → y=40+(35-18)*8.57=40+145.7=186 -->
+        <!-- $16 → y=203 -->
+        <!-- $11 → y=40+(35-11)*8.57=40+205.7=246 -->
+        <!-- $7  → y=40+(35-7)*8.57=40+240=280 -->
+        <!-- $5  → y=297 -->
+        <path d="M 80,40 C 110,45 140,90 157,151 C 200,186 250,200 272,204 C 330,210 349,214 465,246 C 570,270 657,280 850,297"
+              fill="none" stroke="#10b981" stroke-width="2.5"/>
+
+        <!-- Shaded zone: cloud favored (left of break-even) -->
+        <rect x="80" y="40" width="269" height="300" fill="#0ea5e9" opacity="0.03"/>
+
+        <!-- Shaded zone: on-prem favored (right of break-even) -->
+        <rect x="349" y="40" width="501" height="300" fill="#10b981" opacity="0.03"/>
+
+        <!-- Break-even vertical dashed line -->
+        <line x1="349" y1="40" x2="349" y2="340" stroke="#f59e0b" stroke-width="2" stroke-dasharray="7,4"/>
+
+        <!-- Break-even callout box -->
+        <rect x="358" y="52" width="160" height="48" rx="5" fill="#1a1209" stroke="#d97706" stroke-width="1.5"/>
+        <text x="438" y="72" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="bold" font-family="Arial">Break-even: ~35K</text>
+        <text x="438" y="90" text-anchor="middle" fill="#fde68a" font-size="10" font-family="Arial">GPU-hours / year</text>
+
+        <!-- Cloud label -->
+        <rect x="590" y="175" width="200" height="28" rx="4" fill="#0c1a2e" stroke="#0369a1" stroke-width="1"/>
+        <text x="690" y="194" text-anchor="middle" fill="#38bdf8" font-size="11" font-weight="bold" font-family="Arial">Cloud GPU: $10–32 / hr</text>
+
+        <!-- On-prem label -->
+        <rect x="535" y="258" width="220" height="28" rx="4" fill="#0a1a12" stroke="#059669" stroke-width="1"/>
+        <text x="645" y="277" text-anchor="middle" fill="#34d399" font-size="11" font-weight="bold" font-family="Arial">On-premises: &lt;$5 / hr at scale</text>
+
+        <!-- Zone text -->
+        <text x="200" y="290" text-anchor="middle" fill="#1e3a5f" font-size="11" font-family="Arial, sans-serif" font-style="italic">Cloud burst</text>
+        <text x="200" y="306" text-anchor="middle" fill="#1e3a5f" font-size="11" font-family="Arial, sans-serif" font-style="italic">economical</text>
+        <text x="620" y="320" text-anchor="middle" fill="#14532d" font-size="11" font-family="Arial, sans-serif" font-style="italic">On-premises delivers savings + dedicated availability</text>
+      </svg>
+    </div>
+    <p class="caption">GPU economics decision framework — on-premises vs. cloud burst break-even at approximately 35,000 annual GPU-hours for an 8-node H100 cluster configuration</p>
+  </div>
+
+  <hr class="rule">
+
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- SPEAKING TOPICS                                           -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="block">
+    <div class="block-num">Speaking &amp; Engagements</div>
+    <div class="block-title">Topics I Speak On</div>
+    <div class="block-desc">Presentations designed for research computing leaders, health system CIOs, research faculty, and pharmaceutical technology executives. Each topic draws from operational experience building these systems — not theory.</div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-tag">Keynote</div>
+        <div class="card-title">The Research-Ready Health System: Building Infrastructure That Says Yes</div>
+        <div class="card-body">Why the gap between research ambition and compute capability is the most consequential problem in academic medicine — and a five-layer framework for closing it. Includes the pharmaceutical partnership problem: what health systems lose when infrastructure can't answer yes.</div>
+      </div>
+      <div class="card">
+        <div class="card-tag">Technical Leadership</div>
+        <div class="card-title">HPC Governance: The Policy Layer Nobody Builds</div>
+        <div class="card-body">Fair-share scheduling, compute allocation equity, charge-back models, and the governance architecture that prevents expensive GPU clusters from being captured by the loudest three research groups. Practical models from multi-hospital health systems.</div>
+      </div>
+      <div class="card">
+        <div class="card-tag">Research Strategy</div>
+        <div class="card-title">Multimodal AI in Clinical Research: Architecture for the Next Decade</div>
+        <div class="card-body">How to integrate genomics, medical imaging, EHR data, and wearable sensor streams into unified research datasets — with the governance and compute architecture required to make the result HIPAA-compliant and scientifically reproducible.</div>
+      </div>
+      <div class="card">
+        <div class="card-tag">Executive Education</div>
+        <div class="card-title">GPU Economics for Health System Leaders: Build, Burst, or Both?</div>
+        <div class="card-body">The on-premises vs. cloud GPU decision has a calculable break-even point. A practitioner's framework for evaluating research computing capital investments, modeling utilization scenarios, and designing hybrid architectures that grow with research demand.</div>
+      </div>
+      <div class="card">
+        <div class="card-tag">Research Informatics</div>
+        <div class="card-title">i2b2, OMOP, and the Clinical Data Substrate: Unlocking Your Patient Population</div>
+        <div class="card-body">How i2b2 and OMOP CDM transform institutional clinical data into a queryable research asset — enabling AI-enhanced trial recruitment, feasibility analysis in hours instead of weeks, and cross-institutional federated queries that multiply the scientific value of existing clinical operations.</div>
+      </div>
+      <div class="card">
+        <div class="card-tag">Compliance Architecture</div>
+        <div class="card-title">HIPAA-Compliant Research Computing: Compliance as Competitive Advantage</div>
+        <div class="card-body">Institutions that build HIPAA-compliant research computing correctly find that compliance posture enables pharmaceutical partnerships and federal grant eligibility that non-compliant environments cannot access. The architecture of getting this right — and why it is a revenue enabler, not a cost center.</div>
+      </div>
+      <div class="card">
+        <div class="card-tag">Emerging Technology</div>
+        <div class="card-title">Federated Learning in Healthcare: Computing Across Institutions Without Moving Data</div>
+        <div class="card-body">NVIDIA FLARE, federated query, and privacy-preserving record linkage as the enabling architecture for multi-institutional research on rare disease, genomics, and population health — without any patient data crossing institutional boundaries.</div>
+      </div>
+      <div class="card">
+        <div class="card-tag">Research Operations</div>
+        <div class="card-title">MLOps and Reproducibility: Clinical AI That Survives Peer Review</div>
+        <div class="card-body">Containers (Singularity/Apptainer), workflow managers (Nextflow, Snakemake), provenance tracking, and the operational infrastructure that makes clinical AI models reproducible by independent teams — a prerequisite for publication, regulatory submission, and real-world deployment.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- RESEARCH VISION / AMBITIONS                               -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="block">
+    <div class="block-num">Vision</div>
+    <div class="block-title">Where This Is Going: Research Ambitions for 2026–2040</div>
+    <div class="block-desc">The health systems that will lead biomedical research in the next fifteen years are not necessarily those with the largest endowments. They are the ones that invest deliberately in the infrastructure layers that let them say yes — to the grant, to the trial, to the partnership, to the science.</div>
+    <div class="grid-3">
+      <div class="vision-card" style="border-top: 3px solid #0ea5e9;">
+        <div style="font-size: 10px; letter-spacing: 2px; color: #0ea5e9; font-family: Arial; margin-bottom: 14px;">NEAR TERM — 1 TO 3 YEARS</div>
+        <div style="font-size: 14px; color: #f1f5f9; line-height: 1.7; margin-bottom: 14px;">GPU-accelerated genomics becomes standard clinical infrastructure, not research specialty. AI-enhanced trial recruitment powered by i2b2 + NLP cuts enrollment timelines by 50–60% at AMCs that implement it. HIPAA-compliant cloud burst replaces custom HPC for 60% of batch research workloads.</div>
+        <div style="font-size: 12px; color: #334155; line-height: 1.5;">Key milestones: NVIDIA Clara Parabricks adoption · Cloud BAA governance maturity · i2b2 AI layer deployment</div>
+      </div>
+      <div class="vision-card" style="border-top: 3px solid #10b981;">
+        <div style="font-size: 10px; letter-spacing: 2px; color: #10b981; font-family: Arial; margin-bottom: 14px;">MID TERM — 3 TO 7 YEARS</div>
+        <div style="font-size: 14px; color: #f1f5f9; line-height: 1.7; margin-bottom: 14px;">Federated learning becomes the default model for multi-site clinical research. Regional HPC networks — health systems anchoring shared compute for affiliated academic institutions — replace siloed institutional clusters. The first clinical foundation models trained on federated multimodal data across 10+ institutions go into production.</div>
+        <div style="font-size: 12px; color: #334155; line-height: 1.5;">Key milestones: FLARE production deployments · Regional HPC consortia · OMOP federated networks at scale</div>
+      </div>
+      <div class="vision-card" style="border-top: 3px solid #8b5cf6;">
+        <div style="font-size: 10px; letter-spacing: 2px; color: #8b5cf6; font-family: Arial; margin-bottom: 14px;">LONG TERM — 7 TO 15 YEARS</div>
+        <div style="font-size: 14px; color: #f1f5f9; line-height: 1.7; margin-bottom: 14px;">Real-time clinical-research integration: the boundary between care delivery and research participation disappears. Every patient encounter contributes to population-scale research with appropriate consent and governance. Pharmaceutical development cycles compress from 12–15 years to 7–9 years through AI-enabled target identification, adaptive trial design, and AI-enhanced recruitment.</div>
+        <div style="font-size: 12px; color: #334155; line-height: 1.5;">Key milestones: Continuous consent platforms · Adaptive trial infrastructure · Real-world evidence at clinical scale</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>Jag Mariappan &nbsp;·&nbsp; Research Informatics &amp; Scientific Computing &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/jagawins/">LinkedIn</a> &nbsp;·&nbsp;
+      <a href="https://jagmariappan.com">jagmariappan.com</a>
+    </p>
+  </div>
+
+</div>
+</body>
+</html>

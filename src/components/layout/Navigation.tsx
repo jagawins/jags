@@ -17,6 +17,7 @@ const navGroups: { label: string; items: NavItem[] }[] = [
       { href: "/case-studies/medtronic-770-to-780", label: "Medtronic 770G → 780G", description: "Case study" },
       { href: "/idp-decision-system", label: "IDP Decision System", description: "Drug program alignment & risk scoring" },
       { href: "/resume-match-pro", label: "ResumeMatch Pro", description: "JD scanner & resume score optimizer" },
+      { href: "/research-informatics-hpc", label: "Research Informatics", description: "HPC, GPU, i2b2, HIPAA cloud for AMCs" },
       { href: "/ebook-reading-planner", label: "Ebook Reading Planner", description: "PDF/EPUB daily pace planner" },
     ],
   },

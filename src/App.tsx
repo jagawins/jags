@@ -59,6 +59,7 @@ const App = () => (
             <Route path="/resume-match-pro" element={<ResumeMatchPro />} />
             <Route path="/ebook-reading-planner" element={<EbookReadingPlanner />} />
             <Route path="/research-informatics-hpc" element={<ResearchInformatics />} />
+            <Route path="/research-vision-frameworks" element={<ResearchVisionFrameworks />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

@@ -61,8 +61,9 @@ X/Twitter: https://x.com/AXORAHQ
 - [Agentic AI in Clinical and Operational Workflows](/agentic-ai-in-clinical-and-operational-workflows): Executive guide to autonomy, governance, risk, and ROI for agentic AI.
 - [Speaking](/speaking): Keynote topics, formats, and engagements.
 - [Principles](/principles): Operating principles and leadership philosophy.
-- [Writing](/writing): Essays on healthcare AI, governance, and operations.
+- [Writing](/writing): Essays on healthcare AI, governance, research informatics, and operations.
 - [Healthcare AI Governance Is the Executive Competency of 2026](/writing/healthcare-ai-governance-executive-competency): Why governing AI is the defining executive skill.
+- [Research Computing: From Wish to System](/writing/research-computing-wish-to-system): How to turn a research-ready aspiration into an i2b2 feasibility query that runs in four hours instead of four weeks.
 - [Medtronic 770G to 780G Case Study](/case-studies/medtronic-770-to-780): Scaling a connected medical device platform.
 - [AXIVA Daily Briefing](/axiva-daily-briefing): GPT-powered daily executive briefing tool.
 - [IDP Decision System](/idp-decision-system): Decision intelligence system for IDP milestones and alignment.

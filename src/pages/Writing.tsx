@@ -196,6 +196,9 @@ const Writing = () => {
                 >
                   <div className="flex items-start justify-between gap-6">
                     <div className="flex-1">
+                      <p className="text-xs font-semibold tracking-wider uppercase text-primary/80 mb-2">
+                        {post.category}
+                      </p>
                       <h2 className="font-serif text-xl md:text-2xl font-medium text-foreground group-hover:text-primary transition-colors leading-tight mb-3">
                         {post.title}
                       </h2>

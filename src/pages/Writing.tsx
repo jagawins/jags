@@ -13,12 +13,22 @@ const bookRetailers = [
 ];
 const posts = [
   {
+    title: "Research Computing: From Wish to System",
+    url: "/writing/research-computing-wish-to-system",
+    date: "2026",
+    excerpt: "How to turn a research-ready aspiration into an i2b2 feasibility query that runs in four hours instead of four weeks.",
+    internal: true,
+    flagship: true,
+    category: "Research",
+  },
+  {
     title: "Healthcare AI Governance Framework for Health Systems in 2026",
     url: "/healthcare-ai-governance-framework",
     date: "March 2026",
     excerpt: "A board-ready five-layer governance model for evaluating, approving, scaling, and retiring AI across enterprise health systems. Includes executive scorecard.",
     internal: true,
     flagship: true,
+    category: "Healthcare AI",
   },
   {
     title: "Measuring ROI of AI in Healthcare",
@@ -27,6 +37,7 @@ const posts = [
     excerpt: "Quantitative frameworks for cost avoidance, throughput acceleration, denial reduction, labor leverage, and quality correlation — with real math.",
     internal: true,
     flagship: true,
+    category: "Healthcare AI",
   },
   {
     title: "Agentic AI in Clinical and Operational Workflows",
@@ -35,6 +46,7 @@ const posts = [
     excerpt: "The executive guide to autonomy levels 0–4, governance, risk matrix, regulatory anchors, monitoring design, and vendor selection for agentic AI in healthcare.",
     internal: true,
     flagship: true,
+    category: "Healthcare AI",
   },
   {
     title: "Healthcare AI Governance Is the Executive Competency of 2026",
@@ -42,24 +54,28 @@ const posts = [
     date: "March 2026",
     excerpt: "Why the most important skill for health system leaders isn't understanding AI — it's governing it. A practitioner's guide from Stanford Medicine.",
     internal: true,
+    category: "Healthcare AI",
   },
   {
     title: "The Chair Theory",
     url: "https://myjmr.org/2025/12/27/the-chair-theory/",
     date: "December 2025",
     excerpt: "Everyone has a table in their life. Some tables pull a chair the moment you arrive. Others make you wait. Some never quite make room at all.",
+    category: "Essays",
   },
   {
     title: "Lucky Girl Syndrome",
     url: "https://myjmr.org/2025/12/27/lucky-girl-syndrome/",
     date: "December 2025",
     excerpt: "What is Lucky Girl Syndrome really, and how should you think about it in a practical way? Mindset meets strategy.",
+    category: "Essays",
   },
   {
     title: "Comfort Protects. Faith Carries. Purpose Decides.",
     url: "https://myjmr.org/2025/12/25/comfort-protects-faith-carries-purpose-decides/",
     date: "December 2025",
     excerpt: "You were not built for a painless life. You were built for a purposeful one.",
+    category: "Essays",
   },
 ];
 

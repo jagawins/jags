@@ -26,6 +26,7 @@ import ResumeMatchPro from "./pages/ResumeMatchPro";
 import EbookReadingPlanner from "./pages/EbookReadingPlanner";
 import ResearchInformatics from "./pages/ResearchInformatics";
 import ResearchVisionFrameworks from "./pages/ResearchVisionFrameworks";
+import ResearchWishToSystem from "./pages/ResearchWishToSystem";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -60,6 +61,7 @@ const App = () => (
             <Route path="/ebook-reading-planner" element={<EbookReadingPlanner />} />
             <Route path="/research-informatics-hpc" element={<ResearchInformatics />} />
             <Route path="/research-vision-frameworks" element={<ResearchVisionFrameworks />} />
+            <Route path="/writing/research-computing-wish-to-system" element={<ResearchWishToSystem />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

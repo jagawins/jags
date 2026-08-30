@@ -18,7 +18,7 @@ const Index = () => {
       <SEO
         title="Jag Mariappan | Executive Director, Research Computing"
         description="Executive Director, Research Computing and Informatics. $154M P&L, C-suite roles, and board advisory in healthcare AI. Stanford Medicine. Harvard Business School."
-        keywords="Jag Mariappan, Executive Director Research Computing Informatics healthcare AI, Vice President healthcare technology, Chief AI Officer, board advisor healthcare, research informatics, AI governance, healthcare executive, enterprise transformation, Stanford Medicine, C-suite healthcare, digital health executive"
+        keywords="Jag Mariappan, Executive Director Research Computing Informatics healthcare AI, healthcare technology executive, Chief AI Officer, board advisor healthcare, research informatics, AI governance, healthcare executive, enterprise transformation, Stanford Medicine, C-suite healthcare, digital health executive"
       />
       <Hero />
       <ValueSnapshot />

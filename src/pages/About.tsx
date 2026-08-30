@@ -38,9 +38,9 @@ const About = () => {
   return (
     <Layout>
       <SEO 
-        title="About Jag Mariappan | Senior Director and Vice President, Healthcare AI"
-        description="Jagadeesan Mariappan (Jag Mariappan) — Senior Director and Vice President at Stanford Medicine with $154M P&L ownership, C-suite roles (CEO, COO, CPO), research informatics expertise, and two successful exits. Harvard Business School alumnus."
-        keywords="Jag Mariappan, Jagadeesan Mariappan, Senior Director Vice President healthcare AI, Stanford Medicine executive, research informatics, board governance, Harvard Business School, healthcare AI biography"
+        title="About Jag Mariappan | Executive Director, Research Computing"
+        description="Jagadeesan Mariappan (Jag Mariappan) — Executive Director, Research Computing and Informatics at Stanford Medicine with $154M P&L ownership, C-suite roles (CEO, COO, CPO), and two successful exits. Harvard Business School alumnus."
+        keywords="Jag Mariappan, Jagadeesan Mariappan, Executive Director Research Computing Informatics healthcare AI, Stanford Medicine executive, research informatics, board governance, Harvard Business School, healthcare AI biography"
         url="https://jagmariappan.com/about"
       />
       <section className="section-spacing">
@@ -52,7 +52,7 @@ const About = () => {
                 <div className="w-48 md:w-full aspect-square">
                   <img
                     src={jagHeadshot}
-                    alt="Jag Mariappan, Senior Director Enterprise Operations at Stanford Medicine"
+                    alt="Jag Mariappan, Executive Director, Research Computing and Informatics at Stanford Medicine"
                     className="w-full h-full object-cover rounded-sm"
                   />
                 </div>
@@ -63,7 +63,7 @@ const About = () => {
                   Executive operator building at the intersection of healthcare, AI, and governance.
                 </p>
                 <p className="text-sm text-muted-foreground mt-3">
-                  Also known as Jagadeesan Mariappan — Senior Director and Vice President, Healthcare AI & Enterprise Governance.
+                  Also known as Jagadeesan Mariappan — Executive Director, Research Computing and Informatics.
                 </p>
               </div>
             </div>

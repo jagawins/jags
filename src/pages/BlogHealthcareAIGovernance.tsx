@@ -297,7 +297,7 @@ const BlogHealthcareAIGovernance = () => {
             {/* Author */}
             <div className="border-t border-border pt-8 mt-4">
               <p className="text-sm text-muted-foreground leading-relaxed">
-                <strong className="text-foreground">About the Author</strong> — Jag Mariappan is Senior Director of Enterprise Operations at Stanford Medicine, with 25+ years of experience leading healthcare operations, AI-enabled digital systems, and enterprise transformation. He is an advisor, speaker, and writer on healthcare AI governance and digital strategy.
+                <strong className="text-foreground">About the Author</strong> — Jag Mariappan is Executive Director of Research Computing and Informatics at Stanford Medicine, with 25+ years of experience leading healthcare operations, AI-enabled digital systems, and enterprise transformation. He is an advisor, speaker, and writer on healthcare AI governance and digital strategy.
               </p>
             </div>
           </div>

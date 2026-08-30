@@ -278,7 +278,7 @@ const MeasuringROI = () => {
           {/* Author */}
           <footer className="pt-8 border-t border-border">
             <p className="text-sm text-muted-foreground">
-              <Link to="/about" className="text-foreground hover:text-primary transition-colors font-medium">Jag Mariappan</Link> is Senior Director at Stanford Medicine, building frameworks for AI capital allocation, governance architecture, and institutional adoption in regulated enterprises. Harvard Business School alumnus.
+              <Link to="/about" className="text-foreground hover:text-primary transition-colors font-medium">Jag Mariappan</Link> is Executive Director of Research Computing and Informatics at Stanford Medicine, building frameworks for AI capital allocation, governance architecture, and institutional adoption in regulated enterprises. Harvard Business School alumnus.
             </p>
           </footer>
         </div>

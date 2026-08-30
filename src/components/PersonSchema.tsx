@@ -12,8 +12,8 @@ const PersonSchema = () => {
       "https://www.linkedin.com/in/jagawins/",
       "https://github.com/jagawins"
     ],
-    "jobTitle": "Senior Director and Vice President, Healthcare AI & Enterprise Governance",
-    "description": "Senior Director and Vice President with $154M P&L ownership, C-suite executive roles (CEO, COO, CPO), two successful venture exits, and board advisory experience across healthcare AI, research informatics, and regulated enterprise systems.",
+    "jobTitle": "Executive Director, Research Computing and Informatics",
+    "description": "Executive Director, Research Computing and Informatics with $154M P&L ownership, C-suite executive roles (CEO, COO, CPO), two successful venture exits, and board advisory experience across healthcare AI, research informatics, and regulated enterprise systems.",
     "worksFor": {
       "@type": "Organization",
       "name": "Stanford Medicine"
@@ -47,7 +47,7 @@ const PersonSchema = () => {
     "hasOccupation": [
       {
         "@type": "Occupation",
-        "name": "Senior Director and Vice President — Enterprise AI & Research Informatics, reporting to CMO and CIO with budget authority and board-level governance accountability",
+        "name": "Executive Director, Research Computing and Informatics — enterprise AI & research informatics, reporting to CMO and CIO with budget authority and board-level governance accountability",
         "occupationLocation": {
           "@type": "Organization",
           "name": "Stanford Medicine"

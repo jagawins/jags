@@ -11,7 +11,7 @@ interface SEOProps {
 
 const SEO = ({
   title = "Jag Mariappan | Executive Operator in Healthcare & AI",
-  description = "Jag Mariappan — Senior Director at Stanford Medicine. 25+ years leading healthcare operations, AI governance, and enterprise transformation. Harvard Business School alumnus.",
+  description = "Jag Mariappan — Executive Director, Research Computing and Informatics at Stanford Medicine. 25+ years leading healthcare operations, AI governance, and enterprise transformation. Harvard Business School alumnus.",
   keywords = "Jag Mariappan, Executive Leader, Healthcare AI, Stanford Medicine, Enterprise Transformation, Digital Health, AI Governance",
   image = "https://jagmariappan.com/og-image-new.png",
   url = "https://jagmariappan.com",

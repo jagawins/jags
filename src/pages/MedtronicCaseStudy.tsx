@@ -286,7 +286,7 @@ const MedtronicCaseStudy = () => {
           <h2 className="font-serif text-2xl md:text-3xl font-medium text-foreground">About the Author</h2>
           <div className="mt-8 space-y-4 text-base text-muted-foreground leading-relaxed">
             <p>
-              Jag Mariappan is a Senior Director, product and operations leader specializing in digital health transformation and institutional AI deployment at scale. His work spans connected medical device platforms, regulatory-compliant software architecture, and operational systems design in highly regulated environments. Previously, Jag led digital transformation initiatives at Medtronic Diabetes, contributing to the 770G to 780G ecosystem transition and the scaling of connected insulin delivery platforms.
+              Jag Mariappan is an Executive Director, Research Computing and Informatics, product and operations leader specializing in digital health transformation and institutional AI deployment at scale. His work spans connected medical device platforms, regulatory-compliant software architecture, and operational systems design in highly regulated environments. Previously, Jag led digital transformation initiatives at Medtronic Diabetes, contributing to the 770G to 780G ecosystem transition and the scaling of connected insulin delivery platforms.
             </p>
             <p className="text-sm">
               This case study documents institutional-scale platform transformations and is intended for operators, strategists, and investors evaluating connected health infrastructure and regulated AI deployment models.

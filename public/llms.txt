@@ -1,7 +1,7 @@
 # Jag Mariappan - Executive Portfolio
 
 ## About
-Jag Mariappan is a Senior Director of Enterprise Operations at Stanford Medicine. He specializes in healthcare operations, AI systems leadership, enterprise governance, and digital transformation across large organizations.
+Jag Mariappan is the Executive Director of Research Computing and Informatics at Stanford Medicine. He specializes in healthcare operations, AI systems leadership, enterprise governance, and digital transformation across large organizations.
 
 ## Expertise
 - Healthcare Operations
@@ -20,7 +20,7 @@ Jag Mariappan is a Senior Director of Enterprise Operations at Stanford Medicine
 - Decision quality defines outcomes
 
 ## Current Roles
-- Stanford Medicine: Senior Director, Enterprise Operations (VP-Equivalent)
+- Stanford Medicine: Executive Director, Research Computing and Informatics
 - Leading enterprise-scale portfolios spanning digital health, AI-enabled patient experience, and data/security governance
 
 ## Ventures & Exits

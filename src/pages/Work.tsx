@@ -17,16 +17,16 @@ const projects = [
     outcome: "Prior • Through Aug 2026",
     role: "VP-Equivalent Executive — Enterprise AI, Research Informatics & Governance",
     bullets: [
-      "Reports directly to C-suite executive leadership (CMO, CIO) with accountability for AI and digital health strategy across the institution — including budget authority, vendor approval, and technology governance decisions escalated to executive administration",
-      "Presents AI governance frameworks, platform adoption metrics, and compliance posture to institutional leadership and governance committees at board-equivalent level",
-      "Leading enterprise-scale portfolios spanning digital health, AI-enabled patient experience, and data/security governance within a premier academic health system",
-      "Architecting research informatics infrastructure including Databricks data platform implementation, Qualtrics clinical workflow integration, and enterprise security governance programs",
+      "Reported directly to C-suite executive leadership (CMO, CIO) with accountability for AI and digital health strategy across the institution — including budget authority, vendor approval, and technology governance decisions escalated to executive administration",
+      "Presented AI governance frameworks, platform adoption metrics, and compliance posture to institutional leadership and governance committees at board-equivalent level",
+      "Led enterprise-scale portfolios spanning digital health, AI-enabled patient experience, and data/security governance within a premier academic health system",
+      "Architected research informatics infrastructure including Databricks data platform implementation, Qualtrics clinical workflow integration, and enterprise security governance programs",
       "Developed the FURM AI Governance Framework — a board-reportable decision architecture for deploying AI in regulated clinical environments",
-      "Driving cross-functional alignment between clinical leadership, IT, research operations, and executive administration",
+      "Drove cross-functional alignment between clinical leadership, IT, research operations, and executive administration",
       "Overhauled security approval processes to accelerate research data access timelines without compromising compliance posture",
     ],
     relevance:
-      "C-suite-reporting VP-equivalent with direct accountability to institutional executive leadership — budget authority, board-level governance reporting, and enterprise AI strategy ownership inside one of the world's premier academic health systems.",
+      "Prior C-suite-reporting, VP-equivalent role with direct accountability to institutional executive leadership — budget authority, board-level governance reporting, and enterprise AI strategy ownership inside one of the world's premier academic health systems.",
     keyAchievement:
       "Created the FURM AI Governance Framework — a board-reportable architecture presented to institutional governance committees and now governing AI deployment across clinical and operational domains at scale.",
     featured: false,

@@ -278,7 +278,7 @@ const MeasuringROI = () => {
           {/* Author */}
           <footer className="pt-8 border-t border-border">
             <p className="text-sm text-muted-foreground">
-              <Link to="/about" className="text-foreground hover:text-primary transition-colors font-medium">Jag Mariappan</Link> is Executive Director of Research Computing and Informatics at Beth Israel Lahey Health, advancing research computing, HPC, AI infrastructure, and biomedical discovery. Previously at Stanford Medicine through August 2026. Harvard Business School alumnus.
+              <Link to="/about" className="text-foreground hover:text-primary transition-colors font-medium">Jag Mariappan</Link> is Executive Director at Beth Israel Lahey Health, advancing research computing, HPC, AI infrastructure, and biomedical discovery. Previously at Stanford Medicine through August 2026. Harvard Business School alumnus.
             </p>
           </footer>
         </div>

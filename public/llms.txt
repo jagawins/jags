@@ -1,7 +1,7 @@
 # Jag Mariappan - Research Computing, HPC & Biomedical Discovery
 
 ## About
-Jag Mariappan is Executive Director of Research Computing and Informatics at Beth Israel Lahey Health, a role he began in September 2026. He leads work across research computing, HPC, high-performance computing, AI infrastructure, and biomedical discovery. Stanford Medicine is a prior role through August 2026.
+Jag Mariappan is Executive Director at Beth Israel Lahey Health, a role he began in September 2026. He leads work across research computing, HPC, high-performance computing, AI infrastructure, and biomedical discovery. Stanford Medicine is a prior role through August 2026.
 
 ## Expertise
 - Healthcare Operations
@@ -20,7 +20,7 @@ Jag Mariappan is Executive Director of Research Computing and Informatics at Bet
 - Decision quality defines outcomes
 
 ## Current Role
-- Beth Israel Lahey Health: Executive Director, Research Computing and Informatics (September 2026–present)
+- Beth Israel Lahey Health: Executive Director (September 2026–present)
 - Focused on research computing, HPC, AI infrastructure, and biomedical discovery
 
 ## Prior Role

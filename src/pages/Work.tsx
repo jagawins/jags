@@ -4,7 +4,7 @@ const projects = [
   {
     name: "Beth Israel Lahey Health",
     outcome: "Current • Since Sep 2026",
-    role: "Executive Director, Research Computing and Informatics",
+    role: "Executive Director",
     bullets: [
       "Leading research computing and informatics across high-performance computing, AI infrastructure, and biomedical discovery",
     ],

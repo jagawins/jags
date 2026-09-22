@@ -1,7 +1,7 @@
-# Jag Mariappan - Executive Portfolio
+# Jag Mariappan - Research Computing, HPC & Biomedical Discovery
 
 ## About
-Jag Mariappan is the Executive Director of Research Computing and Informatics at Stanford Medicine. He specializes in healthcare operations, AI systems leadership, enterprise governance, and digital transformation across large organizations.
+Jag Mariappan is Executive Director of Research Computing and Informatics at Beth Israel Lahey Health, a role he began in September 2026. He leads work across research computing, HPC, high-performance computing, AI infrastructure, and biomedical discovery. Stanford Medicine is a prior role through August 2026.
 
 ## Expertise
 - Healthcare Operations
@@ -19,9 +19,12 @@ Jag Mariappan is the Executive Director of Research Computing and Informatics at
 - Cadence creates alignment
 - Decision quality defines outcomes
 
-## Current Roles
-- Stanford Medicine: Executive Director, Research Computing and Informatics
-- Leading enterprise-scale portfolios spanning digital health, AI-enabled patient experience, and data/security governance
+## Current Role
+- Beth Israel Lahey Health: Executive Director, Research Computing and Informatics (September 2026–present)
+- Focused on research computing, HPC, AI infrastructure, and biomedical discovery
+
+## Prior Role
+- Stanford Medicine: enterprise AI, research informatics, digital health, and governance leadership (through August 2026)
 
 ## Ventures & Exits
 - Bairo Healthcare: Founder & CEO (Sold)

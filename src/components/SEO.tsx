@@ -10,9 +10,9 @@ interface SEOProps {
 }
 
 const SEO = ({
-  title = "Jag Mariappan | Executive Operator in Healthcare & AI",
-  description = "Jag Mariappan — Executive Director, Research Computing and Informatics at Stanford Medicine. 25+ years leading healthcare operations, AI governance, and enterprise transformation. Harvard Business School alumnus.",
-  keywords = "Jag Mariappan, Executive Leader, Healthcare AI, Stanford Medicine, Enterprise Transformation, Digital Health, AI Governance",
+  title = "Jag Mariappan | Research Computing, HPC & Biomedical Discovery",
+  description = "Jag Mariappan is Executive Director, Research Computing and Informatics at Beth Israel Lahey Health, advancing HPC, AI infrastructure, and biomedical discovery.",
+  keywords = "Jag Mariappan, Beth Israel Lahey Health, Stanford Medicine, research computing, HPC, high-performance computing, biomedical discovery, AI infrastructure, research informatics, healthcare AI governance",
   image = "https://jagmariappan.com/og-image-new.png",
   url = "https://jagmariappan.com",
   type = "website",

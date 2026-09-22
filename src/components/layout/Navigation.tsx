@@ -9,7 +9,7 @@ const navGroups: { label: string; items: NavItem[] }[] = [
   {
     label: "What I've Built",
     items: [
-      { href: "/work", label: "Work & Experience", description: "25+ years operating across regulated systems" },
+      { href: "/work", label: "Work & Experience", description: "Beth Israel Lahey Health, Stanford Medicine, Medtronic Diabetes, Bairo Healthcare, VerityAxis, Google, IBM" },
       { href: "/ai-capital-scale", label: "AI Capital & Scale", description: "Capital allocation doctrine" },
       { href: "/healthcare-ai-governance-framework", label: "Governance Framework", description: "Pillar: AI governance for health systems" },
       { href: "/measuring-roi-of-ai-in-healthcare", label: "Measuring ROI", description: "Pillar: financial discipline for AI" },
@@ -55,7 +55,7 @@ const Navigation = () => {
                 Jag Mariappan
               </span>
               <span className="text-[10px] md:text-xs text-muted-foreground/70 tracking-wide">
-                Stanford Medicine • Harvard Business School
+                Beth Israel Lahey Health • Harvard Business School
               </span>
             </div>
           </Link>

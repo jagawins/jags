@@ -120,8 +120,8 @@ const Speaking = () => {
     <Layout>
       <SEO
         title="Speaking | Jag Mariappan — Healthcare AI Speaker"
-        description="Book Jag Mariappan for keynotes and panels on healthcare AI governance, digital transformation, and enterprise leadership. Stanford Medicine practitioner."
-        keywords="healthcare AI speaker, Jag Mariappan speaking, AI governance keynote, enterprise transformation speaker, healthcare technology speaker, Stanford Medicine"
+        description="Book Jag Mariappan, Executive Director at Beth Israel Lahey Health, for talks on research computing, HPC, AI infrastructure, and healthcare AI governance."
+        keywords="Jag Mariappan speaker, Beth Israel Lahey Health, Stanford Medicine, research computing, HPC, high-performance computing, biomedical discovery, AI infrastructure, healthcare AI governance"
         url="https://jagmariappan.com/speaking"
       />
 
@@ -137,7 +137,7 @@ const Speaking = () => {
               organizational change that made it work.
             </h1>
             <p className="body-large text-muted-foreground max-w-2xl mb-8">
-              I've founded and sold a healthcare technology company, led
+              I lead research computing and informatics at Beth Israel Lahey Health, founded and sold a healthcare technology company, previously led
               enterprise AI transformation at Stanford Medicine, built a
               rapid-approval engine at Google, and managed $154M portfolios at
               IBM.
@@ -233,7 +233,7 @@ const Speaking = () => {
               <div>
                 <p className="text-foreground font-medium mb-1">Institutions</p>
                 <p>
-                  Stanford Medicine • Google • IBM • Medtronic • Tenet Healthcare
+                  Beth Israel Lahey Health • Stanford Medicine • Google • IBM • Medtronic • Tenet Healthcare
                 </p>
               </div>
               <div>

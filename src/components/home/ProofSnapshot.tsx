@@ -18,10 +18,10 @@ const proofPoints = [
 
 const executionNarratives = [
   {
-    title: "C-Suite Reporting at Current Scale",
-    domain: "Stanford Medicine",
-    fact: "Reports directly to CMO and CIO with accountability for AI and digital health strategy — budget authority, vendor approval, and technology governance decisions escalated to institutional executive leadership.",
-    outcome: "Presents AI governance frameworks and platform adoption metrics to institutional governance committees at board-equivalent level, closing the loop between operational execution and executive accountability.",
+    title: "C-Suite Reporting at Institutional Scale",
+    domain: "Stanford Medicine • Prior Role",
+    fact: "Reported directly to CMO and CIO with accountability for AI and digital health strategy — budget authority, vendor approval, and technology governance decisions escalated to institutional executive leadership.",
+    outcome: "Presented AI governance frameworks and platform adoption metrics to institutional governance committees at board-equivalent level, closing the loop between operational execution and executive accountability.",
   },
   {
     title: "Ecosystem Scale",

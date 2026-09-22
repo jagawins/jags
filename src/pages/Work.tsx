@@ -2,8 +2,19 @@ import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 const projects = [
   {
+    name: "Beth Israel Lahey Health",
+    outcome: "Current • Since Sep 2026",
+    role: "Executive Director, Research Computing and Informatics",
+    bullets: [
+      "Leading research computing and informatics across high-performance computing, AI infrastructure, and biomedical discovery",
+    ],
+    relevance:
+      "Current executive leadership role focused on the computing, data, and AI infrastructure that supports biomedical research at institutional scale.",
+    featured: true,
+  },
+  {
     name: "Stanford Medicine",
-    outcome: "Scaling Institutional AI & Digital Health",
+    outcome: "Prior • Through Aug 2026",
     role: "VP-Equivalent Executive — Enterprise AI, Research Informatics & Governance",
     bullets: [
       "Reports directly to C-suite executive leadership (CMO, CIO) with accountability for AI and digital health strategy across the institution — including budget authority, vendor approval, and technology governance decisions escalated to executive administration",
@@ -18,7 +29,7 @@ const projects = [
       "C-suite-reporting VP-equivalent with direct accountability to institutional executive leadership — budget authority, board-level governance reporting, and enterprise AI strategy ownership inside one of the world's premier academic health systems.",
     keyAchievement:
       "Created the FURM AI Governance Framework — a board-reportable architecture presented to institutional governance committees and now governing AI deployment across clinical and operational domains at scale.",
-    featured: true,
+    featured: false,
   },
   {
     name: "IBM",
@@ -159,9 +170,9 @@ const Work = () => {
   return (
     <Layout>
       <SEO 
-        title="Work & Experience | Jag Mariappan — VP Healthcare AI, Board Governance, Research Informatics"
-        description="VP-level executive record: $154M P&L at IBM, C-suite roles (CEO, COO, CPO), research informatics at Stanford Medicine, two exits. 25+ years in healthcare AI and enterprise governance."
-        keywords="Jag Mariappan work, VP healthcare AI, research informatics, Stanford Medicine, IBM P&L, Medtronic, healthcare executive, enterprise transformation, board governance, C-suite healthcare, Bairo Healthcare, AXIVA"
+        title="Work & Experience | Jag Mariappan"
+        description="Executive Director at Beth Israel Lahey Health with prior Stanford Medicine experience, $154M IBM P&L ownership, C-suite roles, and two exits."
+        keywords="Jag Mariappan work, Beth Israel Lahey Health, Stanford Medicine, research computing, HPC, high-performance computing, biomedical discovery, AI infrastructure, research informatics, IBM P&L, Medtronic"
         url="https://jagmariappan.com/work"
       />
       <section className="section-spacing">

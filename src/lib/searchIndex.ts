@@ -9,22 +9,22 @@ export interface SearchDocument {
 export const searchIndex: SearchDocument[] = [
   {
     id: "home",
-    title: "Jag Mariappan - Executive Portfolio",
-    content: "Jag Mariappan is the Executive Director of Research Computing and Informatics at Stanford Medicine, specializing in healthcare operations, AI systems leadership, enterprise governance, and digital transformation. Leadership philosophy: Clarity reduces friction, cadence creates alignment, decision quality defines outcomes.",
+    title: "Jag Mariappan - Research Computing, HPC & Biomedical Discovery",
+    content: "Jag Mariappan is Executive Director of Research Computing and Informatics at Beth Israel Lahey Health, a role he began in September 2026. He leads work across research computing, HPC, AI infrastructure, biomedical discovery, and enterprise governance. Stanford Medicine is a prior role through August 2026.",
     url: "https://jagmariappan.com/",
-    keywords: ["jag mariappan", "stanford medicine", "healthcare", "ai", "operations", "leadership", "executive"],
+    keywords: ["jag mariappan", "beth israel lahey health", "stanford medicine", "research computing", "hpc", "high-performance computing", "biomedical discovery", "ai infrastructure", "healthcare", "leadership", "executive"],
   },
   {
     id: "work",
     title: "Work & Ventures",
-    content: "Portfolio of ventures and exits: Stanford Medicine (Executive Director), Bairo Healthcare (Founder & CEO, Sold), VerityAxis (Co-Founder, Sold), PrismOS (COO, Live), PodoraHQ (CPO, Live), AxiomAppeals (Executive Advisor, Live), AXIVA (Founder, Live), Medhara (Founder, Live). 2 ventures acquired, 5 live platforms, 15+ years operating.",
+    content: "Experience and ventures: Beth Israel Lahey Health (Executive Director, Research Computing and Informatics, September 2026–present), Stanford Medicine (prior role through August 2026), Bairo Healthcare (Founder & CEO, Sold), VerityAxis (Co-Founder, Sold), PrismOS (COO, Live), PodoraHQ (CPO, Live), AxiomAppeals (Executive Advisor, Live), AXIVA (Founder, Live), and Medhara (Founder, Live).",
     url: "https://jagmariappan.com/work",
     keywords: ["ventures", "exits", "bairo", "verityaxis", "prismos", "podora", "axiomappeals", "axiva", "medhara", "startups", "healthcare technology"],
   },
   {
     id: "stanford",
-    title: "Stanford Medicine Role",
-    content: "Executive Director, Research Computing and Informatics at Stanford Medicine. Leading enterprise-scale portfolios spanning digital health, AI-enabled patient experience, and data/security governance. Aligning platform roadmaps and adoption across clinical, operational, and technology stakeholders.",
+    title: "Stanford Medicine Prior Role",
+    content: "At Stanford Medicine through August 2026, Jag led enterprise-scale portfolios spanning digital health, AI-enabled patient experience, research informatics, and data and security governance.",
     url: "https://jagmariappan.com/work",
     keywords: ["stanford", "stanford medicine", "enterprise operations", "digital health", "healthcare"],
   },

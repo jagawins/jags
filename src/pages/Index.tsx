@@ -16,9 +16,9 @@ const Index = () => {
     <Layout>
       <PersonSchema />
       <SEO
-        title="Jag Mariappan | Executive Director, Research Computing"
-        description="Executive Director, Research Computing and Informatics. $154M P&L, C-suite roles, and board advisory in healthcare AI. Stanford Medicine. Harvard Business School."
-        keywords="Jag Mariappan, Executive Director Research Computing Informatics healthcare AI, healthcare technology executive, Chief AI Officer, board advisor healthcare, research informatics, AI governance, healthcare executive, enterprise transformation, Stanford Medicine, C-suite healthcare, digital health executive"
+        title="Jag Mariappan | Research Computing, HPC & Biomedical Discovery"
+        description="Executive Director, Research Computing and Informatics at Beth Israel Lahey Health, advancing HPC, AI infrastructure, and biomedical discovery."
+        keywords="Jag Mariappan, Beth Israel Lahey Health, Stanford Medicine, research computing, HPC, high-performance computing, biomedical discovery, AI infrastructure, research informatics, healthcare AI governance"
       />
       <Hero />
       <ValueSnapshot />

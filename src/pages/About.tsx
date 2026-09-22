@@ -38,9 +38,9 @@ const About = () => {
   return (
     <Layout>
       <SEO 
-        title="About Jag Mariappan | Executive Director, Research Computing"
-        description="Jagadeesan Mariappan (Jag Mariappan) — Executive Director, Research Computing and Informatics at Stanford Medicine with $154M P&L ownership, C-suite roles (CEO, COO, CPO), and two successful exits. Harvard Business School alumnus."
-        keywords="Jag Mariappan, Jagadeesan Mariappan, Executive Director Research Computing Informatics healthcare AI, Stanford Medicine executive, research informatics, board governance, Harvard Business School, healthcare AI biography"
+        title="About Jag Mariappan | Research Computing & HPC"
+        description="Jag Mariappan is Executive Director, Research Computing and Informatics at Beth Israel Lahey Health, advancing HPC, AI infrastructure, and biomedical discovery."
+        keywords="Jag Mariappan, Jagadeesan Mariappan, Beth Israel Lahey Health, Stanford Medicine, research computing, HPC, high-performance computing, biomedical discovery, AI infrastructure, research informatics"
         url="https://jagmariappan.com/about"
       />
       <section className="section-spacing">
@@ -52,7 +52,7 @@ const About = () => {
                 <div className="w-48 md:w-full aspect-square">
                   <img
                     src={jagHeadshot}
-                    alt="Jag Mariappan, Executive Director, Research Computing and Informatics at Stanford Medicine"
+                    alt="Jag Mariappan, Executive Director, Research Computing and Informatics at Beth Israel Lahey Health"
                     className="w-full h-full object-cover rounded-sm"
                   />
                 </div>
@@ -63,7 +63,7 @@ const About = () => {
                   Executive operator building at the intersection of healthcare, AI, and governance.
                 </p>
                 <p className="text-sm text-muted-foreground mt-3">
-                  Also known as Jagadeesan Mariappan — Executive Director, Research Computing and Informatics.
+                  Also known as Jagadeesan Mariappan — Executive Director, Research Computing and Informatics at Beth Israel Lahey Health since September 2026.
                 </p>
               </div>
             </div>
@@ -80,7 +80,7 @@ const About = () => {
                 My approach combines strategic thinking with hands-on execution. I believe in building systems that outlast their builders, measuring what matters, and making decisions with incomplete information when necessary.
               </p>
               <p>
-                Currently, I'm focused on AI governance and the operationalization of intelligent systems in regulated industries.
+                Since September 2026, I have served as Executive Director, Research Computing and Informatics at Beth Israel Lahey Health, focused on research computing, high-performance computing, AI infrastructure, and biomedical discovery. Previously, I served at Stanford Medicine through August 2026.
               </p>
             </div>
 

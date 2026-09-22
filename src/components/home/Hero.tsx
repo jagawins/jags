@@ -14,13 +14,13 @@ const Hero = () => {
               className="heading-display text-foreground mb-6 animate-fade-in"
               style={{ opacity: 0, animationFillMode: 'forwards' }}
             >
-              Executive Director, Research Computing and Informatics | Healthcare AI, Board Governance, and Enterprise Scale
+              Executive Director, Research Computing and Informatics | Beth Israel Lahey Health
             </h1>
             <p 
               className="body-large text-muted-foreground max-w-2xl mb-4 animate-fade-in"
               style={{ opacity: 0, animationDelay: '150ms', animationFillMode: 'forwards' }}
             >
-              Executive Director, Research Computing and Informatics with $154M P&L ownership, two successful exits, and C-suite roles across healthcare AI, research informatics, and regulated enterprise systems.
+              Leading research computing, HPC, AI infrastructure, and biomedical discovery at Beth Israel Lahey Health since September 2026, with $154M P&L ownership, two successful exits, and C-suite experience.
             </p>
             <p 
               className="text-base text-muted-foreground max-w-2xl mb-6 italic animate-fade-in"
@@ -80,7 +80,7 @@ const Hero = () => {
             <div className="relative w-44 h-44 md:w-52 md:h-52 lg:w-56 lg:h-56 mx-auto lg:mx-0">
               <img
                 src={jagHeadshot}
-                alt="Jag Mariappan, Executive Director, Research Computing and Informatics, Healthcare AI and Board Governance"
+                alt="Jag Mariappan, Executive Director, Research Computing and Informatics at Beth Israel Lahey Health"
                 className="w-full h-full object-cover object-top rounded-full border-2 border-border"
               />
             </div>

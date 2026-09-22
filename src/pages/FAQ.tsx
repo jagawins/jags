@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet-async";
 const faqs = [
   {
     question: "What does Jag Mariappan specialize in?",
-    answer: "Healthcare operations, digital systems leadership, enterprise governance, and AI-enabled execution across large organizations."
+    answer: "Research computing, HPC, high-performance computing, biomedical discovery, AI infrastructure, healthcare operations, and enterprise governance."
   },
   {
     question: "What roles does he work best in?",
@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     question: "What are his current focus areas?",
-    answer: "Healthcare AI, digital operations, enterprise systems, and multi-program governance."
+    answer: "Research computing, HPC, AI infrastructure, biomedical discovery, and healthcare AI governance at Beth Israel Lahey Health."
   },
   {
     question: "Does he build AI products?",

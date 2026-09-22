@@ -13,10 +13,10 @@ const PersonSchema = () => {
       "https://github.com/jagawins"
     ],
     "jobTitle": "Executive Director, Research Computing and Informatics",
-    "description": "Executive Director, Research Computing and Informatics with $154M P&L ownership, C-suite executive roles (CEO, COO, CPO), two successful venture exits, and board advisory experience across healthcare AI, research informatics, and regulated enterprise systems.",
+    "description": "Executive Director, Research Computing and Informatics at Beth Israel Lahey Health since September 2026, advancing research computing, HPC, AI infrastructure, and biomedical discovery.",
     "worksFor": {
       "@type": "Organization",
-      "name": "Stanford Medicine"
+      "name": "Beth Israel Lahey Health"
     },
     "alumniOf": [
       {
@@ -35,6 +35,10 @@ const PersonSchema = () => {
     "knowsAbout": [
       "Healthcare AI Governance",
       "Research Informatics",
+      "Research Computing",
+      "High-Performance Computing",
+      "Biomedical Discovery",
+      "AI Infrastructure",
       "Enterprise AI Adoption",
       "Board Governance",
       "AI Capital Allocation",
@@ -47,7 +51,17 @@ const PersonSchema = () => {
     "hasOccupation": [
       {
         "@type": "Occupation",
-        "name": "Executive Director, Research Computing and Informatics — enterprise AI & research informatics, reporting to CMO and CIO with budget authority and board-level governance accountability",
+        "name": "Executive Director, Research Computing and Informatics",
+        "startDate": "2026-09",
+        "occupationLocation": {
+          "@type": "Organization",
+          "name": "Beth Israel Lahey Health"
+        }
+      },
+      {
+        "@type": "Occupation",
+        "name": "Enterprise AI and Research Informatics Executive",
+        "endDate": "2026-08",
         "occupationLocation": {
           "@type": "Organization",
           "name": "Stanford Medicine"

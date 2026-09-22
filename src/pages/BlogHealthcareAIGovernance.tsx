@@ -52,7 +52,7 @@ const BlogHealthcareAIGovernance = () => {
       name: "Jag Mariappan",
     },
     description:
-      "A Stanford Medicine practitioner's guide to healthcare AI governance — what it is, why 2026 is the inflection point, and the 4 governance failures most health systems make.",
+      "A practitioner's guide informed by enterprise AI work at Stanford Medicine — what healthcare AI governance is, why 2026 is the inflection point, and the 4 failures most health systems make.",
     mainEntityOfPage: "https://jagmariappan.com/writing/healthcare-ai-governance-executive-competency",
   };
 
@@ -60,7 +60,7 @@ const BlogHealthcareAIGovernance = () => {
     <Layout>
       <SEO
         title="Healthcare AI Governance: Executive Competency 2026"
-        description="A Stanford Medicine practitioner's guide to healthcare AI governance — what it is, why 2026 is the inflection point, and the 4 governance failures most health systems make."
+        description="A practitioner's guide informed by enterprise AI work at Stanford Medicine: what healthcare AI governance is and the 4 failures health systems make."
         keywords="healthcare AI governance, AI governance framework healthcare, responsible AI adoption, AI risk management, healthcare AI oversight, Jag Mariappan"
         url="https://jagmariappan.com/writing/healthcare-ai-governance-executive-competency"
         type="article"
@@ -297,7 +297,7 @@ const BlogHealthcareAIGovernance = () => {
             {/* Author */}
             <div className="border-t border-border pt-8 mt-4">
               <p className="text-sm text-muted-foreground leading-relaxed">
-                <strong className="text-foreground">About the Author</strong> — Jag Mariappan is Executive Director of Research Computing and Informatics at Stanford Medicine, with 25+ years of experience leading healthcare operations, AI-enabled digital systems, and enterprise transformation. He is an advisor, speaker, and writer on healthcare AI governance and digital strategy.
+                <strong className="text-foreground">About the Author</strong> — Jag Mariappan is Executive Director of Research Computing and Informatics at Beth Israel Lahey Health, focused on research computing, HPC, AI infrastructure, and biomedical discovery. He previously served at Stanford Medicine through August 2026 and has 25+ years of experience across healthcare and enterprise technology.
               </p>
             </div>
           </div>

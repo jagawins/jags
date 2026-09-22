@@ -44,14 +44,14 @@ const searchIndex: SearchDocument[] = [
   {
     id: "home",
     title: "Jag Mariappan - Research Computing, HPC & Biomedical Discovery",
-    content: "Jag Mariappan is Executive Director of Research Computing and Informatics at Beth Israel Lahey Health, a role he began in September 2026. He leads work across research computing, HPC, AI infrastructure, biomedical discovery, and enterprise governance. Stanford Medicine is a prior role through August 2026.",
+    content: "Jag Mariappan is Executive Director at Beth Israel Lahey Health, a role he began in September 2026. He leads work across research computing, HPC, AI infrastructure, biomedical discovery, and enterprise governance. Stanford Medicine is a prior role through August 2026.",
     url: "https://jagmariappan.com/",
     keywords: ["jag mariappan", "beth israel lahey health", "stanford medicine", "research computing", "hpc", "high-performance computing", "biomedical discovery", "ai infrastructure", "healthcare", "leadership", "executive"],
   },
   {
     id: "work",
     title: "Work & Ventures",
-    content: "Experience and ventures: Beth Israel Lahey Health (Executive Director, Research Computing and Informatics, September 2026–present), Stanford Medicine (prior role through August 2026), Bairo Healthcare (Founder & CEO, Sold), VerityAxis (Co-Founder, Sold), PrismOS (COO, Live), PodoraHQ (CPO, Live), AxiomAppeals (Executive Advisor, Live), AXIVA (Founder, Live), and Medhara (Founder, Live).",
+    content: "Experience and ventures: Beth Israel Lahey Health (Executive Director, September 2026–present), Stanford Medicine (prior role through August 2026), Bairo Healthcare (Founder & CEO, Sold), VerityAxis (Co-Founder, Sold), PrismOS (COO, Live), PodoraHQ (CPO, Live), AxiomAppeals (Executive Advisor, Live), AXIVA (Founder, Live), and Medhara (Founder, Live).",
     url: "https://jagmariappan.com/work",
     keywords: ["ventures", "exits", "bairo", "verityaxis", "prismos", "podora", "axiomappeals", "axiva", "medhara", "startups", "healthcare technology"],
   },

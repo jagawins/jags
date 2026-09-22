@@ -12,8 +12,8 @@ const PersonSchema = () => {
       "https://www.linkedin.com/in/jagawins/",
       "https://github.com/jagawins"
     ],
-    "jobTitle": "Executive Director, Research Computing and Informatics",
-    "description": "Executive Director, Research Computing and Informatics at Beth Israel Lahey Health since September 2026, advancing research computing, HPC, AI infrastructure, and biomedical discovery.",
+    "jobTitle": "Executive Director",
+    "description": "Executive Director at Beth Israel Lahey Health since September 2026, advancing research computing, HPC, AI infrastructure, and biomedical discovery.",
     "worksFor": {
       "@type": "Organization",
       "name": "Beth Israel Lahey Health"
@@ -51,7 +51,7 @@ const PersonSchema = () => {
     "hasOccupation": [
       {
         "@type": "Occupation",
-        "name": "Executive Director, Research Computing and Informatics",
+        "name": "Executive Director",
         "startDate": "2026-09",
         "occupationLocation": {
           "@type": "Organization",

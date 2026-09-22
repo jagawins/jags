@@ -14,7 +14,7 @@ const Hero = () => {
               className="heading-display text-foreground mb-6 animate-fade-in"
               style={{ opacity: 0, animationFillMode: 'forwards' }}
             >
-              Executive Director, Research Computing and Informatics | Beth Israel Lahey Health
+              Executive Director | Beth Israel Lahey Health
             </h1>
             <p 
               className="body-large text-muted-foreground max-w-2xl mb-4 animate-fade-in"
@@ -80,7 +80,7 @@ const Hero = () => {
             <div className="relative w-44 h-44 md:w-52 md:h-52 lg:w-56 lg:h-56 mx-auto lg:mx-0">
               <img
                 src={jagHeadshot}
-                alt="Jag Mariappan, Executive Director, Research Computing and Informatics at Beth Israel Lahey Health"
+                alt="Jag Mariappan, Executive Director at Beth Israel Lahey Health"
                 className="w-full h-full object-cover object-top rounded-full border-2 border-border"
               />
             </div>

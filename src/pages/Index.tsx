@@ -17,7 +17,7 @@ const Index = () => {
       <PersonSchema />
       <SEO
         title="Jag Mariappan | Research Computing, HPC & Biomedical Discovery"
-        description="Executive Director, Research Computing and Informatics at Beth Israel Lahey Health, advancing HPC, AI infrastructure, and biomedical discovery."
+        description="Executive Director at Beth Israel Lahey Health, advancing HPC, AI infrastructure, and biomedical discovery."
         keywords="Jag Mariappan, Beth Israel Lahey Health, Stanford Medicine, research computing, HPC, high-performance computing, biomedical discovery, AI infrastructure, research informatics, healthcare AI governance"
       />
       <Hero />

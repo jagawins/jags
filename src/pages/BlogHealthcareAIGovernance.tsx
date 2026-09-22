@@ -297,7 +297,7 @@ const BlogHealthcareAIGovernance = () => {
             {/* Author */}
             <div className="border-t border-border pt-8 mt-4">
               <p className="text-sm text-muted-foreground leading-relaxed">
-                <strong className="text-foreground">About the Author</strong> — Jag Mariappan is Executive Director of Research Computing and Informatics at Beth Israel Lahey Health, focused on research computing, HPC, AI infrastructure, and biomedical discovery. He previously served at Stanford Medicine through August 2026 and has 25+ years of experience across healthcare and enterprise technology.
+                <strong className="text-foreground">About the Author</strong> — Jag Mariappan is Executive Director at Beth Israel Lahey Health, focused on research computing, HPC, AI infrastructure, and biomedical discovery. He previously served at Stanford Medicine through August 2026 and has 25+ years of experience across healthcare and enterprise technology.
               </p>
             </div>
           </div>

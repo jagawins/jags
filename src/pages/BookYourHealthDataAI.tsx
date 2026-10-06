@@ -131,6 +131,78 @@ const BookYourHealthDataAI = () => {
             </div>
           </div>
 
+          {/* Sample reading */}
+          <div className="border-t border-border pt-16 mb-20 animate-fade-in">
+            <p className="tag-outcome mb-3">Read a Sample</p>
+            <h2 className="font-serif text-2xl md:text-3xl font-medium text-foreground mb-3">
+              Preview the book before you buy.
+            </h2>
+            <p className="text-muted-foreground leading-relaxed max-w-2xl mb-10">
+              Start with the opening of the book right here. If it resonates, choose a retailer
+              above for the full edition.
+            </p>
+
+            <article
+              aria-labelledby="sample-heading"
+              className="border border-border bg-muted/20 rounded-sm"
+            >
+              <div className="px-6 md:px-10 py-8 md:py-10 border-b border-border/60 flex items-start gap-4">
+                <BookOpen className="w-5 h-5 text-primary shrink-0 mt-1" aria-hidden="true" />
+                <div>
+                  <p className="tag-outcome mb-2">Sample Excerpt</p>
+                  <h3 id="sample-heading" className="font-serif text-xl md:text-2xl font-medium text-foreground">
+                    Introduction: The Moment We're In
+                  </h3>
+                </div>
+              </div>
+
+              <div className="px-6 md:px-10 py-8 md:py-10 max-w-2xl">
+                <div className="space-y-5 text-foreground/90 leading-relaxed font-serif text-lg">
+                  <p>
+                    AI is entering healthcare through more than the exam room. It can shape how a
+                    diagnosis is explored, how a message is answered, how risk is scored, how a
+                    lab result is explained, or how a research study reaches you.
+                  </p>
+                  <p>
+                    That can be useful. It can also be difficult to tell what a tool knows, what
+                    it misses, where your information goes, and when a human conversation matters
+                    more.
+                  </p>
+                  <p>
+                    The goal isn't to fear every tool or trust every answer. It's to meet new
+                    technology with better questions.
+                  </p>
+                </div>
+
+                <div
+                  id="sample-more"
+                  hidden={!sampleExpanded}
+                  className="space-y-5 text-foreground/90 leading-relaxed font-serif text-lg mt-5"
+                >
+                  <p className="italic text-muted-foreground">
+                    [Placeholder] The full opening excerpt goes here. Send me the introduction or
+                    first chapter text from the book and I will drop it in, formatted for
+                    comfortable on-screen reading.
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setSampleExpanded((v) => !v)}
+                  aria-expanded={sampleExpanded}
+                  aria-controls="sample-more"
+                  className="mt-8 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors rounded-sm"
+                >
+                  {sampleExpanded ? "Show less" : "Continue reading"}
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform ${sampleExpanded ? "rotate-180" : ""}`}
+                    aria-hidden="true"
+                  />
+                </button>
+              </div>
+            </article>
+          </div>
+
           {/* Inside the book */}
           <div className="border-t border-border pt-16 mb-20 animate-fade-in">
             <p className="tag-outcome mb-3">Inside the Book</p>

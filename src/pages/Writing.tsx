@@ -140,6 +140,7 @@ const Writing = () => {
             "https://medhara.ai/book"
           ]
         })}</script>
+      </Helmet>
       <section className="section-spacing">
         <div className="container-narrow">
           <div className="max-w-3xl mb-16 animate-fade-in">

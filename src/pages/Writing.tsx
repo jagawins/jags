@@ -12,6 +12,14 @@ const bookRetailers = [
   { name: "Books2Read (all stores)", url: "https://books2read.com/u/bMLjpa" },
   { name: "Thalia", url: "https://www.thalia.de/shop/home/artikeldetails/A1079815620" },
 ];
+const healthBookRetailers = [
+  { name: "Kindle", url: "https://www.amazon.com/dp/B0H7H9T7Q8" },
+  { name: "Paperback", url: "https://www.amazon.com/dp/B0HM1RN9XT" },
+  { name: "Barnes & Noble", url: "https://www.barnesandnoble.com/w/your-health-your-data-your-ai-jagadeesan-jag-mariappan/1151583889?ean=2940196646881" },
+  { name: "Rakuten Kobo", url: "https://www.kobo.com/search?query=9798182866569" },
+  { name: "Bookshop.org", url: "https://bookshop.org/p/books/your-health-your-data-your-ai-jagadeesan-jag-mariappan/ac3e7a11124be46a?ean=9798182866569" },
+  { name: "Medhara", url: "https://medhara.ai/book" },
+];
 const posts = [
   {
     title: "Research Computing: From Wish to System",

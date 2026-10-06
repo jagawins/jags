@@ -99,9 +99,9 @@ const Writing = () => {
   return (
     <Layout>
       <SEO 
-        title="Writing & Books | Jag Mariappan — Author of Silence is Success"
-        description="Author of 'Silence is Success: Vijay's Quiet Revolution in Tamil Nadu' (Apple Books, Kobo, Thalia). Essays and frameworks on healthcare AI, governance, and transformation."
-        keywords="Jag Mariappan author, Silence is Success book, Jagadeesan Mariappan, Vijay Tamil Nadu biography, healthcare AI writing, AI governance essays"
+        title="Writing & Books | Jag Mariappan — Author"
+        description="Author of 'Your Health, Your Data, Your AI' and 'Silence is Success: Vijay's Quiet Revolution in Tamil Nadu'. Essays and frameworks on healthcare AI, governance, and transformation."
+        keywords="Jag Mariappan author, Your Health Your Data Your AI book, Silence is Success book, Jagadeesan Mariappan, healthcare AI writing, AI governance essays, patient AI literacy"
         url="https://jagmariappan.com/writing"
         type="book"
         image="https://jagmariappan.com/silence-is-success-cover.png"

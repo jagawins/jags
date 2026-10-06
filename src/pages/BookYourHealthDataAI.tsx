@@ -1,7 +1,8 @@
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import { Helmet } from "react-helmet-async";
-import { ArrowUpRight, Download } from "lucide-react";
+import { useState } from "react";
+import { ArrowUpRight, BookOpen, ChevronDown, Download } from "lucide-react";
 import bookMockup from "@/assets/your-health-your-data-your-ai.png";
 
 const retailers = [
@@ -49,6 +50,8 @@ const toolkitItems = [
 ];
 
 const BookYourHealthDataAI = () => {
+  const [sampleExpanded, setSampleExpanded] = useState(false);
+
   return (
     <Layout>
       <SEO

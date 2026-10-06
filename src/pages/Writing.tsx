@@ -152,7 +152,7 @@ const Writing = () => {
 
           {/* Published Book */}
           <div className="border-t border-border pt-12 mb-20 animate-fade-in">
-            <p className="tag-outcome mb-6">Published Book</p>
+            <p className="tag-outcome mb-6">Published Books</p>
             <div className="grid md:grid-cols-[260px_1fr] gap-10 items-start">
               <a
                 href="https://books2read.com/u/bMLjpa"
@@ -195,6 +195,51 @@ const Writing = () => {
             </div>
           </div>
 
+          <div className="border-t border-border pt-12 mb-20 animate-fade-in">
+            <div className="grid md:grid-cols-[260px_1fr] gap-10 items-start">
+              <Link
+                to="/your-health-your-data-your-ai"
+                className="block group"
+              >
+                <img
+                  src={healthBookCover}
+                  alt="Your Health, Your Data, Your AI, by Jagadeesan Mariappan"
+                  className="w-full max-w-[240px] shadow-lg group-hover:shadow-xl transition-shadow"
+                />
+              </Link>
+              <div>
+                <h2 className="font-serif text-2xl md:text-3xl font-medium text-foreground leading-tight mb-3">
+                  Your Health, Your Data, Your AI
+                </h2>
+                <p className="text-sm text-muted-foreground/80 mb-5">What Every Patient Should Know as Artificial Intelligence Changes Medicine, by Jagadeesan Mariappan</p>
+                <p className="text-muted-foreground leading-relaxed mb-8 max-w-2xl">
+                  A patient's guide to what comes next. Health AI is already part of the story around your care. This book helps you understand the tools, ask better questions, and make room for your own judgment.
+                </p>
+                <p className="tag-outcome mb-3">Available in Ebook &amp; Paperback</p>
+                <ul className="flex flex-wrap gap-x-6 gap-y-3">
+                  {healthBookRetailers.map((r) => (
+                    <li key={r.name}>
+                      <a
+                        href={r.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="link-executive inline-flex items-center gap-1.5 text-sm"
+                      >
+                        {r.name}
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    </li>
+                  ))}
+                  <li>
+                    <Link to="/your-health-your-data-your-ai" className="link-executive inline-flex items-center gap-1.5 text-sm">
+                      About the book
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
           <div className="space-y-0">
             {posts.map((post, index) => {

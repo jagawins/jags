@@ -125,7 +125,21 @@ const Writing = () => {
             "https://www.thalia.de/shop/home/artikeldetails/A1079815620"
           ]
         })}</script>
-      </Helmet>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Book",
+          "name": "Your Health, Your Data, Your AI",
+          "alternateName": "What Every Patient Should Know as Artificial Intelligence Changes Medicine",
+          "author": { "@type": "Person", "name": "Jagadeesan Mariappan" },
+          "inLanguage": "en",
+          "url": "https://jagmariappan.com/your-health-your-data-your-ai",
+          "description": "A patient's guide to what comes next. Health AI is already part of the story around your care. This book helps you understand the tools, ask better questions, and make room for your own judgment.",
+          "sameAs": [
+            "https://www.amazon.com/dp/B0H7H9T7Q8",
+            "https://www.amazon.com/dp/B0HM1RN9XT",
+            "https://medhara.ai/book"
+          ]
+        })}</script>
       <section className="section-spacing">
         <div className="container-narrow">
           <div className="max-w-3xl mb-16 animate-fade-in">

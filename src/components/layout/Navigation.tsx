@@ -19,6 +19,7 @@ const navGroups: { label: string; items: NavItem[] }[] = [
       { href: "/resume-match-pro", label: "ResumeMatch Pro", description: "JD scanner & resume score optimizer" },
       { href: "/research-informatics-hpc", label: "Research Informatics", description: "HPC, GPU, i2b2, HIPAA cloud for AMCs" },
       { href: "/ebook-reading-planner", label: "Ebook Reading Planner", description: "PDF/EPUB daily pace planner" },
+      { href: "/your-health-your-data-your-ai", label: "Book: Your Health, Your Data, Your AI", description: "A patient's guide to AI in medicine" },
     ],
   },
   {

@@ -4,12 +4,21 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import bookCover from "@/assets/silence-is-success.png";
+import healthBookCover from "@/assets/your-health-your-data-your-ai.png";
 
 const bookRetailers = [
   { name: "Apple Books", url: "https://books.apple.com/us/book/silence-is-success-vijays-quiet-revolution/id6768719644" },
   { name: "Rakuten Kobo", url: "https://www.kobo.com/us/en/ebook/silence-is-success-vijay-s-quiet-revolution" },
   { name: "Books2Read (all stores)", url: "https://books2read.com/u/bMLjpa" },
   { name: "Thalia", url: "https://www.thalia.de/shop/home/artikeldetails/A1079815620" },
+];
+const healthBookRetailers = [
+  { name: "Kindle", url: "https://www.amazon.com/dp/B0H7H9T7Q8" },
+  { name: "Paperback", url: "https://www.amazon.com/dp/B0HM1RN9XT" },
+  { name: "Barnes & Noble", url: "https://www.barnesandnoble.com/w/your-health-your-data-your-ai-jagadeesan-jag-mariappan/1151583889?ean=2940196646881" },
+  { name: "Rakuten Kobo", url: "https://www.kobo.com/search?query=9798182866569" },
+  { name: "Bookshop.org", url: "https://bookshop.org/p/books/your-health-your-data-your-ai-jagadeesan-jag-mariappan/ac3e7a11124be46a?ean=9798182866569" },
+  { name: "Medhara", url: "https://medhara.ai/book" },
 ];
 const posts = [
   {
@@ -98,9 +107,9 @@ const Writing = () => {
   return (
     <Layout>
       <SEO 
-        title="Writing & Books | Jag Mariappan — Author of Silence is Success"
-        description="Author of 'Silence is Success: Vijay's Quiet Revolution in Tamil Nadu' (Apple Books, Kobo, Thalia). Essays and frameworks on healthcare AI, governance, and transformation."
-        keywords="Jag Mariappan author, Silence is Success book, Jagadeesan Mariappan, Vijay Tamil Nadu biography, healthcare AI writing, AI governance essays"
+        title="Writing & Books | Jag Mariappan — Author"
+        description="Author of 'Your Health, Your Data, Your AI' and 'Silence is Success: Vijay's Quiet Revolution in Tamil Nadu'. Essays and frameworks on healthcare AI, governance, and transformation."
+        keywords="Jag Mariappan author, Your Health Your Data Your AI book, Silence is Success book, Jagadeesan Mariappan, healthcare AI writing, AI governance essays, patient AI literacy"
         url="https://jagmariappan.com/writing"
         type="book"
         image="https://jagmariappan.com/silence-is-success-cover.png"
@@ -124,19 +133,34 @@ const Writing = () => {
             "https://www.thalia.de/shop/home/artikeldetails/A1079815620"
           ]
         })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Book",
+          "name": "Your Health, Your Data, Your AI",
+          "alternateName": "What Every Patient Should Know as Artificial Intelligence Changes Medicine",
+          "author": { "@type": "Person", "name": "Jagadeesan Mariappan" },
+          "inLanguage": "en",
+          "url": "https://jagmariappan.com/your-health-your-data-your-ai",
+          "description": "A patient's guide to what comes next. Health AI is already part of the story around your care. This book helps you understand the tools, ask better questions, and make room for your own judgment.",
+          "sameAs": [
+            "https://www.amazon.com/dp/B0H7H9T7Q8",
+            "https://www.amazon.com/dp/B0HM1RN9XT",
+            "https://medhara.ai/book"
+          ]
+        })}</script>
       </Helmet>
       <section className="section-spacing">
         <div className="container-narrow">
           <div className="max-w-3xl mb-16 animate-fade-in">
             <h1 className="heading-display text-foreground mb-6">Writing</h1>
             <p className="body-large text-muted-foreground">
-              Author, essayist, and operator. Published book, long-form essays, and frameworks on purpose, focus, and building systems that scale.
+              Author, essayist, and operator. Published books, long-form essays, and frameworks on purpose, focus, and building systems that scale.
             </p>
           </div>
 
           {/* Published Book */}
           <div className="border-t border-border pt-12 mb-20 animate-fade-in">
-            <p className="tag-outcome mb-6">Published Book</p>
+            <p className="tag-outcome mb-6">Published Books</p>
             <div className="grid md:grid-cols-[260px_1fr] gap-10 items-start">
               <a
                 href="https://books2read.com/u/bMLjpa"
@@ -179,6 +203,51 @@ const Writing = () => {
             </div>
           </div>
 
+          <div className="border-t border-border pt-12 mb-20 animate-fade-in">
+            <div className="grid md:grid-cols-[260px_1fr] gap-10 items-start">
+              <Link
+                to="/your-health-your-data-your-ai"
+                className="block group"
+              >
+                <img
+                  src={healthBookCover}
+                  alt="Your Health, Your Data, Your AI, by Jagadeesan Mariappan"
+                  className="w-full max-w-[240px] shadow-lg group-hover:shadow-xl transition-shadow"
+                />
+              </Link>
+              <div>
+                <h2 className="font-serif text-2xl md:text-3xl font-medium text-foreground leading-tight mb-3">
+                  Your Health, Your Data, Your AI
+                </h2>
+                <p className="text-sm text-muted-foreground/80 mb-5">What Every Patient Should Know as Artificial Intelligence Changes Medicine, by Jagadeesan Mariappan</p>
+                <p className="text-muted-foreground leading-relaxed mb-8 max-w-2xl">
+                  A patient's guide to what comes next. Health AI is already part of the story around your care. This book helps you understand the tools, ask better questions, and make room for your own judgment.
+                </p>
+                <p className="tag-outcome mb-3">Available in Ebook &amp; Paperback</p>
+                <ul className="flex flex-wrap gap-x-6 gap-y-3">
+                  {healthBookRetailers.map((r) => (
+                    <li key={r.name}>
+                      <a
+                        href={r.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="link-executive inline-flex items-center gap-1.5 text-sm"
+                      >
+                        {r.name}
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    </li>
+                  ))}
+                  <li>
+                    <Link to="/your-health-your-data-your-ai" className="link-executive inline-flex items-center gap-1.5 text-sm">
+                      About the book
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
           <div className="space-y-0">
             {posts.map((post, index) => {

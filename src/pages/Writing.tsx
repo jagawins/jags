@@ -154,7 +154,7 @@ const Writing = () => {
           <div className="max-w-3xl mb-16 animate-fade-in">
             <h1 className="heading-display text-foreground mb-6">Writing</h1>
             <p className="body-large text-muted-foreground">
-              Author, essayist, and operator. Published book, long-form essays, and frameworks on purpose, focus, and building systems that scale.
+              Author, essayist, and operator. Published books, long-form essays, and frameworks on purpose, focus, and building systems that scale.
             </p>
           </div>
 

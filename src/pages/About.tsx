@@ -53,7 +53,7 @@ const About = () => {
                   <img
                     src={jagHeadshot}
                     alt="Jag Mariappan, Executive Director at Beth Israel Lahey Health"
-                    className="w-full h-full object-cover rounded-sm"
+                    className="w-full h-full object-cover object-top rounded-full"
                   />
                 </div>
               </div>

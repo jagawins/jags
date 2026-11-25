@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router-dom";
 
 interface SEOProps {
   title?: string;
@@ -14,9 +15,11 @@ const SEO = ({
   description = "Jag Mariappan is Executive Director at Beth Israel Lahey Health, advancing HPC, AI infrastructure, and biomedical discovery.",
   keywords = "Jag Mariappan, Beth Israel Lahey Health, Stanford Medicine, research computing, HPC, high-performance computing, biomedical discovery, AI infrastructure, research informatics, healthcare AI governance",
   image = "https://jagmariappan.com/og-image-new.png",
-  url = "https://jagmariappan.com",
+  url: urlProp,
   type = "website",
 }: SEOProps) => {
+  const { pathname } = useLocation();
+  const url = urlProp ?? `https://jagmariappan.com${pathname === "/" ? "/" : pathname.replace(/\/$/, "")}`;
   const siteTitle = title.includes("Jag Mariappan") 
     ? title 
     : `${title} | Jag Mariappan`;

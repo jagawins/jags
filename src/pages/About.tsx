@@ -39,7 +39,7 @@ const About = () => {
     <Layout>
       <SEO 
         title="About Jag Mariappan | Research Computing & HPC"
-        description="Jag Mariappan is Executive Director at Beth Israel Lahey Health, advancing HPC, AI infrastructure, and biomedical discovery."
+        description="About Jag Mariappan: background, leadership roles at Beth Israel Lahey Health, Stanford Medicine and Medtronic, and his approach to research computing and healthcare AI."
         keywords="Jag Mariappan, Jagadeesan Mariappan, Beth Israel Lahey Health, Stanford Medicine, research computing, HPC, high-performance computing, biomedical discovery, AI infrastructure, research informatics"
         url="https://jagmariappan.com/about"
       />

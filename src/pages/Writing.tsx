@@ -5,6 +5,20 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import bookCover from "@/assets/silence-is-success.png";
 import healthBookCover from "@/assets/your-health-your-data-your-ai.png";
+import modelBookCover from "@/assets/inside-the-model.jpg";
+import amazonLogo from "@/assets/logos/amazon.svg";
+import googlePlayLogo from "@/assets/logos/googleplay.svg";
+import spotifyLogo from "@/assets/logos/spotify.svg";
+import audibleLogo from "@/assets/logos/audible.svg";
+
+const modelBookRetailers = [
+  { name: "Amazon Kindle", url: "https://www.amazon.com/dp/B0HSZLTJJM", logo: amazonLogo },
+  { name: "Amazon Paperback", url: "https://www.amazon.com/dp/B0HPY268KS", logo: amazonLogo },
+  { name: "Google Play Books", url: "https://play.google.com/store/books/details?id=c7IzEgAAQBAJ", logo: googlePlayLogo },
+  { name: "Barnes & Noble", url: "https://www.barnesandnoble.com/s/Inside%20the%20Model%20Mariappan", logo: null },
+  { name: "Spotify", url: "https://open.spotify.com/search/Inside%20the%20Model%20Mariappan/audiobooks", logo: spotifyLogo },
+  { name: "Audible", url: "https://www.audible.com/search?keywords=Inside+the+Model+Mariappan", logo: audibleLogo },
+];
 
 const bookRetailers = [
   { name: "Apple Books", url: "https://books.apple.com/us/book/silence-is-success-vijays-quiet-revolution/id6768719644" },
@@ -161,6 +175,32 @@ const Writing = () => {
           {/* Published Book */}
           <div className="border-t border-border pt-12 mb-20 animate-fade-in">
             <p className="tag-outcome mb-6">Published Books</p>
+            <div className="grid md:grid-cols-[260px_1fr] gap-10 items-start mb-20">
+              <a href="https://www.amazon.com/dp/B0HSZLTJJM" target="_blank" rel="noopener noreferrer" className="block group">
+                <img src={modelBookCover} alt="Inside the Model: How Large Language Models Are Built, Trained, Served and Judged, by Jag Mariappan" className="w-full max-w-[240px] shadow-lg group-hover:shadow-xl transition-shadow" />
+              </a>
+              <div>
+                <p className="text-xs font-semibold tracking-wider uppercase text-primary/80 mb-2">New Release</p>
+                <h2 className="font-serif text-2xl md:text-3xl font-medium text-foreground leading-tight mb-3">
+                  Inside the Model: How Large Language Models Are Built, Trained, Served and Judged
+                </h2>
+                <p className="text-sm text-muted-foreground/80 mb-5">An Illustrated Guide for Leaders in Healthcare and Enterprise, by Jag Mariappan</p>
+                <p className="text-muted-foreground leading-relaxed mb-8 max-w-2xl">
+                  A clear, illustrated walk through how large language models actually work, from data and training to serving and evaluation, so leaders can make informed decisions about AI in healthcare and enterprise.
+                </p>
+                <p className="tag-outcome mb-3">Available in Ebook, Paperback &amp; Audiobook</p>
+                <ul className="flex flex-wrap gap-3">
+                  {modelBookRetailers.map((r) => (
+                    <li key={r.name}>
+                      <a href={r.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-border rounded-md px-3 py-2 text-sm text-foreground hover:border-primary hover:text-primary transition-colors">
+                        {r.logo ? <img src={r.logo} alt="" aria-hidden="true" className="w-4 h-4 opacity-80" /> : <span aria-hidden="true" className="font-serif font-semibold text-xs">B&amp;N</span>}
+                        {r.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
             <div className="grid md:grid-cols-[260px_1fr] gap-10 items-start">
               <a
                 href="https://books2read.com/u/bMLjpa"

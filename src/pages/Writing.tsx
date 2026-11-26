@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import bookCover from "@/assets/silence-is-success.png";
 import healthBookCover from "@/assets/your-health-your-data-your-ai.png";
-import modelBookCover from "@/assets/inside-the-model.jpg";
+import modelBookMockup from "@/assets/inside-the-model-mockup.png.asset.json";
+const modelBookCover = modelBookMockup.url;
 import amazonLogo from "@/assets/logos/amazon.svg";
 import googlePlayLogo from "@/assets/logos/googleplay.svg";
 import spotifyLogo from "@/assets/logos/spotify.svg";
@@ -177,7 +178,7 @@ const Writing = () => {
             <p className="tag-outcome mb-6">Published Books</p>
             <div className="grid md:grid-cols-[260px_1fr] gap-10 items-start mb-20">
               <a href="https://www.amazon.com/dp/B0HSZLTJJM" target="_blank" rel="noopener noreferrer" className="block group">
-                <img src={modelBookCover} alt="Inside the Model: How Large Language Models Are Built, Trained, Served and Judged, by Jag Mariappan" className="w-full max-w-[240px] shadow-lg group-hover:shadow-xl transition-shadow" />
+                <img src={modelBookCover} alt="Inside the Model: How Large Language Models Are Built, Trained, Served and Judged, by Jag Mariappan" className="w-full max-w-[260px]" />
               </a>
               <div>
                 <p className="text-xs font-semibold tracking-wider uppercase text-primary/80 mb-2">New Release</p>
